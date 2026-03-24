@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPW Factory Layout v3.0 | Interactive Floor Plan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           CSS VARIABLES & THEMING
+           ============================================ */
+        :root {
+            --color-bg-dark: #0c1117;
+            --color-surface: #161b22;
+            --color-border: #30363d;
+            --color-text-primary: #c9d1d9;
+            --color-text-secondary: #8b949e;
+            --color-text-muted: #6e7681;
+
+            --color-teal: #23555A;
+            --color-coral: #ED835E;
+            --color-deep-blue: #2A4E64;
+            --color-lime: #ADCF91;
+
+            --color-accent-bright: #00d9ff;
+            --color-glow: rgba(35, 85, 90, 0.4);
+            --color-glow-coral: rgba(237, 131, 94, 0.3);
+
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'DM Sans', sans-serif;
+
+            --radius: 8px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ============================================
+           GLOBAL STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: var(--font-sans);
+            background: var(--color-bg-dark);
+            color: var(--color-text-primary);
+            line-height: 1.5;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* ============================================
+           HEADER
+           ============================================ */
+        .header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-teal);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-lime);
+            font-family: var(--font-mono);
+        }
+
+        .version-badge {
+            background: var(--color-deep-blue);
+            color: var(--color-text-primary);
+            padding: 6px 12px;
+            border-radius: var(--radius);
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid rgba(42, 78, 100, 0.6);
+        }
+
+        .controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: 1px solid var(--color-border);
+            background: transparent;
+            color: var(--color-text-primary);
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            font-family: var(--font-sans);
+            transition: all var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background: var(--color-deep-blue);
+            border-color: var(--color-teal);
+            color: var(--color-lime);
+        }
+
+        .btn.active {
+            background: var(--color-teal);
+            border-color: var(--color-teal);
+            color: white;
+            box-shadow: 0 0 12px var(--color-glow);
+        }
+
+        /* ============================================
+           MAIN CONTAINER
+           ============================================ */
+        .container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            gap: 0;
+        }
+
+        /* ============================================
+           SVG CANVAS AREA
+           ============================================ */
+        .canvas-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--color-bg-dark);
+            border-right: 1px solid var(--color-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .canvas-container {
+            flex: 1;
+            overflow: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        svg {
+            max-width: 100%;
+            max-height: 100%;
+            filter: drop-shadow(0 0 20px rgba(35, 85, 90, 0.2));
+        }
+
+        /* SVG Groups */
+        .building-outline {
+            fill: none;
+            stroke: var(--color-border);
+            stroke-width: 2;
+        }
+
+        .grid-pattern {
+            fill: none;
+            stroke: var(--color-border);
+            stroke-width: 0.5;
+            opacity: 0.3;
+        }
+
+        .zone-rect {
+            transition: all var(--transition);
+            stroke-width: 2;
+            stroke: var(--color-border);
+            cursor: pointer;
+        }
+
+        .zone-rect:hover {
+            stroke: var(--color-teal);
+            filter: brightness(1.3) drop-shadow(0 0 12px var(--color-glow));
+        }
+
+        .zone-label {
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 600;
+            fill: white;
+            pointer-events: none;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .zone-rect.selected {
+            stroke: var(--color-coral);
+            stroke-width: 3;
+            filter: brightness(1.4) drop-shadow(0 0 16px var(--color-glow-coral));
+        }
+
+        .flow-arrow {
+            fill: none;
+            stroke: var(--color-coral);
+            stroke-width: 2;
+            stroke-dasharray: 6, 4;
+            opacity: 0.6;
+            marker-end: url(#arrowhead);
+        }
+
+        .flow-arrow:hover {
+            opacity: 1;
+            stroke-width: 3;
+        }
+
+        .zone-esd-hatch {
+            fill: url(#esd-pattern);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        /* Hidden drill-down view */
+        .drill-down-group {
+            display: none;
+        }
+
+        .drill-down-group.active {
+            display: block;
+        }
+
+        .drill-down-station {
+            fill: var(--color-deep-blue);
+            stroke: var(--color-lime);
+            stroke-width: 1.5;
+            opacity: 0.8;
+            transition: all var(--transition);
+            cursor: pointer;
+        }
+
+        .drill-down-station:hover {
+            fill: var(--color-lime);
+            opacity: 1;
+            filter: drop-shadow(0 0 8px var(--color-lime));
+        }
+
+        .station-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 500;
+            fill: var(--color-lime);
+            pointer-events: none;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .equipment-label {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            fill: var(--color-text-secondary);
+            pointer-events: none;
+        }
+
+        .aisle-label {
+            font-family: var(--font-mono);
+            font-size: 8px;
+            fill: var(--color-text-muted);
+            opacity: 0.6;
+        }
+
+        /* ============================================
+           SIDE PANEL
+           ============================================ */
+        .side-panel {
+            width: 380px;
+            background: var(--color-surface);
+            border-left: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-lime);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .panel-content {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Zone List */
+        .zone-list {
+            padding: 12px 0;
+        }
+
+        .zone-item {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--color-border);
+            cursor: pointer;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .zone-item:hover {
+            background: var(--color-border);
+            border-left: 3px solid var(--color-teal);
+            padding-left: 17px;
+        }
+
+        .zone-item.active {
+            background: rgba(35, 85, 90, 0.2);
+            border-left: 3px solid var(--color-lime);
+            padding-left: 17px;
+        }
+
+        .zone-item-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .zone-item-name {
+            flex: 1;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .zone-item-area {
+            font-size: 11px;
+            color: var(--color-text-secondary);
+            font-family: var(--font-mono);
+        }
+
+        /* Detail Panel */
+        .detail-panel {
+            padding: 20px;
+            border-bottom: 1px solid var(--color-border);
+            display: none;
+        }
+
+        .detail-panel.active {
+            display: block;
+        }
+
+        .detail-header {
+            margin-bottom: 16px;
+        }
+
+        .detail-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 8px;
+        }
+
+        .detail-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .detail-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .detail-meta-label {
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 10px;
+        }
+
+        .detail-meta-value {
+            color: var(--color-lime);
+            font-family: var(--font-mono);
+            font-weight: 600;
+        }
+
+        .esd-badge {
+            display: inline-block;
+            background: var(--color-lime);
+            color: var(--color-bg-dark);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-description {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .detail-section {
+            margin-bottom: 16px;
+        }
+
+        .detail-section-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--color-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .detail-list {
+            list-style: none;
+            font-size: 12px;
+        }
+
+        .detail-list li {
+            padding: 4px 0;
+            color: var(--color-text-secondary);
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .detail-list li:before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--color-coral);
+        }
+
+        .drill-down-btn {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: var(--color-teal);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all var(--transition);
+            width: 100%;
+        }
+
+        .drill-down-btn:hover {
+            background: var(--color-lime);
+            color: var(--color-bg-dark);
+            box-shadow: 0 0 12px var(--color-glow);
+        }
+
+        .back-btn {
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: var(--color-deep-blue);
+            color: white;
+            border: 1px solid var(--color-teal);
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all var(--transition);
+            width: 100%;
+        }
+
+        .back-btn:hover {
+            background: var(--color-teal);
+            box-shadow: 0 0 12px var(--color-glow);
+        }
+
+        /* Legend */
+        .legend {
+            padding: 20px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .legend-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--color-lime);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .legend-section {
+            margin-bottom: 16px;
+            font-size: 12px;
+        }
+
+        .legend-section-title {
+            color: var(--color-text-secondary);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+            color: var(--color-text-secondary);
+            font-size: 11px;
+        }
+
+        .legend-color {
+            width: 14px;
+            height: 14px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        /* Scrollbar */
+        .panel-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .panel-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .panel-content::-webkit-scrollbar-thumb {
+            background: var(--color-border);
+            border-radius: 4px;
+        }
+
+        .panel-content::-webkit-scrollbar-thumb:hover {
+            background: var(--color-text-secondary);
+        }
+
+        /* ============================================
+           RESPONSIVE ADJUSTMENTS
+           ============================================ */
+        @media (max-width: 1200px) {
+            .side-panel {
+                width: 320px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .stats {
+                gap: 12px;
+            }
+
+            .stat-value {
+                font-size: 14px;
+            }
+
+            .side-panel {
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: 320px;
+                z-index: 10;
+                transform: translateX(100%);
+                transition: transform var(--transition);
+            }
+
+            .side-panel.mobile-open {
+                transform: translateX(0);
+                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                filter: drop-shadow(0 0 8px var(--color-glow));
+            }
+            50% {
+                filter: drop-shadow(0 0 12px var(--color-glow));
+            }
+        }
+
+        .zone-rect.active-zone {
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeIn var(--transition);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         HEADER
+         ============================================ -->
+    <div class="header">
+        <div class="header-left">
+            <div class="logo">GPW</div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-label">Total Area</div>
+                    <div class="stat-value">4,539 m²</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Racks/Day</div>
+                    <div class="stat-value">5</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Boxes/Day</div>
+                    <div class="stat-value">30</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Zones</div>
+                    <div class="stat-value">26</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Utilization</div>
+                    <div class="stat-value" id="utilization">94%</div>
+                </div>
+            </div>
+            <div class="version-badge">v3.0</div>
+        </div>
+        <div class="controls">
+            <button class="btn active" data-filter="all">All Zones</button>
+            <button class="btn" data-filter="production">Production</button>
+            <button class="btn" data-filter="esd">ESD Zones</button>
+            <button class="btn" data-filter="flow">Flow View</button>
+        </div>
+    </div>
+
+    <!-- ============================================
+         MAIN CONTAINER
+         ============================================ -->
+    <div class="container">
+        <!-- Canvas Area -->
+        <div class="canvas-wrapper">
+            <div class="canvas-container">
+                <svg id="floorPlan" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <!-- ESD Hatch Pattern -->
+                        <pattern id="esd-pattern" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+                            <path d="M0,0 l8,8 M8,0 l-8,8" stroke="#ADCF91" stroke-width="1" opacity="0.5"/>
+                        </pattern>
+
+                        <!-- Arrow Marker -->
+                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#ED835E"/>
+                        </marker>
+
+                        <!-- Grid Pattern -->
+                        <pattern id="grid" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+                            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#30363d" stroke-width="0.5" opacity="0.2"/>
+                        </pattern>
+                    </defs>
+
+                    <!-- Background Grid -->
+                    <rect width="1200" height="900" fill="url(#grid)"/>
+
+                    <!-- Building Outline -->
+                    <polygon points="30,30 1050,30 1170,150 1170,770 30,770" class="building-outline"/>
+
+                    <!-- Production Zones (Left Leg) -->
+                    <rect id="zone-1" x="35" y="700" width="190" height="65" class="zone-rect" fill="#3b82d8" data-zone="1"/>
+                    <text x="130" y="732" class="zone-label">Receiving Dock</text>
+
+                    <rect id="zone-2" x="35" y="430" width="190" height="260" class="zone-rect" fill="#5b8ec4" data-zone="2"/>
+                    <text x="130" y="560" class="zone-label">Raw Material</text>
+
+                    <rect id="zone-3" x="35" y="405" width="190" height="22" class="zone-rect" fill="#7bc8a4" data-zone="3"/>
+                    <text x="130" y="416" class="zone-label" style="font-size: 10px;">ESD Anteroom</text>
+                    <rect x="35" y="405" width="190" height="22" class="zone-esd-hatch"/>
+
+                    <rect id="zone-4" x="35" y="290" width="190" height="100" class="zone-rect" fill="#9b6ed0" data-zone="4"/>
+                    <text x="130" y="340" class="zone-label">Kitting Area</text>
+                    <rect x="35" y="290" width="190" height="100" class="zone-esd-hatch"/>
+
+                    <rect id="zone-5" x="35" y="100" width="190" height="180" class="zone-rect" fill="#b06ec0" data-zone="5"/>
+                    <text x="130" y="190" class="zone-label">Sub-Assembly</text>
+                    <rect x="35" y="100" width="190" height="180" class="zone-esd-hatch"/>
+
+                    <!-- Production Zones (Center-Left to Top) -->
+                    <rect id="zone-6" x="245" y="100" width="190" height="180" class="zone-rect" fill="#c85daa" data-zone="6"/>
+                    <text x="340" y="190" class="zone-label">Box Assembly</text>
+                    <rect x="245" y="100" width="190" height="180" class="zone-esd-hatch"/>
+
+                    <rect id="zone-7" x="455" y="100" width="140" height="120" class="zone-rect" fill="#d47070" data-zone="7"/>
+                    <text x="525" y="160" class="zone-label" style="font-size: 11px;">Cable Mgmt</text>
+                    <rect x="455" y="100" width="140" height="120" class="zone-esd-hatch"/>
+
+                    <rect id="zone-8" x="455" y="230" width="190" height="155" class="zone-rect" fill="#e05a5a" data-zone="8"/>
+                    <text x="550" y="307" class="zone-label">Rack Assembly</text>
+                    <rect x="455" y="230" width="190" height="155" class="zone-esd-hatch"/>
+
+                    <!-- Production Zones (Right Leg - Top to Bottom) -->
+                    <rect id="zone-9" x="675" y="100" width="130" height="80" class="zone-rect" fill="#e08848" data-zone="9"/>
+                    <text x="740" y="140" class="zone-label" style="font-size: 11px;">Firmware</text>
+                    <rect x="675" y="100" width="130" height="80" class="zone-esd-hatch"/>
+
+                    <rect id="zone-10" x="675" y="190" width="130" height="95" class="zone-rect" fill="#e09848" data-zone="10"/>
+                    <text x="740" y="242" class="zone-label" style="font-size: 11px;">EOL Testing</text>
+                    <rect x="675" y="190" width="130" height="95" class="zone-esd-hatch"/>
+
+                    <rect id="zone-11" x="675" y="295" width="130" height="90" class="zone-rect" fill="#cc7744" data-zone="11"/>
+                    <text x="740" y="340" class="zone-label">Rework Stn</text>
+                    <rect x="675" y="295" width="130" height="90" class="zone-esd-hatch"/>
+
+                    <rect id="zone-12" x="815" y="100" width="60" height="100" class="zone-rect" fill="#d4884c" data-zone="12"/>
+                    <text x="845" y="150" class="zone-label" style="font-size: 10px;">Pre-BI</text>
+
+                    <rect id="zone-13" x="815" y="210" width="175" height="250" class="zone-rect" fill="#d43d3d" data-zone="13"/>
+                    <text x="902" y="335" class="zone-label">Burn-in Room</text>
+
+                    <rect id="zone-14" x="815" y="470" width="60" height="60" class="zone-rect" fill="#d46c4c" data-zone="14"/>
+                    <text x="845" y="500" class="zone-label" style="font-size: 10px;">Post-BI</text>
+
+                    <rect id="zone-15" x="675" y="395" width="130" height="80" class="zone-rect" fill="#4caf7c" data-zone="15"/>
+                    <text x="740" y="435" class="zone-label" style="font-size: 11px;">Quality Lab</text>
+
+                    <rect id="zone-16" x="675" y="485" width="130" height="70" class="zone-rect" fill="#44aa88" data-zone="16"/>
+                    <text x="740" y="520" class="zone-label" style="font-size: 11px;">Packaging</text>
+
+                    <rect id="zone-17" x="675" y="565" width="170" height="125" class="zone-rect" fill="#3daf72" data-zone="17"/>
+                    <text x="760" y="627" class="zone-label">Finished Goods</text>
+
+                    <rect id="zone-18" x="890" y="700" width="190" height="65" class="zone-rect" fill="#2eb89e" data-zone="18"/>
+                    <text x="985" y="732" class="zone-label">Shipping Dock</text>
+
+                    <!-- Support Zones -->
+                    <rect id="zone-19" x="605" y="100" width="60" height="80" class="zone-rect" fill="#b08040" data-zone="19"/>
+                    <text x="635" y="140" class="zone-label" style="font-size: 10px;">Tool Crib</text>
+
+                    <rect id="zone-20" x="1000" y="445" width="75" height="50" class="zone-rect" fill="#5588bb" data-zone="20"/>
+                    <text x="1037" y="470" class="zone-label" style="font-size: 9px;">IT/MES</text>
+
+                    <rect id="zone-21" x="1000" y="505" width="160" height="80" class="zone-rect" fill="#8b6644" data-zone="21"/>
+                    <text x="1080" y="545" class="zone-label" style="font-size: 11px;">Mechanical</text>
+
+                    <rect id="zone-22" x="240" y="710" width="100" height="55" class="zone-rect" fill="#aa8844" data-zone="22"/>
+                    <text x="290" y="737" class="zone-label" style="font-size: 10px;">Battery Chg</text>
+
+                    <rect id="zone-23" x="350" y="710" width="80" height="55" class="zone-rect" fill="#cc5555" data-zone="23"/>
+                    <text x="390" y="737" class="zone-label" style="font-size: 10px;">Hazmat</text>
+
+                    <!-- Admin Zones -->
+                    <rect id="zone-24" x="1000" y="100" width="160" height="160" class="zone-rect" fill="#5a7ea8" data-zone="24"/>
+                    <text x="1080" y="180" class="zone-label">Offices</text>
+
+                    <rect id="zone-25" x="1000" y="270" width="160" height="100" class="zone-rect" fill="#7e8fa6" data-zone="25"/>
+                    <text x="1080" y="320" class="zone-label">Comedor</text>
+
+                    <rect id="zone-26" x="1000" y="380" width="160" height="55" class="zone-rect" fill="#6688aa" data-zone="26"/>
+                    <text x="1080" y="407" class="zone-label" style="font-size: 11px;">Training</text>
+
+                    <!-- Flow Arrows -->
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#ED835E"/>
+                        </marker>
+                    </defs>
+
+                    <!-- U-Shape Flow Arrows -->
+                    <path class="flow-arrow" d="M 130 700 L 130 690 L 130 430" marker-end="url(#arrowhead)"/>
+                    <path class="flow-arrow" d="M 130 405 L 130 395 L 130 290" marker-end="url(#arrowhead)"/>
+                    <path class="flow-arrow" d="M 130 290 L 130 280 L 130 100" marker-end="url(#arrowhead)"/>
+                    <path class="flow-arrow" d="M 225 190 L 245 190" marker-end="url(#arrowhead)"/>
+                    <path class="flow-arrow" d="M 435 190 L 455 160" marker-end="url(#arrowhead)"/>
+                    <path class="flow-arrow" d="M 525 220 L 525 230" marker-end="url(#arrowhead)"/>
+                    <path class="flow-arrow" d="M 645 307 L 675 180" marker-end="url(#arrowhead)"/>
+                    <path class="flow-arrow" d="M 740 180 L 740 190" marker-end="url(#arrowhead)"/>
+                    <path class="flow-arrow" d="M 740 285 L 740 295" marker-end="url(#arrowhead)"/>
+                    <path class="flow-arrow" d="M 805 340 L 815 340" marker-end="url(#arrowhead)"/>
+                    <path class="flow-arrow" d="M 902 460 L 902 470" marker-end="url(#arrowhead)"/>
+                    <path class="flow-arrow" d="M 805 500 L 675 500" marker-end="url(#arrowhead)"/>
+                    <path class="flow-arrow" d="M 740 395 L 740 385 L 740 555" marker-end="url(#arrowhead)"/>
+                    <path class="flow-arrow" d="M 760 690 L 890 730" marker-end="url(#arrowhead)"/>
+
+                    <!-- Drill-Down Groups (Hidden by default) -->
+                    <!-- Burn-in Room Drill-Down -->
+                    <g id="burnin-drilldown" class="drill-down-group">
+                        <text x="50" y="30" style="font-size: 18px; font-weight: 700; fill: #ADCF91;">Burn-in Room Detail View</text>
+                        <text x="50" y="55" style="font-size: 12px; fill: #8b949e;">[Click BACK to return to full floor plan]</text>
+
+                        <!-- Hot aisle containment -->
+                        <rect x="100" y="100" width="320" height="280" fill="none" stroke="#ED835E" stroke-width="2" stroke-dasharray="4,4" opacity="0.5"/>
+                        <text x="110" y="95" class="aisle-label">HOT AISLE CONTAINMENT</text>
+
+                        <!-- Rack Positions (5 racks × 4 columns = 20 bays) -->
+                        <g id="rack-grid">
+                            <!-- Column 1 -->
+                            <rect class="drill-down-station" x="110" y="110" width="35" height="50" data-station="R1"/>
+                            <text class="station-label" x="127" y="140">R1</text>
+                            <rect class="drill-down-station" x="110" y="165" width="35" height="50" data-station="R2"/>
+                            <text class="station-label" x="127" y="195">R2</text>
+                            <rect class="drill-down-station" x="110" y="220" width="35" height="50" data-station="R3"/>
+                            <text class="station-label" x="127" y="250">R3</text>
+                            <rect class="drill-down-station" x="110" y="275" width="35" height="50" data-station="R4"/>
+                            <text class="station-label" x="127" y="305">R4</text>
+                            <rect class="drill-down-station" x="110" y="330" width="35" height="50" data-station="R5"/>
+                            <text class="station-label" x="127" y="360">R5</text>
+
+                            <!-- Column 2 -->
+                            <rect class="drill-down-station" x="155" y="110" width="35" height="50" data-station="R6"/>
+                            <text class="station-label" x="172" y="140">R6</text>
+                            <rect class="drill-down-station" x="155" y="165" width="35" height="50" data-station="R7"/>
+                            <text class="station-label" x="172" y="195">R7</text>
+                            <rect class="drill-down-station" x="155" y="220" width="35" height="50" data-station="R8"/>
+                            <text class="station-label" x="172" y="250">R8</text>
+                            <rect class="drill-down-station" x="155" y="275" width="35" height="50" data-station="R9"/>
+                            <text class="station-label" x="172" y="305">R9</text>
+                            <rect class="drill-down-station" x="155" y="330" width="35" height="50" data-station="R10"/>
+                            <text class="station-label" x="172" y="360">R10</text>
+
+                            <!-- Column 3 -->
+                            <rect class="drill-down-station" x="200" y="110" width="35" height="50" data-station="R11"/>
+                            <text class="station-label" x="217" y="140">R11</text>
+                            <rect class="drill-down-station" x="200" y="165" width="35" height="50" data-station="R12"/>
+                            <text class="station-label" x="217" y="195">R12</text>
+                            <rect class="drill-down-station" x="200" y="220" width="35" height="50" data-station="R13"/>
+                            <text class="station-label" x="217" y="250">R13</text>
+                            <rect class="drill-down-station" x="200" y="275" width="35" height="50" data-station="R14"/>
+                            <text class="station-label" x="217" y="305">R14</text>
+                            <rect class="drill-down-station" x="200" y="330" width="35" height="50" data-station="R15"/>
+                            <text class="station-label" x="217" y="360">R15</text>
+
+                            <!-- Column 4 -->
+                            <rect class="drill-down-station" x="245" y="110" width="35" height="50" data-station="R16"/>
+                            <text class="station-label" x="262" y="140">R16</text>
+                            <rect class="drill-down-station" x="245" y="165" width="35" height="50" data-station="R17"/>
+                            <text class="station-label" x="262" y="195">R17</text>
+                            <rect class="drill-down-station" x="245" y="220" width="35" height="50" data-station="R18"/>
+                            <text class="station-label" x="262" y="250">R18</text>
+                            <rect class="drill-down-station" x="245" y="275" width="35" height="50" data-station="R19"/>
+                            <text class="station-label" x="262" y="305">R19</text>
+                            <rect class="drill-down-station" x="245" y="330" width="35" height="50" data-station="R20"/>
+                            <text class="station-label" x="262" y="360">R20</text>
+                        </g>
+
+                        <!-- Equipment Labels -->
+                        <text x="110" y="415" class="equipment-label">CRAC Unit 1</text>
+                        <text x="200" y="415" class="equipment-label">CRAC Unit 2</text>
+                        <text x="350" y="200" class="equipment-label">Monitoring Panel</text>
+                        <text x="350" y="300" class="equipment-label">Fire Suppression (Novec 1230)</text>
+                        <text x="350" y="350" class="equipment-label">UPS + Diesel Gen (250 kVA)</text>
+
+                        <!-- Specs -->
+                        <rect x="50" y="450" width="500" height="150" fill="none" stroke="#23555A" stroke-width="1" opacity="0.3"/>
+                        <text x="70" y="475" style="font-size: 12px; font-weight: 600; fill: #ADCF91;">BURN-IN SPECS</text>
+                        <text x="70" y="500" class="equipment-label">Cycle: 12.9 hrs (775 min) | 20 Racks | 8 kW/Rack | 160 kW Total</text>
+                        <text x="70" y="520" class="equipment-label">Temperature: 30-40°C (hot aisle) | Containment per ASHRAE TC9.9</text>
+                        <text x="70" y="540" class="equipment-label">Monitoring: 24/7 with Temperature Alarms | Critical Path Zone</text>
+                        <text x="70" y="560" class="equipment-label">Equipment Cost: $233,665 per cell (2 cells deployed)</text>
+                        <text x="70" y="580" class="equipment-label">Daily Capacity: 1-2 batches (racks cycle continuously)</text>
+                    </g>
+
+                    <!-- Rack Assembly Drill-Down -->
+                    <g id="rackasm-drilldown" class="drill-down-group">
+                        <text x="50" y="30" style="font-size: 18px; font-weight: 700; fill: #ADCF91;">Rack Assembly Detail View</text>
+                        <text x="50" y="55" style="font-size: 12px; fill: #8b949e;">[Click BACK to return to full floor plan]</text>
+
+                        <!-- 3 U-Line Cells -->
+                        <!-- Cell 1 -->
+                        <rect x="80" y="90" width="160" height="120" fill="none" stroke="#23555A" stroke-width="2"/>
+                        <text x="90" y="75" style="font-size: 13px; font-weight: 600; fill: #ADCF91;">U-LINE CELL 1</text>
+                        <rect class="drill-down-station" x="95" y="105" width="30" height="35" data-station="C1S1"/>
+                        <text class="station-label" x="110" y="122">S1</text>
+                        <rect class="drill-down-station" x="130" y="105" width="30" height="35" data-station="C1S2"/>
+                        <text class="station-label" x="145" y="122">S2</text>
+                        <text x="95" y="155" class="equipment-label">Torque Rail | Backplane Work</text>
+                        <text x="95" y="170" class="equipment-label">Takt: 184 min/rack</text>
+                        <text x="95" y="185" class="equipment-label">Cost: $33,259</text>
+
+                        <!-- Cell 2 -->
+                        <rect x="280" y="90" width="160" height="120" fill="none" stroke="#23555A" stroke-width="2"/>
+                        <text x="290" y="75" style="font-size: 13px; font-weight: 600; fill: #ADCF91;">U-LINE CELL 2</text>
+                        <rect class="drill-down-station" x="295" y="105" width="30" height="35" data-station="C2S1"/>
+                        <text class="station-label" x="310" y="122">S1</text>
+                        <rect class="drill-down-station" x="330" y="105" width="30" height="35" data-station="C2S2"/>
+                        <text class="station-label" x="345" y="122">S2</text>
+                        <text x="295" y="155" class="equipment-label">CPU/RAM Install | PDU Staging</text>
+                        <text x="295" y="170" class="equipment-label">Parallel to Cell 1</text>
+                        <text x="295" y="185" class="equipment-label">Cost: $33,259</text>
+
+                        <!-- Cell 3 -->
+                        <rect x="480" y="90" width="160" height="120" fill="none" stroke="#23555A" stroke-width="2"/>
+                        <text x="490" y="75" style="font-size: 13px; font-weight: 600; fill: #ADCF91;">U-LINE CELL 3</text>
+                        <rect class="drill-down-station" x="495" y="105" width="30" height="35" data-station="C3S1"/>
+                        <text class="station-label" x="510" y="122">S1</text>
+                        <rect class="drill-down-station" x="530" y="105" width="30" height="35" data-station="C3S2"/>
+                        <text class="station-label" x="545" y="122">S2</text>
+                        <text x="495" y="155" class="equipment-label">Cabling & Testing | Final QC</text>
+                        <text x="495" y="170" class="equipment-label">Ready for EOL</text>
+                        <text x="495" y="185" class="equipment-label">Cost: $33,259</text>
+
+                        <!-- Shared Equipment -->
+                        <rect x="80" y="240" width="560" height="100" fill="none" stroke="#23555A" stroke-width="1" opacity="0.3"/>
+                        <text x="100" y="260" style="font-size: 12px; font-weight: 600; fill: #ADCF91;">SHARED EQUIPMENT</text>
+                        <text x="100" y="285" class="equipment-label">ServerLIFT SL-500X (Shared) | Rail Tools (Torque/Air) | PDU Staging Area</text>
+                        <text x="100" y="305" class="equipment-label">Daily Output: 5 racks | Utilization: ~85% | Bottleneck: Yes (High)</text>
+                        <text x="100" y="325" class="equipment-label">Aisle Width: 2.5m | HVAC: Dedicated supply to cells | ESD Continuous</text>
+                    </g>
+
+                    <!-- Box Assembly Drill-Down -->
+                    <g id="boxasm-drilldown" class="drill-down-group">
+                        <text x="50" y="30" style="font-size: 18px; font-weight: 700; fill: #ADCF91;">Box Assembly Detail View</text>
+                        <text x="50" y="55" style="font-size: 12px; fill: #8b949e;">[Click BACK to return to full floor plan]</text>
+
+                        <!-- 3-Station Workflow (12 parallel stations = 4 sets) -->
+                        <!-- Set 1 -->
+                        <g id="boxset-1">
+                            <text x="70" y="90" style="font-size: 11px; font-weight: 600; fill: #ADCF91;">SET 1</text>
+                            <rect class="drill-down-station" x="70" y="105" width="45" height="40" data-station="B1S1"/>
+                            <text class="station-label" x="92" y="130">Box S1</text>
+                            <text x="70" y="155" class="equipment-label" style="font-size: 9px;">Chassis/BP | 68min</text>
+
+                            <rect class="drill-down-station" x="125" y="105" width="45" height="40" data-station="B1S2"/>
+                            <text class="station-label" x="147" y="130">Box S2</text>
+                            <text x="125" y="155" class="equipment-label" style="font-size: 9px;">MB/CPU/RAM | 54min</text>
+
+                            <rect class="drill-down-station" x="180" y="105" width="45" height="40" data-station="B1S3"/>
+                            <text class="station-label" x="202" y="130">Box S3</text>
+                            <text x="180" y="155" class="equipment-label" style="font-size: 9px;">Cable/Test | 61min</text>
+                        </g>
+
+                        <!-- Set 2 -->
+                        <g id="boxset-2">
+                            <text x="270" y="90" style="font-size: 11px; font-weight: 600; fill: #ADCF91;">SET 2</text>
+                            <rect class="drill-down-station" x="270" y="105" width="45" height="40" data-station="B2S1"/>
+                            <text class="station-label" x="292" y="130">Box S1</text>
+                            <rect class="drill-down-station" x="325" y="105" width="45" height="40" data-station="B2S2"/>
+                            <text class="station-label" x="347" y="130">Box S2</text>
+                            <rect class="drill-down-station" x="380" y="105" width="45" height="40" data-station="B2S3"/>
+                            <text class="station-label" x="402" y="130">Box S3</text>
+                        </g>
+
+                        <!-- Set 3 -->
+                        <g id="boxset-3">
+                            <text x="470" y="90" style="font-size: 11px; font-weight: 600; fill: #ADCF91;">SET 3</text>
+                            <rect class="drill-down-station" x="470" y="105" width="45" height="40" data-station="B3S1"/>
+                            <text class="station-label" x="492" y="130">Box S1</text>
+                            <rect class="drill-down-station" x="525" y="105" width="45" height="40" data-station="B3S2"/>
+                            <text class="station-label" x="547" y="130">Box S2</text>
+                            <rect class="drill-down-station" x="580" y="105" width="45" height="40" data-station="B3S3"/>
+                            <text class="station-label" x="602" y="130">Box S3</text>
+                        </g>
+
+                        <!-- Set 4 -->
+                        <g id="boxset-4">
+                            <text x="670" y="90" style="font-size: 11px; font-weight: 600; fill: #ADCF91;">SET 4</text>
+                            <rect class="drill-down-station" x="670" y="105" width="45" height="40" data-station="B4S1"/>
+                            <text class="station-label" x="692" y="130">Box S1</text>
+                            <rect class="drill-down-station" x="725" y="105" width="45" height="40" data-station="B4S2"/>
+                            <text class="station-label" x="747" y="130">Box S2</text>
+                            <rect class="drill-down-station" x="780" y="105" width="45" height="40" data-station="B4S3"/>
+                            <text class="station-label" x="802" y="130">Box S3</text>
+                        </g>
+
+                        <!-- Component Bins -->
+                        <rect x="70" y="200" width="750" height="60" fill="none" stroke="#23555A" stroke-width="1" opacity="0.3"/>
+                        <text x="90" y="220" style="font-size: 11px; font-weight: 600; fill: #ADCF91;">COMPONENT BINS & STAGING</text>
+                        <text x="90" y="240" class="equipment-label">Backplane | CPU | Heatsink | RAM | Storage | PSU | Cables | Connectors</text>
+                        <text x="90" y="255" class="equipment-label">Takt Time: 61min max | Daily Output: 30 boxes | 12 Parallel Stations | Equipment Cost: $17,032/cell</text>
+                    </g>
+
+                    <!-- Sub-Assembly Drill-Down -->
+                    <g id="subasm-drilldown" class="drill-down-group">
+                        <text x="50" y="30" style="font-size: 18px; font-weight: 700; fill: #ADCF91;">Sub-Assembly / Node Pre-Build Detail View</text>
+                        <text x="50" y="55" style="font-size: 12px; fill: #8b949e;">[Click BACK to return to full floor plan]</text>
+
+                        <!-- 4-Station Line -->
+                        <rect class="drill-down-station" x="80" y="100" width="70" height="60" data-station="SAS1"/>
+                        <text class="station-label" x="115" y="135">Station 1</text>
+                        <text x="80" y="175" class="equipment-label" style="font-size: 10px;">CPU+Heatsink Mount</text>
+                        <text x="80" y="190" class="equipment-label" style="font-size: 9px;">Torque screwdrivers | Thermal paste</text>
+
+                        <!-- Arrow -->
+                        <path class="flow-arrow" d="M 150 130 L 180 130" marker-end="url(#arrowhead)" stroke-width="1.5"/>
+
+                        <rect class="drill-down-station" x="180" y="100" width="70" height="60" data-station="SAS2"/>
+                        <text class="station-label" x="215" y="135">Station 2</text>
+                        <text x="180" y="175" class="equipment-label" style="font-size: 10px;">Memory + Storage</text>
+                        <text x="180" y="190" class="equipment-label" style="font-size: 9px;">Precision slot insertion</text>
+
+                        <!-- Arrow -->
+                        <path class="flow-arrow" d="M 250 130 L 280 130" marker-end="url(#arrowhead)" stroke-width="1.5"/>
+
+                        <rect class="drill-down-station" x="280" y="100" width="70" height="60" data-station="SAS3"/>
+                        <text class="station-label" x="315" y="135">Station 3</text>
+                        <text x="280" y="175" class="equipment-label" style="font-size: 10px;">Power + Cabling</text>
+                        <text x="280" y="190" class="equipment-label" style="font-size: 9px;">Wire routing | Continuity checks</text>
+
+                        <!-- Arrow -->
+                        <path class="flow-arrow" d="M 350 130 L 380 130" marker-end="url(#arrowhead)" stroke-width="1.5"/>
+
+                        <rect class="drill-down-station" x="380" y="100" width="70" height="60" data-station="SAS4"/>
+                        <text class="station-label" x="415" y="135">Station 4</text>
+                        <text x="380" y="175" class="equipment-label" style="font-size: 10px;">Node Testing + QC</text>
+                        <text x="380" y="190" class="equipment-label" style="font-size: 9px;">Boot test | Diagnostics</text>
+
+                        <!-- Specs -->
+                        <rect x="70" y="230" width="450" height="100" fill="none" stroke="#23555A" stroke-width="1" opacity="0.3"/>
+                        <text x="90" y="250" style="font-size: 12px; font-weight: 600; fill: #ADCF91;">SUB-ASSEMBLY SPECS</text>
+                        <text x="90" y="275" class="equipment-label">Cycle: 30-40 min/node | Daily Capacity: ~12-15 nodes | Overhead rail for tool staging</text>
+                        <text x="90" y="295" class="equipment-label">NEW ZONE (v3.0) | ESD Mandatory | Quality-critical assembly stage</text>
+                        <text x="90" y="315" class="equipment-label">Direct feed to Box Assembly | Feedback loop from EOL testing</text>
+                    </g>
+
+                    <!-- Cable Management Drill-Down -->
+                    <g id="cable-drilldown" class="drill-down-group">
+                        <text x="50" y="30" style="font-size: 18px; font-weight: 700; fill: #ADCF91;">Cable Management & Harness Detail View</text>
+                        <text x="50" y="55" style="font-size: 12px; fill: #8b949e;">[Click BACK to return to full floor plan]</text>
+
+                        <!-- Crimping Stations -->
+                        <rect x="70" y="90" width="150" height="100" fill="none" stroke="#23555A" stroke-width="2"/>
+                        <text x="80" y="75" style="font-size: 12px; font-weight: 600; fill: #ADCF91;">CRIMPING STATIONS</text>
+                        <rect class="drill-down-station" x="85" y="110" width="40" height="30" data-station="CRIMP1"/>
+                        <text class="station-label" x="105" y="130">C1</text>
+                        <rect class="drill-down-station" x="135" y="110" width="40" height="30" data-station="CRIMP2"/>
+                        <text class="station-label" x="155" y="130">C2</text>
+                        <text x="85" y="160" class="equipment-label" style="font-size: 9px;">Pneumatic crimpers | Connector staging</text>
+                        <text x="85" y="175" class="equipment-label" style="font-size: 9px;">Wire gauge management</text>
+
+                        <!-- Soldering Benches -->
+                        <rect x="240" y="90" width="200" height="100" fill="none" stroke="#23555A" stroke-width="2"/>
+                        <text x="250" y="75" style="font-size: 12px; font-weight: 600; fill: #ADCF91;">SOLDERING + FUME EXTRACTION</text>
+                        <rect class="drill-down-station" x="260" y="110" width="50" height="30" data-station="SOLDER1"/>
+                        <text class="station-label" x="285" y="130">S1</text>
+                        <rect class="drill-down-station" x="320" y="110" width="50" height="30" data-station="SOLDER2"/>
+                        <text class="station-label" x="345" y="130">S2</text>
+                        <text x="260" y="160" class="equipment-label" style="font-size: 9px;">Fume hoods | Temperature controlled</text>
+                        <text x="260" y="175" class="equipment-label" style="font-size: 9px;">IPC-A-610 certified workstations</text>
+
+                        <!-- Cable Continuity Testing -->
+                        <rect x="70" y="215" width="370" height="80" fill="none" stroke="#23555A" stroke-width="2"/>
+                        <text x="80" y="200" style="font-size: 12px; font-weight: 600; fill: #ADCF91;">CABLE CONTINUITY TESTING</text>
+                        <rect class="drill-down-station" x="85" y="230" width="60" height="35" data-station="TEST1"/>
+                        <text class="station-label" x="115" y="252">TEST</text>
+                        <text x="160" y="250" class="equipment-label" style="font-size: 10px;">Fluke multimeters | Breakout boards | TDR testers</text>
+                        <text x="160" y="270" class="equipment-label" style="font-size: 9px;">IPC/WHMA-A-620 compliance | Documentation</text>
+                    </g>
+
+                </svg>
+            </div>
+        </div>
+
+        <!-- Side Panel -->
+        <div class="side-panel">
+            <div class="panel-header">Zone Details</div>
+            <div class="panel-content">
+                <!-- Detail Panel -->
+                <div class="detail-panel" id="detailPanel">
+                    <div class="detail-header">
+                        <div class="detail-title" id="detailTitle">Select a zone</div>
+                        <div class="detail-meta" id="detailMeta"></div>
+                    </div>
+                    <div class="detail-description" id="detailDescription"></div>
+                    <div class="detail-section" id="specsSection" style="display: none;">
+                        <div class="detail-section-title">Key Specs</div>
+                        <ul class="detail-list" id="specsList"></ul>
+                    </div>
+                    <div class="detail-section" id="equipmentSection" style="display: none;">
+                        <div class="detail-section-title">Equipment</div>
+                        <ul class="detail-list" id="equipmentList"></ul>
+                    </div>
+                    <button class="drill-down-btn" id="drillDownBtn" style="display: none;">Drill Down</button>
+                    <button class="back-btn" id="backBtn" style="display: none;">Back to Full View</button>
+                </div>
+
+                <!-- Zone List -->
+                <div class="zone-list" id="zoneList"></div>
+
+                <!-- Legend -->
+                <div class="legend">
+                    <div class="legend-title">Legend</div>
+
+                    <div class="legend-section">
+                        <div class="legend-section-title">Zone Types</div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #e05a5a;"></div>
+                            <span>Production</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #8b6644;"></div>
+                            <span>Support</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #5a7ea8;"></div>
+                            <span>Administration</span>
+                        </div>
+                    </div>
+
+                    <div class="legend-section">
+                        <div class="legend-section-title">ESD Zones</div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #ADCF91;"></div>
+                            <span>ESD Protected (EPA)</span>
+                        </div>
+                    </div>
+
+                    <div class="legend-section">
+                        <div class="legend-section-title">Controls</div>
+                        <div class="legend-item">
+                            <span>Click zone to inspect</span>
+                        </div>
+                        <div class="legend-item">
+                            <span>Hover for highlighting</span>
+                        </div>
+                        <div class="legend-item">
+                            <span>Use buttons to filter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // ============================================
+        // ZONE DATA STRUCTURE
+        // ============================================
+        const zones = {
+            1: {
+                name: 'Receiving Dock',
+                area: 150,
+                category: 'production',
+                esd: false,
+                color: '#3b82d8',
+                description: 'Incoming shipment staging and quality check-in with barcode scanning.',
+                specs: [
+                    '2 dock doors with levelers & seals',
+                    'Barcode scan station for QC',
+                    'Staging area for 1-day inventory',
+                    'Forklift access'
+                ],
+                equipment: [
+                    '2 pallet jacks',
+                    '1 forklift',
+                    'Barcode scanner',
+                    'Receiving scale'
+                ],
+                drilldown: null
+            },
+            2: {
+                name: 'Raw Material Storage',
+                area: 400,
+                category: 'production',
+                esd: false,
+                color: '#5b8ec4',
+                description: '2-month raw material inventory with FIFO management and MES barcode tracking.',
+                specs: [
+                    'Selective pallet racking (4-tier)',
+                    '2-month inventory capacity',
+                    'Temperature: 18-27°C, <60% RH',
+                    'FIFO barcode tracking via MES'
+                ],
+                equipment: [
+                    'Pallet racking system',
+                    'Barcode label printer',
+                    'Environmental monitor',
+                    'Forklift charger station'
+                ],
+                drilldown: null
+            },
+            3: {
+                name: 'ESD Gowning Anteroom',
+                area: 25,
+                category: 'production',
+                esd: true,
+                color: '#7bc8a4',
+                description: 'Entry point to ESD-protected zones with ionizing air curtain and wrist-strap continuity checkers.',
+                specs: [
+                    'Adhesive floor mats',
+                    'Ionizing air curtain',
+                    'Wrist-strap continuity checkers',
+                    'ANSI/ESD S20.20 compliant'
+                ],
+                equipment: [
+                    'Continuity tester',
+                    'Air ionizer unit',
+                    'Floor mat roll dispenser'
+                ],
+                drilldown: null
+            },
+            4: {
+                name: 'Kitting Area',
+                area: 150,
+                category: 'production',
+                esd: true,
+                color: '#9b6ed0',
+                description: 'Component kitting for sub-assemblies with ~24 components per kit, FIFO staging.',
+                specs: [
+                    '4 kitting workbenches',
+                    '~24 components per kit',
+                    'Takt time: 45 min/kit',
+                    '30 kits/day capacity',
+                    'Full ESD EPA coverage'
+                ],
+                equipment: [
+                    '4 ESD workbenches',
+                    'Component bins (36-section)',
+                    'Barcode label printer',
+                    'Pick-to-light system'
+                ],
+                drilldown: null
+            },
+            5: {
+                name: 'Sub-Assembly / Node Pre-Build',
+                area: 250,
+                category: 'production',
+                esd: true,
+                color: '#b06ec0',
+                description: 'NEW (v3.0): 4-station assembly line for CPU, memory, storage, power, and testing.',
+                specs: [
+                    '4-station assembly line',
+                    'Station 1: CPU + Heatsink mount',
+                    'Station 2: Memory + Storage install',
+                    'Station 3: Power + Cabling',
+                    'Station 4: Node testing + QC',
+                    'Cycle: 30-40 min/node',
+                    'Overhead torque screwdriver rails'
+                ],
+                equipment: [
+                    'Torque screwdrivers (rail-mounted)',
+                    'Heatsink application kit',
+                    'Wire crimper & strippers',
+                    'Multi-function tester',
+                    'Boot diagnostic station'
+                ],
+                drilldown: 'subasm-drilldown'
+            },
+            6: {
+                name: 'Box Assembly',
+                area: 350,
+                category: 'production',
+                esd: true,
+                color: '#c85daa',
+                description: '12 parallel stations in 3-station workflow for full chassis integration.',
+                specs: [
+                    '12 parallel stations (4 sets × 3 stations)',
+                    'Station 1: Chassis/backplane (68 min)',
+                    'Station 2: Motherboard/CPU/RAM (54 min)',
+                    'Station 3: Cabling/testing (61 min)',
+                    '30 boxes/day output',
+                    'Takt time: 61 min max'
+                ],
+                equipment: [
+                    '12 ESD workbenches',
+                    'Component bins',
+                    'Thermal label printer',
+                    'Barcode scanner',
+                    'Multimeter & continuity tester'
+                ],
+                drilldown: 'boxasm-drilldown'
+            },
+            7: {
+                name: 'Cable Management & Harness',
+                area: 180,
+                category: 'production',
+                esd: true,
+                color: '#d47070',
+                description: 'NEW (v3.0): Custom cable harness assembly with crimping, soldering, and continuity testing.',
+                specs: [
+                    'Crimping stations with pneumatic crimpers',
+                    'Soldering benches with fume extraction',
+                    'Cable continuity testing station',
+                    'IPC/WHMA-A-620 standard compliance',
+                    'Adjacent to rack assembly',
+                    'Fume hood mandatory for soldering'
+                ],
+                equipment: [
+                    'Pneumatic crimper',
+                    'Soldering iron + heat gun',
+                    'Fume hood with extraction',
+                    'Wire stripper & cutter',
+                    'Fluke multimeter',
+                    'Cable tester'
+                ],
+                drilldown: 'cable-drilldown'
+            },
+            8: {
+                name: 'Rack Assembly',
+                area: 300,
+                category: 'production',
+                esd: true,
+                color: '#e05a5a',
+                description: '3 integration cells for full server rack assembly with ServerLIFT support.',
+                specs: [
+                    '3 U-line integration cells (5.5m × 4m each)',
+                    '5 racks/day output (1.67 per cell)',
+                    'Takt time: 184 min/rack',
+                    'Equipment cost: $33,259 per cell',
+                    'ServerLIFT SL-500X shared',
+                    'Parallel workflow structure'
+                ],
+                equipment: [
+                    'ServerLIFT SL-500X',
+                    'Torque rail system',
+                    'Air-powered wrenches',
+                    'Rail-mounted screwdriver set',
+                    'PDU staging cart',
+                    'Cable management kit'
+                ],
+                drilldown: 'rackasm-drilldown'
+            },
+            9: {
+                name: 'Firmware Loading & Config',
+                area: 100,
+                category: 'production',
+                esd: true,
+                color: '#e08848',
+                description: 'NEW (v3.0): BIOS configuration, OS deployment, and firmware validation before burn-in.',
+                specs: [
+                    'Workstations + 48-port managed switch',
+                    'IPMI/BMC testing capability',
+                    'Firmware validation testing',
+                    'OS image deployment pipeline',
+                    'Critical gate before burn-in'
+                ],
+                equipment: [
+                    '4 config workstations (with monitors)',
+                    '48-port managed switch',
+                    'IPMI console server',
+                    'Firmware repository server',
+                    'Documentation printer'
+                ],
+                drilldown: null
+            },
+            10: {
+                name: 'End-of-Line Testing',
+                area: 140,
+                category: 'production',
+                esd: true,
+                color: '#e09848',
+                description: 'Comprehensive smoke testing with 55-min cycle including firmware, sensor cal, power, cooling.',
+                specs: [
+                    '2 test bays',
+                    '55-min cycle time',
+                    'Tests: Firmware (15m) → Sensor Cal (10m) → Power-on (5m) → Cooling (10m) → Smoke/Fire (10m)',
+                    '10 racks/day capacity',
+                    'Pass/fail documentation'
+                ],
+                equipment: [
+                    'Thermal imaging camera',
+                    'Power meter',
+                    'Temperature probe',
+                    'Barcode scanner',
+                    'Test rig with sensors',
+                    'LED status indicators'
+                ],
+                drilldown: null
+            },
+            11: {
+                name: 'Rework Station',
+                area: 100,
+                category: 'production',
+                esd: true,
+                color: '#cc7744',
+                description: 'EXPANDED (v3.0): 4 diagnostic benches for component rework and quick re-testing.',
+                specs: [
+                    '4 ESD diagnostic benches',
+                    'Spare parts bins organized by type',
+                    'Re-test area with full diagnostics',
+                    'Short feedback loop to EOL',
+                    'Component level repair capability'
+                ],
+                equipment: [
+                    '4 diagnostic workbenches',
+                    'Desoldering station',
+                    'Rework microscope',
+                    'Spare component bins',
+                    'Multimeter set',
+                    'Soldering iron'
+                ],
+                drilldown: null
+            },
+            12: {
+                name: 'Pre-Burn-in Staging',
+                area: 60,
+                category: 'production',
+                esd: false,
+                color: '#d4884c',
+                description: 'NEW (v3.0): Buffer zone for racks waiting for burn-in chamber availability.',
+                specs: [
+                    '6-8 rack positions',
+                    'Prevents production bottleneck',
+                    'Status tracking via MES',
+                    'Queue management display',
+                    'FIFO discipline'
+                ],
+                equipment: [
+                    'Rack staging cart (4)',
+                    'Status board',
+                    'MES barcode scanner'
+                ],
+                drilldown: null
+            },
+            13: {
+                name: 'Burn-in Room',
+                area: 350,
+                category: 'production',
+                esd: false,
+                color: '#d43d3d',
+                description: '20 rack test bays with hot/cold aisle containment, Novec fire suppression, 250 kVA UPS.',
+                specs: [
+                    '20 rack test bays',
+                    '12.9-hour cycle (775 min)',
+                    'Hot/cold aisle containment (ASHRAE TC9.9)',
+                    'Novec 1230 fire suppression (GWP=1)',
+                    '8 kW per rack | 160 kW total',
+                    '250 kVA UPS + diesel generator',
+                    '24/7 monitoring with alarms'
+                ],
+                equipment: [
+                    '2 CRAC units',
+                    'Novec 1230 system',
+                    '250 kVA UPS',
+                    'Diesel generator',
+                    'Monitoring panel',
+                    'Temperature sensors (16×)',
+                    'Fire detection system'
+                ],
+                drilldown: 'burnin-drilldown'
+            },
+            14: {
+                name: 'Post-Burn-in Staging',
+                area: 60,
+                category: 'production',
+                esd: false,
+                color: '#d46c4c',
+                description: 'NEW (v3.0): Buffer zone for racks after burn-in waiting for quality inspection.',
+                specs: [
+                    '4-6 rack positions',
+                    'Cooldown area (ambient temp)',
+                    'Status tracking via MES',
+                    'FIFO queue management'
+                ],
+                equipment: [
+                    'Rack staging cart (3)',
+                    'Status board',
+                    'Temperature monitor'
+                ],
+                drilldown: null
+            },
+            15: {
+                name: 'Quality / Inspection Lab',
+                area: 100,
+                category: 'production',
+                esd: false,
+                color: '#4caf7c',
+                description: 'Final inspection with oscilloscopes, multimeters, and MES test result logging.',
+                specs: [
+                    '4 inspection workstations',
+                    'Electrical & mechanical testing',
+                    'Oscilloscope & multimeter analysis',
+                    'MES test result database',
+                    'Reference samples & certifications'
+                ],
+                equipment: [
+                    '2 oscilloscopes',
+                    '4 multimeters',
+                    'Power analyzer',
+                    'Reference test rig',
+                    'Documentation station'
+                ],
+                drilldown: null
+            },
+            16: {
+                name: 'Packaging & Labeling',
+                area: 130,
+                category: 'production',
+                esd: false,
+                color: '#44aa88',
+                description: 'Final packaging with thermal label printing and barcode scan-and-pack workflow.',
+                specs: [
+                    '3 packaging stations',
+                    'Thermal barcode label printer',
+                    'Documentation insertion',
+                    'Palletization',
+                    'Ready for dock transfer'
+                ],
+                equipment: [
+                    '3 packing benches',
+                    'Thermal label printer',
+                    'Barcode scanner',
+                    'Pallet jack',
+                    'Shrink wrap dispenser'
+                ],
+                drilldown: null
+            },
+            17: {
+                name: 'Finished Goods Storage',
+                area: 250,
+                category: 'production',
+                esd: false,
+                color: '#3daf72',
+                description: 'Pallet racking with FIFO lanes for 2-week inventory before shipment.',
+                specs: [
+                    'Selective pallet racking',
+                    'FIFO lane organization',
+                    '2-week inventory capacity',
+                    'MES location tracking',
+                    'Fast ship-out capability'
+                ],
+                equipment: [
+                    'Pallet racking system',
+                    'Pallet jacks (3)',
+                    'Forklift access',
+                    'Environmental monitor'
+                ],
+                drilldown: null
+            },
+            18: {
+                name: 'Shipping Dock',
+                area: 150,
+                category: 'production',
+                esd: false,
+                color: '#2eb89e',
+                description: 'Dock with staging area and documentation station for outbound shipments.',
+                specs: [
+                    '2 dock doors (Docks 3 & 4)',
+                    'Dock levelers & seals',
+                    'Staging area for pallets',
+                    'Documentation station',
+                    'PM shift priority (vs AM receiving)'
+                ],
+                equipment: [
+                    'Dock leveler (2)',
+                    'Pallet jack (2)',
+                    'Barcode scanner',
+                    'Scale',
+                    'Documentation printer'
+                ],
+                drilldown: null
+            },
+            19: {
+                name: 'Tool Crib',
+                area: 80,
+                category: 'support',
+                esd: false,
+                color: '#b08040',
+                description: 'Centralized tool checkout system with calibration storage.',
+                specs: [
+                    'Tool checkout / check-in system',
+                    'Calibration storage vault',
+                    'Tool inventory management',
+                    'ESD-safe tool storage'
+                ],
+                equipment: [
+                    'Tool vending cabinet',
+                    'Calibration rack',
+                    'Tool crib workbench'
+                ],
+                drilldown: null
+            },
+            20: {
+                name: 'IT / MES Server Room',
+                area: 40,
+                category: 'support',
+                esd: false,
+                color: '#5588bb',
+                description: 'Server racks and network equipment for MES and IT infrastructure.',
+                specs: [
+                    'Server rack (2U)',
+                    'UPS & PDU',
+                    'Network switches (managed)',
+                    'Cooling: Dedicated mini CRAC'
+                ],
+                equipment: [
+                    'Server rack',
+                    'UPS (10 kVA)',
+                    'Managed switch (48-port)',
+                    'Mini CRAC unit',
+                    'Cable management'
+                ],
+                drilldown: null
+            },
+            21: {
+                name: 'Mechanical / Utilities',
+                area: 160,
+                category: 'support',
+                esd: false,
+                color: '#8b6644',
+                description: 'Main HVAC, electrical panels, UPS, and diesel generator housing.',
+                specs: [
+                    'Main HVAC system',
+                    'Electrical panels (service)',
+                    'UPS charger',
+                    'Diesel generator',
+                    'Chiller / cooling loops'
+                ],
+                equipment: [
+                    'HVAC rooftop unit',
+                    'Electrical service panel',
+                    'UPS charger',
+                    'Diesel generator (100 kW)',
+                    'Conduit & cable trays'
+                ],
+                drilldown: null
+            },
+            22: {
+                name: 'Battery Charging',
+                area: 50,
+                category: 'support',
+                esd: false,
+                color: '#aa8844',
+                description: 'Forklift and pallet jack battery charging stations.',
+                specs: [
+                    'Forklift charger (fast-charge)',
+                    'Pallet jack charger (standard)',
+                    'Ventilation for gas venting',
+                    'Safety shutoff system'
+                ],
+                equipment: [
+                    'Forklift charger (48V, 625A)',
+                    'Pallet jack charger (24V)',
+                    'Charging dock (2)'
+                ],
+                drilldown: null
+            },
+            23: {
+                name: 'Hazmat Storage',
+                area: 40,
+                category: 'support',
+                esd: false,
+                color: '#cc5555',
+                description: 'Containment storage for solvents, oils, and emergency spill kits.',
+                specs: [
+                    'Secondary containment (100% capacity)',
+                    'Ventilation compliance (OSHA)',
+                    'Emergency spill kit',
+                    'Flammable cabinet (NFPA)',
+                    'Temperature monitoring'
+                ],
+                equipment: [
+                    'Flammable storage cabinet',
+                    'Secondary containment tray',
+                    'Ventilation fan',
+                    'Spill kit',
+                    'Absorbent pads'
+                ],
+                drilldown: null
+            },
+            24: {
+                name: '2-Story Offices (Mezzanine)',
+                area: 300,
+                category: 'admin',
+                esd: false,
+                color: '#5a7ea8',
+                description: 'Ground floor: reception, meeting room. Upper floor: admin offices, engineering, IT.',
+                specs: [
+                    'Ground floor (150 m²): Reception, conference room, restrooms',
+                    'Upper floor (150 m²): Admin offices, engineering, IT',
+                    'Glass overlook to production (Gemba view)',
+                    'Climate controlled (21-23°C)'
+                ],
+                equipment: [
+                    'Conference table',
+                    'Meeting room AV system',
+                    'Office workstations (8)',
+                    'Server terminal',
+                    'Printers'
+                ],
+                drilldown: null
+            },
+            25: {
+                name: 'Comedor & Restrooms',
+                area: 160,
+                category: 'admin',
+                esd: false,
+                color: '#7e8fa6',
+                description: 'Dining area with kitchen and full restroom facilities.',
+                specs: [
+                    '130 m² dining area',
+                    'Full kitchen (microwave, oven, fridge)',
+                    'Restrooms (male & female)',
+                    'Seating for ~30 staff',
+                    'Vending machines'
+                ],
+                equipment: [
+                    'Dining tables & chairs (8)',
+                    'Kitchen appliances',
+                    'Vending machines (2)',
+                    'Restroom fixtures'
+                ],
+                drilldown: null
+            },
+            26: {
+                name: 'Training Room',
+                area: 60,
+                category: 'admin',
+                esd: false,
+                color: '#6688aa',
+                description: 'Classroom setup with projector and seating for 20 staff.',
+                specs: [
+                    '20-seat classroom',
+                    'Projector + screen',
+                    'Flipchart & whiteboard',
+                    'Document camera',
+                    'Climate controlled'
+                ],
+                equipment: [
+                    'Classroom chairs (20)',
+                    'Training table',
+                    'Projector & screen',
+                    'Whiteboard',
+                    'Document camera'
+                ],
+                drilldown: null
+            }
+        };
+
+        // ============================================
+        // STATE MANAGEMENT
+        // ============================================
+        let currentSelectedZone = null;
+        let currentFilter = 'all';
+        let currentView = 'main';
+        let drilldownZone = null;
+
+        // ============================================
+        // DOM ELEMENTS
+        // ============================================
+        const svg = document.getElementById('floorPlan');
+        const detailPanel = document.getElementById('detailPanel');
+        const detailTitle = document.getElementById('detailTitle');
+        const detailMeta = document.getElementById('detailMeta');
+        const detailDescription = document.getElementById('detailDescription');
+        const specsList = document.getElementById('specsList');
+        const specsSection = document.getElementById('specsSection');
+        const equipmentList = document.getElementById('equipmentList');
+        const equipmentSection = document.getElementById('equipmentSection');
+        const drillDownBtn = document.getElementById('drillDownBtn');
+        const backBtn = document.getElementById('backBtn');
+        const zoneListContainer = document.getElementById('zoneList');
+        const filterButtons = document.querySelectorAll('.btn[data-filter]');
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+        function init() {
+            populateZoneList();
+            addZoneEventListeners();
+            setupFilterButtons();
+            updateUtilization();
+        }
+
+        function populateZoneList() {
+            zoneListContainer.innerHTML = '';
+            Object.entries(zones).forEach(([id, zone]) => {
+                const zoneItem = document.createElement('div');
+                zoneItem.className = 'zone-item';
+                zoneItem.innerHTML = `
+                    <div class="zone-item-color" style="background: ${zone.color}"></div>
+                    <div class="zone-item-name">${zone.name}</div>
+                    <div class="zone-item-area">${zone.area} m²</div>
+                `;
+                zoneItem.addEventListener('click', () => selectZone(id));
+                zoneListContainer.appendChild(zoneItem);
+            });
+        }
+
+        function addZoneEventListeners() {
+            const zoneRects = document.querySelectorAll('.zone-rect');
+            zoneRects.forEach(rect => {
+                const zoneId = rect.getAttribute('data-zone');
+                rect.addEventListener('click', (e) => {
+                    selectZone(zoneId);
+                    e.stopPropagation();
+                });
+                rect.addEventListener('mouseenter', () => {
+                    rect.style.filter = 'brightness(1.3) drop-shadow(0 0 12px rgba(35, 85, 90, 0.4))';
+                });
+                rect.addEventListener('mouseleave', () => {
+                    if (rect !== document.querySelector('.zone-rect.selected')) {
+                        rect.style.filter = '';
+                    }
+                });
+            });
+        }
+
+        function selectZone(zoneId) {
+            // Remove previous selection
+            const prevSelected = document.querySelector('.zone-rect.selected');
+            if (prevSelected) prevSelected.classList.remove('selected');
+            const prevItem = document.querySelector('.zone-item.active');
+            if (prevItem) prevItem.classList.remove('active');
+
+            // Set new selection
+            currentSelectedZone = zoneId;
+            const rect = document.querySelector(`[data-zone="${zoneId}"]`);
+            const item = document.querySelector(`.zone-item:nth-child(${zoneId})`);
+
+            if (rect) rect.classList.add('selected');
+            if (item) item.classList.add('active');
+
+            // Update detail panel
+            updateDetailPanel(zoneId);
+        }
+
+        function updateDetailPanel(zoneId) {
+            const zone = zones[zoneId];
+            detailPanel.classList.add('active');
+
+            detailTitle.textContent = zone.name;
+
+            let metaHTML = `
+                <div class="detail-meta-item">
+                    <div class="detail-meta-label">Area</div>
+                    <div class="detail-meta-value">${zone.area} m²</div>
+                </div>
+                <div class="detail-meta-item">
+                    <div class="detail-meta-label">Type</div>
+                    <div class="detail-meta-value">${zone.category.toUpperCase()}</div>
+                </div>
+            `;
+
+            if (zone.esd) {
+                metaHTML += `
+                    <div class="detail-meta-item">
+                        <span class="esd-badge">ESD</span>
+                    </div>
+                `;
+            }
+
+            detailMeta.innerHTML = metaHTML;
+            detailDescription.textContent = zone.description;
+
+            // Specs
+            if (zone.specs && zone.specs.length > 0) {
+                specsSection.style.display = 'block';
+                specsList.innerHTML = zone.specs.map(spec => `<li>${spec}</li>`).join('');
+            } else {
+                specsSection.style.display = 'none';
+            }
+
+            // Equipment
+            if (zone.equipment && zone.equipment.length > 0) {
+                equipmentSection.style.display = 'block';
+                equipmentList.innerHTML = zone.equipment.map(eq => `<li>${eq}</li>`).join('');
+            } else {
+                equipmentSection.style.display = 'none';
+            }
+
+            // Drill-down button
+            if (zone.drilldown) {
+                drillDownBtn.style.display = 'block';
+                drillDownBtn.onclick = () => enterDrilldown(zone.drilldown, zoneId);
+                backBtn.style.display = 'none';
+            } else {
+                drillDownBtn.style.display = 'none';
+                backBtn.style.display = 'none';
+            }
+        }
+
+        function enterDrilldown(drilldownId, zoneId) {
+            drilldownZone = zoneId;
+            currentView = 'drilldown';
+
+            // Hide main zones, show drilldown
+            const mainGroup = svg.querySelectorAll('rect.zone-rect, .flow-arrow, text.zone-label');
+            mainGroup.forEach(el => el.style.display = 'none');
+
+            // Show drilldown group
+            const drilldownGroup = document.getElementById(drilldownId);
+            if (drilldownGroup) {
+                drilldownGroup.classList.add('active');
+            }
+
+            // Update buttons
+            drillDownBtn.style.display = 'none';
+            backBtn.style.display = 'block';
+            backBtn.onclick = exitDrilldown;
+        }
+
+        function exitDrilldown() {
+            currentView = 'main';
+            drilldownZone = null;
+
+            // Show main zones again
+            const mainGroup = svg.querySelectorAll('rect.zone-rect, .flow-arrow, text.zone-label');
+            mainGroup.forEach(el => el.style.display = 'block');
+
+            // Hide all drilldown groups
+            document.querySelectorAll('.drill-down-group').forEach(group => {
+                group.classList.remove('active');
+            });
+
+            // Restore detail panel state
+            if (currentSelectedZone) {
+                const zone = zones[currentSelectedZone];
+                if (zone.drilldown) {
+                    drillDownBtn.style.display = 'block';
+                }
+            }
+            backBtn.style.display = 'none';
+        }
+
+        function setupFilterButtons() {
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active state
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    currentFilter = btn.getAttribute('data-filter');
+                    applyFilter();
+                });
+            });
+        }
+
+        function applyFilter() {
+            const zoneRects = document.querySelectorAll('.zone-rect');
+
+            zoneRects.forEach(rect => {
+                const zoneId = rect.getAttribute('data-zone');
+                const zone = zones[zoneId];
+                let shouldShow = true;
+
+                if (currentFilter === 'production') {
+                    shouldShow = zone.category === 'production';
+                } else if (currentFilter === 'esd') {
+                    shouldShow = zone.esd;
+                } else if (currentFilter === 'flow') {
+                    shouldShow = zone.category === 'production';
+                }
+
+                rect.style.opacity = shouldShow ? '1' : '0.2';
+                rect.style.pointerEvents = shouldShow ? 'auto' : 'none';
+            });
+
+            // Filter flow arrows
+            const flowArrows = document.querySelectorAll('.flow-arrow');
+            if (currentFilter === 'flow') {
+                flowArrows.forEach(arrow => arrow.style.opacity = '1');
+            } else {
+                flowArrows.forEach(arrow => arrow.style.opacity = currentFilter === 'all' ? '0.6' : '0.1');
+            }
+        }
+
+        function updateUtilization() {
+            let totalArea = 0;
+            Object.values(zones).forEach(zone => {
+                totalArea += zone.area;
+            });
+
+            const utilization = Math.round((totalArea / 4539) * 100);
+            document.getElementById('utilization').textContent = utilization + '%';
+        }
+
+        // ============================================
+        // START
+        // ============================================
+        init();
+    </script>
+</body>
+</html>

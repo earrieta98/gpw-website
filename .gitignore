@@ -1,0 +1,10 @@
+# Lock files
+.~lock.*
+~$*
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Node
+node_modules/

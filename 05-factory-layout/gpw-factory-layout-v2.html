@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPW — Optimized Server Assembly Factory Layout v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #23555A;
+  --teal-light: #2d6e74;
+  --coral: #ED835E;
+  --deep-blue: #2A4E64;
+  --lime: #ADCF91;
+  --bg: #0c1117;
+  --bg-card: #151c25;
+  --bg-panel: #111820;
+  --text: #e2e8f0;
+  --text-dim: #6b7a8d;
+  --border: #1e2a38;
+
+  /* Zone palette — carefully differentiated */
+  --z-receiving: #3b82d8;
+  --z-rawmat: #5b8ec4;
+  --z-kitting: #9b6ed0;
+  --z-boxassy: #c85daa;
+  --z-rackassy: #e05a5a;
+  --z-smoke: #e09848;
+  --z-burnin: #d43d3d;
+  --z-finished: #3daf72;
+  --z-shipping: #2eb89e;
+  --z-offices: #5a7ea8;
+  --z-amenities: #7e8fa6;
+  --z-mech: #8b6644;
+  --z-toolcrib: #b08040;
+  --z-qualitylab: #4caf7c;
+  --z-itmes: #5588bb;
+  --z-training: #6688aa;
+  --z-rework: #cc7744;
+  --z-packaging: #44aa88;
+  --z-battery: #aa8844;
+  --z-hazmat: #cc5555;
+  --z-expansion: #1a2530;
+  --z-aisles: #1e2a38;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+}
+
+/* ---- HEADER ---- */
+header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-mark {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, var(--teal), var(--deep-blue));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px;
+  letter-spacing: 1px; color: white;
+  box-shadow: 0 2px 12px rgba(35,85,90,0.4);
+}
+
+.logo-text h1 { font-size: 16px; font-weight: 600; letter-spacing: 0.3px; }
+.logo-text span { font-size: 10px; color: var(--text-dim); letter-spacing: 0.3px; }
+
+.header-stats { display: flex; gap: 28px; }
+.stat { text-align: right; }
+.stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px; font-weight: 500; color: var(--coral);
+}
+.stat-label {
+  font-size: 9px; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: 1px; margin-top: 1px;
+}
+
+.version-badge {
+  background: var(--coral);
+  color: #fff; font-size: 9px; font-weight: 700;
+  padding: 3px 8px; border-radius: 4px;
+  letter-spacing: 0.5px;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* ---- MAIN CANVAS ---- */
+.canvas-area {
+  position: relative; overflow: hidden;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+
+.floor-plan { width: 100%; height: auto; max-height: calc(100vh - 100px); }
+
+/* SVG zone hover */
+.zone-rect {
+  cursor: pointer;
+  transition: opacity 0.2s, filter 0.2s;
+  stroke-width: 1;
+}
+.zone-rect:hover {
+  opacity: 0.85 !important;
+  filter: brightness(1.15);
+}
+.zone-label {
+  pointer-events: none;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  fill: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+.zone-sublabel {
+  pointer-events: none;
+  font-family: 'JetBrains Mono', monospace;
+  fill: rgba(255,255,255,0.7);
+}
+.esd-indicator {
+  pointer-events: none;
+}
+.flow-arrow {
+  fill: none;
+  stroke: var(--coral);
+  stroke-width: 2;
+  stroke-dasharray: 6 3;
+  opacity: 0.6;
+  marker-end: url(#arrowhead);
+}
+
+/* ---- SIDE PANEL ---- */
+.side-panel {
+  background: var(--bg-panel);
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 18px;
+}
+
+.panel-section { margin-bottom: 24px; }
+
+.panel-title {
+  font-size: 10px; text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--text-dim);
+  margin-bottom: 12px; font-weight: 600;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.zone-list { display: flex; flex-direction: column; gap: 2px; }
+
+.zone-item {
+  display: grid;
+  grid-template-columns: 8px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-size: 12px;
+}
+.zone-item:hover { background: rgba(255,255,255,0.04); }
+.zone-item.active { background: rgba(255,255,255,0.07); }
+.zone-dot { width: 8px; height: 8px; border-radius: 2px; }
+.zone-area {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; color: var(--text-dim);
+}
+
+/* Detail panel */
+.detail-panel {
+  display: none;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  animation: slideIn 0.2s ease;
+}
+.detail-panel.visible { display: block; }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.detail-title {
+  font-size: 14px; font-weight: 600;
+  margin-bottom: 8px; color: var(--text);
+}
+.detail-desc {
+  font-size: 12px; color: var(--text-dim);
+  line-height: 1.5; margin-bottom: 10px;
+}
+.detail-specs { list-style: none; }
+.detail-specs li {
+  font-size: 11px; color: var(--text-dim);
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  display: flex; justify-content: space-between;
+}
+.detail-specs li span:last-child {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--lime); font-size: 10px;
+}
+
+.esd-badge {
+  display: inline-block;
+  font-size: 9px; font-weight: 700;
+  padding: 2px 6px; border-radius: 3px;
+  background: rgba(173,207,145,0.15);
+  color: var(--lime);
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* Flow diagram */
+.flow-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+}
+.flow-step {
+  display: flex; align-items: center; gap: 8px;
+  padding: 4px 0;
+  font-size: 11px;
+}
+.flow-num {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--deep-blue);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700; color: var(--text);
+  flex-shrink: 0;
+}
+.flow-arrow-down {
+  width: 18px; text-align: center;
+  color: var(--text-dim); font-size: 10px;
+}
+.flow-esd {
+  font-size: 8px; color: var(--lime);
+  font-weight: 700; margin-left: auto;
+}
+
+/* Summary bar */
+.summary-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.summary-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+}
+.summary-card .val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px; font-weight: 500; color: var(--coral);
+}
+.summary-card .lbl {
+  font-size: 8px; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* Scrollbar */
+.side-panel::-webkit-scrollbar { width: 4px; }
+.side-panel::-webkit-scrollbar-track { background: transparent; }
+.side-panel::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- HEADER -->
+  <header>
+    <div class="logo-area">
+      <div class="logo-mark">GPW</div>
+      <div class="logo-text">
+        <h1>Global Precision Works</h1>
+        <span>Server Assembly Factory — Nave San Javier G1, Monterrey</span>
+      </div>
+      <span class="version-badge">V2 OPTIMIZED</span>
+    </div>
+    <div class="header-stats">
+      <div class="stat"><div class="stat-value">4,539 m²</div><div class="stat-label">Total Area</div></div>
+      <div class="stat"><div class="stat-value">5</div><div class="stat-label">Racks / Day</div></div>
+      <div class="stat"><div class="stat-value">30</div><div class="stat-label">Boxes / Day</div></div>
+      <div class="stat"><div class="stat-value">20</div><div class="stat-label">Zones</div></div>
+      <div class="stat"><div class="stat-value">92.8%</div><div class="stat-label">Utilization</div></div>
+    </div>
+  </header>
+
+  <!-- CANVAS -->
+  <div class="canvas-area">
+    <svg class="floor-plan" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="var(--coral)" opacity="0.7"/>
+        </marker>
+        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/>
+        </pattern>
+        <pattern id="esd-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(173,207,145,0.12)" stroke-width="1"/>
+        </pattern>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="2" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Background grid -->
+      <rect width="1200" height="900" fill="url(#grid)"/>
+
+      <!-- Building outline: 118.72m × 73.45m with diagonal cut (NE corner) -->
+      <!-- Scale: ~10px per meter, so 1187 × 735. Let's use viewBox coords -->
+      <!-- Actual building polygon (approx scaled): main rect with cut corner -->
+      <polygon points="30,30 1050,30 1170,150 1170,770 30,770"
+               fill="rgba(255,255,255,0.01)" stroke="rgba(255,255,255,0.15)"
+               stroke-width="2" stroke-dasharray="none"/>
+
+      <!-- Column grid dots -->
+      <g opacity="0.08">
+        <circle cx="130" cy="130" r="3" fill="#fff"/><circle cx="260" cy="130" r="3" fill="#fff"/>
+        <circle cx="390" cy="130" r="3" fill="#fff"/><circle cx="520" cy="130" r="3" fill="#fff"/>
+        <circle cx="650" cy="130" r="3" fill="#fff"/><circle cx="780" cy="130" r="3" fill="#fff"/>
+        <circle cx="910" cy="130" r="3" fill="#fff"/><circle cx="1040" cy="130" r="3" fill="#fff"/>
+        <circle cx="130" cy="290" r="3" fill="#fff"/><circle cx="260" cy="290" r="3" fill="#fff"/>
+        <circle cx="390" cy="290" r="3" fill="#fff"/><circle cx="520" cy="290" r="3" fill="#fff"/>
+        <circle cx="650" cy="290" r="3" fill="#fff"/><circle cx="780" cy="290" r="3" fill="#fff"/>
+        <circle cx="910" cy="290" r="3" fill="#fff"/><circle cx="1040" cy="290" r="3" fill="#fff"/>
+        <circle cx="130" cy="450" r="3" fill="#fff"/><circle cx="260" cy="450" r="3" fill="#fff"/>
+        <circle cx="390" cy="450" r="3" fill="#fff"/><circle cx="520" cy="450" r="3" fill="#fff"/>
+        <circle cx="650" cy="450" r="3" fill="#fff"/><circle cx="780" cy="450" r="3" fill="#fff"/>
+        <circle cx="910" cy="450" r="3" fill="#fff"/><circle cx="1040" cy="450" r="3" fill="#fff"/>
+        <circle cx="130" cy="610" r="3" fill="#fff"/><circle cx="260" cy="610" r="3" fill="#fff"/>
+        <circle cx="390" cy="610" r="3" fill="#fff"/><circle cx="520" cy="610" r="3" fill="#fff"/>
+        <circle cx="650" cy="610" r="3" fill="#fff"/><circle cx="780" cy="610" r="3" fill="#fff"/>
+        <circle cx="910" cy="610" r="3" fill="#fff"/><circle cx="1040" cy="610" r="3" fill="#fff"/>
+      </g>
+
+      <!-- ==================== ZONES (U-SHAPE FLOW) ==================== -->
+      <!-- LEFT LEG OF U: Inbound flow (south→north) -->
+
+      <!-- 1. RECEIVING DOCK (South-West) — 150 m² -->
+      <rect class="zone-rect" data-zone="receiving" x="35" y="680" width="220" height="82"
+            rx="4" fill="var(--z-receiving)" opacity="0.7" stroke="var(--z-receiving)"/>
+      <text class="zone-label" x="145" y="718" text-anchor="middle" font-size="11">RECEIVING</text>
+      <text class="zone-sublabel" x="145" y="735" text-anchor="middle" font-size="8">150 m² · 2 Docks</text>
+      <!-- Dock doors -->
+      <rect x="55" y="762" width="40" height="8" rx="2" fill="var(--z-receiving)" opacity="0.9"/>
+      <rect x="115" y="762" width="40" height="8" rx="2" fill="var(--z-receiving)" opacity="0.9"/>
+      <text x="95" y="780" text-anchor="middle" font-size="7" fill="var(--text-dim)">DOCK 1 · 2</text>
+
+      <!-- 2. RAW MATERIAL STORAGE (Left side, above receiving) — 450 m² -->
+      <rect class="zone-rect" data-zone="rawmat" x="35" y="420" width="220" height="250"
+            rx="4" fill="var(--z-rawmat)" opacity="0.55" stroke="var(--z-rawmat)"/>
+      <text class="zone-label" x="145" y="535" text-anchor="middle" font-size="11">RAW MATERIAL</text>
+      <text class="zone-label" x="145" y="550" text-anchor="middle" font-size="11">STORAGE</text>
+      <text class="zone-sublabel" x="145" y="570" text-anchor="middle" font-size="8">450 m² · 2-month inventory</text>
+      <!-- Pallet rack icons -->
+      <g opacity="0.3" stroke="#fff" stroke-width="0.5" fill="none">
+        <rect x="55" y="445" width="30" height="8" rx="1"/><rect x="55" y="458" width="30" height="8" rx="1"/>
+        <rect x="95" y="445" width="30" height="8" rx="1"/><rect x="95" y="458" width="30" height="8" rx="1"/>
+        <rect x="135" y="445" width="30" height="8" rx="1"/><rect x="135" y="458" width="30" height="8" rx="1"/>
+        <rect x="175" y="445" width="30" height="8" rx="1"/><rect x="175" y="458" width="30" height="8" rx="1"/>
+        <rect x="55" y="580" width="30" height="8" rx="1"/><rect x="55" y="593" width="30" height="8" rx="1"/>
+        <rect x="95" y="580" width="30" height="8" rx="1"/><rect x="95" y="593" width="30" height="8" rx="1"/>
+        <rect x="135" y="580" width="30" height="8" rx="1"/><rect x="135" y="593" width="30" height="8" rx="1"/>
+        <rect x="175" y="580" width="30" height="8" rx="1"/><rect x="175" y="593" width="30" height="8" rx="1"/>
+      </g>
+
+      <!-- 3. KITTING AREA (Left side, above raw material) — 120 m² [ESD] -->
+      <rect class="zone-rect" data-zone="kitting" x="35" y="305" width="220" height="105"
+            rx="4" fill="var(--z-kitting)" opacity="0.65" stroke="var(--z-kitting)"/>
+      <rect x="35" y="305" width="220" height="105" rx="4" fill="url(#esd-hatch)"/>
+      <text class="zone-label" x="145" y="355" text-anchor="middle" font-size="11">KITTING</text>
+      <text class="zone-sublabel" x="145" y="372" text-anchor="middle" font-size="8">120 m² · 3 stations</text>
+      <text class="esd-indicator" x="230" y="320" text-anchor="end" font-size="7" fill="var(--lime)" font-weight="700">ESD</text>
+
+      <!-- 4. BOX ASSEMBLY (Center-left, core production) — 350 m² [ESD] -->
+      <rect class="zone-rect" data-zone="boxassy" x="35" y="110" width="350" height="185"
+            rx="4" fill="var(--z-boxassy)" opacity="0.6" stroke="var(--z-boxassy)"/>
+      <rect x="35" y="110" width="350" height="185" rx="4" fill="url(#esd-hatch)"/>
+      <text class="zone-label" x="210" y="195" text-anchor="middle" font-size="12">BOX ASSEMBLY</text>
+      <text class="zone-sublabel" x="210" y="215" text-anchor="middle" font-size="8">350 m² · 12 stations · 30 boxes/day</text>
+      <text class="esd-indicator" x="365" y="128" text-anchor="end" font-size="7" fill="var(--lime)" font-weight="700">ESD</text>
+      <!-- Cell icons -->
+      <g opacity="0.25" stroke="#fff" stroke-width="0.5" fill="none">
+        <rect x="55" y="135" width="22" height="30" rx="2"/><rect x="85" y="135" width="22" height="30" rx="2"/>
+        <rect x="115" y="135" width="22" height="30" rx="2"/><rect x="145" y="135" width="22" height="30" rx="2"/>
+        <rect x="175" y="135" width="22" height="30" rx="2"/><rect x="205" y="135" width="22" height="30" rx="2"/>
+        <rect x="55" y="240" width="22" height="30" rx="2"/><rect x="85" y="240" width="22" height="30" rx="2"/>
+        <rect x="115" y="240" width="22" height="30" rx="2"/><rect x="145" y="240" width="22" height="30" rx="2"/>
+        <rect x="175" y="240" width="22" height="30" rx="2"/><rect x="205" y="240" width="22" height="30" rx="2"/>
+      </g>
+
+      <!-- TURN OF THE U: Center top area -->
+
+      <!-- 5. RACK ASSEMBLY (Center-top) — 300 m² [ESD] -->
+      <rect class="zone-rect" data-zone="rackassy" x="395" y="110" width="280" height="185"
+            rx="4" fill="var(--z-rackassy)" opacity="0.6" stroke="var(--z-rackassy)"/>
+      <rect x="395" y="110" width="280" height="185" rx="4" fill="url(#esd-hatch)"/>
+      <text class="zone-label" x="535" y="195" text-anchor="middle" font-size="12">RACK ASSEMBLY</text>
+      <text class="zone-sublabel" x="535" y="215" text-anchor="middle" font-size="8">300 m² · 3 cells · 5 racks/day</text>
+      <text class="esd-indicator" x="655" y="128" text-anchor="end" font-size="7" fill="var(--lime)" font-weight="700">ESD</text>
+      <!-- Rack icons -->
+      <g opacity="0.2" stroke="#fff" stroke-width="0.5" fill="none">
+        <rect x="420" y="145" width="15" height="40" rx="1"/><rect x="445" y="145" width="15" height="40" rx="1"/>
+        <rect x="530" y="145" width="15" height="40" rx="1"/><rect x="555" y="145" width="15" height="40" rx="1"/>
+        <rect x="625" y="145" width="15" height="40" rx="1"/><rect x="650" y="145" width="15" height="40" rx="1"/>
+      </g>
+
+      <!-- 6. SMOKE TEST (Center) — 140 m² [ESD] -->
+      <rect class="zone-rect" data-zone="smoke" x="395" y="305" width="175" height="105"
+            rx="4" fill="var(--z-smoke)" opacity="0.65" stroke="var(--z-smoke)"/>
+      <rect x="395" y="305" width="175" height="105" rx="4" fill="url(#esd-hatch)"/>
+      <text class="zone-label" x="482" y="352" text-anchor="middle" font-size="11">SMOKE TEST</text>
+      <text class="zone-sublabel" x="482" y="370" text-anchor="middle" font-size="8">140 m² · 2 cells</text>
+      <text class="esd-indicator" x="552" y="320" text-anchor="end" font-size="7" fill="var(--lime)" font-weight="700">ESD</text>
+
+      <!-- 7. REWORK STATION (adjacent to smoke test) — 50 m² -->
+      <rect class="zone-rect" data-zone="rework" x="580" y="305" width="95" height="105"
+            rx="4" fill="var(--z-rework)" opacity="0.6" stroke="var(--z-rework)"/>
+      <rect x="580" y="305" width="95" height="105" rx="4" fill="url(#esd-hatch)"/>
+      <text class="zone-label" x="627" y="352" text-anchor="middle" font-size="10">REWORK</text>
+      <text class="zone-sublabel" x="627" y="370" text-anchor="middle" font-size="7">50 m²</text>
+
+      <!-- RIGHT LEG OF U: Outbound flow (north→south) -->
+
+      <!-- 8. BURN-IN ROOM (Right side, major zone) — 350 m² -->
+      <rect class="zone-rect" data-zone="burnin" x="685" y="110" width="250" height="300"
+            rx="4" fill="var(--z-burnin)" opacity="0.55" stroke="var(--z-burnin)" stroke-width="2"/>
+      <text class="zone-label" x="810" y="230" text-anchor="middle" font-size="13" filter="url(#glow)">BURN-IN ROOM</text>
+      <text class="zone-sublabel" x="810" y="252" text-anchor="middle" font-size="8">350 m² · 20 positions · 12.9h cycle</text>
+      <text class="zone-sublabel" x="810" y="268" text-anchor="middle" font-size="7">Hot/Cold Aisle · Novec 1230 · 250kVA UPS</text>
+      <!-- Hot/cold aisle visualization -->
+      <g opacity="0.2">
+        <rect x="710" y="150" width="12" height="30" rx="1" fill="#ff4444"/>
+        <rect x="728" y="150" width="12" height="30" rx="1" fill="#4488ff"/>
+        <rect x="746" y="150" width="12" height="30" rx="1" fill="#ff4444"/>
+        <rect x="764" y="150" width="12" height="30" rx="1" fill="#4488ff"/>
+        <rect x="840" y="150" width="12" height="30" rx="1" fill="#ff4444"/>
+        <rect x="858" y="150" width="12" height="30" rx="1" fill="#4488ff"/>
+        <rect x="876" y="150" width="12" height="30" rx="1" fill="#ff4444"/>
+        <rect x="894" y="150" width="12" height="30" rx="1" fill="#4488ff"/>
+        <text x="750" y="195" font-size="6" fill="#ff6666">HOT</text>
+        <text x="730" y="195" font-size="6" fill="#6688ff">COLD</text>
+        <text x="870" y="195" font-size="6" fill="#ff6666">HOT</text>
+        <text x="850" y="195" font-size="6" fill="#6688ff">COLD</text>
+      </g>
+
+      <!-- 9. QUALITY LAB (Right side, after burn-in) — 100 m² -->
+      <rect class="zone-rect" data-zone="qualitylab" x="685" y="420" width="150" height="100"
+            rx="4" fill="var(--z-qualitylab)" opacity="0.6" stroke="var(--z-qualitylab)"/>
+      <text class="zone-label" x="760" y="467" text-anchor="middle" font-size="10">QUALITY LAB</text>
+      <text class="zone-sublabel" x="760" y="483" text-anchor="middle" font-size="7">100 m² · Inspection</text>
+
+      <!-- 10. PACKAGING & LABELING — 130 m² -->
+      <rect class="zone-rect" data-zone="packaging" x="845" y="420" width="150" height="100"
+            rx="4" fill="var(--z-packaging)" opacity="0.6" stroke="var(--z-packaging)"/>
+      <text class="zone-label" x="920" y="462" text-anchor="middle" font-size="10">PACKAGING</text>
+      <text class="zone-label" x="920" y="476" text-anchor="middle" font-size="10">& LABELING</text>
+      <text class="zone-sublabel" x="920" y="493" text-anchor="middle" font-size="7">130 m²</text>
+
+      <!-- 11. FINISHED GOODS (Right side, near shipping) — 350 m² -->
+      <rect class="zone-rect" data-zone="finished" x="685" y="530" width="310" height="140"
+            rx="4" fill="var(--z-finished)" opacity="0.55" stroke="var(--z-finished)"/>
+      <text class="zone-label" x="840" y="595" text-anchor="middle" font-size="11">FINISHED GOODS</text>
+      <text class="zone-sublabel" x="840" y="615" text-anchor="middle" font-size="8">350 m² · 1-month inventory</text>
+      <!-- Pallet racks -->
+      <g opacity="0.2" stroke="#fff" stroke-width="0.5" fill="none">
+        <rect x="710" y="548" width="30" height="8" rx="1"/><rect x="750" y="548" width="30" height="8" rx="1"/>
+        <rect x="790" y="548" width="30" height="8" rx="1"/><rect x="830" y="548" width="30" height="8" rx="1"/>
+        <rect x="870" y="548" width="30" height="8" rx="1"/><rect x="910" y="548" width="30" height="8" rx="1"/>
+      </g>
+
+      <!-- 12. SHIPPING DOCK (South-East) — 150 m² -->
+      <rect class="zone-rect" data-zone="shipping" x="780" y="680" width="220" height="82"
+            rx="4" fill="var(--z-shipping)" opacity="0.7" stroke="var(--z-shipping)"/>
+      <text class="zone-label" x="890" y="718" text-anchor="middle" font-size="11">SHIPPING</text>
+      <text class="zone-sublabel" x="890" y="735" text-anchor="middle" font-size="8">150 m² · 2 Docks</text>
+      <!-- Dock doors -->
+      <rect x="810" y="762" width="40" height="8" rx="2" fill="var(--z-shipping)" opacity="0.9"/>
+      <rect x="870" y="762" width="40" height="8" rx="2" fill="var(--z-shipping)" opacity="0.9"/>
+      <text x="850" y="780" text-anchor="middle" font-size="7" fill="var(--text-dim)">DOCK 3 · 4</text>
+
+      <!-- ==================== SUPPORT ZONES ==================== -->
+
+      <!-- 13. MEZZANINE OFFICE (Above amenities zone, NE area) — 300 m² -->
+      <rect class="zone-rect" data-zone="offices" x="945" y="110" width="215" height="170"
+            rx="4" fill="var(--z-offices)" opacity="0.55" stroke="var(--z-offices)"/>
+      <text class="zone-label" x="1052" y="185" text-anchor="middle" font-size="10">MEZZANINE</text>
+      <text class="zone-label" x="1052" y="200" text-anchor="middle" font-size="10">OFFICES</text>
+      <text class="zone-sublabel" x="1052" y="218" text-anchor="middle" font-size="7">300 m² · 10-15 staff</text>
+      <text class="zone-sublabel" x="1052" y="232" text-anchor="middle" font-size="7">Gemba view to floor</text>
+      <!-- Window icon -->
+      <line x1="945" y1="250" x2="1160" y2="250" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="3 2"/>
+      <text x="1052" y="262" text-anchor="middle" font-size="6" fill="var(--text-dim)">GLASS OVERLOOK</text>
+
+      <!-- 14. AMENITIES (Below office mezzanine footprint) — 160 m² -->
+      <rect class="zone-rect" data-zone="amenities" x="945" y="290" width="215" height="120"
+            rx="4" fill="var(--z-amenities)" opacity="0.5" stroke="var(--z-amenities)"/>
+      <text class="zone-label" x="1052" y="340" text-anchor="middle" font-size="10">COMEDOR ·</text>
+      <text class="zone-label" x="1052" y="355" text-anchor="middle" font-size="10">RESTROOMS</text>
+      <text class="zone-sublabel" x="1052" y="373" text-anchor="middle" font-size="7">160 m² · 130m² dining</text>
+
+      <!-- 15. TRAINING ROOM — 60 m² -->
+      <rect class="zone-rect" data-zone="training" x="1005" y="420" width="155" height="60"
+            rx="4" fill="var(--z-training)" opacity="0.5" stroke="var(--z-training)"/>
+      <text class="zone-label" x="1082" y="450" text-anchor="middle" font-size="9">TRAINING</text>
+      <text class="zone-sublabel" x="1082" y="463" text-anchor="middle" font-size="7">60 m²</text>
+
+      <!-- 16. IT / MES SERVER ROOM — 40 m² -->
+      <rect class="zone-rect" data-zone="itmes" x="1005" y="490" width="75" height="55"
+            rx="4" fill="var(--z-itmes)" opacity="0.55" stroke="var(--z-itmes)"/>
+      <text class="zone-label" x="1042" y="517" text-anchor="middle" font-size="8">IT/MES</text>
+      <text class="zone-sublabel" x="1042" y="530" text-anchor="middle" font-size="6">40 m²</text>
+
+      <!-- 17. TOOL CRIB — 80 m² -->
+      <rect class="zone-rect" data-zone="toolcrib" x="1090" y="490" width="70" height="55"
+            rx="4" fill="var(--z-toolcrib)" opacity="0.55" stroke="var(--z-toolcrib)"/>
+      <text class="zone-label" x="1125" y="517" text-anchor="middle" font-size="8">TOOL</text>
+      <text class="zone-label" x="1125" y="528" text-anchor="middle" font-size="8">CRIB</text>
+      <text class="zone-sublabel" x="1125" y="540" text-anchor="middle" font-size="6">80 m²</text>
+
+      <!-- 18. MECHANICAL / UPS / HVAC — 160 m² -->
+      <rect class="zone-rect" data-zone="mechanical" x="1005" y="555" width="155" height="90"
+            rx="4" fill="var(--z-mech)" opacity="0.5" stroke="var(--z-mech)"/>
+      <text class="zone-label" x="1082" y="595" text-anchor="middle" font-size="9">MECHANICAL</text>
+      <text class="zone-sublabel" x="1082" y="610" text-anchor="middle" font-size="7">160 m² · UPS · HVAC · Gen</text>
+
+      <!-- 19. BATTERY CHARGING — 50 m² -->
+      <rect class="zone-rect" data-zone="battery" x="265" y="700" width="110" height="60"
+            rx="4" fill="var(--z-battery)" opacity="0.55" stroke="var(--z-battery)"/>
+      <text class="zone-label" x="320" y="728" text-anchor="middle" font-size="8">BATTERY</text>
+      <text class="zone-label" x="320" y="740" text-anchor="middle" font-size="8">CHARGING</text>
+      <text class="zone-sublabel" x="320" y="753" text-anchor="middle" font-size="6">50 m²</text>
+
+      <!-- 20. HAZMAT STORAGE — 40 m² -->
+      <rect class="zone-rect" data-zone="hazmat" x="385" y="700" width="90" height="60"
+            rx="4" fill="var(--z-hazmat)" opacity="0.55" stroke="var(--z-hazmat)"/>
+      <text class="zone-label" x="430" y="728" text-anchor="middle" font-size="8">HAZMAT</text>
+      <text class="zone-sublabel" x="430" y="743" text-anchor="middle" font-size="6">40 m²</text>
+
+      <!-- 21. EXPANSION / FUTURE — remaining area in center-bottom -->
+      <rect class="zone-rect" data-zone="expansion" x="265" y="420" width="120" height="250"
+            rx="4" fill="var(--z-expansion)" opacity="0.4" stroke="var(--z-expansion)" stroke-dasharray="4 2"/>
+      <text class="zone-label" x="325" y="540" text-anchor="middle" font-size="9" fill="var(--text-dim)">FUTURE</text>
+      <text class="zone-label" x="325" y="555" text-anchor="middle" font-size="9" fill="var(--text-dim)">EXPANSION</text>
+      <text class="zone-sublabel" x="325" y="575" text-anchor="middle" font-size="7">328 m²</text>
+
+      <!-- Center aisle between production zones -->
+      <rect class="zone-rect" data-zone="aisles" x="395" y="420" width="280" height="100"
+            rx="4" fill="var(--z-aisles)" opacity="0.3" stroke="none"/>
+      <text x="535" y="470" text-anchor="middle" font-size="8" fill="var(--text-dim)" font-family="'JetBrains Mono'">MAIN AISLE · 3.5m WIDE</text>
+
+      <!-- Bottom center aisle -->
+      <rect x="485" y="530" width="190" height="140"
+            rx="4" fill="var(--z-aisles)" opacity="0.15" stroke="none"/>
+      <text x="580" y="605" text-anchor="middle" font-size="7" fill="var(--text-dim)" font-family="'JetBrains Mono'" transform="rotate(-90 580 605)">AISLE</text>
+
+      <!-- Shipping staging area -->
+      <rect x="485" y="680" width="285" height="82"
+            rx="4" fill="var(--z-aisles)" opacity="0.2" stroke="none"/>
+      <text x="627" y="725" text-anchor="middle" font-size="8" fill="var(--text-dim)">STAGING AREA</text>
+
+      <!-- ==================== FLOW ARROWS ==================== -->
+      <g class="flow-arrows">
+        <!-- Receiving → Raw Material -->
+        <path class="flow-arrow" d="M145,680 L145,670"/>
+        <!-- Raw Mat → Kitting -->
+        <path class="flow-arrow" d="M145,420 L145,410"/>
+        <!-- Kitting → Box Assembly -->
+        <path class="flow-arrow" d="M145,305 L145,295"/>
+        <!-- Box Assembly → Rack Assembly -->
+        <path class="flow-arrow" d="M385,200 L395,200"/>
+        <!-- Rack Assembly → Smoke Test -->
+        <path class="flow-arrow" d="M480,295 L480,305"/>
+        <!-- Smoke → Rework (bidirectional) -->
+        <path class="flow-arrow" d="M570,355 L580,355" style="stroke-dasharray:2 2"/>
+        <!-- Smoke → Burn-in -->
+        <path class="flow-arrow" d="M570,340 C620,340 660,260 685,260"/>
+        <!-- Burn-in → Quality Lab -->
+        <path class="flow-arrow" d="M810,410 L810,420"/>
+        <!-- Quality → Packaging -->
+        <path class="flow-arrow" d="M835,470 L845,470"/>
+        <!-- Packaging → Finished Goods -->
+        <path class="flow-arrow" d="M920,520 L920,530"/>
+        <!-- Finished → Shipping -->
+        <path class="flow-arrow" d="M890,670 L890,680"/>
+      </g>
+
+      <!-- ==================== ANNOTATIONS ==================== -->
+
+      <!-- Compass -->
+      <g transform="translate(1120,50)">
+        <circle cx="0" cy="0" r="18" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <text x="0" y="-8" text-anchor="middle" font-size="9" font-weight="700" fill="var(--coral)">N</text>
+        <text x="0" y="15" text-anchor="middle" font-size="7" fill="var(--text-dim)">S</text>
+        <text x="-12" y="4" text-anchor="middle" font-size="7" fill="var(--text-dim)">W</text>
+        <text x="12" y="4" text-anchor="middle" font-size="7" fill="var(--text-dim)">E</text>
+        <line x1="0" y1="-4" x2="0" y2="-16" stroke="var(--coral)" stroke-width="1.5"/>
+      </g>
+
+      <!-- Scale bar -->
+      <g transform="translate(40,810)">
+        <line x1="0" y1="0" x2="100" y2="0" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="0" y1="-3" x2="0" y2="3" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="100" y1="-3" x2="100" y2="3" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <text x="50" y="12" text-anchor="middle" font-size="7" fill="var(--text-dim)" font-family="'JetBrains Mono'">~10 m</text>
+      </g>
+
+      <!-- South wall label -->
+      <text x="600" y="795" text-anchor="middle" font-size="8" fill="var(--text-dim)" letter-spacing="3">SOUTH WALL — DOCK ACCESS</text>
+
+      <!-- U-flow indicator -->
+      <g transform="translate(560,85)" opacity="0.5">
+        <path d="M-150,0 L-150,10 C-150,25 150,25 150,10 L150,0" fill="none" stroke="var(--coral)" stroke-width="1.5" stroke-dasharray="4 2"/>
+        <text x="0" y="-5" text-anchor="middle" font-size="7" fill="var(--coral)" font-weight="600">U-SHAPED MATERIAL FLOW</text>
+      </g>
+
+      <!-- Title block -->
+      <g transform="translate(40,840)">
+        <text font-size="8" fill="var(--text-dim)" font-family="'JetBrains Mono'">
+          GPW · Nave San Javier G1 · 118.72m × 73.45m · 4,539 m² · Rev. 2.0 · March 2026
+        </text>
+      </g>
+
+    </svg>
+  </div>
+
+  <!-- SIDE PANEL -->
+  <div class="side-panel">
+
+    <!-- Summary -->
+    <div class="summary-bar">
+      <div class="summary-card">
+        <div class="val">4,211</div>
+        <div class="lbl">m² Allocated</div>
+      </div>
+      <div class="summary-card">
+        <div class="val">328</div>
+        <div class="lbl">m² Expansion</div>
+      </div>
+      <div class="summary-card">
+        <div class="val">92.8%</div>
+        <div class="lbl">Utilization</div>
+      </div>
+      <div class="summary-card">
+        <div class="val">20</div>
+        <div class="lbl">Zones</div>
+      </div>
+    </div>
+
+    <!-- Detail panel (shows on zone click) -->
+    <div class="detail-panel" id="detailPanel">
+      <div class="detail-title" id="detailTitle"></div>
+      <div class="detail-desc" id="detailDesc"></div>
+      <div id="detailEsd"></div>
+      <ul class="detail-specs" id="detailSpecs"></ul>
+    </div>
+
+    <!-- Production zones -->
+    <div class="panel-section">
+      <div class="panel-title">Production Flow (U-Shape)</div>
+      <div class="zone-list" id="productionZones"></div>
+    </div>
+
+    <!-- Support zones -->
+    <div class="panel-section">
+      <div class="panel-title">Support & Infrastructure</div>
+      <div class="zone-list" id="supportZones"></div>
+    </div>
+
+    <!-- Admin zones -->
+    <div class="panel-section">
+      <div class="panel-title">Administration</div>
+      <div class="zone-list" id="adminZones"></div>
+    </div>
+
+    <!-- Flow diagram -->
+    <div class="panel-section">
+      <div class="panel-title">Production Flow</div>
+      <div class="flow-section" id="flowDiagram"></div>
+    </div>
+
+    <!-- Research basis -->
+    <div class="panel-section">
+      <div class="panel-title">Design Basis</div>
+      <div style="font-size:10px; color:var(--text-dim); line-height:1.6;">
+        <div style="margin-bottom:6px;"><strong style="color:var(--lime)">Flow:</strong> U-shape (lean manufacturing best practice for same-wall docks)</div>
+        <div style="margin-bottom:6px;"><strong style="color:var(--lime)">Offices:</strong> Mezzanine with Gemba overlook (visual management)</div>
+        <div style="margin-bottom:6px;"><strong style="color:var(--lime)">Burn-in:</strong> Hot/cold aisle containment, Novec 1230, 250 kVA UPS</div>
+        <div style="margin-bottom:6px;"><strong style="color:var(--lime)">ESD:</strong> ANSI/ESD S20.20 in Kitting → Smoke Test zones</div>
+        <div style="margin-bottom:6px;"><strong style="color:var(--lime)">Standards:</strong> ASHRAE TC9.9, NOM-001-STPS, TIA-942</div>
+        <div><strong style="color:var(--lime)">Benchmarks:</strong> Supermicro, Wistron (Omniverse), Quanta ODM</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const zones = {
+  receiving: {
+    name: "Receiving Dock",
+    area: 150,
+    color: "var(--z-receiving)",
+    category: "production",
+    esd: false,
+    desc: "Inbound material receiving with 2 dock doors. Staging area for incoming shipments, quality inspection, and material check-in before transfer to raw material storage.",
+    specs: [
+      ["Dock Doors", "2 (levelers + seals)"],
+      ["Staging Area", "80 m²"],
+      ["QC Check-in", "Barcode scan station"],
+      ["Equipment", "2 pallet jacks, 1 forklift"],
+      ["Throughput", "~15 pallets/day inbound"],
+      ["Hours", "AM priority (shipping PM)"]
+    ]
+  },
+  rawmat: {
+    name: "Raw Material Storage",
+    area: 450,
+    color: "var(--z-rawmat)",
+    category: "production",
+    esd: false,
+    desc: "2-month raw material inventory. Pallet racking for chassis, PSUs, drives, backplanes, and components. FIFO management with barcode tracking via MES.",
+    specs: [
+      ["Inventory Level", "2 months (2,200 racks equiv.)"],
+      ["Rack Type", "Selective pallet racking, 4-tier"],
+      ["Temperature", "Ambient (18-27°C)"],
+      ["Humidity", "< 60% RH (component storage)"],
+      ["System", "MES barcode tracking, FIFO"],
+      ["Access", "Forklift + pallet jack aisles"]
+    ]
+  },
+  kitting: {
+    name: "Kitting Area",
+    area: 120,
+    color: "var(--z-kitting)",
+    category: "production",
+    esd: true,
+    desc: "3 kitting stations where components are picked, verified, and staged into kits for box assembly. Each kit contains all parts for one server box (chassis, drives, PSUs, cables).",
+    specs: [
+      ["Stations", "3 kitting workbenches"],
+      ["Techs/station", "1"],
+      ["Kit Size", "~24 components per box"],
+      ["Takt Time", "45 min/kit"],
+      ["Throughput", "30 kits/day"],
+      ["ESD Floor", "Full ANSI/ESD S20.20"]
+    ]
+  },
+  boxassy: {
+    name: "Box Assembly",
+    area: 350,
+    color: "var(--z-boxassy)",
+    category: "production",
+    esd: true,
+    desc: "12 parallel assembly stations building 4U 24-bay server boxes. 3-station workflow: Station 1 (chassis/backplane, 68 min), Station 2 (motherboard/CPU/RAM, 54 min), Station 3 (cabling/testing, 61 min).",
+    specs: [
+      ["Stations", "12 (4 per sub-station type)"],
+      ["Daily Output", "30 boxes"],
+      ["Takt Time", "Station 1: 68 min, Stn 2: 54 min, Stn 3: 61 min"],
+      ["Techs", "36 (3 per station)"],
+      ["Cell Size", "3m × 2.75m each"],
+      ["Equipment", "$17,032 per cell (Worksmart)"],
+      ["ESD Floor", "Full ANSI/ESD S20.20"]
+    ]
+  },
+  rackassy: {
+    name: "Rack Assembly",
+    area: 300,
+    color: "var(--z-rackassy)",
+    category: "production",
+    esd: true,
+    desc: "3 assembly cells for full server rack integration. Each rack receives 6 boxes, 2 controllers, switches, PDUs, cabling, and sensors. ServerLIFT SL-500X shared between cells.",
+    specs: [
+      ["Cells", "3 integration cells"],
+      ["Daily Output", "5 racks (1.67/cell)"],
+      ["Takt Time", "184 min/rack"],
+      ["Techs/Cell", "3 (9 total)"],
+      ["Cell Size", "5.5m × 4m each"],
+      ["Equipment", "$33,259 per cell"],
+      ["Lift", "ServerLIFT SL-500X (shared)"],
+      ["ESD Floor", "Full ANSI/ESD S20.20"]
+    ]
+  },
+  smoke: {
+    name: "Smoke Test",
+    area: 140,
+    color: "var(--z-smoke)",
+    category: "production",
+    esd: true,
+    desc: "2 smoke test cells. 55-min cycle: firmware loading (15 min), sensor calibration (10 min), power-on safety (5 min), cooling validation (10 min), smoke/fire detection (10 min), sign-off (5 min).",
+    specs: [
+      ["Cells", "2 test bays"],
+      ["Cycle Time", "55 min total"],
+      ["Daily Capacity", "10 racks (5 needed)"],
+      ["Techs/Cell", "1 (+ 0.5 floater)"],
+      ["Cell Size", "3m × 3m each"],
+      ["Equipment", "$21,237 per cell"],
+      ["Tests", "Firmware, thermal, fire detection"],
+      ["ESD Floor", "Full ANSI/ESD S20.20"]
+    ]
+  },
+  rework: {
+    name: "Rework Station",
+    area: 50,
+    color: "var(--z-rework)",
+    category: "support",
+    esd: true,
+    desc: "Defect correction area adjacent to smoke test. Failed units diagnosed, repaired (component swap, cable reseat, firmware reload), and retested. Short feedback loop to testing zones.",
+    specs: [
+      ["Workbenches", "3 ESD benches"],
+      ["Location", "Adjacent to smoke test"],
+      ["Tools", "Screwdrivers, thermal paste, spares"],
+      ["ESD Protection", "Benchtop mats + wrist straps"],
+      ["Workflow", "Diagnose → Repair → Retest"]
+    ]
+  },
+  burnin: {
+    name: "Burn-in Room",
+    area: 350,
+    color: "var(--z-burnin)",
+    category: "production",
+    esd: false,
+    desc: "Dedicated burn-in facility: 20 rack positions, 12.9-hour cycle. Hot/cold aisle containment per ASHRAE TC9.9. Novec 1230 fire suppression. Isolated power (250 kVA UPS + generator backup).",
+    specs: [
+      ["Positions", "20 rack test bays"],
+      ["Cycle Time", "12.9 hours (775 min)"],
+      ["Daily Capacity", "10 racks (5 needed)"],
+      ["Power/Rack", "8 kW (160 kW total)"],
+      ["UPS", "250 kVA + diesel generator"],
+      ["Cooling", "Hot/cold aisle containment"],
+      ["Fire Suppression", "Novec 1230 (GWP=1)"],
+      ["Temperature", "18-27°C inlet (ASHRAE)"],
+      ["Monitoring", "24/7 sensor + alarm system"],
+      ["Equipment", "$233,665 per cell (2 cells)"]
+    ]
+  },
+  qualitylab: {
+    name: "Quality / Inspection Lab",
+    area: 100,
+    color: "var(--z-qualitylab)",
+    category: "support",
+    esd: false,
+    desc: "Post-production quality control. Visual/mechanical inspection, electrical validation, final QC sign-off. Data logging for customer compliance and traceability documentation.",
+    specs: [
+      ["Benches", "4 inspection workstations"],
+      ["Equipment", "Oscilloscope, multimeters"],
+      ["Data", "MES test result logging"],
+      ["Storage", "Reference samples, certs"],
+      ["ESD", "Benchtop mats (partial)"]
+    ]
+  },
+  packaging: {
+    name: "Packaging & Labeling",
+    area: 130,
+    color: "var(--z-packaging)",
+    category: "support",
+    esd: false,
+    desc: "Final preparation before shipment. Serial number labels, QR codes, compliance labels, documentation insertion, box sealing, palletization.",
+    specs: [
+      ["Tables", "3 packaging stations"],
+      ["Printer", "Thermal label printer"],
+      ["Scanner", "Barcode scan-and-pack"],
+      ["Supplies", "Boxes, foam, desiccant"],
+      ["Output", "5 palletized racks/day"]
+    ]
+  },
+  finished: {
+    name: "Finished Goods Storage",
+    area: 350,
+    color: "var(--z-finished)",
+    category: "production",
+    esd: false,
+    desc: "1-month finished goods inventory (~92 racks). Floor-stacked palletized racks ready for shipment. Climate controlled. FIFO with barcode tracking.",
+    specs: [
+      ["Inventory Level", "1 month (~92 racks)"],
+      ["Storage", "Floor stacked, palletized"],
+      ["Temperature", "Ambient controlled"],
+      ["System", "MES barcode, FIFO"],
+      ["Access", "Forklift aisle to shipping"]
+    ]
+  },
+  shipping: {
+    name: "Shipping Dock",
+    area: 150,
+    color: "var(--z-shipping)",
+    category: "production",
+    esd: false,
+    desc: "Outbound shipment area with 2 dock doors. Staging, final documentation check, carrier loading. PM priority scheduling.",
+    specs: [
+      ["Dock Doors", "2 (levelers + seals)"],
+      ["Staging", "80 m² staging area"],
+      ["Equipment", "1 forklift, 2 pallet jacks"],
+      ["Schedule", "PM priority (receiving AM)"],
+      ["Throughput", "~5 racks/day shipped"]
+    ]
+  },
+  offices: {
+    name: "Mezzanine Offices",
+    area: 300,
+    color: "var(--z-offices)",
+    category: "admin",
+    esd: false,
+    desc: "Second-floor mezzanine office with glass overlook to production floor (Gemba principle). Conference room, private offices, open workspace. Sound-isolated from factory.",
+    specs: [
+      ["Staff", "10-15 office personnel"],
+      ["Layout", "Open + 3 private offices"],
+      ["Conference", "1 room (10 seats)"],
+      ["Feature", "Glass overlook to floor"],
+      ["Philosophy", "Gemba visual management"],
+      ["Sound", "Acoustic isolation panels"]
+    ]
+  },
+  amenities: {
+    name: "Comedor & Restrooms",
+    area: 160,
+    color: "var(--z-amenities)",
+    category: "admin",
+    esd: false,
+    desc: "Dining area (130 m²) sized for 50-65 workers per NOM-001-STPS-2008. Full kitchen, refrigeration, drinking water. Restrooms with changing area for production staff.",
+    specs: [
+      ["Dining", "130 m² (65 workers)"],
+      ["Restrooms", "30 m² (M/F, changing)"],
+      ["Kitchen", "Hot water, refrigerator"],
+      ["Standard", "NOM-001-STPS-2008"],
+      ["Ventilation", "Independent HVAC"]
+    ]
+  },
+  training: {
+    name: "Training Room",
+    area: 60,
+    color: "var(--z-training)",
+    category: "admin",
+    esd: false,
+    desc: "Onboarding, safety training (NOM-STPS), ESD procedures, process training. Projector, tables, workstations. Also used for Kaizen events and continuous improvement.",
+    specs: [
+      ["Capacity", "15-20 seats"],
+      ["Equipment", "Projector, whiteboard"],
+      ["Training", "Safety, ESD, process"],
+      ["Frequency", "Weekly + onboarding"]
+    ]
+  },
+  toolcrib: {
+    name: "Tool Crib",
+    area: 80,
+    color: "var(--z-toolcrib)",
+    category: "support",
+    esd: false,
+    desc: "Central tool and spare parts repository. Badge-based checkout, barcode tracking. Modular drawer cabinets. Prevents duplicate purchases, reduces downtime.",
+    specs: [
+      ["Access", "Badge-based checkout"],
+      ["Tracking", "Barcode/RFID inventory"],
+      ["Storage", "Modular drawer cabinets"],
+      ["Attendant", "1 dedicated"]
+    ]
+  },
+  itmes: {
+    name: "IT / MES Server Room",
+    area: 40,
+    color: "var(--z-itmes)",
+    category: "support",
+    esd: false,
+    desc: "Manufacturing Execution System servers, network switches, plant data storage. Climate-controlled, UPS-backed. Structured cabling per TIA-568.",
+    specs: [
+      ["UPS", "10-25 kVA dedicated"],
+      ["HVAC", "Independent cooling"],
+      ["Fire", "Novec 1230 (small system)"],
+      ["Access", "Biometric lock"],
+      ["Standard", "TIA-568 cabling"]
+    ]
+  },
+  mechanical: {
+    name: "Mechanical / Utilities",
+    area: 160,
+    color: "var(--z-mech)",
+    category: "support",
+    esd: false,
+    desc: "Central utilities hub: main UPS (250 kVA), HVAC chillers, backup diesel generator, electrical distribution. Serves burn-in room and factory HVAC.",
+    specs: [
+      ["UPS", "250 kVA (burn-in primary)"],
+      ["Generator", "200+ kW diesel backup"],
+      ["HVAC", "Chillers for burn-in + factory"],
+      ["Electrical", "Main distribution panel"],
+      ["Compressed Air", "If needed for tools"]
+    ]
+  },
+  battery: {
+    name: "Battery Charging",
+    area: 50,
+    color: "var(--z-battery)",
+    category: "support",
+    esd: false,
+    desc: "Forklift and equipment charging station. Separate ventilated room to handle hydrogen gas. Acid-resistant concrete floor. Fire extinguishers (Class C).",
+    specs: [
+      ["Stations", "4-6 charging points"],
+      ["Ventilation", "Dedicated H2 exhaust"],
+      ["Floor", "Acid-resistant concrete"],
+      ["Safety", "Class C extinguisher"],
+      ["Access", "Restricted, trained only"]
+    ]
+  },
+  hazmat: {
+    name: "Hazmat Storage",
+    area: 40,
+    color: "var(--z-hazmat)",
+    category: "support",
+    esd: false,
+    desc: "Isolated storage for solvents, degreasers, contact cleaner, and chemical waste. Spill containment, eyewash station, secondary containment. SEMARNAT compliant.",
+    specs: [
+      ["Containment", "1.1× largest container"],
+      ["Safety", "Eyewash + safety shower"],
+      ["Ventilation", "External exhaust"],
+      ["Cabinets", "Locked flammable storage"],
+      ["Regulation", "SEMARNAT + STPS"]
+    ]
+  },
+  expansion: {
+    name: "Future Expansion",
+    area: 328,
+    color: "var(--z-expansion)",
+    category: "admin",
+    esd: false,
+    desc: "Reserved space for future capacity increase. Can accommodate additional box assembly stations, a second burn-in cell, or storage expansion.",
+    specs: [
+      ["Area", "174 m² available"],
+      ["Options", "Assembly, burn-in, or storage"],
+      ["Utilities", "Pre-routed for flexibility"]
+    ]
+  }
+};
+
+// Flow steps
+const flowSteps = [
+  { num: 1, name: "Receiving", esd: false },
+  { num: 2, name: "Raw Material Storage", esd: false },
+  { num: 3, name: "Kitting", esd: true },
+  { num: 4, name: "Box Assembly (30/day)", esd: true },
+  { num: 5, name: "Rack Assembly (5/day)", esd: true },
+  { num: 6, name: "Smoke Test", esd: true },
+  { num: "", name: "↳ Rework (if fail)", esd: true },
+  { num: 7, name: "Burn-in (12.9h)", esd: false },
+  { num: 8, name: "Quality Lab", esd: false },
+  { num: 9, name: "Packaging & Labels", esd: false },
+  { num: 10, name: "Finished Goods", esd: false },
+  { num: 11, name: "Shipping", esd: false }
+];
+
+function init() {
+  // Build zone lists
+  const prodList = document.getElementById('productionZones');
+  const suppList = document.getElementById('supportZones');
+  const adminList = document.getElementById('adminZones');
+
+  Object.entries(zones).forEach(([id, z]) => {
+    const target = z.category === 'production' ? prodList :
+                   z.category === 'support' ? suppList : adminList;
+    const item = document.createElement('div');
+    item.className = 'zone-item';
+    item.dataset.zone = id;
+    item.innerHTML = `
+      <div class="zone-dot" style="background:${z.color}"></div>
+      <span>${z.name}${z.esd ? ' ⚡' : ''}</span>
+      <span class="zone-area">${z.area} m²</span>
+    `;
+    item.addEventListener('click', () => selectZone(id));
+    item.addEventListener('mouseenter', () => highlightSvg(id, true));
+    item.addEventListener('mouseleave', () => highlightSvg(id, false));
+    target.appendChild(item);
+  });
+
+  // Build flow diagram
+  const flowDiv = document.getElementById('flowDiagram');
+  flowSteps.forEach((step, i) => {
+    if (i > 0) {
+      const arrow = document.createElement('div');
+      arrow.className = 'flow-arrow-down';
+      arrow.textContent = '↓';
+      flowDiv.appendChild(arrow);
+    }
+    const div = document.createElement('div');
+    div.className = 'flow-step';
+    div.innerHTML = `
+      ${step.num !== '' ? `<div class="flow-num">${step.num}</div>` : '<div style="width:18px"></div>'}
+      <span>${step.name}</span>
+      ${step.esd ? '<span class="flow-esd">ESD</span>' : ''}
+    `;
+    flowDiv.appendChild(div);
+  });
+
+  // SVG zone clicks
+  document.querySelectorAll('.zone-rect[data-zone]').forEach(rect => {
+    rect.addEventListener('click', () => selectZone(rect.dataset.zone));
+  });
+}
+
+function selectZone(id) {
+  const z = zones[id];
+  if (!z) return;
+
+  // Update detail panel
+  const panel = document.getElementById('detailPanel');
+  panel.classList.add('visible');
+  document.getElementById('detailTitle').textContent = z.name;
+  document.getElementById('detailDesc').textContent = z.desc;
+
+  const esdDiv = document.getElementById('detailEsd');
+  esdDiv.innerHTML = z.esd ? '<div class="esd-badge">⚡ ESD PROTECTED ZONE</div>' : '';
+
+  const specsList = document.getElementById('detailSpecs');
+  specsList.innerHTML = '';
+  z.specs.forEach(([label, value]) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<span>${label}</span><span>${value}</span>`;
+    specsList.appendChild(li);
+  });
+
+  // Highlight zone item
+  document.querySelectorAll('.zone-item').forEach(el => el.classList.remove('active'));
+  const activeItem = document.querySelector(`.zone-item[data-zone="${id}"]`);
+  if (activeItem) {
+    activeItem.classList.add('active');
+    activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  highlightSvg(id, true);
+}
+
+function highlightSvg(id, active) {
+  document.querySelectorAll('.zone-rect[data-zone]').forEach(rect => {
+    if (active && rect.dataset.zone !== id) {
+      rect.style.opacity = '0.2';
+    } else {
+      rect.style.opacity = '';
+    }
+  });
+}
+
+// Reset on background click
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.zone-rect') && !e.target.closest('.zone-item') && !e.target.closest('.detail-panel')) {
+    document.querySelectorAll('.zone-rect[data-zone]').forEach(r => r.style.opacity = '');
+    document.querySelectorAll('.zone-item').forEach(el => el.classList.remove('active'));
+    document.getElementById('detailPanel').classList.remove('visible');
+  }
+});
+
+init();
+</script>
+</body>
+</html>
