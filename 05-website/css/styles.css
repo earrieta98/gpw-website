@@ -689,6 +689,15 @@ p { margin-bottom: var(--space-md); }
 }
 
 /* ============================================
+   BREADCRUMB
+   ============================================ */
+.breadcrumb { font-size: 0.8rem; letter-spacing: 0.03em; margin-bottom: 0.75rem; }
+.breadcrumb__link { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+.breadcrumb__link:hover { color: rgba(255,255,255,0.75); }
+.breadcrumb__sep { color: rgba(255,255,255,0.25); margin: 0 0.4rem; }
+.breadcrumb__current { color: rgba(255,255,255,0.55); }
+
+/* ============================================
    HERO
    ============================================ */
 .hero {
