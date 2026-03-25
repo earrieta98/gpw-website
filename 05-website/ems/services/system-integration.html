@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="../../img/isotipo naranja.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Integration Services | Full Product Assembly Mexico | GPW</title>
+  <meta name="description" content="System integration from Monterrey — mechanical assembly, electrical subsystems, firmware loading, and system-level testing under one roof. NPI to production.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Trirong:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/styles.css">
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "System Integration Services",
+    "provider": {
+      "@type": "Organization",
+      "name": "Global Precision Works",
+      "alternateName": "GPW",
+      "url": "https://gpw-solutions.com"
+    },
+    "description": "Complete system integration combining mechanical structures, electrical subsystems, firmware loading, and system-level testing into finished products for U.S. OEMs.",
+    "areaServed": { "@type": "Country", "name": "US" },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "System Integration Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Integration Planning and DFM Review" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mechanical and Electrical Subsystem Assembly" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Firmware Loading and Configuration" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "System-Level Testing and Validation" } }
+      ]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is system integration in contract manufacturing?", "acceptedAnswer": { "@type": "Answer", "text": "System integration combines multiple mechanical, electrical, and electromechanical subsystems into a finished product. It includes structural assembly, component integration, cable routing, firmware loading, and system-level testing. GPW manages the full scope from NPI through production under one quality system in Monterrey." } },
+      { "@type": "Question", "name": "How is system integration different from box build assembly?", "acceptedAnswer": { "@type": "Answer", "text": "Box build assembles components into an enclosure. System integration goes further — it addresses subsystem interactions, firmware dependencies, and system-level validation. System integration ensures boards communicate, firmware matches hardware revisions, and the complete system performs under load." } },
+      { "@type": "Question", "name": "Does GPW offer firmware loading and configuration?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. GPW maintains version-controlled firmware repositories for each program. The loading protocol specifies which image goes on which board, the correct sequence, post-load verification, and configuration parameters. Serialized deployment with unique configuration per unit is available." } },
+      { "@type": "Question", "name": "How long does system integration NPI take?", "acceptedAnswer": { "@type": "Answer", "text": "Typical NPI for system integration programs runs 4-8 weeks from approved Integration Plan to first article completion. Complex programs with 10+ subsystems or custom test development may require additional time. GPW provides a detailed NPI timeline during the quoting process." } },
+      { "@type": "Question", "name": "What is included in a system integration quote?", "acceptedAnswer": { "@type": "Answer", "text": "A quote covers integration planning, mechanical and electrical assembly, firmware loading, system-level testing, documentation, and packaging. Component procurement is quoted separately based on the sourcing model. Submit drawings, BOM, and test requirements to request a quote." } },
+      { "@type": "Question", "name": "What certifications apply to system integration?", "acceptedAnswer": { "@type": "Answer", "text": "GPW is pursuing IPC-A-610, IPC-A-620, and ISO 9001 certifications. All integration processes already follow these workmanship standards. Industry-specific certifications such as AS9100 and IATF 16949 are pursued as customer programs require." } },
+      { "@type": "Question", "name": "Can GPW handle low-volume and high-volume integration programs?", "acceptedAnswer": { "@type": "Answer", "text": "GPW supports integration programs from prototype quantities through sustained production runs. The production floor accommodates dedicated integration lines that scale with program volume. The same quality system and integration methodology apply regardless of quantity." } }
+    ]
+  }
+  </script>
+
+  <!-- Page-specific styles — reuses service page patterns -->
+  <style>
+    /* Service page styles (shared pattern) */
+    .svc-hero { position: relative; padding: calc(var(--header-height) + var(--space-3xl)) 0 var(--space-4xl); background: linear-gradient(135deg, var(--teal-dark) 0%, var(--deep-blue) 50%, var(--teal) 100%); color: var(--white); overflow: hidden; }
+    .svc-hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse 60% 50% at 20% 80%, rgba(173,207,145,0.08) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 80% 20%, rgba(237,131,94,0.06) 0%, transparent 60%); pointer-events: none; }
+    .svc-hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+    .svc-hero .container { position: relative; z-index: 1; }
+    .svc-hero__inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3xl); align-items: center; }
+    @media (max-width: 900px) { .svc-hero__inner { grid-template-columns: 1fr; } }
+    .svc-hero h1 { color: var(--white); font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem); margin-bottom: var(--space-lg); }
+    .svc-hero__subtitle { font-size: var(--text-lg); line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: var(--space-xl); }
+    .svc-hero__copy { font-size: var(--text-base); color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: var(--space-2xl); }
+    .svc-hero__image { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+
+    .definition-section { padding: var(--space-4xl) 0; }
+    .definition-block-svc { background: var(--off-white); border-left: 4px solid var(--teal); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: var(--space-2xl); margin-bottom: var(--space-2xl); }
+    .definition-block-svc p { font-size: var(--text-lg); line-height: 1.7; color: var(--dark-gray); margin-bottom: 0; }
+    .key-chars { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm) var(--space-xl); margin: var(--space-xl) 0; }
+    @media (max-width: 600px) { .key-chars { grid-template-columns: 1fr; } }
+    .key-char { display: flex; align-items: flex-start; gap: var(--space-sm); font-size: var(--text-sm); color: var(--dark-gray); padding: var(--space-sm) 0; }
+    .key-char svg { width: 18px; height: 18px; color: var(--teal); flex-shrink: 0; margin-top: 2px; }
+    .example-block { background: var(--white); border: 1px solid var(--light-gray); border-radius: var(--radius-lg); padding: var(--space-2xl); margin: var(--space-2xl) 0; }
+    .example-block__label { font-family: var(--font-accent); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--coral); margin-bottom: var(--space-md); }
+    .example-block p { color: var(--dark-gray); line-height: 1.7; }
+    .why-matters { max-width: 780px; }
+    .why-matters p { color: var(--dark-gray); line-height: 1.7; }
+
+    .process-section { padding: var(--space-4xl) 0; background: var(--off-white); }
+    .process-intro { max-width: 720px; margin: 0 auto var(--space-3xl); text-align: center; }
+    .process-step { display: grid; grid-template-columns: 80px 1fr 1fr; gap: var(--space-2xl); align-items: start; margin-bottom: var(--space-3xl); padding-bottom: var(--space-3xl); border-bottom: 1px solid var(--light-gray); }
+    .process-step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    @media (max-width: 900px) { .process-step { grid-template-columns: 60px 1fr; } .process-step__image { grid-column: 1 / -1; } }
+    @media (max-width: 600px) { .process-step { grid-template-columns: 1fr; } .process-step__number { justify-self: start; } }
+    .process-step__number { width: 64px; height: 64px; border-radius: 50%; background: var(--white); border: 2px solid var(--teal); display: flex; align-items: center; justify-content: center; font-size: var(--text-2xl); font-weight: 900; color: var(--teal); flex-shrink: 0; }
+    .process-step__content h3 { font-size: var(--text-xl); margin-bottom: var(--space-sm); }
+    .process-step__content p { color: var(--dark-gray); line-height: 1.7; }
+    .process-step__outcome { background: var(--white); border-left: 3px solid var(--lime); padding: var(--space-md) var(--space-lg); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-top: var(--space-md); }
+    .process-step__outcome strong { color: var(--teal); font-size: var(--text-sm); }
+    .process-step__outcome p { font-size: var(--text-sm); margin-bottom: 0; }
+    .process-step__image { border-radius: var(--radius-lg); overflow: hidden; }
+
+    .mid-cta { padding: var(--space-3xl) 0; background: linear-gradient(135deg, var(--teal-dark), var(--deep-blue)); color: var(--white); text-align: center; }
+    .mid-cta h2 { color: var(--white); font-size: var(--text-3xl); margin-bottom: var(--space-md); }
+    .mid-cta p { color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto var(--space-xl); }
+
+    .industries-used { padding: var(--space-4xl) 0; }
+    .industries-used__header { text-align: center; margin-bottom: var(--space-3xl); }
+    .industries-used__header p { max-width: 680px; margin: 0 auto; color: var(--mid-gray); }
+    .ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); }
+    @media (max-width: 900px) { .ind-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .ind-grid { grid-template-columns: 1fr; } }
+    .ind-card { display: block; background: var(--white); border: 1px solid var(--light-gray); border-radius: var(--radius-lg); padding: var(--space-xl); transition: all var(--transition-base); text-decoration: none; }
+    .ind-card:hover { border-color: var(--teal); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .ind-card__name { font-size: var(--text-sm); font-weight: 700; color: var(--charcoal); margin-bottom: var(--space-xs); }
+    .ind-card__desc { font-size: var(--text-xs); color: var(--mid-gray); line-height: 1.5; }
+    .ind-card__arrow { width: 16px; height: 16px; color: var(--coral); margin-top: var(--space-sm); transition: transform var(--transition-base); }
+    .ind-card:hover .ind-card__arrow { transform: translateX(4px); }
+    .ind-note { text-align: center; margin-top: var(--space-2xl); font-size: var(--text-sm); color: var(--mid-gray); font-style: italic; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+
+    .capabilities { padding: var(--space-4xl) 0; background: var(--off-white); }
+    .capabilities__header { text-align: center; margin-bottom: var(--space-3xl); }
+    .cap-blocks { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-xl); margin-bottom: var(--space-3xl); }
+    @media (max-width: 900px) { .cap-blocks { grid-template-columns: 1fr; } }
+    .cap-block { background: var(--white); border-radius: var(--radius-lg); padding: var(--space-2xl); border: 1px solid var(--light-gray); }
+    .cap-block__title { font-family: var(--font-accent); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--coral); margin-bottom: var(--space-lg); }
+    .cap-block ul { list-style: none; }
+    .cap-block li { display: flex; align-items: flex-start; gap: var(--space-sm); font-size: var(--text-sm); color: var(--dark-gray); padding: var(--space-xs) 0; line-height: 1.5; }
+    .cap-block li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); flex-shrink: 0; margin-top: 7px; }
+
+    .comparison-table { overflow-x: auto; margin-top: var(--space-2xl); }
+    .comparison-table table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--light-gray); }
+    .comparison-table thead { background: var(--teal); color: var(--white); }
+    .comparison-table th { padding: var(--space-md) var(--space-lg); font-size: var(--text-sm); font-weight: 700; text-align: left; }
+    .comparison-table td { padding: var(--space-md) var(--space-lg); font-size: var(--text-sm); color: var(--dark-gray); border-bottom: 1px solid var(--warm-gray); line-height: 1.5; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table tbody tr:hover { background: rgba(35, 85, 90, 0.03); }
+    .comparison-table td:first-child { font-weight: 700; color: var(--charcoal); white-space: nowrap; }
+    .comparison-table td:last-child { color: var(--teal); font-weight: 600; }
+    .comparison-copy { max-width: 780px; margin-top: var(--space-2xl); }
+    .comparison-copy p { color: var(--dark-gray); line-height: 1.7; }
+
+    .final-cta { padding: var(--space-4xl) 0; background: linear-gradient(135deg, var(--teal-dark) 0%, var(--deep-blue) 100%); color: var(--white); text-align: center; }
+    .final-cta h2 { color: var(--white); margin-bottom: var(--space-md); }
+    .final-cta p { color: rgba(255,255,255,0.8); max-width: 620px; margin: 0 auto var(--space-xl); }
+    .final-cta__context { font-size: var(--text-sm); color: rgba(255,255,255,0.6); margin-top: var(--space-md); }
+    .final-cta__related { margin-top: var(--space-3xl); padding-top: var(--space-2xl); border-top: 1px solid rgba(255,255,255,0.15); }
+    .final-cta__related-label { font-family: var(--font-accent); font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: rgba(255,255,255,0.5); margin-bottom: var(--space-lg); }
+    .final-cta__related-links { display: flex; justify-content: center; gap: var(--space-xl); flex-wrap: wrap; }
+    .final-cta__related-links a { color: rgba(255,255,255,0.7); font-size: var(--text-sm); font-weight: 600; transition: color var(--transition-fast); }
+    .final-cta__related-links a:hover { color: var(--white); }
+    .final-cta__contact { margin-top: var(--space-xl); font-size: var(--text-sm); color: rgba(255,255,255,0.5); }
+    .final-cta__contact a { color: rgba(255,255,255,0.7); }
+    .final-cta__contact a:hover { color: var(--white); }
+
+    .svc-faq { padding: var(--space-4xl) 0; }
+    .svc-faq .faq__header { text-align: center; margin-bottom: var(--space-3xl); }
+    .svc-faq .faq-list { max-width: 780px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER — Level 2: EMS Nav ============ -->
+  <header class="header header--top" id="header">
+    <div class="header__inner">
+      <a href="../index.html" class="header__logo">
+        <img src="../../img/LOGO - 28.png" alt="Global Precision Works" class="header__logo-white">
+        <img src="../../img/LOGO - 1 .png" alt="Global Precision Works" class="header__logo-teal">
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      <nav class="nav" id="navMenu">
+        <a href="../index.html" class="nav__link">Home EMS</a>
+        <div class="nav__item">
+          <button class="nav__trigger">Services <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg></button>
+          <div class="nav__dropdown">
+            <div class="nav__dropdown-items">
+              <a href="box-build-assembly.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg></div><div><span class="nav__dropdown-title">Box Build Integration</span><span class="nav__dropdown-desc">BOM to finished unit — full mechanical + electrical</span></div></a>
+              <a href="cable-harness-assembly.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4"/></svg></div><div><span class="nav__dropdown-title">Cable &amp; Wire Harness</span><span class="nav__dropdown-desc">Custom harnesses built to print, every connection verified</span></div></a>
+              <a href="system-integration.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="8" y="14" width="8" height="8" rx="1"/><path d="M6 10v4h4M18 10v4h-4"/></svg></div><div><span class="nav__dropdown-title">System Integration</span><span class="nav__dropdown-desc">One team, one roof, one program</span></div></a>
+              <a href="testing-inspection.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div><span class="nav__dropdown-title">Testing &amp; QA</span><span class="nav__dropdown-desc">End-of-line functional testing, burn-in, inspection</span></div></a>
+              <a href="enclosure-cabinet-assembly.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="12" y1="2" x2="12" y2="10"/></svg></div><div><span class="nav__dropdown-title">Enclosure &amp; Cabinet</span><span class="nav__dropdown-desc">Rack-mount, panel, and cabinet builds</span></div></a>
+            </div>
+            <div class="nav__dropdown-footer">
+              <a href="index.html"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 10a8 8 0 1 1 16 0 8 8 0 0 1-16 0Zm6.39-2.908a.75.75 0 0 1 .766.027l3.5 2.25a.75.75 0 0 1 0 1.262l-3.5 2.25A.75.75 0 0 1 8 12.25v-4.5a.75.75 0 0 1 .39-.658Z" clip-rule="evenodd"/></svg> View All Services</a>
+              <a href="../request-quote.html"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 0 0 6.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 0 1 2.43 8.326 13.019 13.019 0 0 1 2 5V3.5Z" fill-rule="evenodd" clip-rule="evenodd"/></svg> Request a Quote</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav__item">
+          <button class="nav__trigger">Industries <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg></button>
+          <div class="nav__dropdown">
+            <div class="nav__dropdown-items">
+              <a href="../industries/industrial-equipment.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><div><span class="nav__dropdown-title">Industrial Equipment</span><span class="nav__dropdown-desc">Controls, sub-assemblies, light machinery</span></div></a>
+              <a href="../industries/telecom-hardware.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></div><div><span class="nav__dropdown-title">Telecommunications</span><span class="nav__dropdown-desc">Cabinets, modules, system-level hardware</span></div></a>
+              <a href="../industries/medical-devices.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"/><rect x="4" y="4" width="16" height="16" rx="4"/></svg></div><div><span class="nav__dropdown-title">Medical Devices</span><span class="nav__dropdown-desc">Controlled assembly, serialized traceability</span></div></a>
+              <a href="../industries/automotive.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M7 17l1-6h8l1 6"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/></svg></div><div><span class="nav__dropdown-title">Automotive</span><span class="nav__dropdown-desc">Sub-assemblies, fixtures, Tier 2 integration</span></div></a>
+              <a href="../industries/energy.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div><span class="nav__dropdown-title">Energy</span><span class="nav__dropdown-desc">Equipment cabinets, panel integration</span></div></a>
+              <a href="../industries/aerospace.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h4l2-4h8l2 4h4L12 2z"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div><div><span class="nav__dropdown-title">Aerospace</span><span class="nav__dropdown-desc">Full traceability, AS9100 pathway</span></div></a>
+              <a href="../industries/appliances-white-goods.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="6" y1="8" x2="18" y2="8"/><circle cx="12" cy="5" r="1.5"/></svg></div><div><span class="nav__dropdown-title">Appliances &amp; White Goods</span><span class="nav__dropdown-desc">High-volume assembly, rapid changeover</span></div></a>
+            </div>
+          </div>
+        </div>
+        <a href="../industries/ai-server-rack.html" class="nav__link">AI &amp; Server Rack</a>
+        <a href="../about.html" class="nav__link">About</a>
+        <a href="../request-quote.html" class="nav__link nav__link--cta">Request a Quote</a>
+      </nav>
+    </div>
+    <div class="nav-overlay" id="navOverlay"></div>
+  </header>
+
+  <!-- ============ SECTION 1: HERO ============ -->
+  <section class="svc-hero">
+    <div class="container">
+      <div class="svc-hero__inner">
+        <div>
+          <span class="label label--lime hero-reveal hero-reveal-delay-1">System Integration</span>
+          <h1 class="hero-reveal hero-reveal-delay-2">Mechanical Precision Meets Electrical&nbsp;Reliability</h1>
+          <p class="svc-hero__subtitle hero-reveal hero-reveal-delay-3">
+            Global Precision Works (GPW) brings together mechanical structures, electrical subsystems, cable routing, firmware, and system-level testing into a single production program — delivering fully validated products from Monterrey to your U.S.&nbsp;dock.
+          </p>
+          <p class="svc-hero__copy hero-reveal hero-reveal-delay-3">
+            A product with 6 PCBAs, 2 power supplies, 14 cable assemblies, and 200+ discrete components does not fail because one board was soldered incorrectly. It fails because the subsystems were not integrated correctly — a cable harness pinched during mechanical assembly, a firmware version loaded onto the wrong board revision, or a thermal management path blocked by poor component placement.
+          </p>
+          <div class="btn-group hero-reveal hero-reveal-delay-4">
+            <a href="../request-quote.html" class="btn btn--primary btn--lg">
+              Request a Quote
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="svc-hero__image hero-reveal hero-reveal-delay-4">
+          <div class="img-placeholder" style="min-height: 340px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            Photo: Multi-subsystem product being integrated — boards, cables, mechanical frame visible
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2: DEFINITION ============ -->
+  <section class="section definition-section">
+    <div class="container">
+      <div class="reveal">
+        <span class="label label--coral">Definition</span>
+        <div class="section__divider"></div>
+        <h2>What Is System Integration in Contract&nbsp;Manufacturing?</h2>
+      </div>
+
+      <div class="definition-block-svc reveal">
+        <p><strong>System integration</strong> in contract manufacturing is the process of combining multiple mechanical, electrical, and electromechanical subsystems into a single functional product — including structural assembly, component mounting, electrical interconnection, firmware loading, and system-level testing. Unlike board-level assembly (PCBA) or simple box build, system integration addresses the interactions between subsystems: how the power distribution feeds multiple boards, how the cooling system affects component placement, and how firmware versions must match specific hardware revisions.</p>
+      </div>
+
+      <div class="key-chars reveal">
+        <div class="key-char"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"/></svg> Combines 3 or more distinct subsystems (mechanical structure, electrical, cabling, firmware, thermal management)</div>
+        <div class="key-char"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"/></svg> Requires inter-subsystem validation — not just component-level testing</div>
+        <div class="key-char"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"/></svg> Includes firmware loading, configuration, and version-controlled software deployment</div>
+        <div class="key-char"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z"/></svg> Produces a complete, tested product ready for end-customer delivery</div>
+      </div>
+
+      <div class="example-block reveal">
+        <div class="example-block__label">Real-World Example</div>
+        <p>An industrial automation OEM sends GPW the mechanical frame, control boards, motor drive assemblies, cable harnesses, sensor packages, and firmware images for a production control unit. GPW can also source any or all of these components — through its own supplier network, the customer's approved vendors, or a combination of both. GPW assembles the mechanical frame, mounts the boards and drives, routes and terminates all cabling, loads the correct firmware to each controller, runs a 65-point functional test that validates subsystem communication, and ships a finished unit packaged to the customer's logistics specifications.</p>
+      </div>
+
+      <div class="why-matters reveal">
+        <h3>Why This Matters for OEMs</h3>
+        <p>System integration is not box build with extra steps. It is a fundamentally different engineering approach — one that considers the interactions between mechanical, electrical, and software subsystems from the first DFM review through final system-level validation. GPW operates as an assembly-first integrator: your program runs on a dedicated line in Monterrey, in the same timezone as your U.S. operations — available for real-time engineering collaboration without overnight email delays.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3: PROCESS ============ -->
+  <section class="process-section">
+    <div class="container">
+      <div class="process-intro reveal">
+        <span class="label label--coral">Our Process</span>
+        <div class="section__divider section__divider--center"></div>
+        <h2>From Requirements to Validated&nbsp;System</h2>
+        <p>Every system integration program at GPW follows a structured process. This is not a generic assembly workflow adapted for complex products. It is a purpose-built methodology designed for multi-subsystem products that require inter-discipline coordination.</p>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="process-step reveal">
+        <div class="process-step__number">1</div>
+        <div class="process-step__content">
+          <h3>Requirements Intake &amp; Integration&nbsp;Planning</h3>
+          <p>GPW's engineering team reviews the complete technical package: mechanical drawings, electrical schematics, cable routing diagrams, firmware specifications, and test requirements. The goal is to understand how the subsystems interact, not just how individual components are assembled.</p>
+          <p>This review produces an Integration Plan — a document that defines the assembly sequence, identifies subsystem interfaces, maps firmware version dependencies, and establishes the test protocol for system-level validation. If GPW's engineers identify design modifications that improve assembly efficiency or system reliability, those recommendations go back to the customer before the plan is finalized.</p>
+          <div class="process-step__outcome">
+            <strong>Outcome:</strong>
+            <p>A documented Integration Plan with assembly sequence, subsystem interface map, firmware deployment protocol, and procurement responsibilities.</p>
+          </div>
+        </div>
+        <div class="process-step__image">
+          <div class="img-placeholder img-placeholder--light" style="min-height: 220px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            Photo: Engineering team reviewing schematics and Integration Plan document
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="process-step reveal">
+        <div class="process-step__number">2</div>
+        <div class="process-step__content">
+          <h3>Mechanical &amp; Electrical Subsystem&nbsp;Assembly</h3>
+          <p>Mechanical and electrical assembly happen in coordinated stages — not sequentially. The mechanical frame goes up first, then electrical subsystems are integrated in the sequence defined by the Integration Plan. This staged approach prevents the most common integration failure: assembling mechanical structures that block access to electrical mounting points or cable routing paths.</p>
+          <p>Operators work from visual work instructions displayed at each station. Every fastener torque, cable termination, and component placement is documented. The work instructions reference specific drawing revisions and BOM line items — eliminating ambiguity about which hardware version is being built.</p>
+          <div class="process-step__outcome">
+            <strong>Outcome:</strong>
+            <p>A mechanically and electrically complete assembly, ready for firmware and system-level validation.</p>
+          </div>
+        </div>
+        <div class="process-step__image">
+          <div class="img-placeholder img-placeholder--light" style="min-height: 220px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            Photo: Staged mechanical-electrical build — boards being mounted into a frame
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="process-step reveal">
+        <div class="process-step__number">3</div>
+        <div class="process-step__content">
+          <h3>Firmware Loading &amp;&nbsp;Configuration</h3>
+          <p>Firmware loading in a multi-board system is not a single-step process. Each controller, processor, or programmable device may require a different firmware image, a specific loading sequence, and configuration parameters that depend on the hardware revision and the end-customer's requirements.</p>
+          <p>GPW maintains version-controlled firmware repositories for each program. The loading protocol specifies which firmware version goes on which board, the correct loading sequence, post-load verification checks, and configuration parameters. Firmware mismatches — loading Rev 2.1 firmware onto a Rev 3.0 board — are caught by the protocol before the system reaches testing.</p>
+          <p>For programs that require it, GPW supports serialized firmware deployment: each unit receives a unique configuration tied to its serial number, logged in the production record.</p>
+          <div class="process-step__outcome">
+            <strong>Outcome:</strong>
+            <p>Every board in the system carries the correct firmware version, verified and documented.</p>
+          </div>
+        </div>
+        <div class="process-step__image">
+          <div class="img-placeholder img-placeholder--light" style="min-height: 220px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            Photo: Technician loading firmware via programming station, version verification on screen
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="process-step reveal">
+        <div class="process-step__number">4</div>
+        <div class="process-step__content">
+          <h3>System-Level Testing &amp;&nbsp;Validation</h3>
+          <p>System-level testing validates what component-level testing cannot: that the subsystems work together as designed. A board that passes its own functional test may fail when communicating with other boards through the backplane. A cable harness that tests clean on a continuity checker may introduce noise when routed next to a high-frequency signal path.</p>
+          <p>GPW designs test protocols specific to each product. The test plan covers power sequencing, subsystem communication verification, functional performance under load, thermal behavior, and safety compliance. For programs that require it, GPW runs burn-in testing under sustained load to identify early-life failures before the product ships.</p>
+          <p>If a unit fails any test, technicians route it to a dedicated diagnostic station. The failure is analyzed at the system level — not just the component level — because integration failures often present symptoms on one subsystem while originating in another.</p>
+          <div class="process-step__outcome">
+            <strong>Outcome:</strong>
+            <p>A fully validated system with documented test results for every functional parameter.</p>
+          </div>
+        </div>
+        <div class="process-step__image">
+          <div class="img-placeholder img-placeholder--light" style="min-height: 220px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            Photo: System under test — cables connected to test equipment, multiple screens showing results
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="process-step reveal">
+        <div class="process-step__number">5</div>
+        <div class="process-step__content">
+          <h3>Final Inspection, Packaging &amp;&nbsp;Shipment</h3>
+          <p>The final stage covers cosmetic inspection, labeling, serialization, and packaging. GPW configures packaging for each program: ESD-safe materials for sensitive electronics, custom foam inserts for shock protection during transit, multi-unit palletization for volume shipments, and customer-branded packaging when required.</p>
+          <p>USMCA-compliant documentation ensures duty-free border crossing for qualifying products. For programs requiring direct-to-customer shipment, GPW coordinates logistics from Monterrey to U.S. destinations, with transit times of 1-3 days to major U.S. markets.</p>
+          <div class="process-step__outcome">
+            <strong>Outcome:</strong>
+            <p>Finished systems arrive at your dock ready for deployment — tested, documented, and packaged to your specification.</p>
+          </div>
+        </div>
+        <div class="process-step__image">
+          <div class="img-placeholder img-placeholder--light" style="min-height: 220px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            Photo: Finished integrated systems packaged for shipment — foam inserts, palletization
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MID-PAGE CTA ============ -->
+  <section class="mid-cta">
+    <div class="container reveal">
+      <h2>Your Technical Package. Our Integration&nbsp;Expertise.<br>One Validated&nbsp;System.</h2>
+      <p>Submit your mechanical drawings, electrical schematics, BOM, and test requirements. GPW's engineering team responds within 2 business days with an Integration Plan outline and preliminary timeline.</p>
+      <a href="../request-quote.html" class="btn btn--primary btn--lg">
+        Request a Quote
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4: INDUSTRIES ============ -->
+  <section class="section industries-used">
+    <div class="container">
+      <div class="industries-used__header reveal">
+        <span class="label label--coral">Multi-Vertical Capability</span>
+        <div class="section__divider section__divider--center"></div>
+        <h2>Industries That Use System&nbsp;Integration</h2>
+        <p>System integration is the most complex service GPW offers. It applies wherever a product combines multiple subsystems that must function together — not just sit inside the same enclosure.</p>
+      </div>
+
+      <div class="ind-grid">
+        <a href="../industries/ai-server-rack.html" class="ind-card reveal reveal-delay-1">
+          <div class="ind-card__name">AI &amp; Server Rack Assembly</div>
+          <div class="ind-card__desc">Compute boards, power distribution, cooling systems, cable assemblies, and BMC firmware integrated into rack-ready configurations.</div>
+          <svg class="ind-card__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="../industries/telecom-hardware.html" class="ind-card reveal reveal-delay-2">
+          <div class="ind-card__name">Telecommunications</div>
+          <div class="ind-card__desc">Cabinet-level integration with network management firmware and multi-board communication validation.</div>
+          <svg class="ind-card__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="../industries/medical-devices.html" class="ind-card reveal reveal-delay-3">
+          <div class="ind-card__name">Medical Devices &amp; Equipment</div>
+          <div class="ind-card__desc">Controlled integration environments with FDA-aligned documentation and serialized build records.</div>
+          <svg class="ind-card__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="../industries/automotive.html" class="ind-card reveal reveal-delay-4">
+          <div class="ind-card__name">Automotive</div>
+          <div class="ind-card__desc">Sub-assembly integration with PPAP documentation and IATF-aligned processes.</div>
+          <svg class="ind-card__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="../industries/industrial-equipment.html" class="ind-card reveal reveal-delay-5">
+          <div class="ind-card__name">Industrial Equipment</div>
+          <div class="ind-card__desc">Production control units, motor drives, and automation controllers with full firmware deployment and functional testing.</div>
+          <svg class="ind-card__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="../industries/energy.html" class="ind-card reveal reveal-delay-6">
+          <div class="ind-card__name">Energy</div>
+          <div class="ind-card__desc">Power management cabinets and control panels with Hi-Pot testing and high-voltage/low-voltage subsystem routing.</div>
+          <svg class="ind-card__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="../industries/aerospace.html" class="ind-card reveal reveal-delay-7">
+          <div class="ind-card__name">Aerospace</div>
+          <div class="ind-card__desc">Avionics sub-systems with full traceability, AS9100-aligned procedures, and complete audit trails.</div>
+          <svg class="ind-card__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="../industries/appliances-white-goods.html" class="ind-card reveal reveal-delay-8">
+          <div class="ind-card__name">Appliances &amp; White Goods</div>
+          <div class="ind-card__desc">Consumer-facing product integration with cosmetic quality standards and high-volume production lines.</div>
+          <svg class="ind-card__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+
+      <p class="ind-note reveal">The same integration methodology applies across all verticals — the compliance requirements and test protocols adjust to each industry's standards. Multi-vertical expertise means solutions developed for aerospace traceability improve the quality baseline for industrial equipment programs, and firmware management protocols from AI server builds strengthen every integration line.</p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5: CAPABILITIES ============ -->
+  <section class="capabilities">
+    <div class="container">
+      <div class="capabilities__header reveal">
+        <span class="label label--coral">Specifications</span>
+        <div class="section__divider section__divider--center"></div>
+        <h2>What Does GPW's System Integration Capability&nbsp;Include?</h2>
+      </div>
+
+      <div class="cap-blocks">
+        <div class="cap-block reveal reveal-delay-1">
+          <div class="cap-block__title">Integration Scope</div>
+          <ul>
+            <li>Products ranging from 3 to 20+ subsystems per unit</li>
+            <li>Multi-board systems with up to 12 PCBAs per assembly</li>
+            <li>Cable assemblies from AWG 30 signal wiring to AWG 4 power distribution</li>
+            <li>Firmware loading across multiple controller architectures (ARM, x86, FPGA)</li>
+            <li>System-level test protocols with 20 to 100+ test points per unit</li>
+          </ul>
+        </div>
+        <div class="cap-block reveal reveal-delay-2">
+          <div class="cap-block__title">Quality &amp; Documentation</div>
+          <ul>
+            <li>IPC-A-610 and IPC-A-620 workmanship standards (certifications in progress)</li>
+            <li>Serialized build records with full component traceability</li>
+            <li>Integration-specific quality gates at each subsystem handoff</li>
+            <li>Documented test results archived per unit serial number</li>
+            <li>ISO 9001 certification in progress; AS9100 and IATF 16949 pursued per program</li>
+          </ul>
+        </div>
+        <div class="cap-block reveal reveal-delay-3">
+          <div class="cap-block__title">Procurement Flexibility</div>
+          <ul>
+            <li>GPW-sourced components through established supplier network</li>
+            <li>Customer-directed procurement through approved vendor lists</li>
+            <li>Customer-furnished materials with incoming inspection</li>
+            <li>Hybrid models combining all three approaches per BOM line item</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="reveal">
+        <h3 style="text-align: center; margin-bottom: var(--space-xl);">GPW vs. Typical PCBA-Centric EMS</h3>
+        <div class="comparison-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Aspect</th>
+                <th>Typical PCBA-Centric EMS</th>
+                <th>GPW (Assembly-First)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Integration planning</td>
+                <td>Generic assembly work instructions</td>
+                <td>Dedicated Integration Plan per product</td>
+              </tr>
+              <tr>
+                <td>Firmware management</td>
+                <td>Manual firmware loading, limited version tracking</td>
+                <td>Version-controlled repository with per-unit deployment records</td>
+              </tr>
+              <tr>
+                <td>Testing scope</td>
+                <td>Component-level testing only; system test by customer</td>
+                <td>System-level validation across all subsystems</td>
+              </tr>
+              <tr>
+                <td>Engineering focus</td>
+                <td>Shared engineers across SMT lines and assembly</td>
+                <td>Full-time integration engineers assigned to your program</td>
+              </tr>
+              <tr>
+                <td>Subsystem coordination</td>
+                <td>Sequential: build mechanical, then wire, then test</td>
+                <td>Staged mechanical-electrical build sequence</td>
+              </tr>
+              <tr>
+                <td>Failure analysis</td>
+                <td>Component-level troubleshooting; integration issues returned to customer</td>
+                <td>System-level root cause analysis across subsystems</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="comparison-copy reveal">
+        <p>The difference comes down to design intent. A PCBA-centric provider treats integration as an add-on to its board fabrication business. GPW treats integration as the core discipline. The engineering team, production floor layout, and quality systems are organized around building complete products, not individual boards. When an issue surfaces at system test, the same engineers who designed the integration sequence analyze the failure, trace it to the root cause, and implement the corrective action — all within the same facility, on the same shift.</p>
+        <p>System integration programs at GPW draw on the full multi-vertical expertise of the facility. <a href="cable-harness-assembly.html">Cable and wire harness assemblies</a> built to IPC-A-620 standards feed directly into the integration line. <a href="testing-inspection.html">End-of-line testing and inspection</a> follows protocols engineered for the specific product. <a href="enclosure-cabinet-assembly.html">Enclosure and cabinet assembly</a> provides the mechanical structures that house integrated subsystems. Every supporting service operates under the same roof, the same quality system, and the same program management.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 6: FAQ ============ -->
+  <section class="svc-faq">
+    <div class="container">
+      <div class="faq__header reveal">
+        <span class="label label--coral">Frequently Asked Questions</span>
+        <div class="section__divider section__divider--center"></div>
+        <h2>System Integration FAQ</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary class="faq-item__question">What is system integration in contract manufacturing?</summary>
+          <div class="faq-item__answer">
+            <p>System integration combines multiple mechanical, electrical, and electromechanical subsystems into a finished product. It includes structural assembly, component integration, cable routing, firmware loading, and system-level testing. GPW manages the full scope from NPI through production under one quality system in Monterrey.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal reveal-delay-1">
+          <summary class="faq-item__question">How is system integration different from box build assembly?</summary>
+          <div class="faq-item__answer">
+            <p><a href="box-build-assembly.html">Box build</a> assembles components into an enclosure. System integration goes further — it addresses subsystem interactions, firmware dependencies, and system-level validation. A box build puts boards in a chassis. System integration ensures those boards communicate, the firmware matches the hardware revision, and the complete system performs under load.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal reveal-delay-2">
+          <summary class="faq-item__question">Does GPW offer firmware loading and configuration?</summary>
+          <div class="faq-item__answer">
+            <p>Yes. GPW maintains version-controlled firmware repositories for each program. The loading protocol specifies which image goes on which board, the correct sequence, post-load verification, and configuration parameters. Serialized deployment — unique configuration per unit serial number — is available for programs that require it.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal reveal-delay-3">
+          <summary class="faq-item__question">How long does system integration NPI take?</summary>
+          <div class="faq-item__answer">
+            <p>Typical NPI for system integration programs runs 4-8 weeks from approved Integration Plan to first article completion. Complex programs with 10+ subsystems or custom test development may require additional time. GPW provides a detailed NPI timeline during the quoting process.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal reveal-delay-4">
+          <summary class="faq-item__question">What is included in a system integration quote?</summary>
+          <div class="faq-item__answer">
+            <p>A quote covers integration planning, mechanical and electrical assembly, firmware loading, system-level testing, documentation, and packaging. Component procurement is quoted separately based on the sourcing model — GPW-sourced, customer-directed, or customer-furnished. Submit your drawings, BOM, and test requirements to <a href="../request-quote.html">request a quote</a>.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal reveal-delay-5">
+          <summary class="faq-item__question">What certifications apply to system integration?</summary>
+          <div class="faq-item__answer">
+            <p>GPW is pursuing IPC-A-610 (electronic assembly), IPC-A-620 (cable and wire harness), and ISO 9001 certifications. All integration processes already follow these workmanship standards. Industry-specific certifications — AS9100 for aerospace, IATF 16949 for automotive — are pursued as customer programs require.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal reveal-delay-6">
+          <summary class="faq-item__question">Can GPW handle low-volume and high-volume integration programs?</summary>
+          <div class="faq-item__answer">
+            <p>GPW supports integration programs from prototype quantities through sustained production runs. The production floor accommodates dedicated integration lines that scale with your program volume. Whether you need 10 units for qualification or 500 units per month for production, the same quality system and integration methodology apply.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 7: FINAL CTA ============ -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="reveal">
+        <span class="label label--lime">Get Started</span>
+        <div class="section__divider section__divider--center"></div>
+        <h2>Start Your System Integration Program</h2>
+        <p>System integration requires detailed planning — and that planning starts with your technical package. Submit your mechanical drawings, electrical schematics, BOM, firmware specifications, and test requirements. GPW's engineering team reviews every program and responds within 2 business days with an Integration Plan outline and preliminary timeline.</p>
+        <a href="../request-quote.html" class="btn btn--primary btn--lg">
+          Request a Quote
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <p class="final-cta__context">No minimum order quantities. Programs from prototype through production volume. Engineered for your timeline.</p>
+      </div>
+
+      <div class="final-cta__related reveal">
+        <div class="final-cta__related-label">Related Services</div>
+        <div class="final-cta__related-links">
+          <a href="box-build-assembly.html">Box Build Assembly</a>
+          <a href="cable-harness-assembly.html">Cable &amp; Wire Harness</a>
+          <a href="testing-inspection.html">Testing &amp; QA</a>
+          <a href="enclosure-cabinet-assembly.html">Enclosure &amp; Cabinet</a>
+          <a href="index.html">All Services</a>
+        </div>
+      </div>
+
+      <div class="final-cta__contact reveal">
+        <a href="mailto:rfq@gpw-solutions.com">rfq@gpw-solutions.com</a> &middot; +52 (81) XXXX-XXXX
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="../../index.html" class="footer__logo"><img src="../../img/LOGO - 28.png" alt="Global Precision Works"></a>
+          <p class="footer__desc">Global Precision Works — precision manufacturing and electromechanical assembly from Monterrey, Mexico. Two divisions, one standard of excellence.</p>
+          <div class="footer__contact-line">Monterrey, Nuevo Le&oacute;n, Mexico<br><a href="mailto:info@gpw-solutions.com">info@gpw-solutions.com</a></div>
+        </div>
+        <div>
+          <div class="footer__heading">EMS Services</div>
+          <div class="footer__links">
+            <a href="box-build-assembly.html">Box Build Integration</a>
+            <a href="cable-harness-assembly.html">Cable &amp; Wire Harness</a>
+            <a href="system-integration.html">System Integration</a>
+            <a href="testing-inspection.html">Testing &amp; QA</a>
+            <a href="enclosure-cabinet-assembly.html">Enclosure &amp; Cabinet</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Industries</div>
+          <div class="footer__links">
+            <a href="../industries/ai-server-rack.html">AI &amp; Server Rack</a>
+            <a href="../industries/industrial-equipment.html">Industrial Equipment</a>
+            <a href="../industries/telecom-hardware.html">Telecommunications</a>
+            <a href="../industries/medical-devices.html">Medical Devices</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Get Started</div>
+          <div class="footer__links">
+            <a href="../request-quote.html">Request a Quote</a>
+            <a href="../about.html">About EMS Division</a>
+            <a href="../../index.html">GPW Corporate</a>
+            <a href="mailto:info@gpw-solutions.com">Email Us</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Global Precision Works. All rights reserved.</span>
+        <div class="footer__legal">
+          <a href="../../privacy-policy.html">Privacy Policy</a>
+          <a href="../../terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

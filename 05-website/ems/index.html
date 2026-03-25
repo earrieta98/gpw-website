@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="../img/isotipo naranja.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GPW | Electromechanical Assembly Services in Monterrey, Mexico</title>
   <meta name="description" content="Global Precision Works delivers electromechanical assembly for U.S. OEMs — box build, cable harness, system integration, and testing from Monterrey. Request a quote.">
@@ -19,7 +20,7 @@
   <!-- ============ HEADER — Level 2: EMS Nav ============ -->
   <header class="header header--top" id="header">
     <div class="header__inner">
-      <a href="/ems/" class="header__logo">
+      <a href="index.html" class="header__logo">
         <img src="../img/LOGO - 28.png" alt="Global Precision Works" class="header__logo-white">
         <img src="../img/LOGO - 1 .png" alt="Global Precision Works" class="header__logo-teal">
       </a>
@@ -31,64 +32,151 @@
       </button>
 
       <nav class="nav" id="navMenu">
-        <a href="/ems/" class="nav__link nav__link--active">Home EMS</a>
+        <a href="index.html" class="nav__link nav__link--active">Home EMS</a>
 
         <div class="nav__item">
-          <a href="/ems/services/" class="nav__link">Services</a>
+          <button class="nav__trigger">
+            Services
+            <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+          </button>
           <div class="nav__dropdown">
-            <a href="/ems/services/box-build-assembly/">
-              <div>Box Build Integration</div>
-              <span class="dropdown-label">BOM to finished unit</span>
-            </a>
-            <a href="/ems/services/cable-harness-assembly/">
-              <div>Cable &amp; Wire Harness</div>
-              <span class="dropdown-label">Custom harnesses built to print</span>
-            </a>
-            <a href="/ems/services/system-integration/">
-              <div>System Integration</div>
-              <span class="dropdown-label">Full assembly, one roof</span>
-            </a>
-            <a href="/ems/services/testing-inspection/">
-              <div>Testing &amp; QA</div>
-              <span class="dropdown-label">End-of-line functional testing</span>
-            </a>
-            <a href="/ems/services/enclosure-cabinet-assembly/">
-              <div>Enclosure &amp; Cabinet</div>
-              <span class="dropdown-label">Rack, panel, cabinet builds</span>
-            </a>
+            <div class="nav__dropdown-items">
+              <a href="services/box-build-assembly.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Box Build Integration</span>
+                  <span class="nav__dropdown-desc">BOM to finished unit — full mechanical + electrical</span>
+                </div>
+              </a>
+              <a href="services/cable-harness-assembly.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Cable &amp; Wire Harness</span>
+                  <span class="nav__dropdown-desc">Custom harnesses built to print, every connection verified</span>
+                </div>
+              </a>
+              <a href="services/system-integration.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="8" y="14" width="8" height="8" rx="1"/><path d="M6 10v4h4M18 10v4h-4"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">System Integration</span>
+                  <span class="nav__dropdown-desc">One team, one roof, one program</span>
+                </div>
+              </a>
+              <a href="services/testing-inspection.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Testing &amp; QA</span>
+                  <span class="nav__dropdown-desc">End-of-line functional testing, burn-in, inspection</span>
+                </div>
+              </a>
+              <a href="services/enclosure-cabinet-assembly.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="12" y1="2" x2="12" y2="10"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Enclosure &amp; Cabinet</span>
+                  <span class="nav__dropdown-desc">Rack-mount, panel, and cabinet builds</span>
+                </div>
+              </a>
+            </div>
+            <div class="nav__dropdown-footer">
+              <a href="services/index.html">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 10a8 8 0 1 1 16 0 8 8 0 0 1-16 0Zm6.39-2.908a.75.75 0 0 1 .766.027l3.5 2.25a.75.75 0 0 1 0 1.262l-3.5 2.25A.75.75 0 0 1 8 12.25v-4.5a.75.75 0 0 1 .39-.658Z" clip-rule="evenodd"/></svg>
+                View All Services
+              </a>
+              <a href="request-quote.html">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 0 0 6.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 0 1 2.43 8.326 13.019 13.019 0 0 1 2 5V3.5Z" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+                Request a Quote
+              </a>
+            </div>
           </div>
         </div>
 
         <div class="nav__item">
-          <a href="/ems/industries/" class="nav__link">Industries</a>
+          <button class="nav__trigger">
+            Industries
+            <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+          </button>
           <div class="nav__dropdown">
-            <a href="/ems/industries/industrial-equipment/">
-              <div>Industrial Equipment</div>
-            </a>
-            <a href="/ems/industries/telecom-hardware/">
-              <div>Telecommunications</div>
-            </a>
-            <a href="/ems/industries/medical-devices/">
-              <div>Medical Devices</div>
-            </a>
-            <a href="/ems/industries/automotive/">
-              <div>Automotive</div>
-            </a>
-            <a href="/ems/industries/energy/">
-              <div>Energy</div>
-            </a>
-            <a href="/ems/industries/aerospace/">
-              <div>Aerospace</div>
-            </a>
-            <a href="/ems/industries/appliances-white-goods/">
-              <div>Appliances &amp; White Goods</div>
-            </a>
+            <div class="nav__dropdown-items">
+              <a href="industries/industrial-equipment.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Industrial Equipment</span>
+                  <span class="nav__dropdown-desc">Controls, sub-assemblies, light machinery</span>
+                </div>
+              </a>
+              <a href="industries/telecom-hardware.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Telecommunications</span>
+                  <span class="nav__dropdown-desc">Cabinets, modules, system-level hardware</span>
+                </div>
+              </a>
+              <a href="industries/medical-devices.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"/><rect x="4" y="4" width="16" height="16" rx="4"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Medical Devices</span>
+                  <span class="nav__dropdown-desc">Controlled assembly, serialized traceability</span>
+                </div>
+              </a>
+              <a href="industries/automotive.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M7 17l1-6h8l1 6"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Automotive</span>
+                  <span class="nav__dropdown-desc">Sub-assemblies, fixtures, Tier 2 integration</span>
+                </div>
+              </a>
+              <a href="industries/energy.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Energy</span>
+                  <span class="nav__dropdown-desc">Equipment cabinets, panel integration</span>
+                </div>
+              </a>
+              <a href="industries/aerospace.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h4l2-4h8l2 4h4L12 2z"/><line x1="8" y1="16" x2="16" y2="16"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Aerospace</span>
+                  <span class="nav__dropdown-desc">Full traceability, AS9100 pathway</span>
+                </div>
+              </a>
+              <a href="industries/appliances-white-goods.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="6" y1="8" x2="18" y2="8"/><circle cx="12" cy="5" r="1.5"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Appliances &amp; White Goods</span>
+                  <span class="nav__dropdown-desc">High-volume assembly, rapid changeover</span>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
 
-        <a href="/ems/industries/ai-server-rack/" class="nav__link">AI &amp; Server Rack</a>
-        <a href="/ems/about/" class="nav__link">Capabilities</a>
-        <a href="/ems/request-quote/" class="nav__link nav__link--cta">Request a Quote</a>
+        <a href="industries/ai-server-rack.html" class="nav__link">AI &amp; Server Rack</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="request-quote.html" class="nav__link nav__link--cta">Request a Quote</a>
       </nav>
     </div>
     <div class="nav-overlay" id="navOverlay"></div>
@@ -107,7 +195,7 @@
           GPW integrates mechanical, electrical, and cabling into finished products — tested, packaged, and shipped from Monterrey to your dock in days.
         </p>
         <div class="btn-group hero-reveal hero-reveal-delay-4">
-          <a href="#services" class="btn btn--interactive btn--lg">
+          <a href="services/index.html" class="btn btn--interactive btn--lg">
             <span class="btn__text">Explore Our Services</span>
             <span class="btn__hover">
               <span>Explore Our Services</span>
@@ -115,7 +203,7 @@
             </span>
             <span class="btn__circle"></span>
           </a>
-          <a href="/ems/request-quote/" class="btn btn--interactive btn--interactive-outline btn--lg">
+          <a href="request-quote.html" class="btn btn--interactive btn--interactive-outline btn--lg">
             <span class="btn__text">Request a Quote</span>
             <span class="btn__hover">
               <span>Request a Quote</span>
@@ -185,7 +273,7 @@
             <h3>Box Build Integration</h3>
             <p class="service-row__subtitle">From BOM to Finished Unit</p>
             <p>Your product is more than a board. It is a chassis with components mounted inside, cables routed through, and firmware loaded onto. GPW handles the full box build — mechanical assembly, electrical integration, cabling, and testing — delivering a finished product, not a collection of parts.</p>
-            <a href="/ems/services/box-build-assembly/" class="service-row__link">
+            <a href="services/box-build-assembly.html" class="service-row__link">
               Explore Box Build Assembly
               <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
@@ -205,7 +293,7 @@
             <h3>Cable &amp; Wire Harness Assembly</h3>
             <p class="service-row__subtitle">Every Connection Verified</p>
             <p>Every electromechanical product depends on cables. GPW builds custom cable and wire harnesses to print — from simple power leads to complex multi-conductor harnesses with hundreds of termination points. We test every harness for continuity, insulation resistance, and hi-pot before it moves to integration.</p>
-            <a href="/ems/services/cable-harness-assembly/" class="service-row__link">
+            <a href="services/cable-harness-assembly.html" class="service-row__link">
               Explore Cable &amp; Harness Assembly
               <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
@@ -225,7 +313,7 @@
             <h3>System Integration</h3>
             <p class="service-row__subtitle">One Team, One Roof, One Program</p>
             <p>System integration is where individual sub-assemblies become a working product. GPW manages the full integration sequence: mechanical structure, component mounting, cable routing, board installation, firmware loading, and final configuration.</p>
-            <a href="/ems/services/system-integration/" class="service-row__link">
+            <a href="services/system-integration.html" class="service-row__link">
               Explore System Integration
               <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
@@ -245,7 +333,7 @@
             <h3>Testing &amp; Quality Assurance</h3>
             <p class="service-row__subtitle">Every Unit Tested Before It Ships</p>
             <p>Testing is built into the process, not bolted on at the end. GPW runs end-of-line functional testing, burn-in, thermal validation, and visual inspection on every unit before it ships. Every test result is documented, traceable, and available for your quality team's review.</p>
-            <a href="/ems/services/testing-inspection/" class="service-row__link">
+            <a href="services/testing-inspection.html" class="service-row__link">
               Explore Testing &amp; Inspection
               <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
@@ -265,7 +353,7 @@
             <h3>Enclosure &amp; Cabinet Assembly</h3>
             <p class="service-row__subtitle">Built for Density, Wired for Performance</p>
             <p>Telecom cabinets. Energy distribution panels. Server racks. Industrial control enclosures. GPW assembles these high-density builds with the cable management, thermal considerations, and access requirements each application demands.</p>
-            <a href="/ems/services/enclosure-cabinet-assembly/" class="service-row__link">
+            <a href="services/enclosure-cabinet-assembly.html" class="service-row__link">
               Explore Enclosure &amp; Cabinet Assembly
               <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
@@ -292,7 +380,7 @@
       </div>
 
       <div class="industry-grid">
-        <a href="/ems/industries/ai-server-rack/" class="industry-card reveal reveal-delay-1">
+        <a href="industries/ai-server-rack.html" class="industry-card reveal reveal-delay-1">
           <div class="industry-card__icon">
             <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="8" y="4" width="28" height="36" rx="2"/>
@@ -309,7 +397,7 @@
           <svg class="industry-card__arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
         </a>
 
-        <a href="/ems/industries/industrial-equipment/" class="industry-card reveal reveal-delay-2">
+        <a href="industries/industrial-equipment.html" class="industry-card reveal reveal-delay-2">
           <div class="industry-card__icon">
             <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="22" cy="22" r="8"/>
@@ -322,7 +410,7 @@
           <svg class="industry-card__arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
         </a>
 
-        <a href="/ems/industries/telecom-hardware/" class="industry-card reveal reveal-delay-3">
+        <a href="industries/telecom-hardware.html" class="industry-card reveal reveal-delay-3">
           <div class="industry-card__icon">
             <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 30a14 14 0 0 1 20 0"/>
@@ -337,7 +425,7 @@
           <svg class="industry-card__arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
         </a>
 
-        <a href="/ems/industries/medical-devices/" class="industry-card reveal reveal-delay-4">
+        <a href="industries/medical-devices.html" class="industry-card reveal reveal-delay-4">
           <div class="industry-card__icon">
             <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 10v24M10 22h24"/>
@@ -349,7 +437,7 @@
           <svg class="industry-card__arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
         </a>
 
-        <a href="/ems/industries/automotive/" class="industry-card reveal reveal-delay-5">
+        <a href="industries/automotive.html" class="industry-card reveal reveal-delay-5">
           <div class="industry-card__icon">
             <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M8 28h28"/>
@@ -365,7 +453,7 @@
           <svg class="industry-card__arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
         </a>
 
-        <a href="/ems/industries/energy/" class="industry-card reveal reveal-delay-6">
+        <a href="industries/energy.html" class="industry-card reveal reveal-delay-6">
           <div class="industry-card__icon">
             <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M24 6L14 24h8l-2 14L32 20h-8l2-14z"/>
@@ -376,7 +464,7 @@
           <svg class="industry-card__arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
         </a>
 
-        <a href="/ems/industries/aerospace/" class="industry-card reveal reveal-delay-7">
+        <a href="industries/aerospace.html" class="industry-card reveal reveal-delay-7">
           <div class="industry-card__icon">
             <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 6L8 34h6l2-4h12l2 4h6L22 6z"/>
@@ -389,7 +477,7 @@
           <svg class="industry-card__arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg>
         </a>
 
-        <a href="/ems/industries/appliances-white-goods/" class="industry-card reveal reveal-delay-8">
+        <a href="industries/appliances-white-goods.html" class="industry-card reveal reveal-delay-8">
           <div class="industry-card__icon">
             <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="10" y="6" width="24" height="32" rx="2"/>
@@ -405,7 +493,7 @@
       </div>
 
       <div style="text-align: center; margin-top: var(--space-2xl);" class="reveal">
-        <a href="/ems/request-quote/" class="btn btn--interactive btn--interactive-teal">
+        <a href="request-quote.html" class="btn btn--interactive btn--interactive-teal">
           <span class="btn__text">Request a Quote for Your Industry</span>
           <span class="btn__hover">
             <span>Request a Quote</span>
@@ -577,7 +665,7 @@
         Whether you are nearshoring for the first time, adding a second-source assembly partner, or scaling a program that has outgrown your current supplier — GPW is built to deliver.
       </p>
       <div class="btn-group reveal reveal-delay-2">
-        <a href="/ems/request-quote/" class="btn btn--interactive btn--lg">
+        <a href="request-quote.html" class="btn btn--interactive btn--lg">
           <span class="btn__text">Request a Quote</span>
           <span class="btn__hover">
             <span>Request a Quote</span>
@@ -605,7 +693,7 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <a href="/" class="footer__logo">
+          <a href="../index.html" class="footer__logo">
             <img src="../img/LOGO - 28.png" alt="Global Precision Works">
           </a>
           <p class="footer__desc">
@@ -620,30 +708,30 @@
         <div>
           <div class="footer__heading">EMS Services</div>
           <div class="footer__links">
-            <a href="/ems/services/box-build-assembly/">Box Build Integration</a>
-            <a href="/ems/services/cable-harness-assembly/">Cable &amp; Wire Harness</a>
-            <a href="/ems/services/system-integration/">System Integration</a>
-            <a href="/ems/services/testing-inspection/">Testing &amp; QA</a>
-            <a href="/ems/services/enclosure-cabinet-assembly/">Enclosure &amp; Cabinet</a>
+            <a href="services/box-build-assembly.html">Box Build Integration</a>
+            <a href="services/cable-harness-assembly.html">Cable &amp; Wire Harness</a>
+            <a href="services/system-integration.html">System Integration</a>
+            <a href="services/testing-inspection.html">Testing &amp; QA</a>
+            <a href="services/enclosure-cabinet-assembly.html">Enclosure &amp; Cabinet</a>
           </div>
         </div>
 
         <div>
           <div class="footer__heading">Industries</div>
           <div class="footer__links">
-            <a href="/ems/industries/ai-server-rack/">AI &amp; Server Rack</a>
-            <a href="/ems/industries/industrial-equipment/">Industrial Equipment</a>
-            <a href="/ems/industries/telecom-hardware/">Telecommunications</a>
-            <a href="/ems/industries/medical-devices/">Medical Devices</a>
+            <a href="industries/ai-server-rack.html">AI &amp; Server Rack</a>
+            <a href="industries/industrial-equipment.html">Industrial Equipment</a>
+            <a href="industries/telecom-hardware.html">Telecommunications</a>
+            <a href="industries/medical-devices.html">Medical Devices</a>
           </div>
         </div>
 
         <div>
           <div class="footer__heading">Get Started</div>
           <div class="footer__links">
-            <a href="/ems/request-quote/">Request a Quote</a>
-            <a href="/ems/about/">About EMS Division</a>
-            <a href="/">GPW Corporate</a>
+            <a href="request-quote.html">Request a Quote</a>
+            <a href="about.html">About EMS Division</a>
+            <a href="../index.html">GPW Corporate</a>
             <a href="mailto:info@gpw-solutions.com">Email Us</a>
           </div>
         </div>
@@ -652,8 +740,8 @@
       <div class="footer__bottom">
         <span>&copy; 2026 Global Precision Works. All rights reserved.</span>
         <div class="footer__legal">
-          <a href="/privacy-policy/">Privacy Policy</a>
-          <a href="/terms/">Terms of Service</a>
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          <a href="../terms.html">Terms of Service</a>
         </div>
       </div>
     </div>
