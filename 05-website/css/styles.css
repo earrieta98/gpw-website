@@ -1665,6 +1665,137 @@ p { margin-bottom: var(--space-md); }
   margin: 0;
 }
 
+/* ============================================
+   FAQ — SPLIT LAYOUT ACCORDION
+   ============================================ */
+.faq-split {
+  padding: var(--space-4xl) 0;
+  background: var(--near-black);
+}
+
+.faq-split__grid {
+  display: grid;
+  grid-template-columns: 0.38fr 0.62fr;
+  gap: var(--space-4xl);
+  align-items: start;
+}
+
+.faq-split__title h2 {
+  font-family: var(--font-primary);
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin: 0;
+  position: sticky;
+  top: 120px;
+}
+
+.faq-split__list {
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Individual accordion item */
+.faq-accord {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.faq-accord__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  padding: var(--space-xl) 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--white);
+  transition: color 0.25s ease;
+}
+
+.faq-accord__trigger:hover {
+  color: var(--coral);
+}
+
+/* Plus / X icon */
+.faq-accord__icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.faq-accord__icon::before,
+.faq-accord__icon::after {
+  content: '';
+  position: absolute;
+  background: var(--teal);
+  border-radius: 1px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+
+/* Horizontal bar */
+.faq-accord__icon::before {
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  transform: translate(-50%, -50%);
+}
+
+/* Vertical bar — rotates to form X */
+.faq-accord__icon::after {
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+}
+
+/* Open state: rotate vertical bar 90° (forms minus/line) */
+.faq-accord.is-open .faq-accord__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+.faq-accord.is-open .faq-accord__icon::before {
+  background: var(--coral);
+}
+
+/* Panel — collapsible with max-height */
+.faq-accord__panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-accord__panel p {
+  font-size: var(--text-base);
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  font-weight: 300;
+  margin: 0;
+  padding: 0 0 var(--space-xl);
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+  .faq-split__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+  .faq-split__title h2 {
+    position: static;
+    font-size: 2rem;
+  }
+}
+
 /* Nav CTA button style */
 .nav__link--cta {
   background-color: var(--coral);

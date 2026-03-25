@@ -558,66 +558,107 @@
   </section>
 
   <!-- ============ SECTION 6: FAQ ============ -->
-  <section class="svc-faq">
+  <section class="faq-split">
     <div class="container">
-      <div class="faq__header reveal">
-        <span class="label label--coral">Frequently Asked Questions</span>
-        <div class="section__divider section__divider--center"></div>
-        <h2>System Integration FAQ</h2>
-      </div>
-
-      <div class="faq-list">
-        <details class="faq-item reveal">
-          <summary class="faq-item__question">What is system integration in contract manufacturing?</summary>
-          <div class="faq-item__answer">
-            <p>System integration combines multiple mechanical, electrical, and electromechanical subsystems into a finished product. It includes structural assembly, component integration, cable routing, firmware loading, and system-level testing. GPW manages the full scope from NPI through production under one quality system in Monterrey.</p>
+      <div class="faq-split__grid">
+        <div class="faq-split__title reveal">
+          <span class="label label--coral">Frequently Asked Questions</span>
+          <div class="section__divider"></div>
+          <h2>System<br>Integration FAQ</h2>
+        </div>
+        <div class="faq-split__list">
+          <div class="faq-accord reveal" data-faq-index="0">
+            <button class="faq-accord__trigger" aria-expanded="false">
+              <span>What is system integration in contract manufacturing?</span>
+              <span class="faq-accord__icon"></span>
+            </button>
+            <div class="faq-accord__panel">
+              <p>System integration combines multiple mechanical, electrical, and electromechanical subsystems into a finished product. It includes structural assembly, component integration, cable routing, firmware loading, and system-level testing. GPW manages the full scope from NPI through production under one quality system in Monterrey.</p>
+            </div>
           </div>
-        </details>
-
-        <details class="faq-item reveal reveal-delay-1">
-          <summary class="faq-item__question">How is system integration different from box build assembly?</summary>
-          <div class="faq-item__answer">
-            <p><a href="box-build-assembly.html">Box build</a> assembles components into an enclosure. System integration goes further — it addresses subsystem interactions, firmware dependencies, and system-level validation. A box build puts boards in a chassis. System integration ensures those boards communicate, the firmware matches the hardware revision, and the complete system performs under load.</p>
+          <div class="faq-accord reveal reveal-delay-1" data-faq-index="1">
+            <button class="faq-accord__trigger" aria-expanded="false">
+              <span>How is system integration different from box build assembly?</span>
+              <span class="faq-accord__icon"></span>
+            </button>
+            <div class="faq-accord__panel">
+              <p>Box build assembles components into an enclosure. System integration goes further -- it addresses subsystem interactions, firmware dependencies, and system-level validation. A box build puts boards in a chassis. System integration ensures those boards communicate, the firmware matches the hardware revision, and the complete system performs under load.</p>
+            </div>
           </div>
-        </details>
-
-        <details class="faq-item reveal reveal-delay-2">
-          <summary class="faq-item__question">Does GPW offer firmware loading and configuration?</summary>
-          <div class="faq-item__answer">
-            <p>Yes. GPW maintains version-controlled firmware repositories for each program. The loading protocol specifies which image goes on which board, the correct sequence, post-load verification, and configuration parameters. Serialized deployment — unique configuration per unit serial number — is available for programs that require it.</p>
+          <div class="faq-accord reveal reveal-delay-2" data-faq-index="2">
+            <button class="faq-accord__trigger" aria-expanded="false">
+              <span>Does GPW offer firmware loading and configuration?</span>
+              <span class="faq-accord__icon"></span>
+            </button>
+            <div class="faq-accord__panel">
+              <p>Yes. GPW maintains version-controlled firmware repositories for each program. The loading protocol specifies which image goes on which board, the correct sequence, post-load verification, and configuration parameters. Serialized deployment -- unique configuration per unit serial number -- is available for programs that require it.</p>
+            </div>
           </div>
-        </details>
-
-        <details class="faq-item reveal reveal-delay-3">
-          <summary class="faq-item__question">How long does system integration NPI take?</summary>
-          <div class="faq-item__answer">
-            <p>Typical NPI for system integration programs runs 4-8 weeks from approved Integration Plan to first article completion. Complex programs with 10+ subsystems or custom test development may require additional time. GPW provides a detailed NPI timeline during the quoting process.</p>
+          <div class="faq-accord reveal reveal-delay-3" data-faq-index="3">
+            <button class="faq-accord__trigger" aria-expanded="false">
+              <span>How long does system integration NPI take?</span>
+              <span class="faq-accord__icon"></span>
+            </button>
+            <div class="faq-accord__panel">
+              <p>Typical NPI for system integration programs runs 4-8 weeks from approved Integration Plan to first article completion. Complex programs with 10+ subsystems or custom test development may require additional time. GPW provides a detailed NPI timeline during the quoting process.</p>
+            </div>
           </div>
-        </details>
-
-        <details class="faq-item reveal reveal-delay-4">
-          <summary class="faq-item__question">What is included in a system integration quote?</summary>
-          <div class="faq-item__answer">
-            <p>A quote covers integration planning, mechanical and electrical assembly, firmware loading, system-level testing, documentation, and packaging. Component procurement is quoted separately based on the sourcing model — GPW-sourced, customer-directed, or customer-furnished. Submit your drawings, BOM, and test requirements to <a href="../request-quote.html">request a quote</a>.</p>
+          <div class="faq-accord reveal reveal-delay-4" data-faq-index="4">
+            <button class="faq-accord__trigger" aria-expanded="false">
+              <span>What is included in a system integration quote?</span>
+              <span class="faq-accord__icon"></span>
+            </button>
+            <div class="faq-accord__panel">
+              <p>A quote covers integration planning, mechanical and electrical assembly, firmware loading, system-level testing, documentation, and packaging. Component procurement is quoted separately based on the sourcing model -- GPW-sourced, customer-directed, or customer-furnished.</p>
+            </div>
           </div>
-        </details>
-
-        <details class="faq-item reveal reveal-delay-5">
-          <summary class="faq-item__question">What certifications apply to system integration?</summary>
-          <div class="faq-item__answer">
-            <p>GPW is pursuing IPC-A-610 (electronic assembly), IPC-A-620 (cable and wire harness), and ISO 9001 certifications. All integration processes already follow these workmanship standards. Industry-specific certifications — AS9100 for aerospace, IATF 16949 for automotive — are pursued as customer programs require.</p>
+          <div class="faq-accord reveal reveal-delay-5" data-faq-index="5">
+            <button class="faq-accord__trigger" aria-expanded="false">
+              <span>What certifications apply to system integration?</span>
+              <span class="faq-accord__icon"></span>
+            </button>
+            <div class="faq-accord__panel">
+              <p>GPW is pursuing IPC-A-610 (electronic assembly), IPC-A-620 (cable and wire harness), and ISO 9001 certifications. All integration processes already follow these workmanship standards. Industry-specific certifications -- AS9100 for aerospace, IATF 16949 for automotive -- are pursued as customer programs require.</p>
+            </div>
           </div>
-        </details>
-
-        <details class="faq-item reveal reveal-delay-6">
-          <summary class="faq-item__question">Can GPW handle low-volume and high-volume integration programs?</summary>
-          <div class="faq-item__answer">
-            <p>GPW supports integration programs from prototype quantities through sustained production runs. The production floor accommodates dedicated integration lines that scale with your program volume. Whether you need 10 units for qualification or 500 units per month for production, the same quality system and integration methodology apply.</p>
+          <div class="faq-accord reveal reveal-delay-6" data-faq-index="6">
+            <button class="faq-accord__trigger" aria-expanded="false">
+              <span>Can GPW handle low-volume and high-volume integration programs?</span>
+              <span class="faq-accord__icon"></span>
+            </button>
+            <div class="faq-accord__panel">
+              <p>GPW supports integration programs from prototype quantities through sustained production runs. The production floor accommodates dedicated integration lines that scale with your program volume. Whether you need 10 units for qualification or 500 units per month for production, the same quality system and integration methodology apply.</p>
+            </div>
           </div>
-        </details>
+        </div>
       </div>
     </div>
   </section>
+
+  <script>
+  (function() {
+    document.querySelectorAll('.faq-split').forEach(function(faqSection) {
+      var items = faqSection.querySelectorAll('.faq-accord');
+      items.forEach(function(item) {
+        var trigger = item.querySelector('.faq-accord__trigger');
+        var panel = item.querySelector('.faq-accord__panel');
+        trigger.addEventListener('click', function() {
+          var isOpen = item.classList.contains('is-open');
+          items.forEach(function(other) {
+            other.classList.remove('is-open');
+            other.querySelector('.faq-accord__trigger').setAttribute('aria-expanded', 'false');
+            other.querySelector('.faq-accord__panel').style.maxHeight = null;
+          });
+          if (!isOpen) {
+            item.classList.add('is-open');
+            trigger.setAttribute('aria-expanded', 'true');
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+          }
+        });
+      });
+    });
+  })();
+  </script>
 
   <!-- ============ SECTION 7: FINAL CTA ============ -->
   <section class="final-cta">
