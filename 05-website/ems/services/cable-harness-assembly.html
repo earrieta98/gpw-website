@@ -199,7 +199,20 @@
   </header>
 
   <!-- ============ SECTION 1: HERO ============ -->
-  <section class="svc-hero">
+  <!-- Scrollspy sidebar -->
+  <aside class="scrollspy" id="scrollspy">
+    <nav class="scrollspy__nav">
+      <a href="#hero" class="scrollspy__link is-active" data-section="hero">Overview</a>
+      <a href="#definition" class="scrollspy__link" data-section="definition">Definition</a>
+      <a href="#process" class="scrollspy__link" data-section="process">Our Process</a>
+      <a href="#industries" class="scrollspy__link" data-section="industries">Industries</a>
+      <a href="#capabilities" class="scrollspy__link" data-section="capabilities">Capabilities</a>
+      <a href="#faq" class="scrollspy__link" data-section="faq">FAQ</a>
+      <a href="#get-started" class="scrollspy__link" data-section="get-started">Get Started</a>
+    </nav>
+  </aside>
+
+  <section class="svc-hero" id="hero">
     <div class="container">
       <div class="svc-hero__inner">
         <div>
@@ -221,9 +234,13 @@
             A single faulty crimp can shut down an entire system. A mislabeled connector can turn a 30-minute installation into a 3-day troubleshooting exercise. Cable and wire harness assembly is precision work — and it requires a team that treats it as a primary discipline, not an afterthought squeezed between mechanical and electrical assembly tasks.
           </p>
           <div class="btn-group hero-reveal hero-reveal-delay-4">
-            <a href="../request-quote.html" class="btn btn--primary btn--lg">
-              Request a Quote
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            <a href="../request-quote.html" class="btn btn--interactive btn--lg">
+              <span class="btn__text">Request a Quote</span>
+              <span class="btn__hover">
+                <span>Request a Quote</span>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </span>
+              <span class="btn__circle"></span>
             </a>
           </div>
         </div>
@@ -238,7 +255,7 @@
   </section>
 
   <!-- ============ SECTION 2: DEFINITION ============ -->
-  <section class="section definition-section">
+  <section class="section definition-section" id="definition">
     <div class="container">
       <div class="reveal">
         <span class="label label--coral">Definition</span>
@@ -271,7 +288,7 @@
   </section>
 
   <!-- ============ SECTION 3: PROCESS ============ -->
-  <section class="process-section">
+  <section class="process-section" id="process">
     <div class="container">
       <div class="process-intro reveal">
         <span class="label label--coral">Our Process</span>
@@ -375,15 +392,19 @@
     <div class="container reveal">
       <h2>Your Cable Drawings. Our Production Floor.<br>Tested Harnesses, Delivered on&nbsp;Schedule.</h2>
       <p>Submit your harness specifications and GPW's engineering team will respond with a detailed design review and quote within 24 hours.</p>
-      <a href="../request-quote.html" class="btn btn--primary btn--lg">
-        Request a Quote
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      <a href="../request-quote.html" class="btn btn--interactive btn--lg">
+        <span class="btn__text">Request a Quote</span>
+        <span class="btn__hover">
+          <span>Request a Quote</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </span>
+        <span class="btn__circle"></span>
       </a>
     </div>
   </section>
 
   <!-- ============ SECTION 4: INDUSTRIES ============ -->
-  <section class="section industries-used">
+  <section class="section industries-used" id="industries">
     <div class="container">
       <div class="industries-used__header reveal">
         <span class="label label--coral">Multi-Vertical Capability</span>
@@ -440,7 +461,7 @@
   </section>
 
   <!-- ============ SECTION 5: CAPABILITIES ============ -->
-  <section class="capabilities">
+  <section class="capabilities" id="capabilities">
     <div class="container">
       <div class="capabilities__header reveal">
         <span class="label label--coral">Specifications</span>
@@ -536,7 +557,7 @@
   </section>
 
   <!-- ============ SECTION 6: FAQ ============ -->
-  <section class="faq-split">
+  <section class="faq-split" id="faq">
     <div class="container">
       <div class="faq-split__grid">
         <div class="faq-split__title reveal">
@@ -639,16 +660,20 @@
   </script>
 
   <!-- ============ SECTION 7: FINAL CTA ============ -->
-  <section class="final-cta">
+  <section class="final-cta" id="get-started">
     <div class="container">
       <div class="reveal">
         <span class="label label--lime">Get Started</span>
         <div class="section__divider section__divider--center"></div>
         <h2>Start Your Cable Harness Program</h2>
         <p>Whether you have formal cable drawings ready for quoting or a sample harness that needs reverse engineering and documentation, GPW's engineering team is ready to review your project. Submit your specifications and receive a detailed design review and proposal within 24 hours.</p>
-        <a href="../request-quote.html" class="btn btn--primary btn--lg">
-          Request a Quote
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        <a href="../request-quote.html" class="btn btn--interactive btn--lg">
+          <span class="btn__text">Request a Quote</span>
+          <span class="btn__hover">
+            <span>Request a Quote</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </span>
+          <span class="btn__circle"></span>
         </a>
         <p class="final-cta__context">No commitment. No minimum order. Engineering-driven quoting — not a generic sales estimate.</p>
       </div>
@@ -719,5 +744,79 @@
   </footer>
 
   <script src="../../js/main.js"></script>
+
+  <!-- Scrollspy -->
+  <script>
+  (function() {
+    var spy = document.getElementById('scrollspy');
+    if (!spy) return;
+    var links = spy.querySelectorAll('.scrollspy__link');
+    var sections = [];
+    links.forEach(function(link) {
+      var id = link.getAttribute('data-section');
+      var el = document.getElementById(id);
+      if (el) sections.push({ id: id, el: el, link: link });
+    });
+
+    var footer = document.querySelector('.footer');
+    var heroEl = document.getElementById('hero');
+    var activeId = 'hero';
+
+    var darkSelectors = '.svc-hero, .hero, .ind-hero, .hub-hero, .mid-cta, .final-cta, .faq-split, .footer';
+    var darkSections = document.querySelectorAll(darkSelectors);
+
+    function checkDarkBg() {
+      var spyCenter = spy.getBoundingClientRect().top + spy.getBoundingClientRect().height / 2;
+      var onDark = false;
+      darkSections.forEach(function(ds) {
+        var r = ds.getBoundingClientRect();
+        if (spyCenter >= r.top && spyCenter <= r.bottom) onDark = true;
+      });
+      spy.classList.toggle('on-dark', onDark);
+    }
+
+    function onScroll() {
+      var scrollY = window.scrollY;
+      var winH = window.innerHeight;
+
+      var pastHero = heroEl ? heroEl.getBoundingClientRect().bottom < 0 : true;
+      var atFooter = footer ? footer.getBoundingClientRect().top <= winH : false;
+      spy.classList.toggle('is-visible', pastHero && !atFooter);
+
+      checkDarkBg();
+
+      var trigger = scrollY + winH * 0.35;
+      var current = sections[0] ? sections[0].id : '';
+      for (var i = sections.length - 1; i >= 0; i--) {
+        if (sections[i].el.offsetTop <= trigger) {
+          current = sections[i].id;
+          break;
+        }
+      }
+      if (current && current !== activeId) {
+        activeId = current;
+        links.forEach(function(l) { l.classList.remove('is-active'); });
+        sections.forEach(function(s) {
+          if (s.id === current) s.link.classList.add('is-active');
+        });
+      }
+    }
+
+    links.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var id = link.getAttribute('data-section');
+        var target = document.getElementById(id);
+        if (target) {
+          var top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+  </script>
 </body>
 </html>

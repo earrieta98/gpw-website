@@ -208,7 +208,20 @@
   </header>
 
   <!-- ============ SECTION 1: HERO ============ -->
-  <section class="svc-hero">
+  <!-- Scrollspy sidebar -->
+  <aside class="scrollspy" id="scrollspy">
+    <nav class="scrollspy__nav">
+      <a href="#hero" class="scrollspy__link is-active" data-section="hero">Overview</a>
+      <a href="#definition" class="scrollspy__link" data-section="definition">Definition</a>
+      <a href="#process" class="scrollspy__link" data-section="process">Our Process</a>
+      <a href="#industries" class="scrollspy__link" data-section="industries">Industries</a>
+      <a href="#capabilities" class="scrollspy__link" data-section="capabilities">Capabilities</a>
+      <a href="#faq" class="scrollspy__link" data-section="faq">FAQ</a>
+      <a href="#get-started" class="scrollspy__link" data-section="get-started">Get Started</a>
+    </nav>
+  </aside>
+
+  <section class="svc-hero" id="hero">
     <div class="container">
       <div class="svc-hero__inner">
         <div>
@@ -230,9 +243,13 @@
             A product with 6 PCBAs, 2 power supplies, 14 cable assemblies, and 200+ discrete components does not fail because one board was soldered incorrectly. It fails because the subsystems were not integrated correctly — a cable harness pinched during mechanical assembly, a firmware version loaded onto the wrong board revision, or a thermal management path blocked by poor component placement.
           </p>
           <div class="btn-group hero-reveal hero-reveal-delay-4">
-            <a href="../request-quote.html" class="btn btn--primary btn--lg">
-              Request a Quote
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            <a href="../request-quote.html" class="btn btn--interactive btn--lg">
+              <span class="btn__text">Request a Quote</span>
+              <span class="btn__hover">
+                <span>Request a Quote</span>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </span>
+              <span class="btn__circle"></span>
             </a>
           </div>
         </div>
@@ -247,7 +264,7 @@
   </section>
 
   <!-- ============ SECTION 2: DEFINITION ============ -->
-  <section class="section definition-section">
+  <section class="section definition-section" id="definition">
     <div class="container">
       <div class="reveal">
         <span class="label label--coral">Definition</span>
@@ -279,7 +296,7 @@
   </section>
 
   <!-- ============ SECTION 3: PROCESS ============ -->
-  <section class="process-section">
+  <section class="process-section" id="process">
     <div class="container">
       <div class="process-intro reveal">
         <span class="label label--coral">Our Process</span>
@@ -397,15 +414,19 @@
     <div class="container reveal">
       <h2>Your Technical Package. Our Integration&nbsp;Expertise.<br>One Validated&nbsp;System.</h2>
       <p>Submit your mechanical drawings, electrical schematics, BOM, and test requirements. GPW's engineering team responds within 2 business days with an Integration Plan outline and preliminary timeline.</p>
-      <a href="../request-quote.html" class="btn btn--primary btn--lg">
-        Request a Quote
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      <a href="../request-quote.html" class="btn btn--interactive btn--lg">
+        <span class="btn__text">Request a Quote</span>
+        <span class="btn__hover">
+          <span>Request a Quote</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </span>
+        <span class="btn__circle"></span>
       </a>
     </div>
   </section>
 
   <!-- ============ SECTION 4: INDUSTRIES ============ -->
-  <section class="section industries-used">
+  <section class="section industries-used" id="industries">
     <div class="container">
       <div class="industries-used__header reveal">
         <span class="label label--coral">Multi-Vertical Capability</span>
@@ -462,7 +483,7 @@
   </section>
 
   <!-- ============ SECTION 5: CAPABILITIES ============ -->
-  <section class="capabilities">
+  <section class="capabilities" id="capabilities">
     <div class="container">
       <div class="capabilities__header reveal">
         <span class="label label--coral">Specifications</span>
@@ -558,7 +579,7 @@
   </section>
 
   <!-- ============ SECTION 6: FAQ ============ -->
-  <section class="faq-split">
+  <section class="faq-split" id="faq">
     <div class="container">
       <div class="faq-split__grid">
         <div class="faq-split__title reveal">
@@ -661,16 +682,20 @@
   </script>
 
   <!-- ============ SECTION 7: FINAL CTA ============ -->
-  <section class="final-cta">
+  <section class="final-cta" id="get-started">
     <div class="container">
       <div class="reveal">
         <span class="label label--lime">Get Started</span>
         <div class="section__divider section__divider--center"></div>
         <h2>Start Your System Integration Program</h2>
         <p>System integration requires detailed planning — and that planning starts with your technical package. Submit your mechanical drawings, electrical schematics, BOM, firmware specifications, and test requirements. GPW's engineering team reviews every program and responds within 2 business days with an Integration Plan outline and preliminary timeline.</p>
-        <a href="../request-quote.html" class="btn btn--primary btn--lg">
-          Request a Quote
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        <a href="../request-quote.html" class="btn btn--interactive btn--lg">
+          <span class="btn__text">Request a Quote</span>
+          <span class="btn__hover">
+            <span>Request a Quote</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </span>
+          <span class="btn__circle"></span>
         </a>
         <p class="final-cta__context">No minimum order quantities. Programs from prototype through production volume. Engineered for your timeline.</p>
       </div>
@@ -741,5 +766,79 @@
   </footer>
 
   <script src="../../js/main.js"></script>
+
+  <!-- Scrollspy -->
+  <script>
+  (function() {
+    var spy = document.getElementById('scrollspy');
+    if (!spy) return;
+    var links = spy.querySelectorAll('.scrollspy__link');
+    var sections = [];
+    links.forEach(function(link) {
+      var id = link.getAttribute('data-section');
+      var el = document.getElementById(id);
+      if (el) sections.push({ id: id, el: el, link: link });
+    });
+
+    var footer = document.querySelector('.footer');
+    var heroEl = document.getElementById('hero');
+    var activeId = 'hero';
+
+    var darkSelectors = '.svc-hero, .hero, .ind-hero, .hub-hero, .mid-cta, .final-cta, .faq-split, .footer';
+    var darkSections = document.querySelectorAll(darkSelectors);
+
+    function checkDarkBg() {
+      var spyCenter = spy.getBoundingClientRect().top + spy.getBoundingClientRect().height / 2;
+      var onDark = false;
+      darkSections.forEach(function(ds) {
+        var r = ds.getBoundingClientRect();
+        if (spyCenter >= r.top && spyCenter <= r.bottom) onDark = true;
+      });
+      spy.classList.toggle('on-dark', onDark);
+    }
+
+    function onScroll() {
+      var scrollY = window.scrollY;
+      var winH = window.innerHeight;
+
+      var pastHero = heroEl ? heroEl.getBoundingClientRect().bottom < 0 : true;
+      var atFooter = footer ? footer.getBoundingClientRect().top <= winH : false;
+      spy.classList.toggle('is-visible', pastHero && !atFooter);
+
+      checkDarkBg();
+
+      var trigger = scrollY + winH * 0.35;
+      var current = sections[0] ? sections[0].id : '';
+      for (var i = sections.length - 1; i >= 0; i--) {
+        if (sections[i].el.offsetTop <= trigger) {
+          current = sections[i].id;
+          break;
+        }
+      }
+      if (current && current !== activeId) {
+        activeId = current;
+        links.forEach(function(l) { l.classList.remove('is-active'); });
+        sections.forEach(function(s) {
+          if (s.id === current) s.link.classList.add('is-active');
+        });
+      }
+    }
+
+    links.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var id = link.getAttribute('data-section');
+        var target = document.getElementById(id);
+        if (target) {
+          var top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+  </script>
 </body>
 </html>

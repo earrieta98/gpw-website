@@ -698,6 +698,118 @@ p { margin-bottom: var(--space-md); }
 .breadcrumb__current { color: rgba(255,255,255,0.55); }
 
 /* ============================================
+   SCROLLSPY SIDEBAR
+   ============================================ */
+.scrollspy {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.scrollspy.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scrollspy__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 0 0 var(--space-xl);
+}
+
+.scrollspy__link {
+  position: relative;
+  display: block;
+  padding: 9px 20px 9px 16px;
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--near-black);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease, text-shadow 0.25s ease;
+  white-space: nowrap;
+  text-shadow: 0 0 4px rgba(255,255,255,0.8), 0 0 8px rgba(255,255,255,0.5);
+}
+
+.scrollspy__link:hover {
+  color: var(--teal);
+}
+
+.scrollspy__link.is-active {
+  color: var(--teal);
+  font-weight: 800;
+  border-left: 4px solid var(--teal);
+  text-shadow: 0 0 4px rgba(255,255,255,0.9), 0 0 10px rgba(255,255,255,0.6);
+}
+
+/* Dark background variant */
+.scrollspy.on-dark .scrollspy__link {
+  color: rgba(255,255,255,0.85);
+  text-shadow: none;
+}
+
+.scrollspy.on-dark .scrollspy__link:hover {
+  color: #ffffff;
+}
+
+.scrollspy.on-dark .scrollspy__link.is-active {
+  color: var(--coral);
+  border-left-color: var(--coral);
+  text-shadow: none;
+}
+
+/* Mobile: horizontal sticky bar at bottom */
+@media (max-width: 1024px) {
+  .scrollspy {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    border-top: 1px solid var(--light-gray);
+    background: var(--white);
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+    transform: none;
+  }
+  .scrollspy__nav {
+    flex-direction: row;
+    gap: 0;
+    padding: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .scrollspy__nav::-webkit-scrollbar { display: none; }
+  .scrollspy__link {
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    padding: 10px 14px;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+  .scrollspy__link.is-active {
+    border-left: none;
+    border-bottom: 3px solid var(--teal);
+    background: rgba(35,85,90,0.04);
+  }
+}
+
+/* Hide scrollspy on very small screens */
+@media (max-width: 480px) {
+  .scrollspy { display: none; }
+}
+
+/* ============================================
    HERO
    ============================================ */
 .hero {

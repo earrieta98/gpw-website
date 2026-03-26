@@ -712,7 +712,22 @@
   </header>
 
   <!-- ============ SECTION 1: HERO ============ -->
-  <section class="ind-hero">
+  <!-- Scrollspy sidebar -->
+  <aside class="scrollspy" id="scrollspy">
+    <nav class="scrollspy__nav">
+      <a href="#hero" class="scrollspy__link is-active" data-section="hero">Overview</a>
+      <a href="#definition" class="scrollspy__link" data-section="definition">Definition</a>
+      <a href="#context" class="scrollspy__link" data-section="context">Industry Context</a>
+      <a href="#capabilities" class="scrollspy__link" data-section="capabilities">Capabilities</a>
+      <a href="#programs" class="scrollspy__link" data-section="programs">Programs</a>
+      <a href="#advantage" class="scrollspy__link" data-section="advantage">Nearshore</a>
+      <a href="#quality" class="scrollspy__link" data-section="quality">Quality</a>
+      <a href="#faq" class="scrollspy__link" data-section="faq">FAQ</a>
+      <a href="#get-started" class="scrollspy__link" data-section="get-started">Get Started</a>
+    </nav>
+  </aside>
+
+  <section class="ind-hero" id="hero">
     <div class="container">
       <nav class="breadcrumb hero-reveal hero-reveal-delay-1" aria-label="Breadcrumb">
         <a href="../../index.html" class="breadcrumb__link">GPW Corporate</a>
@@ -732,16 +747,20 @@
         <p>This is not commercial assembly relabeled for aerospace. GPW designs its aerospace programs from the ground up: qualified operators trained on aerospace workmanship standards, controlled material handling with full lot traceability, validated test procedures, and a quality system that treats every document as part of the permanent record. Your aerospace hardware is assembled with the discipline that certification authorities expect and passengers depend on.</p>
       </div>
       <div class="btn-group hero-reveal hero-reveal-delay-4">
-        <a href="../request-quote.html" class="btn btn--primary btn--lg">
-          Request a Quote for Aerospace Sub-Assembly
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        <a href="../request-quote.html" class="btn btn--interactive btn--lg">
+          <span class="btn__text">Request a Quote for Aerospace Sub-Assembly</span>
+          <span class="btn__hover">
+            <span>Request a Quote for Aerospace Sub-Assembly</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </span>
+          <span class="btn__circle"></span>
         </a>
       </div>
     </div>
   </section>
 
   <!-- ============ SECTION 2: DEFINITION ============ -->
-  <section class="section definition-section">
+  <section class="section definition-section" id="definition">
     <div class="container">
       <div class="reveal">
         <span class="label label--coral">Definition</span>
@@ -756,7 +775,7 @@
   </section>
 
   <!-- ============ SECTION 3: INDUSTRY CONTEXT ============ -->
-  <section class="context-section">
+  <section class="context-section" id="context">
     <div class="container">
       <div class="reveal">
         <span class="label label--coral">Industry Context</span>
@@ -779,7 +798,7 @@
   </section>
 
   <!-- ============ SECTION 4: CAPABILITIES ============ -->
-  <section class="cap-section">
+  <section class="cap-section" id="capabilities">
     <div class="container">
       <div class="reveal">
         <span class="label label--coral">Capabilities</span>
@@ -858,15 +877,19 @@
   <section class="mid-cta">
     <div class="container reveal">
       <p>GPW responds to every RFQ within 48 hours with an initial program assessment.</p>
-      <a href="../request-quote.html" class="btn btn--primary btn--lg">
-        Get a Quote for Your Aerospace Sub-Assembly Program
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      <a href="../request-quote.html" class="btn btn--interactive btn--lg">
+        <span class="btn__text">Get a Quote for Your Aerospace Sub-Assembly Program</span>
+        <span class="btn__hover">
+          <span>Get a Quote for Your Aerospace Sub-Assembly Program</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </span>
+        <span class="btn__circle"></span>
       </a>
     </div>
   </section>
 
   <!-- ============ SECTION 5: TYPICAL PROJECTS ============ -->
-  <section class="projects-section">
+  <section class="projects-section" id="programs">
     <div class="container">
       <div class="reveal">
         <span class="label label--coral">Program Examples</span>
@@ -918,7 +941,7 @@
   </section>
 
   <!-- ============ SECTION 6: MONTERREY ADVANTAGE ============ -->
-  <section class="advantage-section">
+  <section class="advantage-section" id="advantage">
     <div class="container">
       <div class="reveal">
         <span class="label label--coral">Nearshore Advantage</span>
@@ -980,7 +1003,7 @@
   </section>
 
   <!-- ============ SECTION 7: QUALITY & COMPLIANCE ============ -->
-  <section class="quality-section">
+  <section class="quality-section" id="quality">
     <div class="container">
       <div class="reveal">
         <span class="label label--coral">Quality &amp; Compliance</span>
@@ -1068,7 +1091,7 @@
   </section>
 
   <!-- ============ SECTION 8: FAQ ============ -->
-  <section class="faq-split">
+  <section class="faq-split" id="faq">
     <div class="container">
       <div class="faq-split__grid">
         <div class="faq-split__title reveal">
@@ -1171,7 +1194,7 @@
   </script>
 
   <!-- ============ SECTION 9: FINAL CTA ============ -->
-  <section class="final-cta">
+  <section class="final-cta" id="get-started">
     <div class="container">
       <div class="reveal">
         <span class="label label--lime">Get Started</span>
@@ -1182,13 +1205,21 @@
         <p>Send us your requirements. A program manager will respond within 48 hours with an initial assessment.</p>
 
         <div class="final-cta__buttons">
-          <a href="../request-quote.html" class="btn btn--primary btn--lg">
-            Request a Quote for Aerospace Sub-Assembly
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          <a href="../request-quote.html" class="btn btn--interactive btn--lg">
+            <span class="btn__text">Request a Quote for Aerospace Sub-Assembly</span>
+            <span class="btn__hover">
+              <span>Request a Quote for Aerospace Sub-Assembly</span>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+            <span class="btn__circle"></span>
           </a>
-          <a href="../services/testing-inspection.html" class="btn btn--secondary btn--lg">
-            Explore Testing &amp; Inspection Services
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          <a href="../services/testing-inspection.html" class="btn btn--interactive btn--interactive-outline btn--lg">
+            <span class="btn__text">Explore Testing &amp; Inspection Services</span>
+            <span class="btn__hover">
+              <span>Explore Testing &amp; Inspection Services</span>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+            <span class="btn__circle"></span>
           </a>
         </div>
         <p class="final-cta__context">No commitment. No minimum order. Engineering-driven quoting.</p>
@@ -1265,5 +1296,79 @@
 
   <!-- ============ JAVASCRIPT ============ -->
   <script src="../../js/main.js"></script>
+
+  <!-- Scrollspy -->
+  <script>
+  (function() {
+    var spy = document.getElementById('scrollspy');
+    if (!spy) return;
+    var links = spy.querySelectorAll('.scrollspy__link');
+    var sections = [];
+    links.forEach(function(link) {
+      var id = link.getAttribute('data-section');
+      var el = document.getElementById(id);
+      if (el) sections.push({ id: id, el: el, link: link });
+    });
+
+    var footer = document.querySelector('.footer');
+    var heroEl = document.getElementById('hero');
+    var activeId = 'hero';
+
+    var darkSelectors = '.svc-hero, .hero, .ind-hero, .hub-hero, .mid-cta, .final-cta, .faq-split, .footer';
+    var darkSections = document.querySelectorAll(darkSelectors);
+
+    function checkDarkBg() {
+      var spyCenter = spy.getBoundingClientRect().top + spy.getBoundingClientRect().height / 2;
+      var onDark = false;
+      darkSections.forEach(function(ds) {
+        var r = ds.getBoundingClientRect();
+        if (spyCenter >= r.top && spyCenter <= r.bottom) onDark = true;
+      });
+      spy.classList.toggle('on-dark', onDark);
+    }
+
+    function onScroll() {
+      var scrollY = window.scrollY;
+      var winH = window.innerHeight;
+
+      var pastHero = heroEl ? heroEl.getBoundingClientRect().bottom < 0 : true;
+      var atFooter = footer ? footer.getBoundingClientRect().top <= winH : false;
+      spy.classList.toggle('is-visible', pastHero && !atFooter);
+
+      checkDarkBg();
+
+      var trigger = scrollY + winH * 0.35;
+      var current = sections[0] ? sections[0].id : '';
+      for (var i = sections.length - 1; i >= 0; i--) {
+        if (sections[i].el.offsetTop <= trigger) {
+          current = sections[i].id;
+          break;
+        }
+      }
+      if (current && current !== activeId) {
+        activeId = current;
+        links.forEach(function(l) { l.classList.remove('is-active'); });
+        sections.forEach(function(s) {
+          if (s.id === current) s.link.classList.add('is-active');
+        });
+      }
+    }
+
+    links.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var id = link.getAttribute('data-section');
+        var target = document.getElementById(id);
+        if (target) {
+          var top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+  </script>
 </body>
 </html>

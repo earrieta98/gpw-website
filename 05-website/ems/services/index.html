@@ -192,8 +192,22 @@
     <div class="nav-overlay" id="navOverlay"></div>
   </header>
 
+  <!-- Scrollspy sidebar -->
+  <aside class="scrollspy" id="scrollspy">
+    <nav class="scrollspy__nav">
+      <a href="#hero" class="scrollspy__link is-active" data-section="hero">Overview</a>
+      <a href="#definition" class="scrollspy__link" data-section="definition">What We Do</a>
+      <a href="#services" class="scrollspy__link" data-section="services">Core Services</a>
+      <a href="#selection" class="scrollspy__link" data-section="selection">Service Selection</a>
+      <a href="#industries" class="scrollspy__link" data-section="industries">Industries</a>
+      <a href="#why-gpw" class="scrollspy__link" data-section="why-gpw">Why GPW</a>
+      <a href="#faq" class="scrollspy__link" data-section="faq">FAQ</a>
+      <a href="#get-started" class="scrollspy__link" data-section="get-started">Get Started</a>
+    </nav>
+  </aside>
+
   <!-- ============ SECTION 1: HERO ============ -->
-  <section class="hub-hero">
+  <section class="hub-hero" id="hero">
     <div class="container">
       <nav class="breadcrumb hero-reveal hero-reveal-delay-1" aria-label="Breadcrumb">
         <a href="../../index.html" class="breadcrumb__link">GPW Corporate</a>
@@ -207,16 +221,20 @@
       <p class="hub-hero__sub hero-reveal hero-reveal-delay-3">Global Precision Works (GPW) delivers five core electromechanical assembly services — each engineered to take your product from components to a fully tested, shipping-ready unit.</p>
       <p class="hub-hero__copy hero-reveal hero-reveal-delay-3">Every product GPW assembles follows the same principle: mechanical structure, electrical components, cabling, and testing come together under one roof, managed by one team, held to one quality standard.</p>
       <div class="btn-group hero-reveal hero-reveal-delay-4">
-        <a href="../request-quote.html" class="btn btn--primary btn--lg">
-          Request a Quote
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        <a href="../request-quote.html" class="btn btn--interactive btn--lg">
+          <span class="btn__text">Request a Quote</span>
+          <span class="btn__hover">
+            <span>Request a Quote</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </span>
+          <span class="btn__circle"></span>
         </a>
       </div>
     </div>
   </section>
 
   <!-- ============ SECTION 2: DEFINITION ============ -->
-  <section class="section definition-hub">
+  <section class="section definition-hub" id="definition">
     <div class="container">
       <div class="reveal">
         <span class="label label--coral">What We Do</span>
@@ -232,7 +250,7 @@
   </section>
 
   <!-- ============ SECTION 3: SERVICES OVERVIEW ============ -->
-  <section class="services-overview">
+  <section class="services-overview" id="services">
     <div class="container">
       <div class="services-overview__header reveal">
         <span class="label label--coral">Core Services</span>
@@ -369,15 +387,19 @@
     <div class="container reveal">
       <h2>Ready to Scope Your&nbsp;Project?</h2>
       <p>GPW's engineering team reviews every RFQ for technical feasibility before quoting. Submit your BOM and specifications — no commitment, no minimum order.</p>
-      <a href="../request-quote.html" class="btn btn--primary btn--lg">
-        Request a Quote
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      <a href="../request-quote.html" class="btn btn--interactive btn--lg">
+        <span class="btn__text">Request a Quote</span>
+        <span class="btn__hover">
+          <span>Request a Quote</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </span>
+        <span class="btn__circle"></span>
       </a>
     </div>
   </section>
 
   <!-- ============ SECTION 4: SELECTION GUIDE ============ -->
-  <section class="section selection-guide">
+  <section class="section selection-guide" id="selection">
     <div class="container">
       <div class="selection-guide__header reveal">
         <span class="label label--coral">Service Selection</span>
@@ -448,7 +470,7 @@
   </section>
 
   <!-- ============ SECTION 5: INDUSTRIES ============ -->
-  <section class="industries-hub">
+  <section class="industries-hub" id="industries">
     <div class="container">
       <div class="industries-hub__header reveal">
         <span class="label label--coral">Cross-Industry</span>
@@ -519,7 +541,7 @@
   </section>
 
   <!-- ============ SECTION 6: WHY GPW ============ -->
-  <section class="why-gpw">
+  <section class="why-gpw" id="why-gpw">
     <div class="container">
       <div class="why-gpw__header reveal">
         <span class="label label--coral">Why GPW</span>
@@ -557,7 +579,7 @@
   </section>
 
   <!-- ============ SECTION 7: FAQ ============ -->
-  <section class="faq-split">
+  <section class="faq-split" id="faq">
     <div class="container">
       <div class="faq-split__grid">
         <div class="faq-split__title reveal">
@@ -662,16 +684,20 @@
   </script>
 
   <!-- ============ SECTION 8: FINAL CTA ============ -->
-  <section class="final-cta">
+  <section class="final-cta" id="get-started">
     <div class="container">
       <div class="reveal">
         <span class="label label--lime">Get Started</span>
         <div class="section__divider section__divider--center"></div>
         <h2>Start with a Conversation</h2>
         <p>Whether you have a complete BOM ready for quoting or an early-stage concept that needs assembly planning, GPW's engineering team is ready to talk. Every RFQ goes through a technical review — not a sales screening — so you receive a proposal grounded in actual process planning.</p>
-        <a href="../request-quote.html" class="btn btn--primary btn--lg">
-          Request a Quote
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        <a href="../request-quote.html" class="btn btn--interactive btn--lg">
+          <span class="btn__text">Request a Quote</span>
+          <span class="btn__hover">
+            <span>Request a Quote</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </span>
+          <span class="btn__circle"></span>
         </a>
         <p class="final-cta__context">No commitment. No minimum order. Engineering-driven quoting — not a generic sales estimate.</p>
       </div>
@@ -731,5 +757,84 @@
   </footer>
 
   <script src="../../js/main.js"></script>
+
+  <!-- Scrollspy -->
+  <script>
+  (function() {
+    var spy = document.getElementById('scrollspy');
+    if (!spy) return;
+    var links = spy.querySelectorAll('.scrollspy__link');
+    var sections = [];
+    links.forEach(function(link) {
+      var id = link.getAttribute('data-section');
+      var el = document.getElementById(id);
+      if (el) sections.push({ id: id, el: el, link: link });
+    });
+
+    var footer = document.querySelector('.footer');
+    var heroEl = document.getElementById('hero');
+    var activeId = 'hero';
+
+    // Sections with dark backgrounds
+    var darkSelectors = '.hub-hero, .hero, .ind-hero, .svc-hero, .mid-cta, .final-cta, .faq-split, .footer';
+    var darkSections = document.querySelectorAll(darkSelectors);
+
+    function checkDarkBg() {
+      var spyCenter = spy.getBoundingClientRect().top + spy.getBoundingClientRect().height / 2;
+      var onDark = false;
+      darkSections.forEach(function(ds) {
+        var r = ds.getBoundingClientRect();
+        if (spyCenter >= r.top && spyCenter <= r.bottom) onDark = true;
+      });
+      spy.classList.toggle('on-dark', onDark);
+    }
+
+    function onScroll() {
+      var scrollY = window.scrollY;
+      var winH = window.innerHeight;
+
+      // Show after hero, hide at footer
+      var pastHero = heroEl ? heroEl.getBoundingClientRect().bottom < 0 : true;
+      var atFooter = footer ? footer.getBoundingClientRect().top <= winH : false;
+      spy.classList.toggle('is-visible', pastHero && !atFooter);
+
+      // Check if sidebar is over a dark section
+      checkDarkBg();
+
+      // Determine active section
+      var trigger = scrollY + winH * 0.35;
+      var current = sections[0] ? sections[0].id : '';
+      for (var i = sections.length - 1; i >= 0; i--) {
+        if (sections[i].el.offsetTop <= trigger) {
+          current = sections[i].id;
+          break;
+        }
+      }
+      if (current && current !== activeId) {
+        activeId = current;
+        links.forEach(function(l) { l.classList.remove('is-active'); });
+        sections.forEach(function(s) {
+          if (s.id === current) s.link.classList.add('is-active');
+        });
+      }
+    }
+
+    // Smooth scroll on click
+    links.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var id = link.getAttribute('data-section');
+        var target = document.getElementById(id);
+        if (target) {
+          var top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+  </script>
 </body>
 </html>
