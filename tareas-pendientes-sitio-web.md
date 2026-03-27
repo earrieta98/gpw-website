@@ -48,46 +48,20 @@
 - **Ejemplo para EMS Home:** `<link rel="canonical" href="https://gpw-solutions.com/ems/">`
 - **Esfuerzo estimado:** 15 min
 
-### A3. Agregar Schema JSON-LD a Corporate Home y EMS Home
-- **Prioridad:** Alta
-- **Impacto:** Las 2 páginas más importantes del sitio NO tienen schema markup. Todas las demás (services, industries, about, RFQ) sí lo tienen. Sin schema en las homes, Google no entiende qué es GPW ni qué servicios ofrece desde las páginas principales.
-- **Páginas afectadas:**
-  - `05-website/index.html` — necesita: Organization schema
-  - `05-website/ems/index.html` — necesita: WebPage + FAQPage + Organization schema
-- **Esfuerzo estimado:** 20 min
+### A3. Agregar Schema JSON-LD a Corporate Home y EMS Home ✅ HECHO
+- **Estado:** Corporate Home tiene Organization schema. EMS Home tiene FAQPage schema.
 
-### A4. Crear robots.txt
-- **Prioridad:** Alta
-- **Impacto:** Sin robots.txt, los motores de búsqueda no tienen directivas de crawl. La estrategia AI SEO (Phase 2.2) específicamente requiere configuración de acceso para AI bots.
-- **Archivo:** `05-website/robots.txt`
-- **Contenido base:**
-  ```
-  User-agent: *
-  Allow: /
-  Sitemap: https://gpw-solutions.com/sitemap.xml
-  ```
-- **Esfuerzo estimado:** 5 min
+### A4. Crear robots.txt ✅ HECHO
+- **Estado:** `robots.txt` creado con reglas para AI bots (GPTBot, ChatGPT-User, ClaudeBot, Google-Extended, PerplexityBot) + sitemap reference.
 
-### A5. Crear sitemap.xml
-- **Prioridad:** Alta
-- **Impacto:** Sin sitemap, Google debe descubrir páginas solo por crawling de links. Con 19+ páginas, un sitemap asegura indexación completa y rápida.
-- **Archivo:** `05-website/sitemap.xml`
-- **Contenido:** Listar las 19 páginas con `<lastmod>`, `<changefreq>`, y `<priority>` (EMS Home = 1.0, services/industries = 0.8, etc.)
-- **Esfuerzo estimado:** 15 min
+### A5. Crear sitemap.xml ✅ HECHO
+- **Estado:** `sitemap.xml` con 21 URLs (18 páginas + privacy + terms + services hub), lastmod, changefreq y priority.
 
-### A6. Corregir title tag del EMS Home (65 → <60 chars)
-- **Prioridad:** Media
-- **Impacto:** Google trunca titles a ~60 caracteres. El título actual "GPW | Electromechanical Assembly Services in Monterrey, Mexico" tiene 65 chars — "Monterrey, Mexico" se corta.
-- **Archivo:** `05-website/ems/index.html` línea 7
-- **Cambiar a:** `Electromechanical Assembly Services Mexico | GPW` (49 chars, keyword-first)
-- **Esfuerzo estimado:** 2 min
+### A6. Corregir title tag del EMS Home ✅ HECHO
+- **Estado:** Título actual "Electromechanical Assembly Services Mexico | GPW Monterrey" (58 chars, dentro del límite).
 
-### A7. Corregir meta description del EMS Home (166 → <155 chars)
-- **Prioridad:** Media
-- **Impacto:** Google trunca meta descriptions a ~155 chars. La actual tiene 166.
-- **Archivo:** `05-website/ems/index.html` línea 8
-- **Cambiar a:** "Electromechanical assembly services in Monterrey, Mexico for U.S. OEMs. Box build, cable harness, system integration, and testing. Request a quote." (152 chars)
-- **Esfuerzo estimado:** 2 min
+### A7. Corregir meta description del EMS Home ✅ HECHO
+- **Estado:** Meta description actual de 152 chars, dentro del límite.
 
 ### A8. Renombrar archivos con espacios en el nombre
 - **Prioridad:** Media
@@ -103,55 +77,17 @@
 
 ## B — Accesibilidad / A11y (4 tareas)
 
-### B1. Agregar focus states para navegación por teclado
-- **Prioridad:** Alta (requisito WCAG AA)
-- **Impacto:** Ningún botón, link, ni input tiene estilos `:focus` o `:focus-visible`. Usuarios que navegan con teclado o lectores de pantalla no pueden ver dónde están. Falla la auditoría de accesibilidad.
-- **Archivo:** `05-website/css/styles.css`
-- **Qué agregar:**
-  ```css
-  :focus-visible {
-    outline: 2px solid #ED835E;
-    outline-offset: 2px;
-  }
-  a:focus-visible, .btn:focus-visible {
-    outline: 2px solid #ED835E;
-    outline-offset: 2px;
-  }
-  ```
-- **Esfuerzo estimado:** 10 min
+### B1. Agregar focus states para navegación por teclado ✅ HECHO
+- **Estado:** `:focus-visible` con outline Coral implementado en `styles.css` para links, botones y nav.
 
-### B2. Agregar `prefers-reduced-motion` media query
-- **Prioridad:** Media
-- **Impacto:** Las animaciones (scroll reveals, hero, transiciones 300-1000ms) corren siempre sin respetar preferencias del usuario. Personas con sensibilidad al movimiento no pueden desactivarlas.
-- **Archivo:** `05-website/css/styles.css`
-- **Qué agregar:**
-  ```css
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
-  ```
-- **Esfuerzo estimado:** 5 min
+### B2. Agregar `prefers-reduced-motion` media query ✅ HECHO
+- **Estado:** Media query implementada en `styles.css` — reduce animations/transitions a 0.01ms.
 
-### B3. Corregir contraste de texto bajo
-- **Prioridad:** Media
-- **Impacto:** Varios elementos tienen contraste insuficiente que falla WCAG AA:
-  - `.breadcrumb__link` → `rgba(255,255,255,0.45)` — muy tenue
-  - `.footer__heading` → `rgba(255,255,255,0.3)` — falla WCAG AA
-  - `.cta__reassurance` → `rgba(255,255,255,0.35)` — insuficiente
-- **Archivo:** `05-website/css/styles.css`
-- **Fix:** Subir opacidades: `.45` → `.7`, `.3` → `.6`, `.35` → `.65`
-- **Esfuerzo estimado:** 10 min
+### B3. Corregir contraste de texto bajo ✅ HECHO
+- **Estado:** Opacidades corregidas — `.breadcrumb__link` a 0.7, `.footer__heading` a 0.6, `.cta__reassurance` a 0.65.
 
-### B4. Agregar `aria-label` a industry cards
-- **Prioridad:** Baja
-- **Impacto:** Los cards de industria son `<a>` tags que envuelven divs. Agregar aria-label mejora la experiencia con screen readers.
-- **Archivo:** Todas las páginas con industry cards
-- **Ejemplo:** `<a href="..." class="industry-card" aria-label="AI and Server Rack Assembly - Learn more">`
-- **Esfuerzo estimado:** 15 min
+### B4. Agregar `aria-label` a industry cards ✅ HECHO
+- **Estado:** 16 aria-labels agregados (8 en `index.html` + 8 en `ems/index.html`). Patrón: "[Industry Title] — Learn more".
 
 ---
 
@@ -242,10 +178,11 @@
 - **Dependencia:** Requiere E1 (backend del form)
 - **Esfuerzo estimado:** 30 min
 
-### E3. Implementar cookies banner / consent
+### E3. Implementar cookies banner / consent ✅ HECHO
 - **Prioridad:** Media (para launch)
 - **Impacto:** Si se usan analytics o cookies de terceros, se necesita un banner de consentimiento.
 - **Esfuerzo estimado:** 1 hr
+- **Implementado:** `js/cookie-consent.js` — Banner fijo al fondo, Accept (Coral) / Decline (outline), localStorage persistence. API pública `gpwCookieConsent()` para que GA4 u otros scripts consulten el consentimiento. Agregado a las 20 páginas HTML. Pendiente: conectar con GA4 cuando se configure (E4).
 
 ### E4. Configurar Google Analytics / Tag Manager
 - **Prioridad:** Alta (para launch)
