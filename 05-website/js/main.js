@@ -11,6 +11,7 @@
 
   function updateHeader() {
     if (!header) return;
+    if (header.classList.contains('header--fixed-scrolled')) return;
     if (window.scrollY > 40) {
       header.classList.remove('header--top');
       header.classList.add('header--scrolled');

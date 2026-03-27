@@ -123,4 +123,20 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://gpw-solutions.com/privacy-policy/</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://gpw-solutions.com/terms/</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
 </urlset>

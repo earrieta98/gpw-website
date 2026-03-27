@@ -201,13 +201,9 @@
 - **Fuente:** Stock photography profesional o sesión fotográfica de la planta
 - **Esfuerzo estimado:** Variable (depende de la fuente)
 
-### D3. Crear privacy-policy.html y terms.html
-- **Prioridad:** Media
-- **Impacto:** El footer de TODAS las páginas tiene links a `privacy-policy.html` y `terms.html` que NO existen. Son links rotos visibles en todo el sitio.
-- **Archivos a crear:**
-  - `05-website/privacy-policy.html`
-  - `05-website/terms.html`
-- **Esfuerzo estimado:** 1-2 hrs (redacción legal)
+### D3. Crear privacy-policy.html y terms.html — ✅ COMPLETADO 2026-03-26
+- **Estado:** Páginas creadas con contenido placeholder profesional. Links del footer ya funcionan.
+- **⚠️ PENDIENTE FUTURO:** Antes del launch, revisar y actualizar con abogado cuando se definan: qué analytics se usan (Google Analytics / Tag Manager), qué cookies de terceros hay, si se usa reCAPTCHA, si hay integraciones con CRM, y cualquier requisito legal específico de México/EE.UU. para B2B.
 
 ### D4. Comparison Pages — Phase 3 Copy (3 páginas pendientes)
 - **Prioridad:** Media
