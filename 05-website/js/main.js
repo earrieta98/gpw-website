@@ -56,6 +56,12 @@
       navOverlay.addEventListener('click', closeNav);
     }
 
+    // Close button inside nav panel
+    var navClose = document.getElementById('navClose');
+    if (navClose) {
+      navClose.addEventListener('click', closeNav);
+    }
+
     // Close on link click
     navMenu.querySelectorAll('a').forEach(function(link) {
       link.addEventListener('click', closeNav);
@@ -68,6 +74,34 @@
       }
     });
   }
+
+  // ---- Mobile dropdown accordion ----
+  var navTriggers = document.querySelectorAll('.nav__trigger');
+  navTriggers.forEach(function(trigger) {
+    trigger.addEventListener('click', function(e) {
+      // Only accordion behavior on mobile (when hamburger is visible)
+      if (window.innerWidth > 1024) return;
+
+      e.preventDefault();
+      var parentItem = this.closest('.nav__item');
+      var dropdown = parentItem.querySelector('.nav__dropdown');
+      if (!dropdown) return;
+
+      var isOpen = dropdown.classList.contains('nav__dropdown--open');
+
+      // Close all other dropdowns first
+      document.querySelectorAll('.nav__dropdown--open').forEach(function(d) {
+        d.classList.remove('nav__dropdown--open');
+        d.closest('.nav__item').classList.remove('nav__item--open');
+      });
+
+      // Toggle current one
+      if (!isOpen) {
+        dropdown.classList.add('nav__dropdown--open');
+        parentItem.classList.add('nav__item--open');
+      }
+    });
+  });
 
   // ---- Scroll reveal (IntersectionObserver) ----
   var revealElements = document.querySelectorAll('.reveal');

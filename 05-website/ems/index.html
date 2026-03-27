@@ -14,6 +14,413 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="../css/styles.css">
+
+  <style>
+    /* ── EMS Hero: Engineering Grid Background ── */
+    .hero__bg {
+      background: #0a1628 !important;
+    }
+    .hero__bg::before {
+      background-image:
+        linear-gradient(rgba(35, 85, 90, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(35, 85, 90, 0.07) 1px, transparent 1px),
+        linear-gradient(rgba(35, 85, 90, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(35, 85, 90, 0.15) 1px, transparent 1px) !important;
+      background-size: 40px 40px, 40px 40px, 200px 200px, 200px 200px !important;
+    }
+    .hero__bg::after {
+      display: none !important;
+    }
+
+    /* Glow dots */
+    .hero__glow {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero__glow-dot {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0;
+      animation: glowPulse 6s ease-in-out infinite;
+    }
+    .hero__glow-dot--teal { background: rgba(35, 85, 90, 0.35); }
+    .hero__glow-dot--coral { background: rgba(237, 131, 94, 0.25); }
+    .hero__glow-dot--lime { background: rgba(173, 207, 145, 0.2); }
+
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Vignette */
+    .hero__vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(35, 85, 90, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(237, 131, 94, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at center, transparent 40%, rgba(10, 22, 40, 0.4) 100%);
+    }
+
+    /* ── Hero Centered Layout ── */
+    .hero__inner--centered {
+      grid-template-columns: 1fr !important;
+      text-align: center;
+      justify-items: center;
+    }
+    .hero__content--centered {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero__content--centered .btn-group { justify-content: center; }
+    .hero__content--centered .hero__trust { justify-content: center; }
+    .hero__content--centered .hero__label {
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* ── Hero Mobile: centered layout fixes ── */
+    @media (max-width: 768px) {
+      /* Fix 1: Header alignment (global styles handle logo size + header height) */
+      .header__inner {
+        align-items: center;
+      }
+
+      /* Quality carousel dots — mobile only */
+      .quality-dots {
+        display: none;
+      }
+      .quality-dots {
+        justify-content: center;
+        gap: 8px;
+        margin-top: var(--space-lg);
+      }
+      .quality-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--light-gray);
+        transition: background 0.25s ease, transform 0.25s ease;
+      }
+      .quality-dot.is-active {
+        background: var(--coral);
+        transform: scale(1.3);
+      }
+      @media (max-width: 768px) {
+        .quality-dots { display: flex; }
+      }
+
+      /* Fix 3: Hide breadcrumb on mobile */
+      .hero__inner--centered .breadcrumb {
+        display: none !important;
+      }
+
+      /* Fix 4: Center the label line */
+      .hero__content--centered .hero__label {
+        justify-content: center;
+        text-align: center;
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+      }
+      .hero__content--centered .hero__label::before {
+        display: none;
+      }
+
+      /* Fix 5: Trust items — centered, no bullets on mobile */
+      .hero__content--centered .hero__trust {
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero__content--centered .hero__trust-item::before {
+        display: none;
+      }
+
+      /* General hero mobile refinements */
+      .hero__content--centered {
+        max-width: 100%;
+        padding: 0 var(--space-md);
+      }
+      .hero__content--centered h1 {
+        font-size: clamp(1.75rem, 7vw, 2.5rem);
+      }
+      .hero__content--centered .hero__tagline {
+        font-size: var(--text-lg);
+        white-space: normal;
+      }
+      .hero__content--centered .hero__subtitle {
+        font-size: var(--text-sm);
+      }
+    }
+
+    /* ── Stats Bar ── */
+    .ems-stats-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--light-gray);
+      padding: var(--space-xl) 0;
+    }
+    .ems-stats-bar__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-lg);
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-xl);
+    }
+    .ems-stat-card {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl) var(--space-lg);
+      text-align: center;
+      transition: border-color var(--transition-base);
+    }
+    .ems-stat-card:hover { border-color: var(--teal); }
+    .ems-stat-card__number {
+      display: block;
+      font-size: clamp(1.8rem, 1.4rem + 1.5vw, 2.4rem);
+      font-weight: 900;
+      color: var(--teal);
+      line-height: 1.1;
+      margin-bottom: var(--space-xs);
+    }
+    .ems-stat-card__label {
+      display: block;
+      font-size: var(--text-sm);
+      color: var(--mid-gray);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+      .ems-stats-bar__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ── Mid-Page CTA ── */
+    .mid-cta {
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-3xl) 0;
+      background: linear-gradient(135deg, var(--teal-dark, #1a3f43), var(--deep-blue));
+      color: var(--white);
+      text-align: center;
+    }
+    .mid-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(173,207,145,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(237,131,94,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .mid-cta__inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+      text-align: left;
+    }
+    .mid-cta__content h2 {
+      color: var(--white);
+      font-size: var(--text-3xl);
+      margin-bottom: var(--space-md);
+    }
+    .mid-cta__content p {
+      color: rgba(255,255,255,0.8);
+      margin-bottom: var(--space-xl);
+    }
+    .mid-cta__stats {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+    .mid-cta__stat {
+      text-align: center;
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg) var(--space-xl);
+    }
+    .mid-cta__stat-number {
+      display: block;
+      font-size: var(--text-4xl);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+    .mid-cta__stat-label {
+      display: block;
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: var(--space-xs);
+    }
+
+    @media (max-width: 768px) {
+      .mid-cta__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .mid-cta__stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .mid-cta__stat { flex: 1 1 140px; }
+    }
+
+    /* ── Feature Tabs: 5 Core Services ── */
+    .feature-tabs__pills {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      margin-top: var(--space-3xl);
+    }
+    .feature-tabs__pill {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-md) var(--space-xl);
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: var(--mid-gray);
+      font-family: var(--font-primary);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition-base), color var(--transition-base);
+    }
+    .feature-tabs__pill:hover {
+      color: var(--teal);
+    }
+    .feature-tabs__pill.is-active {
+      background: var(--teal);
+      color: var(--white);
+    }
+    .feature-tabs__pill svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .feature-tabs__panel-wrapper {
+      margin-top: var(--space-2xl);
+      background: linear-gradient(135deg, #0d1b2a 0%, var(--deep-blue) 50%, var(--teal) 100%);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4xl);
+      min-height: 420px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-tabs__panel {
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4xl);
+      align-items: center;
+      animation: tabFadeIn 0.4s ease;
+    }
+    .feature-tabs__panel.is-active {
+      display: grid;
+    }
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .feature-tabs__badge {
+      display: inline-block;
+      font-family: var(--font-accent);
+      font-size: var(--text-xs);
+      color: var(--coral);
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-lg);
+    }
+    .feature-tabs__title {
+      font-size: clamp(1.75rem, 3vw, 2.75rem);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: var(--space-lg);
+    }
+    .feature-tabs__desc {
+      font-size: var(--text-base);
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: var(--space-2xl);
+    }
+    .feature-tabs__link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--coral);
+      transition: gap var(--transition-base);
+    }
+    .feature-tabs__link:hover {
+      gap: var(--space-md);
+    }
+    .feature-tabs__link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .feature-tabs__visual {
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius-md);
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.25);
+      font-size: var(--text-sm);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .feature-tabs__visual svg {
+      width: 32px;
+      height: 32px;
+      margin-right: var(--space-sm);
+      opacity: 0.5;
+    }
+
+    @media (max-width: 1024px) {
+      .feature-tabs__panel-wrapper { padding: var(--space-3xl); }
+      .feature-tabs__panel { gap: var(--space-2xl); }
+    }
+    @media (max-width: 768px) {
+      .feature-tabs__pills { gap: var(--space-sm); }
+      .feature-tabs__pill { padding: var(--space-md) var(--space-lg); font-size: var(--text-xs); min-height: 44px; }
+      .feature-tabs__panel-wrapper { padding: var(--space-2xl); min-height: auto; }
+      .feature-tabs__panel {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+      }
+      .feature-tabs__visual { order: -1; }
+    }
+    @media (max-width: 480px) {
+      .feature-tabs__pills { flex-direction: column; }
+      .feature-tabs__pill { width: 100%; justify-content: center; }
+    }
+  </style>
 </head>
 <body>
 
@@ -32,6 +439,9 @@
       </button>
 
       <nav class="nav" id="navMenu">
+        <button class="nav__close" id="navClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
         <a href="index.html" class="nav__link nav__link--active">Home EMS</a>
 
         <div class="nav__item">
@@ -85,6 +495,9 @@
                   <span class="nav__dropdown-title">Enclosure &amp; Cabinet</span>
                   <span class="nav__dropdown-desc">Rack-mount, panel, and cabinet builds</span>
                 </div>
+              </a>
+              <a href="services/index.html" class="nav__dropdown-item nav__dropdown-item--all">
+                <div><span class="nav__dropdown-title">View All Services →</span></div>
               </a>
             </div>
             <div class="nav__dropdown-footer">
@@ -186,16 +599,31 @@
   <section class="hero">
     <div class="hero__bg"></div>
 
-    <div class="hero__inner">
-      <div class="hero__content">
-        <nav class="breadcrumb hero-reveal hero-reveal-delay-1" aria-label="Breadcrumb">
-          <a href="../index.html" class="breadcrumb__link">GPW Corporate</a>
-          <span class="breadcrumb__sep">→</span>
-          <span class="breadcrumb__current">EMS Assembly</span>
-        </nav>
-        <span class="hero__label hero-reveal hero-reveal-delay-1">GPW Electromechanical Assembly</span>
-        <h1 class="hero-reveal hero-reveal-delay-2">Complex Builds.<br>Nearshore Speed.</h1>
-        <p class="hero__tagline hero-reveal hero-reveal-delay-2">Assembly&#8209;First Manufacturing</p>
+    <!-- Glow dots -->
+    <div class="hero__glow">
+      <div class="hero__glow-dot hero__glow-dot--teal" style="top: 15%; left: 10%; animation-delay: 0s;"></div>
+      <div class="hero__glow-dot hero__glow-dot--coral" style="top: 30%; left: 75%; animation-delay: 1.2s;"></div>
+      <div class="hero__glow-dot hero__glow-dot--teal" style="top: 60%; left: 50%; animation-delay: 2.4s;"></div>
+      <div class="hero__glow-dot hero__glow-dot--lime" style="top: 78%; left: 20%; animation-delay: 3.6s;"></div>
+      <div class="hero__glow-dot hero__glow-dot--teal" style="top: 42%; left: 38%; animation-delay: 4.8s;"></div>
+      <div class="hero__glow-dot hero__glow-dot--coral" style="top: 70%; left: 82%; animation-delay: 1.8s;"></div>
+      <div class="hero__glow-dot hero__glow-dot--lime" style="top: 12%; left: 58%; animation-delay: 3s;"></div>
+      <div class="hero__glow-dot hero__glow-dot--teal" style="top: 52%; left: 6%; animation-delay: 4.2s;"></div>
+    </div>
+
+    <!-- Vignette overlay -->
+    <div class="hero__vignette"></div>
+
+    <div class="hero__inner hero__inner--centered">
+      <nav class="breadcrumb hero-reveal hero-reveal-delay-1" aria-label="Breadcrumb" style="position: absolute; top: calc(var(--header-height) + var(--space-md)); left: var(--space-xl); z-index: 3;">
+        <a href="../index.html" class="breadcrumb__link">GPW Corporate</a>
+        <span class="breadcrumb__sep">→</span>
+        <span class="breadcrumb__current">EMS Assembly</span>
+      </nav>
+      <div class="hero__content hero__content--centered">
+        <span class="hero__label hero-reveal hero-reveal-delay-1">Assembly-First Manufacturing from Monterrey</span>
+        <h1 class="hero-reveal hero-reveal-delay-2">Electromechanical Assembly<br>Services in Mexico</h1>
+        <p class="hero__tagline hero-reveal hero-reveal-delay-2">Complex Builds. Nearshore&nbsp;Speed.</p>
         <p class="hero__subtitle hero-reveal hero-reveal-delay-3">
           GPW integrates mechanical, electrical, and cabling into finished products — tested, packaged, and shipped from Monterrey to your dock in days.
         </p>
@@ -218,23 +646,32 @@
           </a>
         </div>
         <div class="hero__trust hero-reveal hero-reveal-delay-5">
-          <span class="hero__trust-item">IPC-A-610 &amp; IPC-A-620 certification in progress</span>
+          <span class="hero__trust-item">IPC-A-610 &amp; IPC-A-620 workmanship standards</span>
           <span class="hero__trust-item">USMCA-compliant</span>
-          <span class="hero__trust-item">Pursuing ISO 9001</span>
+          <span class="hero__trust-item">ISO 9001 pathway</span>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="hero__media hero-reveal hero-reveal-delay-4">
-        <div class="hero__image-frame">
-          <div class="img-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            Photo: Production floor — operators assembling electromechanical products
-          </div>
-        </div>
-        <div class="hero__badge">
-          <span class="hero__badge-number">5</span>
-          <span class="hero__badge-text">Core services</span>
-        </div>
+  <!-- ============ STATS BAR ============ -->
+  <section class="ems-stats-bar">
+    <div class="ems-stats-bar__grid">
+      <div class="ems-stat-card">
+        <span class="ems-stat-card__number">5</span>
+        <span class="ems-stat-card__label">Core Assembly Services</span>
+      </div>
+      <div class="ems-stat-card">
+        <span class="ems-stat-card__number">8</span>
+        <span class="ems-stat-card__label">Industries Served</span>
+      </div>
+      <div class="ems-stat-card">
+        <span class="ems-stat-card__number">150 mi</span>
+        <span class="ems-stat-card__label">From the U.S. Border</span>
+      </div>
+      <div class="ems-stat-card">
+        <span class="ems-stat-card__number">24 hrs</span>
+        <span class="ems-stat-card__label">Quote Response Time</span>
       </div>
     </div>
   </section>
@@ -270,104 +707,114 @@
         <p>GPW's electromechanical assembly capabilities span 5 core service areas — each one engineered for a specific stage of the build process. Most customer projects combine two or more into a single, integrated program.</p>
       </div>
 
-      <div class="services-list">
-        <!-- Service 1 -->
-        <div class="service-row reveal">
-          <div class="service-row__number">01</div>
-          <div class="service-row__content">
-            <h3>Box Build Integration</h3>
-            <p class="service-row__subtitle">From BOM to Finished Unit</p>
-            <p>Your product is more than a board. It is a chassis with components mounted inside, cables routed through, and firmware loaded onto. GPW handles the full box build — mechanical assembly, electrical integration, cabling, and testing — delivering a finished product, not a collection of parts.</p>
-            <a href="services/box-build-assembly.html" class="service-row__link">
+      <!-- Tab Pills -->
+      <div class="feature-tabs__pills reveal" role="tablist">
+        <button class="feature-tabs__pill is-active" role="tab" aria-selected="true" aria-controls="svc-panel-1" data-tab="svc-panel-1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+          Box Build
+        </button>
+        <button class="feature-tabs__pill" role="tab" aria-selected="false" aria-controls="svc-panel-2" data-tab="svc-panel-2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H8"/><path d="M18 2h2.5A2.5 2.5 0 0 1 23 4.5v15"/><path d="M4 12h16"/><circle cx="12" cy="12" r="2"/></svg>
+          Cable &amp; Harness
+        </button>
+        <button class="feature-tabs__pill" role="tab" aria-selected="false" aria-controls="svc-panel-3" data-tab="svc-panel-3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          System Integration
+        </button>
+        <button class="feature-tabs__pill" role="tab" aria-selected="false" aria-controls="svc-panel-4" data-tab="svc-panel-4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Testing &amp; QA
+        </button>
+        <button class="feature-tabs__pill" role="tab" aria-selected="false" aria-controls="svc-panel-5" data-tab="svc-panel-5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20M6 12h4M6 16h2"/></svg>
+          Enclosures
+        </button>
+      </div>
+
+      <!-- Tab Panels -->
+      <div class="feature-tabs__panel-wrapper reveal">
+        <!-- Panel 1: Box Build -->
+        <div class="feature-tabs__panel is-active" id="svc-panel-1" role="tabpanel">
+          <div class="feature-tabs__content">
+            <span class="feature-tabs__badge">01 — From BOM to Finished Unit</span>
+            <h3 class="feature-tabs__title">Box Build Integration</h3>
+            <p class="feature-tabs__desc">Your product is more than a board. It is a chassis with components mounted inside, cables routed through, and firmware loaded onto. GPW handles the full box build — mechanical assembly, electrical integration, cabling, and testing — delivering a finished product, not a collection of parts.</p>
+            <a href="services/box-build-assembly.html" class="feature-tabs__link">
               Explore Box Build Assembly
               <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
           </div>
-          <div class="service-row__image">
-            <div class="img-placeholder img-placeholder--light">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              Photo: Box build assembly
-            </div>
+          <div class="feature-tabs__visual">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            Photo: Box build assembly
           </div>
         </div>
 
-        <!-- Service 2 -->
-        <div class="service-row service-row--reverse reveal">
-          <div class="service-row__number">02</div>
-          <div class="service-row__content">
-            <h3>Cable &amp; Wire Harness Assembly</h3>
-            <p class="service-row__subtitle">Every Connection Verified</p>
-            <p>Every electromechanical product depends on cables. GPW builds custom cable and wire harnesses to print — from simple power leads to complex multi-conductor harnesses with hundreds of termination points. We test every harness for continuity, insulation resistance, and hi-pot before it moves to integration.</p>
-            <a href="services/cable-harness-assembly.html" class="service-row__link">
+        <!-- Panel 2: Cable & Harness -->
+        <div class="feature-tabs__panel" id="svc-panel-2" role="tabpanel">
+          <div class="feature-tabs__content">
+            <span class="feature-tabs__badge">02 — Every Connection Verified</span>
+            <h3 class="feature-tabs__title">Cable &amp; Wire Harness Assembly</h3>
+            <p class="feature-tabs__desc">Every electromechanical product depends on cables. GPW builds custom cable and wire harnesses to print — from simple power leads to complex multi-conductor harnesses with hundreds of termination points. We test every harness for continuity, insulation resistance, and hi-pot before it moves to integration.</p>
+            <a href="services/cable-harness-assembly.html" class="feature-tabs__link">
               Explore Cable &amp; Harness Assembly
               <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
           </div>
-          <div class="service-row__image">
-            <div class="img-placeholder img-placeholder--light">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              Photo: Cable harness assembly
-            </div>
+          <div class="feature-tabs__visual">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            Photo: Cable harness assembly
           </div>
         </div>
 
-        <!-- Service 3 -->
-        <div class="service-row reveal">
-          <div class="service-row__number">03</div>
-          <div class="service-row__content">
-            <h3>System Integration</h3>
-            <p class="service-row__subtitle">One Team, One Roof, One Program</p>
-            <p>System integration is where individual sub-assemblies become a working product. GPW manages the full integration sequence: mechanical structure, component mounting, cable routing, board installation, firmware loading, and final configuration.</p>
-            <a href="services/system-integration.html" class="service-row__link">
+        <!-- Panel 3: System Integration -->
+        <div class="feature-tabs__panel" id="svc-panel-3" role="tabpanel">
+          <div class="feature-tabs__content">
+            <span class="feature-tabs__badge">03 — One Team, One Roof, One Program</span>
+            <h3 class="feature-tabs__title">System Integration</h3>
+            <p class="feature-tabs__desc">System integration is where individual sub-assemblies become a working product. GPW manages the full integration sequence: mechanical structure, component mounting, cable routing, board installation, firmware loading, and final configuration.</p>
+            <a href="services/system-integration.html" class="feature-tabs__link">
               Explore System Integration
               <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
           </div>
-          <div class="service-row__image">
-            <div class="img-placeholder img-placeholder--light">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              Photo: System integration line
-            </div>
+          <div class="feature-tabs__visual">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            Photo: System integration line
           </div>
         </div>
 
-        <!-- Service 4 -->
-        <div class="service-row service-row--reverse reveal">
-          <div class="service-row__number">04</div>
-          <div class="service-row__content">
-            <h3>Testing &amp; Quality Assurance</h3>
-            <p class="service-row__subtitle">Every Unit Tested Before It Ships</p>
-            <p>Testing is built into the process, not bolted on at the end. GPW runs end-of-line functional testing, burn-in, thermal validation, and visual inspection on every unit before it ships. Every test result is documented, traceable, and available for your quality team's review.</p>
-            <a href="services/testing-inspection.html" class="service-row__link">
+        <!-- Panel 4: Testing & QA -->
+        <div class="feature-tabs__panel" id="svc-panel-4" role="tabpanel">
+          <div class="feature-tabs__content">
+            <span class="feature-tabs__badge">04 — Every Unit Tested Before It Ships</span>
+            <h3 class="feature-tabs__title">Testing &amp; Quality Assurance</h3>
+            <p class="feature-tabs__desc">Testing is built into the process, not bolted on at the end. GPW runs end-of-line functional testing, burn-in, thermal validation, and visual inspection on every unit before it ships. Every test result is documented, traceable, and available for your quality team's review.</p>
+            <a href="services/testing-inspection.html" class="feature-tabs__link">
               Explore Testing &amp; Inspection
               <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
           </div>
-          <div class="service-row__image">
-            <div class="img-placeholder img-placeholder--light">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              Photo: Testing equipment
-            </div>
+          <div class="feature-tabs__visual">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            Photo: Testing equipment
           </div>
         </div>
 
-        <!-- Service 5 -->
-        <div class="service-row reveal">
-          <div class="service-row__number">05</div>
-          <div class="service-row__content">
-            <h3>Enclosure &amp; Cabinet Assembly</h3>
-            <p class="service-row__subtitle">Built for Density, Wired for Performance</p>
-            <p>Telecom cabinets. Energy distribution panels. Server racks. Industrial control enclosures. GPW assembles these high-density builds with the cable management, thermal considerations, and access requirements each application demands.</p>
-            <a href="services/enclosure-cabinet-assembly.html" class="service-row__link">
+        <!-- Panel 5: Enclosures -->
+        <div class="feature-tabs__panel" id="svc-panel-5" role="tabpanel">
+          <div class="feature-tabs__content">
+            <span class="feature-tabs__badge">05 — Built for Density, Wired for Performance</span>
+            <h3 class="feature-tabs__title">Enclosure &amp; Cabinet Assembly</h3>
+            <p class="feature-tabs__desc">Telecom cabinets. Energy distribution panels. Server racks. Industrial control enclosures. GPW assembles these high-density builds with the cable management, thermal considerations, and access requirements each application demands.</p>
+            <a href="services/enclosure-cabinet-assembly.html" class="feature-tabs__link">
               Explore Enclosure &amp; Cabinet Assembly
               <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
           </div>
-          <div class="service-row__image">
-            <div class="img-placeholder img-placeholder--light">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              Photo: Enclosure/cabinet assembly
-            </div>
+          <div class="feature-tabs__visual">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            Photo: Enclosure/cabinet assembly
           </div>
         </div>
       </div>
@@ -510,6 +957,39 @@
     </div>
   </section>
 
+  <!-- ============ MID-PAGE CTA ============ -->
+  <section class="mid-cta">
+    <div class="mid-cta__bg"></div>
+    <div class="container mid-cta__inner reveal">
+      <div class="mid-cta__content">
+        <h2>Your Assembly Partner in&nbsp;Mexico</h2>
+        <p>From pilot builds to full-scale production — GPW delivers finished products, not promises. Tell us what you're building.</p>
+        <a href="request-quote.html" class="btn btn--interactive btn--lg">
+          <span class="btn__text">Start Your Project</span>
+          <span class="btn__hover">
+            <span>Start Your Project</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </span>
+          <span class="btn__circle"></span>
+        </a>
+      </div>
+      <div class="mid-cta__stats">
+        <div class="mid-cta__stat">
+          <span class="mid-cta__stat-number">10–10K+</span>
+          <span class="mid-cta__stat-label">Units per Run</span>
+        </div>
+        <div class="mid-cta__stat">
+          <span class="mid-cta__stat-number">4–8 wks</span>
+          <span class="mid-cta__stat-label">RFQ to First Article</span>
+        </div>
+        <div class="mid-cta__stat">
+          <span class="mid-cta__stat-number">100%</span>
+          <span class="mid-cta__stat-label">End-of-Line Tested</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ SECTION 5: NEARSHORE ADVANTAGE ============ -->
   <section class="section section--dark">
     <div class="container">
@@ -559,7 +1039,7 @@
       </div>
 
       <div class="quality-grid">
-        <div class="quality-card reveal reveal-delay-1">
+        <div class="quality-card">
           <div class="quality-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6M12 9v6"/><circle cx="12" cy="12" r="10"/></svg>
           </div>
@@ -567,7 +1047,7 @@
           <p>Before assembly begins, our engineering team reviews your design for manufacturability. We identify potential issues, suggest improvements, and align on workmanship standards.</p>
         </div>
 
-        <div class="quality-card reveal reveal-delay-2">
+        <div class="quality-card">
           <div class="quality-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </div>
@@ -575,7 +1055,7 @@
           <p>Our assembly processes follow IPC-A-610 (electronic assemblies) and IPC-A-620 (cable and harness assemblies) criteria. Certification is in progress.</p>
         </div>
 
-        <div class="quality-card reveal reveal-delay-3">
+        <div class="quality-card">
           <div class="quality-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
@@ -583,7 +1063,7 @@
           <p>We test every unit against your specifications before it ships. We design test fixtures, develop test protocols, and document results with full traceability.</p>
         </div>
 
-        <div class="quality-card reveal reveal-delay-4">
+        <div class="quality-card">
           <div class="quality-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"/></svg>
           </div>
@@ -591,13 +1071,20 @@
           <p>Our team inspects and verifies every component before it reaches the assembly floor. No surprises downstream.</p>
         </div>
 
-        <div class="quality-card reveal reveal-delay-5">
+        <div class="quality-card">
           <div class="quality-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
           </div>
           <h3>Continuous Improvement</h3>
           <p>Every quality escape is root-caused, documented, and fed back into the process. We track first-pass yield, defect rates, and cycle time across all programs.</p>
         </div>
+      </div>
+      <div class="quality-dots" aria-hidden="true">
+        <span class="quality-dot is-active"></span>
+        <span class="quality-dot"></span>
+        <span class="quality-dot"></span>
+        <span class="quality-dot"></span>
+        <span class="quality-dot"></span>
       </div>
 
       <div class="certifications reveal" style="text-align: center; margin-top: var(--space-3xl);">
@@ -678,7 +1165,7 @@
           </span>
           <span class="btn__circle"></span>
         </a>
-        <a href="#" class="btn btn--interactive btn--interactive-outline btn--lg">
+        <a href="request-quote.html?subject=facility-tour" class="btn btn--interactive btn--interactive-outline btn--lg">
           <span class="btn__text">Schedule a Facility Tour</span>
           <span class="btn__hover">
             <span>Schedule a Tour</span>
@@ -728,6 +1215,10 @@
             <a href="industries/industrial-equipment.html">Industrial Equipment</a>
             <a href="industries/telecom-hardware.html">Telecommunications</a>
             <a href="industries/medical-devices.html">Medical Devices</a>
+            <a href="industries/automotive.html">Automotive</a>
+            <a href="industries/energy.html">Energy</a>
+            <a href="industries/aerospace.html">Aerospace</a>
+            <a href="industries/appliances-white-goods.html">Appliances &amp; White Goods</a>
           </div>
         </div>
 
@@ -754,5 +1245,55 @@
 
   <!-- ============ JAVASCRIPT ============ -->
   <script src="../js/main.js"></script>
+
+  <!-- Feature Tabs: Service switching -->
+  <script>
+  (function () {
+    var pills = document.querySelectorAll('.feature-tabs__pill');
+    var panels = document.querySelectorAll('.feature-tabs__panel');
+    if (!pills.length) return;
+
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        var target = this.getAttribute('data-tab');
+
+        // Update pills
+        pills.forEach(function (p) {
+          p.classList.remove('is-active');
+          p.setAttribute('aria-selected', 'false');
+        });
+        this.classList.add('is-active');
+        this.setAttribute('aria-selected', 'true');
+
+        // Update panels
+        panels.forEach(function (panel) {
+          panel.classList.remove('is-active');
+        });
+        document.getElementById(target).classList.add('is-active');
+      });
+    });
+  })();
+  </script>
+
+  <!-- Quality carousel: dot indicators on scroll -->
+  <script>
+  (function () {
+    var grid = document.querySelector('.quality-grid');
+    var dots = document.querySelectorAll('.quality-dot');
+    if (!grid || !dots.length) return;
+
+    grid.addEventListener('scroll', function () {
+      var cards = grid.querySelectorAll('.quality-card');
+      var scrollLeft = grid.scrollLeft;
+      var cardWidth = cards[0].offsetWidth + 16; // card + gap
+      var activeIndex = Math.round(scrollLeft / cardWidth);
+      activeIndex = Math.min(activeIndex, dots.length - 1);
+
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('is-active', i === activeIndex);
+      });
+    }, { passive: true });
+  })();
+  </script>
 </body>
 </html>

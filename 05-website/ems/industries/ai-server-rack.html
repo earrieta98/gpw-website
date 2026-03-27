@@ -137,7 +137,7 @@
 
   <style>
     /* ============================================
-       INDUSTRY PAGE: AI & Server Rack — Page-Specific Styles
+       INDUSTRY PAGE: AI & Server Rack — Page-Specific Styles (v2)
        ============================================ */
 
     /* --- Industry Hero --- */
@@ -172,7 +172,7 @@
       pointer-events: none;
     }
 
-    .ind-hero .container { position: relative; z-index: 1; max-width: 900px; }
+    .ind-hero .container { position: relative; z-index: 1; max-width: 1200px; }
 
     .ind-hero h1 {
       color: var(--white);
@@ -188,14 +188,103 @@
       margin-bottom: var(--space-xl);
     }
 
-    .ind-hero__copy p {
+    /* CHANGE 1 & 2: Hero grid with image placeholder */
+    .ind-hero__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .ind-hero__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .ind-hero__image-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      background: rgba(255,255,255,0.06);
+      border: 2px dashed rgba(255,255,255,0.2);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3xl) var(--space-xl);
+      min-height: 360px;
+      text-align: center;
+    }
+
+    .ind-hero__image-placeholder svg {
+      width: 48px;
+      height: 48px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .ind-hero__image-placeholder span {
+      font-size: var(--text-sm);
+      font-style: italic;
+      color: rgba(255,255,255,0.4);
+      max-width: 280px;
+      line-height: 1.5;
+    }
+
+    /* --- Hero Extended (moved paragraphs) --- */
+    .hero-extended {
+      padding: var(--space-4xl) 0;
+      background: var(--white);
+    }
+
+    .hero-extended__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .hero-extended__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-extended__text p {
       font-size: var(--text-base);
-      color: rgba(255,255,255,0.7);
+      color: var(--dark-gray);
       line-height: 1.7;
       margin-bottom: var(--space-lg);
     }
 
-    .ind-hero__copy p:last-child { margin-bottom: var(--space-2xl); }
+    .hero-extended__text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .hero-extended__callout {
+      background: linear-gradient(135deg, var(--teal), var(--deep-blue));
+      border-radius: var(--radius-lg);
+      padding: var(--space-2xl) var(--space-xl);
+      color: var(--white);
+      position: sticky;
+      top: calc(var(--header-height) + var(--space-xl));
+    }
+
+    .hero-extended__callout p {
+      font-size: var(--text-lg);
+      line-height: 1.7;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 0;
+    }
+
+    .hero-extended__callout::before {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 4px;
+      background: var(--coral);
+      border-radius: 2px;
+      margin-bottom: var(--space-lg);
+    }
 
     /* --- Definition Block --- */
     .definition-section { padding: var(--space-4xl) 0; }
@@ -205,6 +294,31 @@
       border-left: 4px solid var(--teal);
       border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
       padding: var(--space-2xl) var(--space-2xl);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    .definition-block-ind__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--teal), var(--deep-blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .definition-block-ind__icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--white);
+    }
+
+    @media (max-width: 600px) {
+      .definition-block-ind { grid-template-columns: 1fr; }
     }
 
     .definition-block-ind p {
@@ -214,11 +328,102 @@
       margin-bottom: 0;
     }
 
-    /* --- Industry Context --- */
+    /* --- Stats Bar (CHANGE 4) --- */
+    .stats-bar {
+      padding: var(--space-3xl) 0;
+      background: var(--off-white);
+    }
+
+    .stats-bar__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-xl);
+    }
+
+    @media (max-width: 900px) {
+      .stats-bar__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 500px) {
+      .stats-bar__grid { grid-template-columns: 1fr; }
+    }
+
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl) var(--space-lg);
+      text-align: center;
+      transition: border-color var(--transition-base);
+    }
+
+    .stat-card:hover {
+      border-color: var(--teal);
+    }
+
+    .stat-card__number {
+      font-size: clamp(1.8rem, 1.4rem + 1.5vw, 2.4rem);
+      font-weight: 900;
+      color: var(--teal);
+      line-height: 1.1;
+      margin-bottom: var(--space-xs);
+    }
+
+    .stat-card__label {
+      font-size: var(--text-sm);
+      color: var(--mid-gray);
+      line-height: 1.4;
+    }
+
+    /* --- Industry Context (CHANGE 3: 2-column layout) --- */
     .context-section { padding: var(--space-4xl) 0; background: var(--off-white); }
-    .context-section .context-copy { max-width: 780px; }
+
+    .context-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .context-grid { grid-template-columns: 1fr; }
+    }
+
     .context-section .context-copy p { color: var(--dark-gray); line-height: 1.7; margin-bottom: var(--space-lg); }
     .context-section .context-copy h3 { margin-top: var(--space-2xl); margin-bottom: var(--space-md); font-size: var(--text-xl); }
+
+    .context-image {
+      position: sticky;
+      top: calc(var(--header-height) + var(--space-xl));
+    }
+
+    .context-image__placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      background: rgba(0,0,0,0.03);
+      border: 2px dashed var(--light-gray);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3xl) var(--space-xl);
+      min-height: 400px;
+      text-align: center;
+    }
+
+    .context-image__placeholder svg {
+      width: 48px;
+      height: 48px;
+      color: var(--mid-gray);
+    }
+
+    .context-image__placeholder span {
+      font-size: var(--text-sm);
+      font-style: italic;
+      color: var(--mid-gray);
+      max-width: 280px;
+      line-height: 1.5;
+    }
 
     /* --- Capabilities --- */
     .cap-section { padding: var(--space-4xl) 0; }
@@ -327,12 +532,90 @@
     .cap-accordion__xref a { color: var(--teal); font-weight: 600; }
     .cap-accordion__xref a:hover { color: var(--coral); }
 
+    /* --- Image Band (CHANGE 5 & 8) --- */
+    .image-band {
+      padding: var(--space-3xl) 0;
+      background: var(--white);
+    }
+
+    .image-band--alt {
+      background: var(--off-white);
+    }
+
+    .image-band__placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      background: rgba(0,0,0,0.03);
+      border: 2px dashed var(--light-gray);
+      border-radius: var(--radius-lg);
+      aspect-ratio: 21 / 9;
+      width: 100%;
+      text-align: center;
+      padding: var(--space-xl);
+    }
+
+    .image-band__placeholder svg {
+      width: 48px;
+      height: 48px;
+      color: var(--mid-gray);
+    }
+
+    .image-band__placeholder span {
+      font-size: var(--text-sm);
+      font-style: italic;
+      color: var(--mid-gray);
+      max-width: 480px;
+      line-height: 1.5;
+    }
+
     /* --- Mid CTA --- */
     .mid-cta {
-      padding: var(--space-3xl) 0;
+      padding: var(--space-4xl) 0;
       background: linear-gradient(135deg, var(--teal-dark), var(--deep-blue));
       color: var(--white);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mid-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(173,207,145,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(237,131,94,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .mid-cta .container { position: relative; z-index: 1; }
+
+    .mid-cta__stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3xl);
+      margin-bottom: var(--space-2xl);
+    }
+
+    @media (max-width: 600px) { .mid-cta__stats { gap: var(--space-xl); flex-wrap: wrap; } }
+
+    .mid-cta__stat-number {
+      font-size: var(--text-4xl);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .mid-cta__stat-label {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: var(--space-xs);
     }
 
     .mid-cta p {
@@ -341,21 +624,60 @@
       margin: 0 auto var(--space-xl);
     }
 
-    /* --- Projects --- */
+    /* --- Projects (CHANGE 6: image placeholders in cards, 3-col grid) --- */
     .projects-section { padding: var(--space-4xl) 0; background: var(--off-white); }
     .projects-section__intro { max-width: 780px; margin-bottom: var(--space-3xl); }
     .projects-section__intro p { color: var(--dark-gray); line-height: 1.7; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-xl);
+    }
+
+    @media (max-width: 900px) { .projects-grid { grid-template-columns: 1fr; } }
 
     .project-card {
       background: var(--white);
       border: 1px solid var(--light-gray);
       border-radius: var(--radius-lg);
       padding: var(--space-2xl);
-      margin-bottom: var(--space-xl);
       transition: border-color var(--transition-base);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card:hover { border-color: var(--teal); }
+
+    .project-card__image {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      background: rgba(0,0,0,0.03);
+      border: 2px dashed var(--light-gray);
+      border-radius: var(--radius-md);
+      aspect-ratio: 16 / 9;
+      margin: calc(-1 * var(--space-2xl)) calc(-1 * var(--space-2xl)) var(--space-xl);
+      text-align: center;
+      padding: var(--space-lg);
+    }
+
+    .project-card__image svg {
+      width: 36px;
+      height: 36px;
+      color: var(--mid-gray);
+    }
+
+    .project-card__image span {
+      font-size: var(--text-sm);
+      font-style: italic;
+      color: var(--mid-gray);
+      max-width: 360px;
+      line-height: 1.4;
+    }
 
     .project-card__number {
       font-family: var(--font-accent);
@@ -455,16 +777,22 @@
       margin-bottom: 0;
     }
 
+    /* CHANGE 7: Pull quote for advantage-closing */
     .advantage-closing {
       max-width: 780px;
       margin-top: var(--space-3xl);
+      border-left: 4px solid var(--coral);
+      padding-left: var(--space-xl);
     }
 
     .advantage-closing p {
+      font-family: var(--font-accent);
+      font-size: var(--text-xl);
       color: var(--dark-gray);
       line-height: 1.7;
       font-weight: 600;
       font-style: italic;
+      margin-bottom: 0;
     }
 
     /* --- Quality --- */
@@ -476,10 +804,39 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-xl);
+      justify-items: center;
     }
 
-    @media (max-width: 900px) { .ind-quality-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .ind-quality-grid { grid-template-columns: 1fr; } }
+    .ind-quality-grid .ind-quality-card:nth-child(4),
+    .ind-quality-grid .ind-quality-card:nth-child(5) {
+      grid-column: span 1;
+    }
+
+    /* Center the last row: 2 cards offset under 3 */
+    .ind-quality-grid::after {
+      content: '';
+      display: none;
+    }
+
+    @supports (grid-template-columns: repeat(3, 1fr)) {
+      .ind-quality-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+      .ind-quality-grid .ind-quality-card:nth-child(1),
+      .ind-quality-grid .ind-quality-card:nth-child(2),
+      .ind-quality-grid .ind-quality-card:nth-child(3) {
+        grid-column: span 2;
+      }
+      .ind-quality-grid .ind-quality-card:nth-child(4) {
+        grid-column: 2 / span 2;
+      }
+      .ind-quality-grid .ind-quality-card:nth-child(5) {
+        grid-column: 4 / span 2;
+      }
+    }
+
+    @media (max-width: 900px) { .ind-quality-grid, .ind-quality-grid { grid-template-columns: 1fr 1fr; } .ind-quality-grid .ind-quality-card:nth-child(1), .ind-quality-grid .ind-quality-card:nth-child(2), .ind-quality-grid .ind-quality-card:nth-child(3), .ind-quality-grid .ind-quality-card:nth-child(4), .ind-quality-grid .ind-quality-card:nth-child(5) { grid-column: span 1; } }
+    @media (max-width: 600px) { .ind-quality-grid { grid-template-columns: 1fr; } .ind-quality-grid .ind-quality-card:nth-child(1), .ind-quality-grid .ind-quality-card:nth-child(2), .ind-quality-grid .ind-quality-card:nth-child(3), .ind-quality-grid .ind-quality-card:nth-child(4), .ind-quality-grid .ind-quality-card:nth-child(5) { grid-column: span 1; } }
 
     .ind-quality-card {
       background: var(--white);
@@ -577,6 +934,69 @@
 
     .final-cta__contact a { color: rgba(255,255,255,0.7); }
     .final-cta__contact a:hover { color: var(--white); }
+
+    /* ========== MOBILE OVERRIDES ========== */
+    @media (max-width: 768px) {
+      /* 1. Reduce section padding */
+      .ind-hero { padding: calc(var(--header-height) + var(--space-xl)) 0 var(--space-2xl) !important; }
+      .definition-section, .context-section, .cap-section, .advantage-section, .quality-section, .ind-faq { padding: var(--space-3xl) 0 !important; }
+      .projects-section { padding: var(--space-3xl) 0 !important; }
+      .final-cta { padding: var(--space-3xl) 0 !important; }
+      .hero-extended { padding: var(--space-2xl) 0 !important; }
+      .stats-bar { padding: var(--space-2xl) 0 !important; }
+      .image-band { padding: var(--space-xl) 0 !important; }
+      .mid-cta { padding: var(--space-2xl) 0 !important; }
+
+      /* 2. Hero image placeholder smaller */
+      .ind-hero__image-placeholder { min-height: 200px !important; padding: var(--space-xl) var(--space-md) !important; }
+
+      /* 3. Context image placeholder smaller */
+      .context-image__placeholder { min-height: 200px !important; padding: var(--space-xl) var(--space-md) !important; }
+      .context-image { position: static !important; }
+
+      /* 4. Cards padding reduction */
+      .advantage-card { padding: var(--space-lg) !important; }
+      .ind-quality-card { padding: var(--space-lg) !important; }
+      .project-card { padding: var(--space-lg) !important; }
+      .definition-block-ind { padding: var(--space-lg) !important; }
+      .hero-extended__callout { padding: var(--space-lg) var(--space-md) !important; position: static !important; }
+
+      /* 5. Mid-CTA stats scale down */
+      .mid-cta__stat-number { font-size: var(--text-3xl) !important; }
+      .mid-cta h2 { font-size: var(--text-2xl) !important; }
+
+      /* 6. Pull quote / advantage closing */
+      .advantage-closing p { font-size: var(--text-lg) !important; }
+
+      /* 7. Accordion summary padding */
+      .cap-accordion summary { padding: var(--space-md) var(--space-md) !important; }
+      .cap-accordion__body { padding: 0 var(--space-md) var(--space-md) !important; }
+      .cap-accordion__title { font-size: var(--text-base) !important; }
+
+      /* 8. Project card image adjust for reduced padding */
+      .project-card__image { margin: calc(-1 * var(--space-lg)) calc(-1 * var(--space-lg)) var(--space-md) !important; }
+
+      /* 9. Section intros margin reduction */
+      .cap-section__intro, .projects-section__intro, .advantage-section__intro, .quality-section__intro { margin-bottom: var(--space-2xl) !important; }
+
+      /* 10. Image band aspect ratio */
+      .image-band__placeholder { aspect-ratio: 16 / 7 !important; }
+
+      /* Stat cards */
+      .stat-card { padding: var(--space-lg) var(--space-md) !important; }
+
+      /* Final CTA buttons stack */
+      .final-cta__buttons { flex-direction: column !important; align-items: center !important; }
+    }
+
+    @media (max-width: 480px) {
+      .ind-hero h1 { font-size: clamp(1.3rem, 1rem + 2vw, 1.8rem) !important; }
+      .ind-hero__subtitle { font-size: var(--text-base) !important; }
+      .mid-cta__stats { gap: var(--space-md) !important; }
+      .mid-cta__stat-number { font-size: var(--text-2xl) !important; }
+      .advantage-card, .ind-quality-card { padding: var(--space-md) !important; }
+      .ind-hero__image-placeholder { min-height: 160px !important; }
+    }
   </style>
 </head>
 <body>
@@ -596,6 +1016,9 @@
       </button>
 
       <nav class="nav" id="navMenu">
+        <button class="nav__close" id="navClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
         <a href="../index.html" class="nav__link">Home EMS</a>
 
         <div class="nav__item">
@@ -649,6 +1072,9 @@
                   <span class="nav__dropdown-title">Enclosure &amp; Cabinet</span>
                   <span class="nav__dropdown-desc">Rack-mount, panel, and cabinet builds</span>
                 </div>
+              </a>
+              <a href="../services/index.html" class="nav__dropdown-item nav__dropdown-item--all">
+                <div><span class="nav__dropdown-title">View All Services →</span></div>
               </a>
             </div>
             <div class="nav__dropdown-footer">
@@ -711,7 +1137,7 @@
     <div class="nav-overlay" id="navOverlay"></div>
   </header>
 
-  <!-- ============ SECTION 1: HERO ============ -->
+  <!-- ============ SECTION 1: HERO (CHANGE 1 & 2 — lean hero with 2-col grid) ============ -->
   <!-- Scrollspy sidebar -->
   <aside class="scrollspy" id="scrollspy">
     <nav class="scrollspy__nav">
@@ -731,30 +1157,51 @@
     <div class="container">
       <nav class="breadcrumb hero-reveal hero-reveal-delay-1" aria-label="Breadcrumb">
         <a href="../../index.html" class="breadcrumb__link">GPW Corporate</a>
-        <span class="breadcrumb__sep">→</span>
+        <span class="breadcrumb__sep">&rarr;</span>
         <a href="../index.html" class="breadcrumb__link">EMS Assembly</a>
-        <span class="breadcrumb__sep">→</span>
+        <span class="breadcrumb__sep">&rarr;</span>
         <span class="breadcrumb__current">AI &amp; Server Rack</span>
       </nav>
       <span class="label label--lime hero-reveal hero-reveal-delay-1" style="font-family: var(--font-accent);">AI &amp; Server Rack Assembly</span>
-      <h1 class="hero-reveal hero-reveal-delay-2">AI Server Rack Assembly &mdash; Engineered for the Pace of Hyperscale Deployment</h1>
-      <p class="ind-hero__subtitle hero-reveal hero-reveal-delay-3">
-        Global Precision Works (GPW) delivers rack-level integration for AI server hardware &mdash; thermal management, high-density cable routing, power distribution, and burn-in testing &mdash; from a nearshore facility in Monterrey, Mexico, two hours from the U.S. border.
-      </p>
-      <div class="ind-hero__copy hero-reveal hero-reveal-delay-3">
-        <p>The race to deploy AI infrastructure is measured in weeks, not quarters. Hyperscaler and enterprise OEMs are scaling compute capacity faster than their supply chains can keep up. Assembly slots are full. Lead times from Asia stretch past acceptable windows. Domestic U.S. capacity is limited and expensive.</p>
-        <p>GPW exists at that intersection &mdash; where the demand for precision AI server assembly meets the need for speed, proximity, and cost discipline. Our Monterrey facility is purpose-configured for rack-level server integration: mechanical assembly, component mounting, dense cable routing, thermal system installation, firmware loading, and multi-point burn-in testing. One facility. One program manager. One timezone as your U.S. operations team.</p>
-        <p>This is not a repurposed PCBA line handling server builds on the side. GPW is an assembly-first operation &mdash; every workstation, every fixture, every quality gate is designed around building complete systems, not populating circuit boards.</p>
+
+      <div class="ind-hero__grid">
+        <div class="ind-hero__text">
+          <h1 class="hero-reveal hero-reveal-delay-2">AI Server Rack Assembly &mdash; Engineered for the Pace of Hyperscale Deployment</h1>
+          <p class="ind-hero__subtitle hero-reveal hero-reveal-delay-3">
+            Global Precision Works (GPW) delivers rack-level integration for AI server hardware &mdash; thermal management, high-density cable routing, power distribution, and burn-in testing &mdash; from a nearshore facility in Monterrey, Mexico, two hours from the U.S. border.
+          </p>
+          <div class="btn-group hero-reveal hero-reveal-delay-4">
+            <a href="../request-quote.html" class="btn btn--interactive btn--lg">
+              <span class="btn__text">Request a Quote for AI Server Assembly</span>
+              <span class="btn__hover">
+                <span>Request a Quote for AI Server Assembly</span>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </span>
+              <span class="btn__circle"></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- CHANGE 2: Hero image placeholder -->
+        <div class="ind-hero__image-placeholder hero-reveal hero-reveal-delay-3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Photo: Technician assembling AI server rack with cable routing visible</span>
+        </div>
       </div>
-      <div class="btn-group hero-reveal hero-reveal-delay-4">
-        <a href="../request-quote.html" class="btn btn--interactive btn--lg">
-          <span class="btn__text">Request a Quote for AI Server Assembly</span>
-          <span class="btn__hover">
-            <span>Request a Quote for AI Server Assembly</span>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </span>
-          <span class="btn__circle"></span>
-        </a>
+    </div>
+  </section>
+
+  <!-- ============ HERO EXTENDED (CHANGE 1 — moved paragraphs) ============ -->
+  <section class="hero-extended">
+    <div class="container">
+      <div class="hero-extended__grid">
+        <div class="hero-extended__text reveal">
+          <p>The race to deploy AI infrastructure is measured in weeks, not quarters. Hyperscaler and enterprise OEMs are scaling compute capacity faster than their supply chains can keep up. Assembly slots are full. Lead times from Asia stretch past acceptable windows. Domestic U.S. capacity is limited and expensive.</p>
+          <p>GPW exists at that intersection &mdash; where the demand for precision AI server assembly meets the need for speed, proximity, and cost discipline. Our Monterrey facility is purpose-configured for rack-level server integration: mechanical assembly, component mounting, dense cable routing, thermal system installation, firmware loading, and multi-point burn-in testing. One facility. One program manager. One timezone as your U.S. operations team.</p>
+        </div>
+        <div class="hero-extended__callout reveal">
+          <p>This is not a repurposed PCBA line handling server builds on the side. GPW is an assembly-first operation &mdash; every workstation, every fixture, every quality gate is designed around building complete systems, not populating circuit boards.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -769,12 +1216,39 @@
       </div>
 
       <div class="definition-block-ind reveal">
+        <div class="definition-block-ind__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
         <p>AI server rack assembly is the process of integrating mechanical structures, compute modules, networking hardware, power distribution systems, cooling infrastructure, and cabling into a fully functional server rack ready for data center deployment. Unlike PCBA fabrication &mdash; which produces individual circuit boards &mdash; rack assembly takes finished components and builds them into a complete, tested system: chassis mounted, nodes installed, cables routed, firmware loaded, and burn-in validated. For OEMs shipping AI infrastructure, rack assembly is the final and most complex stage of hardware production &mdash; where component quality meets integration precision.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ SECTION 3: INDUSTRY CONTEXT ============ -->
+  <!-- ============ CHANGE 4: STATS BAR ============ -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-bar__grid">
+        <div class="stat-card reveal">
+          <div class="stat-card__number">1&ndash;2 Days</div>
+          <div class="stat-card__label">Monterrey to Texas by truck</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="stat-card__number">40&ndash;60%</div>
+          <div class="stat-card__label">Lower labor costs vs. U.S. assembly</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="stat-card__number">200+</div>
+          <div class="stat-card__label">Racks per month capacity</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <div class="stat-card__number">48 hrs</div>
+          <div class="stat-card__label">RFQ response time</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3: INDUSTRY CONTEXT (CHANGE 3 — 2-column layout) ============ -->
   <section class="context-section" id="context">
     <div class="container">
       <div class="reveal">
@@ -783,20 +1257,30 @@
         <h2>The AI Hardware Boom Is Outpacing Traditional Assembly Models</h2>
       </div>
 
-      <div class="context-copy reveal">
-        <p>Global spending on AI server infrastructure is accelerating at a pace that has reshaped manufacturing priorities across the electronics industry. Hyperscaler data center operators &mdash; along with enterprise customers building private AI clusters &mdash; are placing orders at volumes that exceed what legacy supply chains were designed to handle.</p>
+      <div class="context-grid">
+        <div class="context-copy reveal">
+          <p>Global spending on AI server infrastructure is accelerating at a pace that has reshaped manufacturing priorities across the electronics industry. Hyperscaler data center operators &mdash; along with enterprise customers building private AI clusters &mdash; are placing orders at volumes that exceed what legacy supply chains were designed to handle.</p>
 
-        <p>This surge is not just about more servers. The hardware itself is more complex. Modern AI server racks integrate high-wattage GPU modules, liquid cooling loops or advanced air cooling systems, high-density power distribution units, and thousands of cable connections per rack. Assembly tolerances are tighter. Thermal management is critical &mdash; a misrouted cooling line or improperly seated heat sink can take an entire rack offline. Testing requirements go beyond basic power-on: burn-in cycles, thermal stress validation, and firmware verification are standard before any rack ships to a data center.</p>
+          <p>This surge is not just about more servers. The hardware itself is more complex. Modern AI server racks integrate high-wattage GPU modules, liquid cooling loops or advanced air cooling systems, high-density power distribution units, and thousands of cable connections per rack. Assembly tolerances are tighter. Thermal management is critical &mdash; a misrouted cooling line or improperly seated heat sink can take an entire rack offline. Testing requirements go beyond basic power-on: burn-in cycles, thermal stress validation, and firmware verification are standard before any rack ships to a data center.</p>
 
-        <h3>What this means for OEMs:</h3>
+          <h3>What this means for OEMs:</h3>
 
-        <p>Traditional EMS providers built their operations around PCBA fabrication and surface mount technology. They added server assembly as a secondary capability &mdash; running rack builds through facilities optimized for board-level production. The result is predictable: scheduling conflicts, deprioritized assembly programs, and lead times that stretch when SMT lines take priority.</p>
+          <p>Traditional EMS providers built their operations around PCBA fabrication and surface mount technology. They added server assembly as a secondary capability &mdash; running rack builds through facilities optimized for board-level production. The result is predictable: scheduling conflicts, deprioritized assembly programs, and lead times that stretch when SMT lines take priority.</p>
 
-        <p>OEMs shipping AI hardware need an assembly partner whose primary capability is building complete systems &mdash; not a board house that also does some final assembly. They need a facility where server rack integration is the main event, not an afterthought.</p>
+          <p>OEMs shipping AI hardware need an assembly partner whose primary capability is building complete systems &mdash; not a board house that also does some final assembly. They need a facility where server rack integration is the main event, not an afterthought.</p>
 
-        <p>The complexity gap is widening. Each new generation of AI accelerators increases power density, thermal load, and interconnect count. Racks that required 200 cable connections two years ago now require 400. Cooling systems that relied on standard fan trays now demand liquid distribution manifolds with leak-tested connections at every node. The assembly partner you choose needs to handle this complexity today &mdash; and scale with the next generation.</p>
+          <p>The complexity gap is widening. Each new generation of AI accelerators increases power density, thermal load, and interconnect count. Racks that required 200 cable connections two years ago now require 400. Cooling systems that relied on standard fan trays now demand liquid distribution manifolds with leak-tested connections at every node. The assembly partner you choose needs to handle this complexity today &mdash; and scale with the next generation.</p>
 
-        <p>That is the gap GPW was built to fill. Assembly-first. Multi-rack capable. Configured for the thermal, mechanical, and electrical complexity that AI hardware demands &mdash; and designed to evolve as that complexity increases with each hardware generation.</p>
+          <p>That is the gap GPW was built to fill. Assembly-first. Multi-rack capable. Configured for the thermal, mechanical, and electrical complexity that AI hardware demands &mdash; and designed to evolve as that complexity increases with each hardware generation.</p>
+        </div>
+
+        <!-- CHANGE 3: Sticky image placeholder -->
+        <div class="context-image">
+          <div class="context-image__placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Photo: High-density GPU server rack with liquid cooling manifolds</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -903,9 +1387,33 @@
     </div>
   </section>
 
+  <!-- ============ CHANGE 5: IMAGE BAND after capabilities ============ -->
+  <section class="image-band">
+    <div class="container">
+      <div class="image-band__placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Photo: GPW technician routing high-density cables inside a 42U server rack</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ MID-PAGE CTA ============ -->
   <section class="mid-cta">
     <div class="container reveal">
+      <div class="mid-cta__stats">
+        <div>
+          <div class="mid-cta__stat-number">48h</div>
+          <div class="mid-cta__stat-label">RFQ Response</div>
+        </div>
+        <div>
+          <div class="mid-cta__stat-number">1 team</div>
+          <div class="mid-cta__stat-label">One Program Manager</div>
+        </div>
+        <div>
+          <div class="mid-cta__stat-number">1 timezone</div>
+          <div class="mid-cta__stat-label">Same Hours as You</div>
+        </div>
+      </div>
       <p>GPW responds to every RFQ within 48 hours with an initial program assessment.</p>
       <a href="../request-quote.html" class="btn btn--interactive btn--lg">
         <span class="btn__text">Get a Quote for Your AI Server Program</span>
@@ -918,7 +1426,7 @@
     </div>
   </section>
 
-  <!-- ============ SECTION 5: TYPICAL PROJECTS ============ -->
+  <!-- ============ SECTION 5: TYPICAL PROJECTS (CHANGE 6 — image placeholders in cards) ============ -->
   <section class="projects-section" id="programs">
     <div class="container">
       <div class="reveal">
@@ -931,50 +1439,64 @@
         <p>Every AI server program is different &mdash; different OEMs, different rack architectures, different deployment timelines. But the programs share structural similarities that illustrate how GPW manages complexity at scale.</p>
       </div>
 
-      <!-- Project 1 -->
-      <div class="project-card reveal">
-        <div class="project-card__number">Example 1</div>
-        <h3>Multi-Node GPU Compute Rack</h3>
-        <p>A U.S.-based OEM designs a 42U rack housing 8 high-density GPU compute nodes, 2 networking switches, redundant power supplies, and a liquid cooling distribution system. Each compute node contains 8 GPUs, 2 CPUs, 24 DIMMs, and multiple NVMe storage devices &mdash; all requiring precise mechanical mounting, thermal interface material application, and cable interconnection.</p>
-        <p>GPW receives the components &mdash; customer-furnished GPU modules, GPW-procured mechanical parts and cables &mdash; and executes the full assembly: node-level sub-assembly, rack-level integration, liquid cooling line installation and pressure testing, cable routing for power and data, firmware loading across all nodes, and a 48-hour burn-in cycle under full compute load. The finished rack ships palletized from Monterrey to the customer's data center staging facility in Texas &mdash; 2 days door-to-door.</p>
-        <div class="project-card__services">
-          <a href="../services/box-build-assembly.html">Box Build Assembly</a>
-          <a href="../services/system-integration.html">System Integration</a>
-          <a href="../services/cable-harness-assembly.html">Cable &amp; Harness</a>
-          <a href="../services/testing-inspection.html">Testing &amp; Inspection</a>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card reveal">
+          <div class="project-card__image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Photo: Multi-node GPU compute rack with liquid cooling lines</span>
+          </div>
+          <div class="project-card__number">Example 1</div>
+          <h3>Multi-Node GPU Compute Rack</h3>
+          <p>A U.S.-based OEM designs a 42U rack housing 8 high-density GPU compute nodes, 2 networking switches, redundant power supplies, and a liquid cooling distribution system. Each compute node contains 8 GPUs, 2 CPUs, 24 DIMMs, and multiple NVMe storage devices &mdash; all requiring precise mechanical mounting, thermal interface material application, and cable interconnection.</p>
+          <p>GPW receives the components &mdash; customer-furnished GPU modules, GPW-procured mechanical parts and cables &mdash; and executes the full assembly: node-level sub-assembly, rack-level integration, liquid cooling line installation and pressure testing, cable routing for power and data, firmware loading across all nodes, and a 48-hour burn-in cycle under full compute load. The finished rack ships palletized from Monterrey to the customer's data center staging facility in Texas &mdash; 2 days door-to-door.</p>
+          <div class="project-card__services">
+            <a href="../services/box-build-assembly.html">Box Build Assembly</a>
+            <a href="../services/system-integration.html">System Integration</a>
+            <a href="../services/cable-harness-assembly.html">Cable &amp; Harness</a>
+            <a href="../services/testing-inspection.html">Testing &amp; Inspection</a>
+          </div>
         </div>
-      </div>
 
-      <!-- Project 2 -->
-      <div class="project-card reveal">
-        <div class="project-card__number">Example 2</div>
-        <h3>Edge AI Inference Server</h3>
-        <p>An enterprise OEM produces a compact 2U inference server designed for deployment at telecom edge locations. The server integrates 4 AI accelerator cards, a custom cooling shroud, high-speed networking, and a ruggedized enclosure rated for non-climate-controlled environments.</p>
-        <p>GPW manages the full box build: mechanical assembly of the enclosure and internal brackets, accelerator card installation with thermal pad application, cable routing within a compact footprint, firmware loading, and a functional test sequence that includes thermal cycling to simulate edge deployment conditions. Monthly volumes scale from 50 units during initial production to 500+ units within 6 months.</p>
-        <div class="project-card__services">
-          <a href="../services/box-build-assembly.html">Box Build Assembly</a>
-          <a href="../services/testing-inspection.html">Testing &amp; Inspection</a>
-          <a href="../services/enclosure-cabinet-assembly.html">Enclosure &amp; Cabinet</a>
+        <!-- Project 2 -->
+        <div class="project-card reveal">
+          <div class="project-card__image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Photo: Compact 2U edge inference server with ruggedized enclosure</span>
+          </div>
+          <div class="project-card__number">Example 2</div>
+          <h3>Edge AI Inference Server</h3>
+          <p>An enterprise OEM produces a compact 2U inference server designed for deployment at telecom edge locations. The server integrates 4 AI accelerator cards, a custom cooling shroud, high-speed networking, and a ruggedized enclosure rated for non-climate-controlled environments.</p>
+          <p>GPW manages the full box build: mechanical assembly of the enclosure and internal brackets, accelerator card installation with thermal pad application, cable routing within a compact footprint, firmware loading, and a functional test sequence that includes thermal cycling to simulate edge deployment conditions. Monthly volumes scale from 50 units during initial production to 500+ units within 6 months.</p>
+          <div class="project-card__services">
+            <a href="../services/box-build-assembly.html">Box Build Assembly</a>
+            <a href="../services/testing-inspection.html">Testing &amp; Inspection</a>
+            <a href="../services/enclosure-cabinet-assembly.html">Enclosure &amp; Cabinet</a>
+          </div>
         </div>
-      </div>
 
-      <!-- Project 3 -->
-      <div class="project-card reveal">
-        <div class="project-card__number">Example 3</div>
-        <h3>AI Training Cluster &mdash; Multi-Rack Integration</h3>
-        <p>A hyperscaler customer requires a complete AI training pod consisting of 4 interconnected racks: 2 compute racks, 1 high-speed networking rack, and 1 power and cooling distribution rack. The pod must be integrated as a system &mdash; inter-rack cabling, shared cooling manifolds, and unified management firmware &mdash; and shipped as a tested, ready-to-deploy unit.</p>
-        <p>GPW assembles each rack individually, then performs system-level integration: inter-rack cable installation, shared cooling circuit connection and leak testing, cross-rack firmware configuration, and a full-pod burn-in that validates compute, networking, and thermal performance as a unified system. The 4-rack pod ships on a custom pallet system designed for data center dock receiving.</p>
-        <div class="project-card__services">
-          <a href="../services/system-integration.html">System Integration</a>
-          <a href="../services/cable-harness-assembly.html">Cable &amp; Harness</a>
-          <a href="../services/testing-inspection.html">Testing &amp; Inspection</a>
-          <a href="../services/box-build-assembly.html">Box Build Assembly</a>
+        <!-- Project 3 -->
+        <div class="project-card reveal">
+          <div class="project-card__image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Photo: Multi-rack AI training pod with inter-rack cabling</span>
+          </div>
+          <div class="project-card__number">Example 3</div>
+          <h3>AI Training Cluster &mdash; Multi-Rack Integration</h3>
+          <p>A hyperscaler customer requires a complete AI training pod consisting of 4 interconnected racks: 2 compute racks, 1 high-speed networking rack, and 1 power and cooling distribution rack. The pod must be integrated as a system &mdash; inter-rack cabling, shared cooling manifolds, and unified management firmware &mdash; and shipped as a tested, ready-to-deploy unit.</p>
+          <p>GPW assembles each rack individually, then performs system-level integration: inter-rack cable installation, shared cooling circuit connection and leak testing, cross-rack firmware configuration, and a full-pod burn-in that validates compute, networking, and thermal performance as a unified system. The 4-rack pod ships on a custom pallet system designed for data center dock receiving.</p>
+          <div class="project-card__services">
+            <a href="../services/system-integration.html">System Integration</a>
+            <a href="../services/cable-harness-assembly.html">Cable &amp; Harness</a>
+            <a href="../services/testing-inspection.html">Testing &amp; Inspection</a>
+            <a href="../services/box-build-assembly.html">Box Build Assembly</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ SECTION 6: MONTERREY ADVANTAGE ============ -->
+  <!-- ============ SECTION 6: MONTERREY ADVANTAGE (CHANGE 7 — pull quote) ============ -->
   <section class="advantage-section" id="advantage">
     <div class="container">
       <div class="reveal">
@@ -1043,6 +1565,7 @@
         </div>
       </div>
 
+      <!-- CHANGE 7: Pull quote styling applied to advantage-closing -->
       <div class="advantage-closing reveal">
         <p>For AI hardware OEMs under pressure to deploy faster while managing costs and supply chain risk, Monterrey is not a compromise. It is a strategic advantage.</p>
       </div>
@@ -1112,6 +1635,16 @@
           <h3>ESD Control</h3>
           <p>All assembly and test areas operate under full ESD protection protocols &mdash; grounded workstations, personnel grounding, ESD-safe packaging, and humidity-controlled environments. AI server components &mdash; GPUs, memory modules, networking ASICs &mdash; are sensitive to electrostatic discharge at every stage of handling.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHANGE 8: IMAGE BAND between Quality and FAQ ============ -->
+  <section class="image-band image-band--alt">
+    <div class="container">
+      <div class="image-band__placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Photo: GPW Monterrey facility — testing and burn-in area with server racks under validation</span>
       </div>
     </div>
   </section>

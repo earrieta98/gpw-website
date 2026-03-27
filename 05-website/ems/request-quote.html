@@ -893,6 +893,46 @@
         flex-direction: column;
       }
     }
+
+    /* ========== MOBILE OVERRIDES ========== */
+    @media (max-width: 768px) {
+      /* 1. Reduce section padding */
+      .rfq-form-section, .steps-section, .contact-alt, .rfq-faq { padding: var(--space-3xl) 0 !important; }
+      .why-gpw { padding: var(--space-3xl) 0 !important; }
+
+      /* 2. Hero bottom padding */
+      .rfq-hero { padding-bottom: var(--space-2xl) !important; }
+
+      /* 4. Step card numbers smaller */
+      .step-card__number { width: 52px !important; height: 52px !important; font-size: var(--text-xl) !important; }
+
+      /* 5. Steps reassurance padding */
+      .steps-reassurance { padding: var(--space-lg) !important; margin-top: var(--space-2xl) !important; }
+
+      /* 6. Contact cards padding */
+      .contact-card { padding: var(--space-lg) var(--space-md) !important; }
+
+      /* 7. Section header margins */
+      .steps-header, .contact-alt__header, .why-gpw__header, .rfq-faq .faq__header { margin-bottom: var(--space-2xl) !important; }
+
+      /* 9. Form header margin */
+      .rfq-form-header { margin-bottom: var(--space-2xl) !important; }
+
+      /* Why GPW CTA margin */
+      .why-gpw__cta { margin-top: var(--space-2xl) !important; }
+    }
+
+    @media (max-width: 480px) {
+      /* 8. Trust items stack vertical */
+      .rfq-trust { flex-direction: column !important; gap: var(--space-md) !important; }
+
+      /* Hero text */
+      .rfq-hero h1 { font-size: clamp(1.3rem, 1rem + 2vw, 1.8rem) !important; }
+      .rfq-hero__subtitle { font-size: var(--text-base) !important; }
+
+      /* Why cards */
+      .why-card { padding: var(--space-lg) !important; }
+    }
   </style>
 </head>
 <body>
@@ -912,6 +952,9 @@
       </button>
 
       <nav class="nav" id="navMenu">
+        <button class="nav__close" id="navClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
         <a href="index.html" class="nav__link">Home EMS</a>
 
         <div class="nav__item">
@@ -965,6 +1008,9 @@
                   <span class="nav__dropdown-title">Enclosure &amp; Cabinet</span>
                   <span class="nav__dropdown-desc">Rack-mount, panel, and cabinet builds</span>
                 </div>
+              </a>
+              <a href="services/index.html" class="nav__dropdown-item nav__dropdown-item--all">
+                <div><span class="nav__dropdown-title">View All Services →</span></div>
               </a>
             </div>
             <div class="nav__dropdown-footer">

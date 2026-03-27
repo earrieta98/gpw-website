@@ -137,7 +137,7 @@
 
   <style>
     /* ============================================
-       INDUSTRY PAGE: Medical Devices — Page-Specific Styles
+       INDUSTRY PAGE: Medical Devices — Page-Specific Styles (v2)
        ============================================ */
 
     /* --- Industry Hero --- */
@@ -172,7 +172,7 @@
       pointer-events: none;
     }
 
-    .ind-hero .container { position: relative; z-index: 1; max-width: 900px; }
+    .ind-hero .container { position: relative; z-index: 1; max-width: 1200px; }
 
     .ind-hero h1 {
       color: var(--white);
@@ -188,14 +188,103 @@
       margin-bottom: var(--space-xl);
     }
 
-    .ind-hero__copy p {
+    /* Hero grid with image placeholder */
+    .ind-hero__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .ind-hero__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .ind-hero__image-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      background: rgba(255,255,255,0.06);
+      border: 2px dashed rgba(255,255,255,0.2);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3xl) var(--space-xl);
+      min-height: 360px;
+      text-align: center;
+    }
+
+    .ind-hero__image-placeholder svg {
+      width: 48px;
+      height: 48px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .ind-hero__image-placeholder span {
+      font-size: var(--text-sm);
+      font-style: italic;
+      color: rgba(255,255,255,0.4);
+      max-width: 280px;
+      line-height: 1.5;
+    }
+
+    /* --- Hero Extended (moved paragraphs) --- */
+    .hero-extended {
+      padding: var(--space-4xl) 0;
+      background: var(--white);
+    }
+
+    .hero-extended__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .hero-extended__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-extended__text p {
       font-size: var(--text-base);
-      color: rgba(255,255,255,0.7);
+      color: var(--dark-gray);
       line-height: 1.7;
       margin-bottom: var(--space-lg);
     }
 
-    .ind-hero__copy p:last-child { margin-bottom: var(--space-2xl); }
+    .hero-extended__text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .hero-extended__callout {
+      background: linear-gradient(135deg, var(--teal), var(--deep-blue));
+      border-radius: var(--radius-lg);
+      padding: var(--space-2xl) var(--space-xl);
+      color: var(--white);
+      position: sticky;
+      top: calc(var(--header-height) + var(--space-xl));
+    }
+
+    .hero-extended__callout p {
+      font-size: var(--text-lg);
+      line-height: 1.7;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 0;
+    }
+
+    .hero-extended__callout::before {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 4px;
+      background: var(--coral);
+      border-radius: 2px;
+      margin-bottom: var(--space-lg);
+    }
 
     /* --- Definition Block --- */
     .definition-section { padding: var(--space-4xl) 0; }
@@ -205,6 +294,31 @@
       border-left: 4px solid var(--teal);
       border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
       padding: var(--space-2xl) var(--space-2xl);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    .definition-block-ind__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--teal), var(--deep-blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .definition-block-ind__icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--white);
+    }
+
+    @media (max-width: 600px) {
+      .definition-block-ind { grid-template-columns: 1fr; }
     }
 
     .definition-block-ind p {
@@ -214,11 +328,102 @@
       margin-bottom: 0;
     }
 
-    /* --- Industry Context --- */
+    /* --- Stats Bar --- */
+    .stats-bar {
+      padding: var(--space-3xl) 0;
+      background: var(--off-white);
+    }
+
+    .stats-bar__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-xl);
+    }
+
+    @media (max-width: 900px) {
+      .stats-bar__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 500px) {
+      .stats-bar__grid { grid-template-columns: 1fr; }
+    }
+
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl) var(--space-lg);
+      text-align: center;
+      transition: border-color var(--transition-base);
+    }
+
+    .stat-card:hover {
+      border-color: var(--teal);
+    }
+
+    .stat-card__number {
+      font-size: clamp(1.8rem, 1.4rem + 1.5vw, 2.4rem);
+      font-weight: 900;
+      color: var(--teal);
+      line-height: 1.1;
+      margin-bottom: var(--space-xs);
+    }
+
+    .stat-card__label {
+      font-size: var(--text-sm);
+      color: var(--mid-gray);
+      line-height: 1.4;
+    }
+
+    /* --- Industry Context (2-column layout) --- */
     .context-section { padding: var(--space-4xl) 0; background: var(--off-white); }
-    .context-section .context-copy { max-width: 780px; }
+
+    .context-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .context-grid { grid-template-columns: 1fr; }
+    }
+
     .context-section .context-copy p { color: var(--dark-gray); line-height: 1.7; margin-bottom: var(--space-lg); }
     .context-section .context-copy h3 { margin-top: var(--space-2xl); margin-bottom: var(--space-md); font-size: var(--text-xl); }
+
+    .context-image {
+      position: sticky;
+      top: calc(var(--header-height) + var(--space-xl));
+    }
+
+    .context-image__placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      background: rgba(0,0,0,0.03);
+      border: 2px dashed var(--light-gray);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3xl) var(--space-xl);
+      min-height: 400px;
+      text-align: center;
+    }
+
+    .context-image__placeholder svg {
+      width: 48px;
+      height: 48px;
+      color: var(--mid-gray);
+    }
+
+    .context-image__placeholder span {
+      font-size: var(--text-sm);
+      font-style: italic;
+      color: var(--mid-gray);
+      max-width: 280px;
+      line-height: 1.5;
+    }
 
     /* --- Capabilities --- */
     .cap-section { padding: var(--space-4xl) 0; }
@@ -327,12 +532,90 @@
     .cap-accordion__xref a { color: var(--teal); font-weight: 600; }
     .cap-accordion__xref a:hover { color: var(--coral); }
 
+    /* --- Image Band --- */
+    .image-band {
+      padding: var(--space-3xl) 0;
+      background: var(--white);
+    }
+
+    .image-band--alt {
+      background: var(--off-white);
+    }
+
+    .image-band__placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      background: rgba(0,0,0,0.03);
+      border: 2px dashed var(--light-gray);
+      border-radius: var(--radius-lg);
+      aspect-ratio: 21 / 9;
+      width: 100%;
+      text-align: center;
+      padding: var(--space-xl);
+    }
+
+    .image-band__placeholder svg {
+      width: 48px;
+      height: 48px;
+      color: var(--mid-gray);
+    }
+
+    .image-band__placeholder span {
+      font-size: var(--text-sm);
+      font-style: italic;
+      color: var(--mid-gray);
+      max-width: 480px;
+      line-height: 1.5;
+    }
+
     /* --- Mid CTA --- */
     .mid-cta {
-      padding: var(--space-3xl) 0;
+      padding: var(--space-4xl) 0;
       background: linear-gradient(135deg, var(--teal-dark), var(--deep-blue));
       color: var(--white);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mid-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(173,207,145,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(237,131,94,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .mid-cta .container { position: relative; z-index: 1; }
+
+    .mid-cta__stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3xl);
+      margin-bottom: var(--space-2xl);
+    }
+
+    @media (max-width: 600px) { .mid-cta__stats { gap: var(--space-xl); flex-wrap: wrap; } }
+
+    .mid-cta__stat-number {
+      font-size: var(--text-4xl);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .mid-cta__stat-label {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: var(--space-xs);
     }
 
     .mid-cta p {
@@ -341,21 +624,60 @@
       margin: 0 auto var(--space-xl);
     }
 
-    /* --- Projects --- */
+    /* --- Projects (image placeholders in cards, 3-col grid) --- */
     .projects-section { padding: var(--space-4xl) 0; background: var(--off-white); }
     .projects-section__intro { max-width: 780px; margin-bottom: var(--space-3xl); }
     .projects-section__intro p { color: var(--dark-gray); line-height: 1.7; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-xl);
+    }
+
+    @media (max-width: 900px) { .projects-grid { grid-template-columns: 1fr; } }
 
     .project-card {
       background: var(--white);
       border: 1px solid var(--light-gray);
       border-radius: var(--radius-lg);
       padding: var(--space-2xl);
-      margin-bottom: var(--space-xl);
       transition: border-color var(--transition-base);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card:hover { border-color: var(--teal); }
+
+    .project-card__image {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      background: rgba(0,0,0,0.03);
+      border: 2px dashed var(--light-gray);
+      border-radius: var(--radius-md);
+      aspect-ratio: 16 / 9;
+      margin: calc(-1 * var(--space-2xl)) calc(-1 * var(--space-2xl)) var(--space-xl);
+      text-align: center;
+      padding: var(--space-lg);
+    }
+
+    .project-card__image svg {
+      width: 36px;
+      height: 36px;
+      color: var(--mid-gray);
+    }
+
+    .project-card__image span {
+      font-size: var(--text-sm);
+      font-style: italic;
+      color: var(--mid-gray);
+      max-width: 360px;
+      line-height: 1.4;
+    }
 
     .project-card__number {
       font-family: var(--font-accent);
@@ -405,12 +727,17 @@
 
     .advantage-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: var(--space-xl);
     }
+    .advantage-grid .advantage-card:nth-child(1),
+    .advantage-grid .advantage-card:nth-child(2),
+    .advantage-grid .advantage-card:nth-child(3) { grid-column: span 2; }
+    .advantage-grid .advantage-card:nth-child(4) { grid-column: 2 / span 2; }
+    .advantage-grid .advantage-card:nth-child(5) { grid-column: 4 / span 2; }
 
-    @media (max-width: 900px) { .advantage-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .advantage-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .advantage-grid { grid-template-columns: 1fr 1fr; } .advantage-grid .advantage-card:nth-child(1), .advantage-grid .advantage-card:nth-child(2), .advantage-grid .advantage-card:nth-child(3), .advantage-grid .advantage-card:nth-child(4), .advantage-grid .advantage-card:nth-child(5) { grid-column: span 1; } }
+    @media (max-width: 600px) { .advantage-grid { grid-template-columns: 1fr; } .advantage-grid .advantage-card:nth-child(1), .advantage-grid .advantage-card:nth-child(2), .advantage-grid .advantage-card:nth-child(3), .advantage-grid .advantage-card:nth-child(4), .advantage-grid .advantage-card:nth-child(5) { grid-column: span 1; } }
 
     .advantage-card {
       background: var(--white);
@@ -455,16 +782,22 @@
       margin-bottom: 0;
     }
 
+    /* Pull quote for advantage-closing */
     .advantage-closing {
       max-width: 780px;
       margin-top: var(--space-3xl);
+      border-left: 4px solid var(--coral);
+      padding-left: var(--space-xl);
     }
 
     .advantage-closing p {
+      font-family: var(--font-accent);
+      font-size: var(--text-xl);
       color: var(--dark-gray);
       line-height: 1.7;
       font-weight: 600;
       font-style: italic;
+      margin-bottom: 0;
     }
 
     /* --- Quality --- */
@@ -477,8 +810,8 @@
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-xl);
     }
-
-    @media (max-width: 900px) { .ind-quality-grid { grid-template-columns: 1fr 1fr; } }
+    .ind-quality-grid .ind-quality-card:nth-child(7) { grid-column: 2 / 3; }
+    @media (max-width: 900px) { .ind-quality-grid { grid-template-columns: 1fr 1fr; } .ind-quality-grid .ind-quality-card:nth-child(7) { grid-column: span 1; } }
     @media (max-width: 600px) { .ind-quality-grid { grid-template-columns: 1fr; } }
 
     .ind-quality-card {
@@ -577,6 +910,45 @@
 
     .final-cta__contact a { color: rgba(255,255,255,0.7); }
     .final-cta__contact a:hover { color: var(--white); }
+
+    /* ========== MOBILE OVERRIDES ========== */
+    @media (max-width: 768px) {
+      .ind-hero { padding: calc(var(--header-height) + var(--space-xl)) 0 var(--space-2xl) !important; }
+      .definition-section, .context-section, .cap-section, .advantage-section, .quality-section, .ind-faq { padding: var(--space-3xl) 0 !important; }
+      .projects-section { padding: var(--space-3xl) 0 !important; }
+      .final-cta { padding: var(--space-3xl) 0 !important; }
+      .hero-extended { padding: var(--space-2xl) 0 !important; }
+      .stats-bar { padding: var(--space-2xl) 0 !important; }
+      .image-band { padding: var(--space-xl) 0 !important; }
+      .mid-cta { padding: var(--space-2xl) 0 !important; }
+      .ind-hero__image-placeholder { min-height: 200px !important; padding: var(--space-xl) var(--space-md) !important; }
+      .context-image__placeholder { min-height: 200px !important; padding: var(--space-xl) var(--space-md) !important; }
+      .context-image { position: static !important; }
+      .advantage-card { padding: var(--space-lg) !important; }
+      .ind-quality-card { padding: var(--space-lg) !important; }
+      .project-card { padding: var(--space-lg) !important; }
+      .definition-block-ind { padding: var(--space-lg) !important; }
+      .hero-extended__callout { padding: var(--space-lg) var(--space-md) !important; position: static !important; }
+      .mid-cta__stat-number { font-size: var(--text-3xl) !important; }
+      .mid-cta h2 { font-size: var(--text-2xl) !important; }
+      .advantage-closing p { font-size: var(--text-lg) !important; }
+      .cap-accordion summary { padding: var(--space-md) var(--space-md) !important; }
+      .cap-accordion__body { padding: 0 var(--space-md) var(--space-md) !important; }
+      .cap-accordion__title { font-size: var(--text-base) !important; }
+      .project-card__image { margin: calc(-1 * var(--space-lg)) calc(-1 * var(--space-lg)) var(--space-md) !important; }
+      .cap-section__intro, .projects-section__intro, .advantage-section__intro, .quality-section__intro { margin-bottom: var(--space-2xl) !important; }
+      .image-band__placeholder { aspect-ratio: 16 / 7 !important; }
+      .stat-card { padding: var(--space-lg) var(--space-md) !important; }
+      .final-cta__buttons { flex-direction: column !important; align-items: center !important; }
+    }
+    @media (max-width: 480px) {
+      .ind-hero h1 { font-size: clamp(1.3rem, 1rem + 2vw, 1.8rem) !important; }
+      .ind-hero__subtitle { font-size: var(--text-base) !important; }
+      .mid-cta__stats { gap: var(--space-md) !important; }
+      .mid-cta__stat-number { font-size: var(--text-2xl) !important; }
+      .advantage-card, .ind-quality-card { padding: var(--space-md) !important; }
+      .ind-hero__image-placeholder { min-height: 160px !important; }
+    }
   </style>
 </head>
 <body>
@@ -596,6 +968,9 @@
       </button>
 
       <nav class="nav" id="navMenu">
+        <button class="nav__close" id="navClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
         <a href="../index.html" class="nav__link">Home EMS</a>
 
         <div class="nav__item">
@@ -649,6 +1024,9 @@
                   <span class="nav__dropdown-title">Enclosure &amp; Cabinet</span>
                   <span class="nav__dropdown-desc">Rack-mount, panel, and cabinet builds</span>
                 </div>
+              </a>
+              <a href="../services/index.html" class="nav__dropdown-item nav__dropdown-item--all">
+                <div><span class="nav__dropdown-title">View All Services →</span></div>
               </a>
             </div>
             <div class="nav__dropdown-footer">
@@ -731,30 +1109,51 @@
     <div class="container">
       <nav class="breadcrumb hero-reveal hero-reveal-delay-1" aria-label="Breadcrumb">
         <a href="../../index.html" class="breadcrumb__link">GPW Corporate</a>
-        <span class="breadcrumb__sep">→</span>
+        <span class="breadcrumb__sep">&rarr;</span>
         <a href="../index.html" class="breadcrumb__link">EMS Assembly</a>
-        <span class="breadcrumb__sep">→</span>
+        <span class="breadcrumb__sep">&rarr;</span>
         <span class="breadcrumb__current">Medical Devices</span>
       </nav>
       <span class="label label--lime hero-reveal hero-reveal-delay-1" style="font-family: var(--font-accent);">Medical Device Assembly</span>
-      <h1 class="hero-reveal hero-reveal-delay-2">Medical Device &amp; Equipment Assembly &mdash; ISO 13485-Grade Precision, Built for Patient Safety</h1>
-      <p class="ind-hero__subtitle hero-reveal hero-reveal-delay-3">
-        Global Precision Works (GPW) assembles medical devices, electromedical equipment, and diagnostic sub-assemblies for U.S. OEMs &mdash; with the process control, documentation rigor, and traceability that regulated medical products demand.
-      </p>
-      <div class="ind-hero__copy hero-reveal hero-reveal-delay-3">
-        <p>Medical devices exist at the intersection of precision engineering and patient safety. Every cable termination, every fastener torque, every solder joint inside a medical product must be executed correctly &mdash; because the consequences of an assembly defect are not just financial. They are clinical.</p>
-        <p>GPW assembles medical devices and equipment with that reality as the governing principle. Our Monterrey facility builds medical products under controlled conditions, following documented procedures that align with ISO 13485 quality management standards. Every assembly step is traceable, every test result is recorded, and every unit ships with a documentation package that supports the OEM&rsquo;s regulatory submissions.</p>
-        <p>This is not general-purpose assembly adapted for medical work. GPW designs its medical assembly programs from the ground up: controlled work environments, qualified operators trained on medical device requirements, validated test procedures, and a quality system that treats documentation as a deliverable &mdash; not an afterthought. Your medical product is assembled with the discipline that regulators expect and patients deserve.</p>
+
+      <div class="ind-hero__grid">
+        <div class="ind-hero__text">
+          <h1 class="hero-reveal hero-reveal-delay-2">Medical Device &amp; Equipment Assembly &mdash; ISO 13485-Grade Precision, Built for Patient Safety</h1>
+          <p class="ind-hero__subtitle hero-reveal hero-reveal-delay-3">
+            Global Precision Works (GPW) assembles medical devices, electromedical equipment, and diagnostic sub-assemblies for U.S. OEMs &mdash; with the process control, documentation rigor, and traceability that regulated medical products demand.
+          </p>
+          <div class="btn-group hero-reveal hero-reveal-delay-4">
+            <a href="../request-quote.html" class="btn btn--interactive btn--lg">
+              <span class="btn__text">Request a Quote for Medical Device Assembly</span>
+              <span class="btn__hover">
+                <span>Request a Quote for Medical Device Assembly</span>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </span>
+              <span class="btn__circle"></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero image placeholder -->
+        <div class="ind-hero__image-placeholder hero-reveal hero-reveal-delay-3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Photo: Medical device assembly in controlled environment with serialized traceability</span>
+        </div>
       </div>
-      <div class="btn-group hero-reveal hero-reveal-delay-4">
-        <a href="../request-quote.html" class="btn btn--interactive btn--lg">
-          <span class="btn__text">Request a Quote for Medical Device Assembly</span>
-          <span class="btn__hover">
-            <span>Request a Quote for Medical Device Assembly</span>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </span>
-          <span class="btn__circle"></span>
-        </a>
+    </div>
+  </section>
+
+  <!-- ============ HERO EXTENDED (moved paragraphs) ============ -->
+  <section class="hero-extended">
+    <div class="container">
+      <div class="hero-extended__grid">
+        <div class="hero-extended__text reveal">
+          <p>Medical devices exist at the intersection of precision engineering and patient safety. Every cable termination, every fastener torque, every solder joint inside a medical product must be executed correctly &mdash; because the consequences of an assembly defect are not just financial. They are clinical.</p>
+          <p>GPW assembles medical devices and equipment with that reality as the governing principle. Our Monterrey facility builds medical products under controlled conditions, following documented procedures that align with ISO 13485 quality management standards. Every assembly step is traceable, every test result is recorded, and every unit ships with a documentation package that supports the OEM&rsquo;s regulatory submissions.</p>
+        </div>
+        <div class="hero-extended__callout reveal">
+          <p>This is not general-purpose assembly adapted for medical work. GPW designs its medical assembly programs from the ground up: controlled work environments, qualified operators trained on medical device requirements, validated test procedures, and a quality system that treats documentation as a deliverable &mdash; not an afterthought. Your medical product is assembled with the discipline that regulators expect and patients deserve.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -769,12 +1168,39 @@
       </div>
 
       <div class="definition-block-ind reveal">
+        <div class="definition-block-ind__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
         <p>Medical device assembly is the process of integrating mechanical, electrical, electromechanical, and optical components into finished medical devices, sub-assemblies, or equipment &mdash; diagnostic instruments, patient monitoring systems, electromedical devices, surgical support equipment, and laboratory automation systems. It takes individual components &mdash; PCBAs, sensors, displays, cables, enclosures, actuators, and structural parts &mdash; and builds them into a tested, documented, and traceable unit that meets the OEM&rsquo;s design specifications and applicable regulatory requirements. For medical OEMs, contract assembly with a qualified partner transfers the build process to a facility with the process controls, quality systems, and documentation practices that regulated products require.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ SECTION 3: INDUSTRY CONTEXT ============ -->
+  <!-- ============ STATS BAR ============ -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-bar__grid">
+        <div class="stat-card reveal">
+          <div class="stat-card__number">48 hrs</div>
+          <div class="stat-card__label">RFQ Response</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="stat-card__number">100%</div>
+          <div class="stat-card__label">Serialized Traceability</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="stat-card__number">1&ndash;2 Days</div>
+          <div class="stat-card__label">Monterrey to U.S.</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <div class="stat-card__number">1 Timezone</div>
+          <div class="stat-card__label">Same hours as your team</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3: INDUSTRY CONTEXT (2-column layout) ============ -->
   <section class="context-section" id="context">
     <div class="container">
       <div class="reveal">
@@ -783,16 +1209,26 @@
         <h2>Medical Device Complexity Is Increasing &mdash; Assembly Quality Cannot Be Compromised</h2>
       </div>
 
-      <div class="context-copy reveal">
-        <p>The medical device industry is evolving rapidly. Devices are becoming more complex &mdash; integrating digital connectivity, embedded software, advanced sensors, and miniaturized electromechanical systems into products that must meet increasingly stringent regulatory standards. The FDA&rsquo;s Quality System Regulation (21 CFR 820), ISO 13485, and IEC 60601 for electromedical equipment impose documentation and process control requirements that extend from design through manufacturing and post-market surveillance.</p>
+      <div class="context-grid">
+        <div class="context-copy reveal">
+          <p>The medical device industry is evolving rapidly. Devices are becoming more complex &mdash; integrating digital connectivity, embedded software, advanced sensors, and miniaturized electromechanical systems into products that must meet increasingly stringent regulatory standards. The FDA&rsquo;s Quality System Regulation (21 CFR 820), ISO 13485, and IEC 60601 for electromedical equipment impose documentation and process control requirements that extend from design through manufacturing and post-market surveillance.</p>
 
-        <p>For U.S. medical device OEMs, this creates a capacity challenge. Building medical devices in-house requires dedicated cleanroom or controlled environments, trained personnel, validated processes, and a quality management system that withstands regulatory audit. Maintaining that capability at scale &mdash; while also investing in R&amp;D and market development &mdash; stretches resources thin.</p>
+          <p>For U.S. medical device OEMs, this creates a capacity challenge. Building medical devices in-house requires dedicated cleanroom or controlled environments, trained personnel, validated processes, and a quality management system that withstands regulatory audit. Maintaining that capability at scale &mdash; while also investing in R&amp;D and market development &mdash; stretches resources thin.</p>
 
-        <p>Offshore assembly introduces different risks. Long supply chains reduce responsiveness when design changes are needed, and regulatory oversight becomes more difficult when the assembly facility is 12 time zones away. A medical OEM needs visibility into its manufacturing process &mdash; the ability to audit the facility, review documentation, and resolve quality issues in real time.</p>
+          <p>Offshore assembly introduces different risks. Long supply chains reduce responsiveness when design changes are needed, and regulatory oversight becomes more difficult when the assembly facility is 12 time zones away. A medical OEM needs visibility into its manufacturing process &mdash; the ability to audit the facility, review documentation, and resolve quality issues in real time.</p>
 
-        <p>The result is growing demand for nearshore assembly partners who combine regulatory-grade quality systems with geographic proximity. Medical OEMs need a partner who understands that a device history record is not optional paperwork &mdash; it is a regulatory requirement that follows the device through its entire lifecycle. A partner who treats traceability not as an add-on feature, but as a foundational element of every assembly program.</p>
+          <p>The result is growing demand for nearshore assembly partners who combine regulatory-grade quality systems with geographic proximity. Medical OEMs need a partner who understands that a device history record is not optional paperwork &mdash; it is a regulatory requirement that follows the device through its entire lifecycle. A partner who treats traceability not as an add-on feature, but as a foundational element of every assembly program.</p>
 
-        <p>GPW is building that capability. With a quality system designed to meet ISO 13485 standards, controlled assembly environments, and a documentation-first approach to every program, GPW provides the assembly infrastructure that medical OEMs need &mdash; two hours from the U.S. border.</p>
+          <p>GPW is building that capability. With a quality system designed to meet ISO 13485 standards, controlled assembly environments, and a documentation-first approach to every program, GPW provides the assembly infrastructure that medical OEMs need &mdash; two hours from the U.S. border.</p>
+        </div>
+
+        <!-- Sticky image placeholder -->
+        <div class="context-image">
+          <div class="context-image__placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Photo: Controlled assembly station with lot-tracked components and inspection documentation</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -886,9 +1322,33 @@
     </div>
   </section>
 
+  <!-- ============ IMAGE BAND after capabilities ============ -->
+  <section class="image-band">
+    <div class="container">
+      <div class="image-band__placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Photo: GPW technician performing in-process inspection on medical device sub-assembly</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ MID-PAGE CTA ============ -->
   <section class="mid-cta">
     <div class="container reveal">
+      <div class="mid-cta__stats">
+        <div>
+          <div class="mid-cta__stat-number">48h</div>
+          <div class="mid-cta__stat-label">RFQ Response</div>
+        </div>
+        <div>
+          <div class="mid-cta__stat-number">1 team</div>
+          <div class="mid-cta__stat-label">One Program Manager</div>
+        </div>
+        <div>
+          <div class="mid-cta__stat-number">1 timezone</div>
+          <div class="mid-cta__stat-label">Same Hours as You</div>
+        </div>
+      </div>
       <p>GPW responds to every RFQ within 48 hours with an initial program assessment.</p>
       <a href="../request-quote.html" class="btn btn--interactive btn--lg">
         <span class="btn__text">Get a Quote for Your Medical Device Assembly Program</span>
@@ -914,41 +1374,55 @@
         <p>Medical device programs demand higher documentation rigor and tighter process control than most other industries. Here are three representative examples that illustrate how GPW handles that discipline.</p>
       </div>
 
-      <!-- Project 1 -->
-      <div class="project-card reveal">
-        <div class="project-card__number">Example 1</div>
-        <h3>Patient Monitoring System Assembly</h3>
-        <p>A U.S. medical device OEM produces a patient monitoring system used in hospital settings. Each unit integrates a display assembly, a main processing PCBA, multiple sensor input modules, a power supply, an internal cable harness, and an injection-molded enclosure. The device is classified under FDA Class II and requires full device history records.</p>
-        <p>GPW assembles the complete unit: enclosure preparation, PCBA installation, display mounting, cable harness routing and termination, sensor module integration, and a functional acceptance test that validates every patient parameter input, display output, alarm function, and communication interface. Each unit ships with a device history record documenting every assembly step, operator identification, component lot numbers, and test results. Monthly volume: 150-300 units across 2 configuration variants.</p>
-        <div class="project-card__services">
-          <a href="../services/box-build-assembly.html">Box Build Assembly</a>
-          <a href="../services/cable-harness-assembly.html">Cable &amp; Harness</a>
-          <a href="../services/testing-inspection.html">Testing &amp; Inspection</a>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card reveal">
+          <div class="project-card__image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Photo: Patient monitoring system assembly with display and sensor modules</span>
+          </div>
+          <div class="project-card__number">Example 1</div>
+          <h3>Patient Monitoring System Assembly</h3>
+          <p>A U.S. medical device OEM produces a patient monitoring system used in hospital settings. Each unit integrates a display assembly, a main processing PCBA, multiple sensor input modules, a power supply, an internal cable harness, and an injection-molded enclosure. The device is classified under FDA Class II and requires full device history records.</p>
+          <p>GPW assembles the complete unit: enclosure preparation, PCBA installation, display mounting, cable harness routing and termination, sensor module integration, and a functional acceptance test that validates every patient parameter input, display output, alarm function, and communication interface. Each unit ships with a device history record documenting every assembly step, operator identification, component lot numbers, and test results. Monthly volume: 150-300 units across 2 configuration variants.</p>
+          <div class="project-card__services">
+            <a href="../services/box-build-assembly.html">Box Build Assembly</a>
+            <a href="../services/cable-harness-assembly.html">Cable &amp; Harness</a>
+            <a href="../services/testing-inspection.html">Testing &amp; Inspection</a>
+          </div>
         </div>
-      </div>
 
-      <!-- Project 2 -->
-      <div class="project-card reveal">
-        <div class="project-card__number">Example 2</div>
-        <h3>Laboratory Diagnostic Instrument Sub-Assembly</h3>
-        <p>An OEM designs a bench-top diagnostic instrument that uses optical sensing to analyze fluid samples. The instrument contains a precision optical module, a fluid-handling mechanism, a thermal control system, a processing PCBA, and a user interface display. The OEM assembles the final instrument but outsources the optical module and fluid-handling sub-assemblies.</p>
-        <p>GPW builds both sub-assemblies. The optical module requires alignment verification against the OEM&rsquo;s optical specification, contamination control during assembly, and functional testing that validates detection sensitivity. The fluid-handling sub-assembly requires leak testing, flow verification, and material traceability for all wetted components. Monthly volume: 200-400 sub-assemblies per type with quarterly volume adjustments based on instrument demand.</p>
-        <div class="project-card__services">
-          <a href="../services/box-build-assembly.html">Box Build Assembly</a>
-          <a href="../services/testing-inspection.html">Testing &amp; Inspection</a>
-          <a href="../services/system-integration.html">System Integration</a>
+        <!-- Project 2 -->
+        <div class="project-card reveal">
+          <div class="project-card__image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Photo: Laboratory diagnostic instrument with optical sensing sub-assembly</span>
+          </div>
+          <div class="project-card__number">Example 2</div>
+          <h3>Laboratory Diagnostic Instrument Sub-Assembly</h3>
+          <p>An OEM designs a bench-top diagnostic instrument that uses optical sensing to analyze fluid samples. The instrument contains a precision optical module, a fluid-handling mechanism, a thermal control system, a processing PCBA, and a user interface display. The OEM assembles the final instrument but outsources the optical module and fluid-handling sub-assemblies.</p>
+          <p>GPW builds both sub-assemblies. The optical module requires alignment verification against the OEM&rsquo;s optical specification, contamination control during assembly, and functional testing that validates detection sensitivity. The fluid-handling sub-assembly requires leak testing, flow verification, and material traceability for all wetted components. Monthly volume: 200-400 sub-assemblies per type with quarterly volume adjustments based on instrument demand.</p>
+          <div class="project-card__services">
+            <a href="../services/box-build-assembly.html">Box Build Assembly</a>
+            <a href="../services/testing-inspection.html">Testing &amp; Inspection</a>
+            <a href="../services/system-integration.html">System Integration</a>
+          </div>
         </div>
-      </div>
 
-      <!-- Project 3 -->
-      <div class="project-card reveal">
-        <div class="project-card__number">Example 3</div>
-        <h3>Electromedical Equipment Cable Assembly Program</h3>
-        <p>An OEM produces a family of electromedical treatment devices that use patient-connected cables with specialized connectors. Each cable assembly must meet IEC 60601 requirements for patient leakage current, use biocompatibility-rated jacket materials, and pass continuity and hi-pot testing at 100% inspection.</p>
-        <p>GPW builds the cable assemblies: conductor preparation, connector termination, overmolding (via qualified supplier), strain relief installation, labeling, and electrical testing including leakage current measurement. Every cable ships with a test certificate documenting continuity, insulation resistance, and leakage current results traceable to the individual assembly by serial number. Monthly volume: 1,000-3,000 cable assemblies across 6 variants.</p>
-        <div class="project-card__services">
-          <a href="../services/cable-harness-assembly.html">Cable &amp; Harness</a>
-          <a href="../services/testing-inspection.html">Testing &amp; Inspection</a>
+        <!-- Project 3 -->
+        <div class="project-card reveal">
+          <div class="project-card__image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Photo: Medical cable assembly with IEC 60601-compliant connectors</span>
+          </div>
+          <div class="project-card__number">Example 3</div>
+          <h3>Electromedical Equipment Cable Assembly Program</h3>
+          <p>An OEM produces a family of electromedical treatment devices that use patient-connected cables with specialized connectors. Each cable assembly must meet IEC 60601 requirements for patient leakage current, use biocompatibility-rated jacket materials, and pass continuity and hi-pot testing at 100% inspection.</p>
+          <p>GPW builds the cable assemblies: conductor preparation, connector termination, overmolding (via qualified supplier), strain relief installation, labeling, and electrical testing including leakage current measurement. Every cable ships with a test certificate documenting continuity, insulation resistance, and leakage current results traceable to the individual assembly by serial number. Monthly volume: 1,000-3,000 cable assemblies across 6 variants.</p>
+          <div class="project-card__services">
+            <a href="../services/cable-harness-assembly.html">Cable &amp; Harness</a>
+            <a href="../services/testing-inspection.html">Testing &amp; Inspection</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1012,6 +1486,10 @@
           <h3>Supply Chain Continuity</h3>
           <p>Nearshore assembly reduces the supply chain disruption risk that offshore medical device manufacturing carries. Shorter lead times, faster response to demand changes, and a diversified production footprint give medical OEMs the resilience that single-source offshore strategies cannot provide.</p>
         </div>
+      </div>
+
+      <div class="advantage-closing reveal">
+        <p>For medical device OEMs who need audit-accessible assembly with regulatory-grade documentation, Monterrey is not a compromise. It is a compliance advantage.</p>
       </div>
     </div>
   </section>
@@ -1099,6 +1577,16 @@
             <li>Customer-specific quality requirements accommodated through program-level quality plans</li>
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IMAGE BAND between Quality and FAQ ============ -->
+  <section class="image-band image-band--alt">
+    <div class="container">
+      <div class="image-band__placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Photo: GPW Monterrey facility &mdash; clean assembly area with ESD-controlled workstations</span>
       </div>
     </div>
   </section>

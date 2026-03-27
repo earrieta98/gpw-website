@@ -649,6 +649,47 @@
       color: var(--white);
     }
 
+    /* --- Hero Extended --- */
+    .hero-extended { padding: var(--space-4xl) 0; background: var(--white); }
+    .hero-extended__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3xl); align-items: center; }
+    @media (max-width: 900px) { .hero-extended__grid { grid-template-columns: 1fr; } }
+    .hero-extended__copy p { font-size: var(--text-lg); color: var(--dark-gray); line-height: 1.8; margin-bottom: 0; }
+    .hero-extended__callout { background: linear-gradient(135deg, var(--teal), var(--deep-blue)); border-radius: var(--radius-lg); padding: var(--space-2xl) var(--space-xl); color: var(--white); }
+    .hero-extended__callout-label { display: block; font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--coral); margin-bottom: var(--space-md); }
+    .hero-extended__callout-label::before { content: ''; display: block; width: 48px; height: 4px; background: var(--coral); border-radius: 2px; margin-bottom: var(--space-md); }
+    .hero-extended__callout p { font-size: var(--text-base); line-height: 1.7; color: rgba(255,255,255,0.92); margin-bottom: 0; }
+
+    /* --- Stats Bar --- */
+    .stats-bar { padding: var(--space-3xl) 0; background: var(--off-white); }
+    .stats-bar__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-xl); }
+    @media (max-width: 900px) { .stats-bar__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .stats-bar__grid { grid-template-columns: 1fr; } }
+    .stat-card { background: var(--white); border: 1px solid var(--light-gray); border-radius: var(--radius-lg); padding: var(--space-xl) var(--space-lg); text-align: center; transition: border-color var(--transition-base); }
+    .stat-card:hover { border-color: var(--teal); }
+    .stat-card__number { display: block; font-size: clamp(1.8rem, 1.4rem + 1.5vw, 2.4rem); font-weight: 900; color: var(--teal); line-height: 1.1; margin-bottom: var(--space-xs); }
+    .stat-card__label { display: block; font-size: var(--text-sm); color: var(--mid-gray); line-height: 1.4; }
+
+    /* --- Image Band --- */
+    .image-band { padding: var(--space-3xl) 0; background: var(--white); }
+    .image-band--alt { background: var(--off-white); }
+    .image-band__placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-md); background: rgba(0,0,0,0.03); border: 2px dashed var(--light-gray); border-radius: var(--radius-lg); aspect-ratio: 21 / 9; width: 100%; text-align: center; padding: var(--space-xl); }
+    .image-band__placeholder svg { width: 48px; height: 48px; color: var(--mid-gray); }
+    .image-band__placeholder span { font-size: var(--text-sm); font-style: italic; color: var(--mid-gray); max-width: 480px; line-height: 1.5; }
+
+    /* --- Mid CTA Enhanced --- */
+    .mid-cta::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(circle at 20% 50%, rgba(173,207,145,0.06) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(237,131,94,0.05) 0%, transparent 50%); pointer-events: none; }
+    .mid-cta { position: relative; overflow: hidden; }
+    .mid-cta .container { position: relative; z-index: 1; }
+    .mid-cta__stats { display: flex; justify-content: center; gap: var(--space-3xl); margin-bottom: var(--space-2xl); }
+    @media (max-width: 600px) { .mid-cta__stats { gap: var(--space-xl); flex-wrap: wrap; } }
+    .mid-cta__stat { text-align: center; }
+    .mid-cta__stat-number { display: block; font-size: var(--text-4xl); font-weight: 900; color: var(--white); line-height: 1; }
+    .mid-cta__stat-label { display: block; font-size: var(--text-xs); color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; margin-top: var(--space-xs); }
+
+    /* --- Pull Quote --- */
+    .pull-quote { max-width: 780px; margin: var(--space-3xl) 0; border-left: 4px solid var(--coral); padding-left: var(--space-xl); }
+    .pull-quote p { font-family: var(--font-accent); font-size: var(--text-xl); color: var(--dark-gray); line-height: 1.7; font-weight: 600; font-style: italic; margin-bottom: 0; }
+
     /* --- FAQ overrides --- */
     .svc-faq {
       padding: var(--space-4xl) 0;
@@ -662,6 +703,138 @@
     .svc-faq .faq-list {
       max-width: 780px;
       margin: 0 auto;
+    }
+
+    /* ========== MOBILE OVERRIDES ========== */
+    @media (max-width: 768px) {
+      /* 1. Reduce section padding */
+      .svc-hero {
+        padding: calc(var(--header-height) + var(--space-xl)) 0 var(--space-2xl) !important;
+      }
+      .definition-section,
+      .process-section,
+      .industries-used,
+      .capabilities,
+      .svc-faq {
+        padding: var(--space-3xl) 0 !important;
+      }
+      .final-cta {
+        padding: var(--space-3xl) 0 !important;
+      }
+      .hero-extended {
+        padding: var(--space-2xl) 0 !important;
+      }
+      .stats-bar {
+        padding: var(--space-2xl) 0 !important;
+      }
+      .image-band {
+        padding: var(--space-xl) 0 !important;
+      }
+      .mid-cta {
+        padding: var(--space-2xl) 0 !important;
+      }
+
+      /* 2. Reduce hero image placeholder height */
+      .svc-hero__image .img-placeholder {
+        min-height: 200px !important;
+      }
+      .process-step__image .img-placeholder {
+        min-height: 160px !important;
+      }
+      .image-band__placeholder {
+        aspect-ratio: 16 / 7 !important;
+      }
+
+      /* 3. Fix comparison table nowrap */
+      .comparison-table td:first-child {
+        white-space: normal !important;
+      }
+      .comparison-table th,
+      .comparison-table td {
+        padding: var(--space-sm) var(--space-md) !important;
+        font-size: var(--text-xs) !important;
+      }
+
+      /* 4. Mid-CTA stats — scale down */
+      .mid-cta__stat-number {
+        font-size: var(--text-3xl) !important;
+      }
+      .mid-cta h2 {
+        font-size: var(--text-2xl) !important;
+      }
+
+      /* 5. Reduce block padding */
+      .definition-block-svc {
+        padding: var(--space-lg) !important;
+      }
+      .cap-block {
+        padding: var(--space-lg) !important;
+      }
+      .example-block {
+        padding: var(--space-lg) !important;
+      }
+      .hero-extended__callout {
+        padding: var(--space-lg) var(--space-md) !important;
+      }
+
+      /* 6. Pull quote smaller on mobile */
+      .pull-quote p {
+        font-size: var(--text-lg) !important;
+      }
+
+      /* 7. Final CTA related links — column layout */
+      .final-cta__related-links {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: var(--space-sm) !important;
+      }
+      .final-cta__related-links a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
+
+      /* 8. Process step number — slightly smaller */
+      .process-step__number {
+        width: 52px !important;
+        height: 52px !important;
+        font-size: var(--text-xl) !important;
+      }
+
+      /* Stat cards */
+      .stat-card {
+        padding: var(--space-lg) var(--space-md) !important;
+      }
+
+      /* Industries header and grid spacing */
+      .industries-used__header,
+      .capabilities__header,
+      .process-intro {
+        margin-bottom: var(--space-2xl) !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Even tighter on small screens */
+      .svc-hero h1 {
+        font-size: clamp(1.3rem, 1rem + 2vw, 1.8rem) !important;
+      }
+      .svc-hero__subtitle {
+        font-size: var(--text-base) !important;
+      }
+      .mid-cta__stats {
+        gap: var(--space-md) !important;
+      }
+      .mid-cta__stat-number {
+        font-size: var(--text-2xl) !important;
+      }
+      .ind-card {
+        padding: var(--space-lg) !important;
+      }
+      .process-step {
+        margin-bottom: var(--space-2xl) !important;
+        padding-bottom: var(--space-2xl) !important;
+      }
     }
   </style>
 </head>
@@ -682,6 +855,9 @@
       </button>
 
       <nav class="nav" id="navMenu">
+        <button class="nav__close" id="navClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
         <a href="../index.html" class="nav__link">Home EMS</a>
 
         <div class="nav__item">
@@ -735,6 +911,9 @@
                   <span class="nav__dropdown-title">Enclosure &amp; Cabinet</span>
                   <span class="nav__dropdown-desc">Rack-mount, panel, and cabinet builds</span>
                 </div>
+              </a>
+              <a href="index.html" class="nav__dropdown-item nav__dropdown-item--all">
+                <div><span class="nav__dropdown-title">View All Services →</span></div>
               </a>
             </div>
             <div class="nav__dropdown-footer">
@@ -829,9 +1008,6 @@
           <p class="svc-hero__subtitle hero-reveal hero-reveal-delay-3">
             Global Precision Works (GPW) integrates mechanical structures, electrical components, cabling, firmware, and testing into a single production program — delivering fully assembled, tested products ready to ship from Monterrey to your dock.
           </p>
-          <p class="svc-hero__copy hero-reveal hero-reveal-delay-3">
-            Your product is more than a circuit board. It is a chassis with mounted PCBAs, routed cables, installed connectors, loaded firmware, and validated test results. Box build assembly is the service that brings all of those elements together. GPW manages the full scope — mechanical, electrical, cabling, and testing — on one production floor, under one quality system, with one program manager accountable for every unit.
-          </p>
           <div class="btn-group hero-reveal hero-reveal-delay-4">
             <a href="../request-quote.html" class="btn btn--interactive btn--lg">
               <span class="btn__text">Request a Quote</span>
@@ -848,6 +1024,21 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
             Photo: Technician integrating components into an enclosure — box build in progress
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HERO EXTENDED ============ -->
+  <section class="hero-extended">
+    <div class="container">
+      <div class="hero-extended__grid">
+        <div class="hero-extended__copy">
+          <p>Your product is more than a circuit board. It is a chassis with mounted PCBAs, routed cables, installed connectors, loaded firmware, and validated test results. Box build assembly is the service that brings all of those elements together. GPW manages the full scope — mechanical, electrical, cabling, and testing — on one production floor, under one quality system, with one program manager accountable for every unit.</p>
+        </div>
+        <div class="hero-extended__callout reveal">
+          <p class="hero-extended__callout-label">Why GPW for Box Build</p>
+          <p>Assembly-first focus. Dedicated program managers. 5 integrated quality gates. 2-3 week first article builds. One facility, one quality system, one team accountable from BOM to finished product.</p>
         </div>
       </div>
     </div>
@@ -898,6 +1089,30 @@
         <h3>Why This Matters for OEMs</h3>
         <p>Box build consolidates what would otherwise require 3-4 separate suppliers — a mechanical assembler, a cable shop, a test house, and a packaging provider — into a single program. One purchase order. One accountability chain. One quality system from receiving dock to shipping dock.</p>
         <p>When those 3-4 suppliers are coordinated separately, every handoff introduces risk: damaged components in transit, miscommunication on revision levels, finger-pointing when a unit fails at the customer's dock. A single-source box build program eliminates those handoffs. GPW receives your components, assembles the product, tests it, packages it, and ships it — with one team responsible for the result.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS BAR ============ -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-bar__grid">
+        <div class="stat-card reveal reveal-delay-1">
+          <span class="stat-card__number">2-3 wks</span>
+          <span class="stat-card__label">First Article Build</span>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <span class="stat-card__number">5</span>
+          <span class="stat-card__label">Integrated Quality Gates</span>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <span class="stat-card__number">8</span>
+          <span class="stat-card__label">Industries Served</span>
+        </div>
+        <div class="stat-card reveal reveal-delay-4">
+          <span class="stat-card__number">24 hrs</span>
+          <span class="stat-card__label">Quote Response Time</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1020,9 +1235,33 @@
     </div>
   </section>
 
+  <!-- ============ IMAGE BAND ============ -->
+  <section class="image-band">
+    <div class="container reveal">
+      <div class="image-band__placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        <em>Panoramic: GPW production floor — multiple box build stations with units in various assembly stages</em>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ MID-PAGE CTA ============ -->
   <section class="mid-cta">
     <div class="container reveal">
+      <div class="mid-cta__stats">
+        <div class="mid-cta__stat">
+          <span class="mid-cta__stat-number">500+</span>
+          <span class="mid-cta__stat-label">Component Capacity per Unit</span>
+        </div>
+        <div class="mid-cta__stat">
+          <span class="mid-cta__stat-number">10K+</span>
+          <span class="mid-cta__stat-label">Units / Month Sustained</span>
+        </div>
+        <div class="mid-cta__stat">
+          <span class="mid-cta__stat-number">100%</span>
+          <span class="mid-cta__stat-label">Units Functionally Tested</span>
+        </div>
+      </div>
       <h2>Your BOM. Our Production Floor.<br>One Finished Product.</h2>
       <p>Submit your bill of materials and specifications — GPW's engineering team will respond with a detailed technical review and quote within 24 hours.</p>
       <a href="../request-quote.html" class="btn btn--interactive btn--lg">
@@ -1134,6 +1373,11 @@
         </div>
       </div>
 
+      <!-- Pull Quote -->
+      <div class="pull-quote reveal">
+        <p>Box build is not an add-on service at GPW — it is the core discipline. Every engineering resource, quality system, and facility investment is optimized around assembling complex electromechanical products to specification.</p>
+      </div>
+
       <!-- Comparison Table -->
       <div class="reveal">
         <h3 style="text-align: center; margin-bottom: var(--space-xl);">GPW vs. Typical EMS Approach</h3>
@@ -1184,6 +1428,16 @@
 
       <div class="comparison-copy reveal">
         <p>The difference comes down to focus. A PCBA-centric EMS provider dedicates its engineering resources to SMT line optimization and board-level yield improvement. Box build gets the remaining capacity. At GPW, box build is the primary discipline. The engineering team, the facility layout, the quality systems, and the equipment investments are all optimized around one thing: assembling complex electromechanical products to specification.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IMAGE BAND ============ -->
+  <section class="image-band">
+    <div class="container reveal">
+      <div class="image-band__placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        <em>Panoramic: Close-up of a finished box build — cables routed, components mounted, labels applied</em>
       </div>
     </div>
   </section>

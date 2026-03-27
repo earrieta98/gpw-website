@@ -17,7 +17,7 @@
 
   <style>
     /* ============================================
-       ANIMATED HERO — Page-Specific Styles
+       CORPORATE HERO — Engineering Grid Background
        ============================================ */
 
     .gpw-hero {
@@ -25,44 +25,129 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background: #0d1b2a;
+      justify-content: center;
       overflow: hidden;
       padding-top: var(--header-height);
+      background: #0a1628;
     }
 
-    /* Engineering grid background */
+    /* Engineering grid layer */
     .gpw-hero__grid {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      pointer-events: none;
       z-index: 0;
+      /* Minor grid */
+      background-image:
+        linear-gradient(rgba(35, 85, 90, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(35, 85, 90, 0.07) 1px, transparent 1px),
+        /* Major grid */
+        linear-gradient(rgba(35, 85, 90, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(35, 85, 90, 0.15) 1px, transparent 1px);
+      background-size:
+        40px 40px,
+        40px 40px,
+        200px 200px,
+        200px 200px;
     }
 
+    /* Glow spots at intersections */
+    .gpw-hero__glow {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .gpw-hero__glow-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      animation: glowPulse 4s ease-in-out infinite;
+    }
+
+    .gpw-hero__glow-dot::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      animation: glowSpread 4s ease-in-out infinite;
+    }
+
+    .gpw-hero__glow-dot--teal {
+      background: var(--teal);
+    }
+    .gpw-hero__glow-dot--teal::after {
+      background: radial-gradient(circle, rgba(35, 85, 90, 0.3) 0%, transparent 70%);
+    }
+
+    .gpw-hero__glow-dot--coral {
+      background: var(--coral);
+    }
+    .gpw-hero__glow-dot--coral::after {
+      background: radial-gradient(circle, rgba(237, 131, 94, 0.2) 0%, transparent 70%);
+    }
+
+    .gpw-hero__glow-dot--lime {
+      background: var(--lime);
+    }
+    .gpw-hero__glow-dot--lime::after {
+      background: radial-gradient(circle, rgba(173, 207, 145, 0.2) 0%, transparent 70%);
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.3); }
+    }
+
+    @keyframes glowSpread {
+      0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.5); }
+    }
+
+    /* Stagger animation delays for each dot */
+    .gpw-hero__glow-dot:nth-child(1) { animation-delay: 0s; }
+    .gpw-hero__glow-dot:nth-child(1)::after { animation-delay: 0s; }
+    .gpw-hero__glow-dot:nth-child(2) { animation-delay: 0.7s; }
+    .gpw-hero__glow-dot:nth-child(2)::after { animation-delay: 0.7s; }
+    .gpw-hero__glow-dot:nth-child(3) { animation-delay: 1.4s; }
+    .gpw-hero__glow-dot:nth-child(3)::after { animation-delay: 1.4s; }
+    .gpw-hero__glow-dot:nth-child(4) { animation-delay: 2.1s; }
+    .gpw-hero__glow-dot:nth-child(4)::after { animation-delay: 2.1s; }
+    .gpw-hero__glow-dot:nth-child(5) { animation-delay: 2.8s; }
+    .gpw-hero__glow-dot:nth-child(5)::after { animation-delay: 2.8s; }
+    .gpw-hero__glow-dot:nth-child(6) { animation-delay: 0.4s; }
+    .gpw-hero__glow-dot:nth-child(6)::after { animation-delay: 0.4s; }
+    .gpw-hero__glow-dot:nth-child(7) { animation-delay: 1.8s; }
+    .gpw-hero__glow-dot:nth-child(7)::after { animation-delay: 1.8s; }
+    .gpw-hero__glow-dot:nth-child(8) { animation-delay: 3.2s; }
+    .gpw-hero__glow-dot:nth-child(8)::after { animation-delay: 3.2s; }
+
+    /* Gradient overlay for depth + vignette */
+    .gpw-hero__overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(ellipse 60% 50% at 25% 75%, rgba(35, 85, 90, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 75% 25%, rgba(237, 131, 94, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(10, 22, 40, 0.6) 100%);
+      z-index: 1;
+    }
+
+    /* Content */
     .gpw-hero__inner {
       position: relative;
       z-index: 2;
-      display: grid;
-      grid-template-columns: 42% 58%;
-      align-items: center;
-      width: 100%;
-      max-width: 1320px;
+      text-align: center;
+      max-width: 860px;
       margin: 0 auto;
-      padding: var(--space-2xl) var(--space-xl);
-      min-height: calc(100vh - var(--header-height));
-    }
-
-    /* --- Left: Text content --- */
-    .gpw-hero__text {
-      color: var(--white);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .gpw-hero__text.visible {
-      opacity: 1;
-      transform: translateY(0);
+      padding: var(--space-4xl) var(--space-xl);
     }
 
     .gpw-hero__tagline {
@@ -75,10 +160,12 @@
       margin-bottom: var(--space-lg);
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: var(--space-sm);
     }
 
-    .gpw-hero__tagline::before {
+    .gpw-hero__tagline::before,
+    .gpw-hero__tagline::after {
       content: '';
       width: 32px;
       height: 1px;
@@ -86,47 +173,49 @@
     }
 
     .gpw-hero h1 {
-      font-size: clamp(2rem, 1.4rem + 2.5vw, 3rem);
+      font-size: clamp(2.2rem, 1.4rem + 3vw, 3.6rem);
       font-weight: 900;
       color: var(--white);
-      line-height: 1.15;
-      margin-bottom: var(--space-lg);
+      line-height: 1.12;
+      margin-bottom: var(--space-xl);
     }
 
     .gpw-hero__sub {
-      font-size: var(--text-lg);
-      color: rgba(255,255,255,0.7);
+      font-size: var(--text-xl);
+      color: rgba(255,255,255,0.75);
       line-height: 1.7;
-      max-width: 480px;
-      margin-bottom: var(--space-2xl);
+      max-width: 640px;
+      margin: 0 auto var(--space-2xl);
     }
 
     .gpw-hero .btn-group {
-      margin-bottom: var(--space-2xl);
+      justify-content: center;
+      margin-bottom: var(--space-3xl);
     }
 
-    /* Division cards */
+    /* Division cards — floating below text */
     .gpw-hero__divisions {
-      display: flex;
-      gap: 0;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      max-width: 620px;
+      margin: 0 auto;
     }
 
     .gpw-hero__div-card {
-      flex: 1;
-      padding: var(--space-lg) var(--space-xl);
-      background: rgba(255,255,255,0.04);
-      transition: background 0.3s ease;
-    }
-
-    .gpw-hero__div-card:first-child {
-      border-right: 1px solid rgba(255,255,255,0.1);
+      padding: var(--space-xl);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+      text-align: left;
     }
 
     .gpw-hero__div-card:hover {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-4px);
     }
 
     .gpw-hero__div-num {
@@ -134,168 +223,63 @@
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.4);
       margin-bottom: var(--space-xs);
     }
 
-    .gpw-hero__div-card:first-child .gpw-hero__div-num { color: var(--teal); }
+    .gpw-hero__div-card:first-child .gpw-hero__div-num { color: var(--lime); }
     .gpw-hero__div-card:last-child .gpw-hero__div-num { color: var(--coral); }
 
     .gpw-hero__div-title {
-      font-size: var(--text-sm);
+      font-size: var(--text-base);
       font-weight: 700;
       color: var(--white);
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
 
     .gpw-hero__div-desc {
-      font-size: var(--text-xs);
+      font-size: var(--text-sm);
       color: rgba(255,255,255,0.5);
+      line-height: 1.5;
     }
 
-    /* --- Right: Canvas area --- */
-    .gpw-hero__canvas-wrap {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      min-height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .gpw-hero__canvas-wrap canvas {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    /* Division badge */
-    .gpw-hero__badge {
+    /* Scroll indicator */
+    .gpw-hero__scroll {
       position: absolute;
-      top: var(--space-lg);
-      right: var(--space-lg);
-      font-family: var(--font-primary);
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--white);
-      padding: 6px 14px;
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(8px);
-      transition: all 0.5s ease;
-    }
-
-    .gpw-hero__badge.cnc {
-      border-color: rgba(35, 85, 90, 0.5);
-      color: var(--lime);
-    }
-
-    .gpw-hero__badge.ems {
-      border-color: rgba(237, 131, 94, 0.5);
-      color: var(--coral);
-    }
-
-    /* Phase indicator */
-    .gpw-hero__phases {
-      position: absolute;
-      bottom: var(--space-lg);
+      bottom: var(--space-2xl);
       left: 50%;
       transform: translateX(-50%);
+      z-index: 2;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: var(--space-sm);
-      background: rgba(0,0,0,0.4);
-      padding: 8px 16px;
-      border-radius: var(--radius-full);
-      backdrop-filter: blur(8px);
-    }
-
-    .gpw-hero__phase-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      transition: all 0.4s ease;
-    }
-
-    .gpw-hero__phase-dot.active {
-      transform: scale(1.3);
-    }
-
-    .gpw-hero__phase-dot.cnc { background: rgba(35, 85, 90, 0.3); }
-    .gpw-hero__phase-dot.ems { background: rgba(237, 131, 94, 0.3); }
-    .gpw-hero__phase-dot.cnc.active { background: var(--lime); box-shadow: 0 0 8px rgba(173,207,145,0.5); }
-    .gpw-hero__phase-dot.ems.active { background: var(--coral); box-shadow: 0 0 8px rgba(237,131,94,0.5); }
-
-    .gpw-hero__phase-label {
+      gap: var(--space-xs);
+      color: rgba(255,255,255,0.35);
       font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      margin-left: var(--space-xs);
-      min-width: 80px;
+      letter-spacing: 0.15em;
+      animation: heroScroll 2s ease-in-out infinite;
     }
 
+    .gpw-hero__scroll svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @keyframes heroScroll {
+      0%, 100% { opacity: 0.35; transform: translateX(-50%) translateY(0); }
+      50% { opacity: 0.7; transform: translateX(-50%) translateY(6px); }
+    }
 
     /* --- Responsive --- */
-    @media (max-width: 900px) {
-      .gpw-hero__inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: var(--space-2xl);
-        padding-top: var(--space-xl);
-      }
-
-      .gpw-hero__sub {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .gpw-hero .btn-group {
-        justify-content: center;
-      }
-
-      .gpw-hero__canvas-wrap {
-        min-height: 380px;
-      }
-
-      .gpw-hero__tagline {
-        justify-content: center;
-      }
-
-      .gpw-hero__badge {
-        top: var(--space-sm);
-        right: var(--space-sm);
-      }
-    }
-
     @media (max-width: 600px) {
       .gpw-hero__divisions {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        max-width: 340px;
       }
 
-      .gpw-hero__div-card:first-child {
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-      }
-
-      .gpw-hero__canvas-wrap {
-        min-height: 300px;
-      }
-
-      .gpw-hero__logo-letters svg {
-        width: 50px;
-        height: 50px;
-      }
-
-      .gpw-hero__logo-isotipo {
-        width: 40px;
-        height: 40px;
+      .gpw-hero__inner {
+        padding: var(--space-2xl) var(--space-lg);
       }
     }
   </style>
@@ -317,6 +301,9 @@
       </button>
 
       <nav class="nav" id="navMenu">
+        <button class="nav__close" id="navClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
         <a href="index.html" class="nav__link nav__link--active">Home</a>
 
         <div class="nav__item">
@@ -366,66 +353,64 @@
     <div class="nav-overlay" id="navOverlay"></div>
   </header>
 
-  <!-- ============ SECTION 1: ANIMATED HERO ============ -->
+  <!-- ============ SECTION 1: CORPORATE HERO ============ -->
   <section class="gpw-hero" id="gpwHero">
-    <!-- Grid background canvas -->
-    <canvas class="gpw-hero__grid" id="gridCanvas"></canvas>
+    <!-- Engineering grid background -->
+    <div class="gpw-hero__grid"></div>
+    <!-- Glow dots at grid intersections -->
+    <div class="gpw-hero__glow">
+      <div class="gpw-hero__glow-dot gpw-hero__glow-dot--teal" style="top: 18%; left: 12%;"></div>
+      <div class="gpw-hero__glow-dot gpw-hero__glow-dot--coral" style="top: 32%; left: 78%;"></div>
+      <div class="gpw-hero__glow-dot gpw-hero__glow-dot--teal" style="top: 65%; left: 55%;"></div>
+      <div class="gpw-hero__glow-dot gpw-hero__glow-dot--lime" style="top: 80%; left: 22%;"></div>
+      <div class="gpw-hero__glow-dot gpw-hero__glow-dot--teal" style="top: 45%; left: 42%;"></div>
+      <div class="gpw-hero__glow-dot gpw-hero__glow-dot--coral" style="top: 72%; left: 85%;"></div>
+      <div class="gpw-hero__glow-dot gpw-hero__glow-dot--lime" style="top: 15%; left: 60%;"></div>
+      <div class="gpw-hero__glow-dot gpw-hero__glow-dot--teal" style="top: 55%; left: 8%;"></div>
+    </div>
+    <div class="gpw-hero__overlay"></div>
 
     <div class="gpw-hero__inner">
-      <!-- Left: Text content -->
-      <div class="gpw-hero__text" id="heroText">
-        <span class="gpw-hero__tagline">Global Precision Works</span>
-        <h1>Precision Assembly &amp;<br>Contract Manufacturing</h1>
-        <p class="gpw-hero__sub">Two divisions — CNC machining and electromechanical assembly — built for U.S. OEMs. Same timezone. Same standards. Two hours from the border.</p>
+      <span class="gpw-hero__tagline">Global Precision Works</span>
+      <h1>Precision Assembly &amp;<br>Contract Manufacturing</h1>
+      <p class="gpw-hero__sub">Two divisions — CNC machining and electromechanical assembly — built for U.S. OEMs. Same timezone. Same standards. Two hours from the border.</p>
 
-        <div class="btn-group">
-          <a href="ems/request-quote.html" class="btn btn--interactive btn--lg">
-            <span class="btn__text">Request a Quote</span>
-            <span class="btn__hover">
-              <span>Request a Quote</span>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </span>
-            <span class="btn__circle"></span>
-          </a>
-          <a href="#divisions" class="btn btn--interactive btn--interactive-outline btn--lg">
-            <span class="btn__text">Explore Divisions</span>
-            <span class="btn__hover">
-              <span>Explore Divisions</span>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </span>
-            <span class="btn__circle"></span>
-          </a>
-        </div>
-
-        <div class="gpw-hero__divisions">
-          <div class="gpw-hero__div-card">
-            <div class="gpw-hero__div-num">Division 01</div>
-            <div class="gpw-hero__div-title">Contract Manufacturing</div>
-            <div class="gpw-hero__div-desc">CNC precision machining</div>
-          </div>
-          <div class="gpw-hero__div-card">
-            <div class="gpw-hero__div-num">Division 02</div>
-            <div class="gpw-hero__div-title">EMS Assembly</div>
-            <div class="gpw-hero__div-desc">Electromechanical &amp; box build</div>
-          </div>
-        </div>
+      <div class="btn-group">
+        <a href="ems/request-quote.html" class="btn btn--interactive btn--lg">
+          <span class="btn__text">Request a Quote</span>
+          <span class="btn__hover">
+            <span>Request a Quote</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </span>
+          <span class="btn__circle"></span>
+        </a>
+        <a href="#divisions" class="btn btn--interactive btn--interactive-outline btn--lg">
+          <span class="btn__text">Explore Divisions</span>
+          <span class="btn__hover">
+            <span>Explore Divisions</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </span>
+          <span class="btn__circle"></span>
+        </a>
       </div>
 
-      <!-- Right: Animation canvas -->
-      <div class="gpw-hero__canvas-wrap">
-        <canvas id="machineCanvas"></canvas>
-        <div class="gpw-hero__badge" id="divBadge">CONTRACT MFG</div>
-        <div class="gpw-hero__phases" id="phaseIndicator">
-          <div class="gpw-hero__phase-dot cnc" data-phase="0"></div>
-          <div class="gpw-hero__phase-dot cnc" data-phase="1"></div>
-          <div class="gpw-hero__phase-dot cnc" data-phase="2"></div>
-          <div class="gpw-hero__phase-dot cnc" data-phase="3"></div>
-          <div class="gpw-hero__phase-dot ems" data-phase="4"></div>
-          <div class="gpw-hero__phase-dot ems" data-phase="5"></div>
-          <div class="gpw-hero__phase-dot ems" data-phase="6"></div>
-          <span class="gpw-hero__phase-label" id="phaseLabel">Raw Billet</span>
+      <div class="gpw-hero__divisions">
+        <div class="gpw-hero__div-card">
+          <div class="gpw-hero__div-num">Division 01</div>
+          <div class="gpw-hero__div-title">Contract Manufacturing</div>
+          <div class="gpw-hero__div-desc">CNC precision machining — tight tolerances, reliable output</div>
+        </div>
+        <div class="gpw-hero__div-card">
+          <div class="gpw-hero__div-num">Division 02</div>
+          <div class="gpw-hero__div-title">EMS Assembly</div>
+          <div class="gpw-hero__div-desc">Electromechanical box build, harness, and system integration</div>
         </div>
       </div>
+    </div>
+
+    <div class="gpw-hero__scroll">
+      <span>Scroll</span>
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
     </div>
   </section>
 
@@ -841,914 +826,5 @@
 
   <!-- ============ JAVASCRIPT ============ -->
   <script src="js/main.js"></script>
-  <script>
-  (function() {
-    'use strict';
-
-    // ---- Show hero text immediately ----
-    var heroText = document.getElementById('heroText');
-    setTimeout(function() { heroText.classList.add('visible'); }, 100);
-
-    // ---- Grid background ----
-    var gridCanvas = document.getElementById('gridCanvas');
-    var gridCtx = gridCanvas.getContext('2d');
-
-    function drawGrid() {
-      var dpr = window.devicePixelRatio || 1;
-      var w = gridCanvas.clientWidth;
-      var h = gridCanvas.clientHeight;
-      gridCanvas.width = w * dpr;
-      gridCanvas.height = h * dpr;
-      gridCtx.scale(dpr, dpr);
-
-      // Minor grid
-      gridCtx.strokeStyle = 'rgba(35, 85, 90, 0.08)';
-      gridCtx.lineWidth = 0.3;
-      for (var x = 0; x < w; x += 40) {
-        gridCtx.beginPath(); gridCtx.moveTo(x, 0); gridCtx.lineTo(x, h); gridCtx.stroke();
-      }
-      for (var y = 0; y < h; y += 40) {
-        gridCtx.beginPath(); gridCtx.moveTo(0, y); gridCtx.lineTo(w, y); gridCtx.stroke();
-      }
-      // Major grid
-      gridCtx.strokeStyle = 'rgba(35, 85, 90, 0.14)';
-      gridCtx.lineWidth = 0.5;
-      for (var x2 = 0; x2 < w; x2 += 200) {
-        gridCtx.beginPath(); gridCtx.moveTo(x2, 0); gridCtx.lineTo(x2, h); gridCtx.stroke();
-      }
-      for (var y2 = 0; y2 < h; y2 += 200) {
-        gridCtx.beginPath(); gridCtx.moveTo(0, y2); gridCtx.lineTo(w, y2); gridCtx.stroke();
-      }
-    }
-
-    drawGrid();
-    window.addEventListener('resize', drawGrid);
-
-    // ---- Machining/Assembly Animation (v2 — detailed) ----
-    var canvas = document.getElementById('machineCanvas');
-    var ctx = canvas.getContext('2d');
-    var badge = document.getElementById('divBadge');
-    var phaseLabel = document.getElementById('phaseLabel');
-    var phaseDots = document.querySelectorAll('.gpw-hero__phase-dot');
-
-    var dpr = window.devicePixelRatio || 1;
-    var W, H, originX, originY, S;
-
-    function resize() {
-      dpr = window.devicePixelRatio || 1;
-      W = canvas.clientWidth;
-      H = canvas.clientHeight;
-      canvas.width = W * dpr;
-      canvas.height = H * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      // The iso origin is a reference point. The piece extends:
-      //   BELOW origin: bottom-front corner iso(180,110,0) → y = origin + (180+110)*SIN30*S = origin + 145*S
-      //   ABOVE origin: top-back corner with tool iso(0,0, 48+150) → y = origin - 198*S
-      // Total vertical span = (145 + 198) * S = 343 * S
-
-      var topReserve = 55;     // px for badge
-      var bottomReserve = 75;  // px for phase bar + padding
-      var safeTop = topReserve;
-      var safeBottom = H - bottomReserve;
-      var safeH = safeBottom - safeTop;
-
-      var belowOrigin = 145;  // iso units below origin
-      var aboveOrigin = 198;  // iso units above origin (includes tool)
-      var totalSpan = belowOrigin + aboveOrigin; // 343
-
-      // Horizontal constraint
-      var projW = (180 + 110) * COS30; // ~251
-      var maxScaleW = (W * 0.75) / projW;
-
-      // Vertical constraint: totalSpan * S must fit in safeH
-      var maxScaleH = safeH / totalSpan;
-
-      S = Math.min(maxScaleW, maxScaleH);
-      S = Math.max(S, 0.4);
-
-      // Place origin so piece is vertically centered in safe zone
-      // Top of piece at: originY - aboveOrigin * S = safeTop + margin
-      // Bottom of piece at: originY + belowOrigin * S = safeBottom - margin
-      // Center: originY = safeTop + aboveOrigin * S + (safeH - totalSpan * S) / 2
-      originY = safeTop + aboveOrigin * S + (safeH - totalSpan * S) / 2;
-
-      originX = W * 0.48;
-    }
-
-    // Isometric projection with scale
-    var COS30 = Math.cos(Math.PI / 6);
-    var SIN30 = Math.sin(Math.PI / 6);
-    function iso(x, y, z) {
-      return {
-        x: originX + (x - y) * COS30 * S,
-        y: originY + ((x + y) * SIN30 - z) * S
-      };
-    }
-
-    resize();
-    window.addEventListener('resize', function() { resize(); drawGrid(); });
-
-    // Colors — high contrast for 3D depth
-    var COL = {
-      topRaw:    '#3a7a85',   // raw billet top — LIGHTEST face
-      topMilled: '#45909d',   // milled surface — even lighter/shinier
-      leftDark:  '#0e2a30',   // left face — DARKEST
-      leftDarker:'#091e24',   // step wall — even darker
-      rightMed:  '#1a4450',   // front/right face — MEDIUM
-      rightLight:'#1f5560',
-      edge:      'rgba(255,255,255,0.05)',
-      edgeBright:'rgba(255,255,255,0.12)',
-      lip:       '#1c4854',   // face mill step wall
-      lipTop:    '#326a76',   // lip top surface
-      pocket:    '#081c22',   // pocket floor — very dark
-      pocketWall:'#0c2830',   // pocket left wall — dark
-      pocketWallR:'#102e38',  // pocket front wall — slightly lighter
-      rib:       '#0e2830',
-      ribTop:    '#163a44',
-      holeFill:  '#050e14',
-      holeStroke:'rgba(35,85,90,0.5)',
-      cbFill:    '#0a1e26',   // counterbore
-      cbStroke:  'rgba(35,85,90,0.25)',
-      pcbBase:   '#0f3a1a',   // darker, more realistic green
-      pcbEdge:   '#0a2a12',
-      pcbTrace:  'rgba(30,180,100,0.4)',
-      pcbTraceH: 'rgba(30,180,100,0.25)',
-      pcbTracePulse: 'rgba(80,255,160,0.7)',
-      pcbComp:   '#081a0e',
-      pcbIC:     '#060f08',
-      pcbICLabel:'rgba(180,220,180,0.15)', // subtle IC markings
-      pcbCap:    '#1a3520',
-      pcbCapTop: '#243d28',
-      pcbRes:    '#2a2018',   // resistors — brownish
-      pcbConn:   '#101c12',
-      pcbConnPin:'rgba(200,180,120,0.4)',  // gold pins
-      panelFront:'#2a3545',
-      panelSide: '#1e2835',
-      panelTop:  '#344050',
-      screw:     '#8aa0a8',
-      screwRim:  '#6a8890',
-      screwX:    '#5a7078',
-      screwSeat: '#0c2028',   // counterbore seat under screw
-      sparkCoral:'rgba(237,131,94,0.9)',
-      chipTeal:  'rgba(173,207,145,0.8)',
-      chipMetal: 'rgba(140,180,190,0.7)',
-      toolBody:  '#556b7a',
-      toolShank: '#4a6070',
-      toolGlow:  'rgba(173,207,145,0.25)',
-      spindle:   'rgba(255,255,255,0.1)'
-    };
-
-    // Part dimensions — realistic housing proportions (wider than tall)
-    var BILLET = { w: 180, d: 110, h: 48 };
-    var FACEMILL_DEPTH = 10; // material removed from top
-    var LIP_MARGIN = 14;     // border lip left by face mill
-
-    // Pocket with realistic proportions
-    var POCKET = { x: 20, y: 18, w: 95, d: 68, depth: 26, radius: 6 };
-
-    // Internal ribs inside pocket
-    var RIBS = [
-      { x: 55, y1: 18, y2: 86, ribW: 4 },  // vertical rib
-      { x: 80, y1: 18, y2: 86, ribW: 3 }   // second vertical rib
-    ];
-
-    // 8 holes — mixed sizes, some with counterbores
-    var HOLES = [
-      // Flange holes (around pocket, small with counterbores)
-      { x: 10, y: 8,   r: 3, cb: 6 },
-      { x: 10, y: 98,  r: 3, cb: 6 },
-      { x: 125, y: 8,  r: 3, cb: 6 },
-      { x: 125, y: 98, r: 3, cb: 6 },
-      // Mounting holes along right side (larger, no counterbore)
-      { x: 145, y: 20,  r: 4.5, cb: 0 },
-      { x: 145, y: 55,  r: 4.5, cb: 0 },
-      { x: 145, y: 90,  r: 4.5, cb: 0 },
-      // Center alignment hole (small)
-      { x: 165, y: 55,  r: 2.5, cb: 5 }
-    ];
-    var HOLE_COUNT = HOLES.length;
-
-    // Screw holes = first 4 flange holes + 3 mounting holes
-    var SCREW_HOLES = [0, 1, 2, 3, 4, 5, 6, 7];
-
-    // Phase config
-    var PHASES = [
-      { name: 'Raw Billet',    duration: 1800, pause: 600, type: 'cnc' },
-      { name: 'Face Mill',     duration: 2000, pause: 600, type: 'cnc' },
-      { name: 'Pocket Cut',    duration: 2200, pause: 600, type: 'cnc' },
-      { name: 'Drill Holes',   duration: 2400, pause: 600, type: 'cnc' },
-      { name: 'Components',    duration: 2000, pause: 600, type: 'ems' },
-      { name: 'Fastening',     duration: 2200, pause: 600, type: 'ems' },
-      { name: 'Complete',      duration: 2600, pause: 900, type: 'ems' }
-    ];
-
-    var currentPhase = 0;
-    var phaseStart = 0;
-    var animStarted = false;
-    var chips = [];
-
-    // Accumulated state
-    var faceMilled = 0;
-    var pocketDepth = 0;
-    var holesVisible = 0;
-    var pcbY = -100;
-    var panelX = 100;
-    var screwsIn = 0;
-    var pulseAlpha = 0;
-
-    function updateUI() {
-      var p = PHASES[currentPhase];
-      phaseLabel.textContent = p.name;
-      badge.textContent = p.type === 'cnc' ? 'CONTRACT MFG' : 'EMS ASSEMBLY';
-      badge.className = 'gpw-hero__badge ' + p.type;
-      phaseDots.forEach(function(dot, i) {
-        dot.classList.toggle('active', i === currentPhase);
-      });
-    }
-
-    // Draw filled polygon
-    function drawFace(pts, color, strokeColor) {
-      ctx.beginPath();
-      ctx.moveTo(pts[0].x, pts[0].y);
-      for (var i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
-      ctx.closePath();
-      ctx.fillStyle = color;
-      ctx.fill();
-      ctx.strokeStyle = strokeColor || COL.edge;
-      ctx.lineWidth = 0.5;
-      ctx.stroke();
-    }
-
-    // Ease function for smooth animation
-    function easeInOut(t) {
-      return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-    }
-
-    // ---- BILLET with face mill lip ----
-    function drawBillet(fmProgress) {
-      var w = BILLET.w, d = BILLET.d, h = BILLET.h;
-      var fmDepth = FACEMILL_DEPTH * fmProgress;
-      var lip = LIP_MARGIN;
-      var milledH = h - fmDepth;
-
-      if (fmProgress <= 0) {
-        // Raw billet — single block
-        drawFace([iso(0,0,0), iso(0,d,0), iso(0,d,h), iso(0,0,h)], COL.leftDark);
-        drawFace([iso(0,d,0), iso(w,d,0), iso(w,d,h), iso(0,d,h)], COL.rightMed);
-        drawFace([iso(0,0,h), iso(w,0,h), iso(w,d,h), iso(0,d,h)], COL.topRaw);
-        return;
-      }
-
-      // Left face (full height)
-      drawFace([iso(0,0,0), iso(0,d,0), iso(0,d,h), iso(0,0,h)], COL.leftDark);
-      // Front face (full height)
-      drawFace([iso(0,d,0), iso(w,d,0), iso(w,d,h), iso(0,d,h)], COL.rightMed);
-
-      // Raw top surface (outer lip)
-      drawFace([iso(0,0,h), iso(w,0,h), iso(w,d,h), iso(0,d,h)], COL.topRaw);
-
-      // Milled step — cut into the top leaving a lip border
-      // Left wall of step
-      drawFace([
-        iso(lip, lip, milledH), iso(lip, d-lip, milledH),
-        iso(lip, d-lip, h), iso(lip, lip, h)
-      ], COL.lip);
-
-      // Front wall of step
-      drawFace([
-        iso(lip, d-lip, milledH), iso(w-lip, d-lip, milledH),
-        iso(w-lip, d-lip, h), iso(lip, d-lip, h)
-      ], COL.leftDarker);
-
-      // Milled top surface (shinier)
-      drawFace([
-        iso(lip, lip, milledH), iso(w-lip, lip, milledH),
-        iso(w-lip, d-lip, milledH), iso(lip, d-lip, milledH)
-      ], COL.topMilled);
-    }
-
-    // ---- POCKET with rounded corners and ribs ----
-    function drawPocket(depth, billetH) {
-      if (depth <= 0) return;
-      var px = POCKET.x, py = POCKET.y;
-      var pw = POCKET.w, pd = POCKET.d;
-      var ad = POCKET.depth * depth; // actual depth
-      var z = billetH;
-
-      // Pocket floor
-      drawFace([
-        iso(px, py, z-ad), iso(px+pw, py, z-ad),
-        iso(px+pw, py+pd, z-ad), iso(px, py+pd, z-ad)
-      ], COL.pocket);
-
-      // Pocket left wall
-      drawFace([
-        iso(px, py, z-ad), iso(px, py+pd, z-ad),
-        iso(px, py+pd, z), iso(px, py, z)
-      ], COL.pocketWall);
-
-      // Pocket front wall
-      drawFace([
-        iso(px, py+pd, z-ad), iso(px+pw, py+pd, z-ad),
-        iso(px+pw, py+pd, z), iso(px, py+pd, z)
-      ], COL.pocketWallR);
-
-      // Pocket right wall (visible in isometric)
-      drawFace([
-        iso(px+pw, py, z-ad), iso(px+pw, py+pd, z-ad),
-        iso(px+pw, py+pd, z), iso(px+pw, py, z)
-      ], COL.pocketWall);
-
-      // Corner radius indicators (small chamfer triangles at visible corners)
-      var cr = POCKET.radius;
-      // Front-left corner radius
-      ctx.fillStyle = COL.pocketWall;
-      var c1 = iso(px, py+pd, z);
-      var c2 = iso(px+cr, py+pd, z);
-      var c3 = iso(px, py+pd-cr, z);
-      ctx.beginPath(); ctx.moveTo(c1.x, c1.y); ctx.lineTo(c2.x, c2.y); ctx.lineTo(c3.x, c3.y); ctx.closePath(); ctx.fill();
-      // Front-right corner radius
-      c1 = iso(px+pw, py+pd, z);
-      c2 = iso(px+pw-cr, py+pd, z);
-      c3 = iso(px+pw, py+pd-cr, z);
-      ctx.beginPath(); ctx.moveTo(c1.x, c1.y); ctx.lineTo(c2.x, c2.y); ctx.lineTo(c3.x, c3.y); ctx.closePath(); ctx.fill();
-
-      // Internal divider walls — full height from pocket floor to milled surface
-      if (depth > 0.3) {
-        var ribAlpha = Math.min(1, (depth - 0.3) / 0.3);
-        ctx.globalAlpha = ribAlpha;
-        RIBS.forEach(function(rib) {
-          var rx = rib.x, ry1 = Math.max(py, rib.y1), ry2 = Math.min(py+pd, rib.y2);
-          var rw = rib.ribW;
-
-          // Divider left face (full height: floor to top)
-          drawFace([
-            iso(rx, ry1, z-ad), iso(rx, ry2, z-ad),
-            iso(rx, ry2, z), iso(rx, ry1, z)
-          ], COL.pocketWall);
-
-          // Divider front face (full height: floor to top)
-          drawFace([
-            iso(rx, ry2, z-ad), iso(rx+rw, ry2, z-ad),
-            iso(rx+rw, ry2, z), iso(rx, ry2, z)
-          ], COL.rib);
-
-          // Divider top face (thin strip at milled surface level)
-          drawFace([
-            iso(rx, ry1, z), iso(rx+rw, ry1, z),
-            iso(rx+rw, ry2, z), iso(rx, ry2, z)
-          ], COL.ribTop);
-        });
-        ctx.globalAlpha = 1;
-      }
-    }
-
-    // ---- HOLES with counterbores ----
-    function drawHoles(count, billetH) {
-      var n = Math.min(Math.ceil(count), HOLE_COUNT);
-      for (var i = 0; i < n; i++) {
-        var hole = HOLES[i];
-        var hx = hole.x, hy = hole.y;
-        var fractional = Math.min(1, count - i);
-        if (fractional <= 0) continue;
-
-        var center = iso(hx, hy, billetH);
-        var r = hole.r * S;
-
-        ctx.globalAlpha = fractional;
-
-        // Counterbore (larger shallow circle)
-        if (hole.cb > 0) {
-          var cbr = hole.cb * S;
-          ctx.beginPath();
-          ctx.ellipse(center.x, center.y, cbr * COS30, cbr * SIN30, 0, 0, Math.PI * 2);
-          ctx.fillStyle = COL.cbFill;
-          ctx.fill();
-          ctx.strokeStyle = COL.cbStroke;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-
-        // Through hole
-        ctx.beginPath();
-        ctx.ellipse(center.x, center.y, r * COS30, r * SIN30, 0, 0, Math.PI * 2);
-        ctx.fillStyle = COL.holeFill;
-        ctx.fill();
-        ctx.strokeStyle = COL.holeStroke;
-        ctx.lineWidth = 1;
-        ctx.stroke();
-
-        ctx.globalAlpha = 1;
-      }
-    }
-
-    // ---- TOOL (larger, more detailed) ----
-    function drawTool(x, y, z, cutting) {
-      var tip = iso(x, y, z);
-      var shankTop = iso(x, y, z + 60);
-      var spindleTop = iso(x, y, z + 150);
-
-      // Spindle
-      ctx.beginPath();
-      ctx.moveTo(shankTop.x, shankTop.y);
-      ctx.lineTo(spindleTop.x, spindleTop.y);
-      ctx.strokeStyle = COL.spindle;
-      ctx.lineWidth = 3 * S;
-      ctx.stroke();
-
-      // Tool shank (cylinder approximation)
-      ctx.beginPath();
-      ctx.moveTo(tip.x - 4*S, tip.y - 20*S);
-      ctx.lineTo(shankTop.x - 5*S, shankTop.y);
-      ctx.lineTo(shankTop.x + 5*S, shankTop.y);
-      ctx.lineTo(tip.x + 4*S, tip.y - 20*S);
-      ctx.closePath();
-      ctx.fillStyle = COL.toolShank;
-      ctx.fill();
-
-      // Tool bit (tapered)
-      ctx.beginPath();
-      ctx.moveTo(tip.x, tip.y);
-      ctx.lineTo(tip.x - 4*S, tip.y - 20*S);
-      ctx.lineTo(tip.x + 4*S, tip.y - 20*S);
-      ctx.closePath();
-      ctx.fillStyle = COL.toolBody;
-      ctx.fill();
-      ctx.strokeStyle = COL.edgeBright;
-      ctx.lineWidth = 0.5;
-      ctx.stroke();
-
-      // Glow when cutting
-      if (cutting) {
-        var grad = ctx.createRadialGradient(tip.x, tip.y, 0, tip.x, tip.y, 18*S);
-        grad.addColorStop(0, 'rgba(173,207,145,0.4)');
-        grad.addColorStop(1, 'rgba(173,207,145,0)');
-        ctx.beginPath();
-        ctx.arc(tip.x, tip.y, 18*S, 0, Math.PI * 2);
-        ctx.fillStyle = grad;
-        ctx.fill();
-      }
-    }
-
-    // ---- PCB (detailed) ----
-    function drawPCB(yOffset, billetH) {
-      var px = POCKET.x + 4, py = POCKET.y + 4;
-      var pw = POCKET.w - 8, pd = POCKET.d - 8;
-      var pcbZ = billetH - POCKET.depth * pocketDepth + 5 + yOffset;
-      var pcbH = 3; // PCB thickness
-
-      // PCB left edge
-      drawFace([
-        iso(px, py, pcbZ), iso(px, py+pd, pcbZ),
-        iso(px, py+pd, pcbZ+pcbH), iso(px, py, pcbZ+pcbH)
-      ], COL.pcbEdge);
-
-      // PCB front edge
-      drawFace([
-        iso(px, py+pd, pcbZ), iso(px+pw, py+pd, pcbZ),
-        iso(px+pw, py+pd, pcbZ+pcbH), iso(px, py+pd, pcbZ+pcbH)
-      ], COL.pcbEdge);
-
-      // PCB top
-      drawFace([
-        iso(px, py, pcbZ+pcbH), iso(px+pw, py, pcbZ+pcbH),
-        iso(px+pw, py+pd, pcbZ+pcbH), iso(px, py+pd, pcbZ+pcbH)
-      ], COL.pcbBase);
-
-      var tz = pcbZ + pcbH + 0.5;
-
-      // Traces — horizontal bus lines
-      ctx.strokeStyle = COL.pcbTrace;
-      ctx.lineWidth = 1.2;
-      for (var t = 0; t < 7; t++) {
-        var ty = py + 5 + t * (pd - 10) / 6;
-        var p1 = iso(px + 3, ty, tz);
-        var p2 = iso(px + pw - 3, ty, tz);
-        ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
-      }
-
-      // Traces — vertical signal lines
-      ctx.strokeStyle = COL.pcbTraceH;
-      ctx.lineWidth = 0.8;
-      for (var v = 0; v < 5; v++) {
-        var vx = px + 10 + v * 15;
-        var vp1 = iso(vx, py + 3, tz);
-        var vp2 = iso(vx, py + pd - 3, tz);
-        ctx.beginPath(); ctx.moveTo(vp1.x, vp1.y); ctx.lineTo(vp2.x, vp2.y); ctx.stroke();
-      }
-
-      // Diagonal traces connecting components
-      ctx.strokeStyle = COL.pcbTrace;
-      ctx.lineWidth = 0.6;
-      var diags = [
-        [px+24,py+14, px+43,py+17], [px+24,py+43, px+43,py+38],
-        [px+61,py+20, px+72,py+12], [px+61,py+48, px+72,py+44]
-      ];
-      diags.forEach(function(d) {
-        var dp1 = iso(d[0],d[1],tz), dp2 = iso(d[2],d[3],tz);
-        ctx.beginPath(); ctx.moveTo(dp1.x, dp1.y); ctx.lineTo(dp2.x, dp2.y); ctx.stroke();
-      });
-
-      // IC chips — main processors (with label markings)
-      var ics = [
-        [px+8,py+8,16,10],   // IC U1 — large BGA
-        [px+8,py+34,16,12],  // IC U2 — memory
-        [px+42,py+13,18,14], // IC U3 — main SoC
-        [px+42,py+38,14,10]  // IC U4 — power management
-      ];
-      ics.forEach(function(ic) {
-        // IC body
-        drawFace([
-          iso(ic[0],ic[1],tz), iso(ic[0]+ic[2],ic[1],tz),
-          iso(ic[0]+ic[2],ic[1]+ic[3],tz), iso(ic[0],ic[1]+ic[3],tz)
-        ], COL.pcbIC);
-        // IC top surface (subtle sheen)
-        drawFace([
-          iso(ic[0]+1,ic[1]+1,tz+0.5), iso(ic[0]+ic[2]-1,ic[1]+1,tz+0.5),
-          iso(ic[0]+ic[2]-1,ic[1]+ic[3]-1,tz+0.5), iso(ic[0]+1,ic[1]+ic[3]-1,tz+0.5)
-        ], COL.pcbComp);
-        // IC label marking (dot or line)
-        var lp1 = iso(ic[0]+2, ic[1]+2, tz+0.6);
-        ctx.fillStyle = COL.pcbICLabel;
-        ctx.beginPath(); ctx.arc(lp1.x, lp1.y, 1.5*S, 0, Math.PI*2); ctx.fill();
-        // Pin rows on two sides
-        ctx.fillStyle = COL.pcbConnPin;
-        for (var pin = 0; pin < Math.floor(ic[2]/3); pin++) {
-          var ppx = ic[0] + 2 + pin * 3;
-          var pp1 = iso(ppx, ic[1]-0.5, tz);
-          var pp2 = iso(ppx, ic[1]+ic[3]+0.5, tz);
-          ctx.fillRect(pp1.x-0.5*S, pp1.y-0.5*S, 1*S, 1*S);
-          ctx.fillRect(pp2.x-0.5*S, pp2.y-0.5*S, 1*S, 1*S);
-        }
-      });
-
-      // Capacitors — ceramic (small tan/brown rectangles)
-      var caps = [
-        [px+28,py+8], [px+28,py+18], [px+28,py+28], [px+28,py+40], [px+28,py+50],
-        [px+63,py+10], [px+63,py+22], [px+63,py+34], [px+63,py+46]
-      ];
-      caps.forEach(function(c) {
-        var cp = iso(c[0], c[1], tz);
-        ctx.fillStyle = COL.pcbCap;
-        ctx.fillRect(cp.x - 2*S, cp.y - 1.2*S, 4*S, 2.4*S);
-        // Cap top highlight
-        ctx.fillStyle = COL.pcbCapTop;
-        ctx.fillRect(cp.x - 1.5*S, cp.y - 0.8*S, 3*S, 1.6*S);
-      });
-
-      // Resistors — small brown rectangles
-      var resistors = [
-        [px+35,py+12], [px+35,py+26], [px+35,py+42],
-        [px+70,py+16], [px+70,py+30], [px+70,py+50]
-      ];
-      resistors.forEach(function(r) {
-        var rp = iso(r[0], r[1], tz);
-        ctx.fillStyle = COL.pcbRes;
-        ctx.fillRect(rp.x - 1.5*S, rp.y - 1*S, 3*S, 2*S);
-      });
-
-      // Connector block (edge of PCB — taller, with gold pins)
-      var connX = px+pw-14, connY = py+pd-16, connW = 12, connD = 12, connH = 5;
-      // Connector left face
-      drawFace([
-        iso(connX, connY, tz), iso(connX, connY+connD, tz),
-        iso(connX, connY+connD, tz+connH), iso(connX, connY, tz+connH)
-      ], COL.pcbComp);
-      // Connector front face
-      drawFace([
-        iso(connX, connY+connD, tz), iso(connX+connW, connY+connD, tz),
-        iso(connX+connW, connY+connD, tz+connH), iso(connX, connY+connD, tz+connH)
-      ], COL.pcbConn);
-      // Connector top
-      drawFace([
-        iso(connX, connY, tz+connH), iso(connX+connW, connY, tz+connH),
-        iso(connX+connW, connY+connD, tz+connH), iso(connX, connY+connD, tz+connH)
-      ], '#1a3025');
-      // Gold pin rows inside connector
-      ctx.fillStyle = COL.pcbConnPin;
-      for (var gp = 0; gp < 4; gp++) {
-        var gpx1 = iso(connX+2+gp*2.5, connY+connD, tz+1.5);
-        ctx.fillRect(gpx1.x-0.5*S, gpx1.y-0.5*S, 1*S, 3*S);
-        var gpx2 = iso(connX+2+gp*2.5, connY+connD, tz+3.5);
-        ctx.fillRect(gpx2.x-0.5*S, gpx2.y-0.5*S, 1*S, 3*S);
-      }
-    }
-
-    // ---- Side panel ----
-    function drawPanel(xOffset, billetH) {
-      var h = BILLET.h - faceMilled * FACEMILL_DEPTH;
-      var panelW = 5;
-      var px = BILLET.w + xOffset;
-
-      drawFace([
-        iso(px, 0, 0), iso(px, BILLET.d, 0),
-        iso(px, BILLET.d, h), iso(px, 0, h)
-      ], COL.panelSide);
-
-      drawFace([
-        iso(px, BILLET.d, 0), iso(px+panelW, BILLET.d, 0),
-        iso(px+panelW, BILLET.d, h), iso(px, BILLET.d, h)
-      ], COL.panelFront);
-
-      drawFace([
-        iso(px, 0, h), iso(px+panelW, 0, h),
-        iso(px+panelW, BILLET.d, h), iso(px, BILLET.d, h)
-      ], COL.panelTop);
-    }
-
-    // ---- Screws (with counterbore seat) ----
-    function drawScrews(count, billetH) {
-      var n = Math.min(Math.ceil(count), SCREW_HOLES.length);
-      for (var i = 0; i < n; i++) {
-        var fractional = Math.min(1, count - i);
-        if (fractional <= 0) continue;
-        var hole = HOLES[SCREW_HOLES[i]];
-        var center = iso(hole.x, hole.y, billetH + 1.5);
-        var headR = (hole.cb > 0 ? hole.cb - 1 : hole.r + 1.5) * S;
-
-        ctx.globalAlpha = fractional;
-
-        // Counterbore seat (dark ring around screw base)
-        var seatR = headR * 1.35;
-        ctx.beginPath();
-        ctx.ellipse(center.x, center.y, seatR * COS30, seatR * SIN30, 0, 0, Math.PI * 2);
-        ctx.fillStyle = COL.screwSeat;
-        ctx.fill();
-
-        // Screw head rim
-        ctx.beginPath();
-        ctx.ellipse(center.x, center.y, headR * COS30, headR * SIN30, 0, 0, Math.PI * 2);
-        ctx.fillStyle = COL.screwRim;
-        ctx.fill();
-
-        // Screw head top
-        var innerR = headR * 0.85;
-        ctx.beginPath();
-        ctx.ellipse(center.x, center.y, innerR * COS30, innerR * SIN30, 0, 0, Math.PI * 2);
-        ctx.fillStyle = COL.screw;
-        ctx.fill();
-
-        // Phillips cross
-        ctx.strokeStyle = COL.screwX;
-        ctx.lineWidth = 1.2 * S;
-        var cx_s = 3.5 * S;
-        ctx.beginPath(); ctx.moveTo(center.x - cx_s, center.y); ctx.lineTo(center.x + cx_s, center.y); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(center.x, center.y - cx_s * 0.6); ctx.lineTo(center.x, center.y + cx_s * 0.6); ctx.stroke();
-
-        ctx.globalAlpha = 1;
-      }
-    }
-
-    // ---- Particles ----
-    function spawnChip(x, y, z, color) {
-      if (chips.length > 50) return;
-      var p = iso(x, y, z);
-      chips.push({
-        x: p.x, y: p.y,
-        vx: (Math.random() - 0.5) * 5,
-        vy: -Math.random() * 4 - 1,
-        life: 1,
-        color: color,
-        size: Math.random() * 2.5 + 1
-      });
-    }
-
-    function updateChips(dt) {
-      for (var i = chips.length - 1; i >= 0; i--) {
-        var c = chips[i];
-        c.x += c.vx;
-        c.y += c.vy;
-        c.vy += 0.18;
-        c.life -= dt / 800;
-        if (c.life <= 0) chips.splice(i, 1);
-      }
-    }
-
-    function drawChips() {
-      chips.forEach(function(c) {
-        ctx.globalAlpha = Math.max(0, c.life);
-        ctx.fillStyle = c.color;
-        ctx.fillRect(c.x, c.y, c.size, c.size);
-      });
-      ctx.globalAlpha = 1;
-    }
-
-    function spawnSpark(holeIdx) {
-      var hole = HOLES[SCREW_HOLES[holeIdx]];
-      var billetH = BILLET.h - faceMilled * FACEMILL_DEPTH;
-      for (var s = 0; s < 10; s++) {
-        spawnChip(hole.x + (Math.random()-0.5)*8, hole.y + (Math.random()-0.5)*8, billetH + 3, COL.sparkCoral);
-      }
-    }
-
-    // ---- Main render loop ----
-    var lastTime = 0;
-    var lastScrewSpark = -1;
-
-    function render(timestamp) {
-      if (!animStarted) {
-        animStarted = true;
-        phaseStart = timestamp;
-        updateUI();
-      }
-
-      var dt = timestamp - lastTime;
-      lastTime = timestamp;
-      var elapsed = timestamp - phaseStart;
-      var phase = PHASES[currentPhase];
-      var dur = phase.duration;
-      var t = Math.min(elapsed / dur, 1);
-      var te = easeInOut(t); // eased progress
-      var inPause = elapsed > dur;
-
-      ctx.clearRect(0, 0, W, H);
-
-      var toolActive = false;
-      var toolX = 90, toolY = 55;
-      var toolZ = BILLET.h + 50;
-
-      switch (currentPhase) {
-        case 0: break; // Raw billet
-
-        case 1: // Face mill
-          if (!inPause) {
-            faceMilled = te;
-            toolActive = t > 0.1 && t < 0.9;
-            toolX = BILLET.w * 0.5;
-            toolY = BILLET.d * 0.5;
-            toolZ = BILLET.h + 50 - te * 50;
-            if (toolActive && Math.random() < 0.35) {
-              spawnChip(
-                LIP_MARGIN + Math.random() * (BILLET.w - LIP_MARGIN*2),
-                LIP_MARGIN + Math.random() * (BILLET.d - LIP_MARGIN*2),
-                BILLET.h - faceMilled * FACEMILL_DEPTH,
-                Math.random() < 0.5 ? COL.chipTeal : COL.chipMetal
-              );
-            }
-          }
-          break;
-
-        case 2: // Pocket cut
-          faceMilled = 1;
-          if (!inPause) {
-            pocketDepth = te;
-            toolActive = t > 0.1 && t < 0.9;
-            toolX = POCKET.x + POCKET.w * 0.5;
-            toolY = POCKET.y + POCKET.d * 0.5;
-            var milledTop = BILLET.h - FACEMILL_DEPTH;
-            toolZ = milledTop + 40 - te * 40;
-            if (toolActive && Math.random() < 0.45) {
-              spawnChip(
-                POCKET.x + Math.random() * POCKET.w,
-                POCKET.y + Math.random() * POCKET.d,
-                milledTop - POCKET.depth * pocketDepth,
-                Math.random() < 0.5 ? COL.chipTeal : COL.chipMetal
-              );
-            }
-          }
-          break;
-
-        case 3: // Drill holes
-          faceMilled = 1; pocketDepth = 1;
-          if (!inPause) {
-            var holeT = t * HOLE_COUNT;
-            holesVisible = Math.min(holeT + 1, HOLE_COUNT);
-            var curHole = Math.min(Math.floor(holeT), HOLE_COUNT - 1);
-            toolX = HOLES[curHole].x;
-            toolY = HOLES[curHole].y;
-            toolActive = (holeT % 1) > 0.08 && (holeT % 1) < 0.85;
-            var milledTop2 = BILLET.h - FACEMILL_DEPTH;
-            toolZ = milledTop2 + 40 - Math.min(holeT % 1, 1) * 40;
-            if (toolActive && Math.random() < 0.3) {
-              spawnChip(toolX, toolY, milledTop2, COL.chipMetal);
-            }
-          }
-          break;
-
-        case 4: // Components
-          faceMilled = 1; pocketDepth = 1; holesVisible = HOLE_COUNT;
-          if (!inPause) {
-            pcbY = -100 + te * 100;
-            pcbY = Math.min(pcbY, 0);
-            panelX = 100 - te * 100;
-            panelX = Math.max(panelX, 0);
-          }
-          break;
-
-        case 5: // Fastening
-          faceMilled = 1; pocketDepth = 1; holesVisible = HOLE_COUNT;
-          pcbY = 0; panelX = 0;
-          if (!inPause) {
-            var screwT = t * SCREW_HOLES.length;
-            screwsIn = Math.min(Math.floor(screwT) + (screwT % 1 > 0.25 ? 1 : 0), SCREW_HOLES.length);
-            var curScrew = Math.floor(screwT);
-            if (curScrew !== lastScrewSpark && curScrew < SCREW_HOLES.length && (screwT % 1) > 0.25) {
-              spawnSpark(curScrew);
-              lastScrewSpark = curScrew;
-            }
-          }
-          break;
-
-        case 6: // Complete
-          faceMilled = 1; pocketDepth = 1; holesVisible = HOLE_COUNT;
-          pcbY = 0; panelX = 0; screwsIn = SCREW_HOLES.length;
-          if (!inPause) {
-            pulseAlpha = 0.12 + Math.sin(timestamp / 300) * 0.08;
-          }
-          break;
-      }
-
-      var billetH = BILLET.h - faceMilled * FACEMILL_DEPTH;
-
-      // ---- Draw scene back to front ----
-      drawBillet(faceMilled);
-      if (pocketDepth > 0) drawPocket(pocketDepth, billetH);
-      if (holesVisible > 0) drawHoles(holesVisible, billetH);
-
-      if (currentPhase >= 4) drawPCB(pcbY, billetH);
-      if (currentPhase >= 4 && panelX < 100) drawPanel(panelX, billetH);
-      if (currentPhase >= 5) drawScrews(screwsIn, billetH);
-
-      // PCB trace pulse effect — light travels along traces
-      if (currentPhase === 6 && !inPause) {
-        var gpx = POCKET.x + 8, gpy = POCKET.y + 8;
-        var gpw = POCKET.w - 16, gpd = POCKET.d - 16;
-        var gpcbZ = billetH - POCKET.depth + 8.5;
-
-        // Pulse position sweeps across the PCB (0 to 1 over ~1.5s)
-        var pulsePos = (timestamp % 1500) / 1500;
-        var pulseWidth = 0.18;
-
-        // Draw glowing traces that light up as pulse passes
-        ctx.lineWidth = 1.8;
-        // Horizontal traces
-        for (var ht = 0; ht < 7; ht++) {
-          var hty = gpy + ht * (gpd / 6);
-          var hp1 = iso(gpx, hty, gpcbZ);
-          var hp2 = iso(gpx + gpw, hty, gpcbZ);
-          // Calculate segment brightness based on pulse position
-          var segCenter = ht / 6;
-          var dist = Math.abs(pulsePos - segCenter);
-          var brightness = Math.max(0, 1 - dist / pulseWidth);
-          if (brightness > 0) {
-            ctx.globalAlpha = brightness * 0.6;
-            ctx.strokeStyle = COL.pcbTracePulse;
-            ctx.beginPath(); ctx.moveTo(hp1.x, hp1.y); ctx.lineTo(hp2.x, hp2.y); ctx.stroke();
-          }
-        }
-        // Vertical traces
-        for (var vt = 0; vt < 5; vt++) {
-          var vtx = gpx + 6 + vt * 15;
-          var vtp1 = iso(vtx, gpy, gpcbZ);
-          var vtp2 = iso(vtx, gpy + gpd, gpcbZ);
-          var vsegCenter = vt / 4;
-          var vdist = Math.abs(pulsePos - vsegCenter);
-          var vbrightness = Math.max(0, 1 - vdist / pulseWidth);
-          if (vbrightness > 0) {
-            ctx.globalAlpha = vbrightness * 0.5;
-            ctx.strokeStyle = COL.pcbTracePulse;
-            ctx.beginPath(); ctx.moveTo(vtp1.x, vtp1.y); ctx.lineTo(vtp2.x, vtp2.y); ctx.stroke();
-          }
-        }
-        ctx.globalAlpha = 1;
-
-        // Subtle overall glow on PCB
-        ctx.globalAlpha = 0.04 + Math.sin(timestamp / 400) * 0.03;
-        drawFace([
-          iso(gpx-4,gpy-4,gpcbZ), iso(gpx+gpw+4,gpy-4,gpcbZ),
-          iso(gpx+gpw+4,gpy+gpd+4,gpcbZ), iso(gpx-4,gpy+gpd+4,gpcbZ)
-        ], '#2aff6a');
-        ctx.globalAlpha = 1;
-
-      }
-
-      // Tool
-      if (currentPhase >= 1 && currentPhase <= 3 && !inPause) {
-        drawTool(toolX, toolY, toolZ, toolActive);
-      }
-
-      updateChips(dt);
-      drawChips();
-
-      // Phase transition
-      if (elapsed > dur + phase.pause) {
-        currentPhase = (currentPhase + 1) % PHASES.length;
-        phaseStart = timestamp;
-        lastScrewSpark = -1;
-        if (currentPhase === 0) {
-          faceMilled = 0; pocketDepth = 0; holesVisible = 0;
-          pcbY = -100; panelX = 100; screwsIn = 0;
-          pulseAlpha = 0; chips = [];
-        }
-        updateUI();
-      }
-
-      requestAnimationFrame(render);
-    }
-
-    requestAnimationFrame(render);
-  })();
-  </script>
 </body>
 </html>
