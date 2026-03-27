@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GPW | Manufacturing & Electromechanical Assembly in Mexico</title>
   <meta name="description" content="GPW delivers precision CNC machining and electromechanical assembly from Monterrey, Mexico. Two divisions, one standard of excellence. Request a quote today.">
+  <link rel="canonical" href="https://gpw-solutions.com/">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -282,7 +283,116 @@
         padding: var(--space-2xl) var(--space-lg);
       }
     }
+    /* ── Interactive Nearshore Map ── */
+    .nearshore-map {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1.2 / 1;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #0a1628;
+    }
+    .nearshore-map__dots {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.7;
+    }
+    .nearshore-map__overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .nearshore-map__label {
+      font-family: 'Lato', sans-serif;
+      font-size: 1.4px;
+      font-weight: 700;
+      fill: var(--white);
+      text-anchor: middle;
+      pointer-events: none;
+      opacity: 0;
+      animation: mapLabelIn 0.5s ease forwards;
+    }
+    .nearshore-map__label--origin {
+      fill: var(--coral);
+      font-size: 1.8px;
+    }
+    .nearshore-map__path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: mapDraw 2s ease-in-out forwards;
+    }
+    .nearshore-map__dot-travel {
+      opacity: 0;
+      animation: mapDotTravel 2s ease-in-out forwards;
+    }
+    .nearshore-map__legend {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-xl);
+      margin-top: var(--space-md);
+      font-size: var(--text-xs);
+      color: var(--medium-gray);
+    }
+    .nearshore-map__legend span {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .nearshore-map__legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .nearshore-map__legend-dot--origin { background: var(--coral); }
+    .nearshore-map__legend-dot--dest { background: var(--lime); }
+
+    @keyframes mapDraw {
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes mapLabelIn {
+      to { opacity: 1; }
+    }
+    @keyframes mapDotTravel {
+      0% { opacity: 0; offset-distance: 0%; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; offset-distance: 100%; }
+    }
   </style>
+  <!-- Schema: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Global Precision Works",
+    "alternateName": "GPW",
+    "url": "https://gpw-solutions.com",
+    "logo": "https://gpw-solutions.com/img/logo-gpw.png",
+    "description": "Precision CNC machining and electromechanical assembly from Monterrey, Mexico. Two divisions serving U.S. OEMs across 8 industries.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Monterrey",
+      "addressRegion": "Nuevo León",
+      "addressCountry": "MX"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "US"
+    },
+    "knowsAbout": [
+      "Electromechanical Assembly",
+      "Box Build Assembly",
+      "Cable and Wire Harness Assembly",
+      "System Integration",
+      "CNC Precision Machining",
+      "Nearshore Manufacturing"
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -548,11 +658,29 @@
         </div>
 
         <div class="nearshore__media reveal reveal-delay-3">
-          <div class="nearshore__image-frame">
-            <div class="img-placeholder img-placeholder--light">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              Map: Monterrey proximity to U.S. border or aerial view
-            </div>
+          <div class="nearshore-map" id="nearshoreMap">
+            <img src="img/north-america-dots.svg" class="nearshore-map__dots" alt="" aria-hidden="true">
+            <svg class="nearshore-map__overlay" viewBox="20 18 44 36" preserveAspectRatio="xMidYMid meet" id="mapOverlay">
+              <defs>
+                <linearGradient id="map-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#ED835E" stop-opacity="0" />
+                  <stop offset="10%" stop-color="#ED835E" stop-opacity="1" />
+                  <stop offset="90%" stop-color="#ED835E" stop-opacity="1" />
+                  <stop offset="100%" stop-color="#ED835E" stop-opacity="0" />
+                </linearGradient>
+                <filter id="map-glow">
+                  <feGaussianBlur stdDeviation="0.3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+            </svg>
+          </div>
+          <div class="nearshore-map__legend">
+            <span><i class="nearshore-map__legend-dot nearshore-map__legend-dot--origin"></i> Monterrey, MX (GPW)</span>
+            <span><i class="nearshore-map__legend-dot nearshore-map__legend-dot--dest"></i> Major U.S. OEM Hubs</span>
           </div>
         </div>
       </div>
@@ -826,5 +954,168 @@
 
   <!-- ============ JAVASCRIPT ============ -->
   <script src="js/main.js"></script>
+
+  <!-- Nearshore Map: animated routes from Monterrey to US cities -->
+  <script>
+  (function() {
+    var svg = document.getElementById('mapOverlay');
+    if (!svg) return;
+
+    function curvePath(a, b) {
+      var mx = (a.x + b.x) / 2;
+      var dist = Math.sqrt(Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2));
+      var my = Math.min(a.y, b.y) - (dist * 0.2);
+      return 'M ' + a.x + ' ' + a.y + ' Q ' + mx + ' ' + my + ' ' + b.x + ' ' + b.y;
+    }
+
+    var originPt = { x: 40.00, y: 44.17 };
+
+    var destinations = [
+      { x: 41.50, y: 39.84, label: 'Dallas' },
+      { x: 33.00, y: 38.97, label: 'Phoenix' },
+      { x: 29.00, y: 38.97, label: 'Los Angeles' },
+      { x: 47.50, y: 32.91, label: 'Chicago' },
+      { x: 49.00, y: 38.97, label: 'Atlanta' },
+      { x: 27.00, y: 28.58, label: 'Seattle' },
+      { x: 55.00, y: 33.77, label: 'New York' }
+    ];
+
+    var ns = 'http://www.w3.org/2000/svg';
+
+    destinations.forEach(function(dest, i) {
+      var destPt = dest;
+      var d = curvePath(originPt, destPt);
+      var delay = i * 0.3;
+
+      var path = document.createElementNS(ns, 'path');
+      path.setAttribute('d', d);
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke', 'url(#map-grad)');
+      path.setAttribute('stroke-width', '0.15');
+      path.setAttribute('class', 'nearshore-map__path');
+      path.style.animationDelay = delay + 's';
+      svg.appendChild(path);
+
+      var dot = document.createElementNS(ns, 'circle');
+      dot.setAttribute('r', '0.25');
+      dot.setAttribute('fill', '#ED835E');
+      dot.setAttribute('filter', 'url(#map-glow)');
+      dot.setAttribute('class', 'nearshore-map__dot-travel');
+      dot.style.offsetPath = "path('" + d + "')";
+      dot.style.animationDelay = delay + 's';
+      svg.appendChild(dot);
+
+      var destDot = document.createElementNS(ns, 'circle');
+      destDot.setAttribute('cx', destPt.x);
+      destDot.setAttribute('cy', destPt.y);
+      destDot.setAttribute('r', '0.4');
+      destDot.setAttribute('fill', '#ADCF91');
+      destDot.setAttribute('filter', 'url(#map-glow)');
+      svg.appendChild(destDot);
+
+      var pulse = document.createElementNS(ns, 'circle');
+      pulse.setAttribute('cx', destPt.x);
+      pulse.setAttribute('cy', destPt.y);
+      pulse.setAttribute('r', '0.4');
+      pulse.setAttribute('fill', '#ADCF91');
+      pulse.setAttribute('opacity', '0');
+      var animR = document.createElementNS(ns, 'animate');
+      animR.setAttribute('attributeName', 'r');
+      animR.setAttribute('from', '0.4');
+      animR.setAttribute('to', '1.5');
+      animR.setAttribute('dur', '2s');
+      animR.setAttribute('begin', (delay + 0.5) + 's');
+      animR.setAttribute('repeatCount', 'indefinite');
+      pulse.appendChild(animR);
+      var animO = document.createElementNS(ns, 'animate');
+      animO.setAttribute('attributeName', 'opacity');
+      animO.setAttribute('from', '0.5');
+      animO.setAttribute('to', '0');
+      animO.setAttribute('dur', '2s');
+      animO.setAttribute('begin', (delay + 0.5) + 's');
+      animO.setAttribute('repeatCount', 'indefinite');
+      pulse.appendChild(animO);
+      svg.appendChild(pulse);
+
+      var labelOffsets = {
+        'Dallas': { dx: 1.5, dy: -1 },
+        'Phoenix': { dx: 0, dy: -1 },
+        'Los Angeles': { dx: -0.8, dy: -1 },
+        'Chicago': { dx: 0, dy: -1 },
+        'Atlanta': { dx: 1.5, dy: 0.3 },
+        'Seattle': { dx: -0.8, dy: -1 },
+        'New York': { dx: 1.5, dy: -1 }
+      };
+      var off = labelOffsets[dest.label] || { dx: 0, dy: -1 };
+      var label = document.createElementNS(ns, 'text');
+      label.setAttribute('x', destPt.x + off.dx);
+      label.setAttribute('y', destPt.y + off.dy);
+      label.setAttribute('class', 'nearshore-map__label');
+      if (off.dx > 0.8) label.style.textAnchor = 'start';
+      else if (off.dx < -0.5) label.style.textAnchor = 'end';
+      label.style.animationDelay = (delay + 1) + 's';
+      label.textContent = dest.label;
+      svg.appendChild(label);
+    });
+
+    var originDot = document.createElementNS(ns, 'circle');
+    originDot.setAttribute('cx', originPt.x);
+    originDot.setAttribute('cy', originPt.y);
+    originDot.setAttribute('r', '0.5');
+    originDot.setAttribute('fill', '#ED835E');
+    originDot.setAttribute('filter', 'url(#map-glow)');
+    svg.appendChild(originDot);
+
+    var oPulse = document.createElementNS(ns, 'circle');
+    oPulse.setAttribute('cx', originPt.x);
+    oPulse.setAttribute('cy', originPt.y);
+    oPulse.setAttribute('r', '0.5');
+    oPulse.setAttribute('fill', '#ED835E');
+    oPulse.setAttribute('opacity', '0');
+    var oAnimR = document.createElementNS(ns, 'animate');
+    oAnimR.setAttribute('attributeName', 'r');
+    oAnimR.setAttribute('from', '0.5');
+    oAnimR.setAttribute('to', '2');
+    oAnimR.setAttribute('dur', '2s');
+    oAnimR.setAttribute('repeatCount', 'indefinite');
+    oPulse.appendChild(oAnimR);
+    var oAnimO = document.createElementNS(ns, 'animate');
+    oAnimO.setAttribute('attributeName', 'opacity');
+    oAnimO.setAttribute('from', '0.6');
+    oAnimO.setAttribute('to', '0');
+    oAnimO.setAttribute('dur', '2s');
+    oAnimO.setAttribute('repeatCount', 'indefinite');
+    oPulse.appendChild(oAnimO);
+    svg.appendChild(oPulse);
+
+    var oLabel = document.createElementNS(ns, 'text');
+    oLabel.setAttribute('x', originPt.x);
+    oLabel.setAttribute('y', originPt.y + 1.6);
+    oLabel.setAttribute('class', 'nearshore-map__label nearshore-map__label--origin');
+    oLabel.style.animationDelay = '0.2s';
+    var tspan1 = document.createElementNS(ns, 'tspan');
+    tspan1.setAttribute('x', originPt.x);
+    tspan1.setAttribute('dy', '0');
+    tspan1.textContent = 'Monterrey';
+    var tspan2 = document.createElementNS(ns, 'tspan');
+    tspan2.setAttribute('x', originPt.x);
+    tspan2.setAttribute('dy', '1.8');
+    tspan2.textContent = '(GPW)';
+    oLabel.appendChild(tspan1);
+    oLabel.appendChild(tspan2);
+    svg.appendChild(oLabel);
+
+    function restartAnimations() {
+      var paths = svg.querySelectorAll('.nearshore-map__path, .nearshore-map__dot-travel');
+      paths.forEach(function(el) {
+        var anim = el.style.animation;
+        el.style.animation = 'none';
+        el.offsetHeight;
+        el.style.animation = anim;
+      });
+    }
+    setInterval(restartAnimations, 8000);
+  })();
+  </script>
 </body>
 </html>

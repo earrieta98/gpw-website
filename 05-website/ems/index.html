@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="../img/isotipo naranja.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GPW | Electromechanical Assembly Services in Monterrey, Mexico</title>
-  <meta name="description" content="Global Precision Works delivers electromechanical assembly for U.S. OEMs — box build, cable harness, system integration, and testing from Monterrey. Request a quote.">
+  <title>Electromechanical Assembly Services Mexico | GPW Monterrey</title>
+  <meta name="description" content="Electromechanical assembly services in Monterrey, Mexico for U.S. OEMs. Box build, cable harness, system integration, and testing. Request a quote.">
+  <link rel="canonical" href="https://gpw-solutions.com/ems/">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -284,90 +285,75 @@
       .mid-cta__stat { flex: 1 1 140px; }
     }
 
-    /* ── Feature Tabs: 5 Core Services ── */
-    .feature-tabs__pills {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-md);
-      flex-wrap: wrap;
+    /* ── Service Accordion: 5 Core Services ── */
+    .svc-accordion {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: start;
       margin-top: var(--space-3xl);
     }
-    .feature-tabs__pill {
+    .svc-accordion__item {
+      border-bottom: 1px solid var(--light-gray);
+    }
+    .svc-accordion__trigger {
       display: flex;
       align-items: center;
-      gap: var(--space-sm);
-      padding: var(--space-md) var(--space-xl);
-      border-radius: 999px;
+      gap: var(--space-md);
+      width: 100%;
+      padding: var(--space-xl) 0;
+      background: none;
       border: none;
-      background: transparent;
-      color: var(--mid-gray);
-      font-family: var(--font-primary);
-      font-size: var(--text-sm);
-      font-weight: 600;
       cursor: pointer;
-      transition: background var(--transition-base), color var(--transition-base);
+      text-align: left;
+      font-family: var(--font-primary);
     }
-    .feature-tabs__pill:hover {
-      color: var(--teal);
-    }
-    .feature-tabs__pill.is-active {
-      background: var(--teal);
-      color: var(--white);
-    }
-    .feature-tabs__pill svg {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-    }
-
-    .feature-tabs__panel-wrapper {
-      margin-top: var(--space-2xl);
-      background: linear-gradient(135deg, #0d1b2a 0%, var(--deep-blue) 50%, var(--teal) 100%);
-      border-radius: var(--radius-lg);
-      padding: var(--space-4xl);
-      min-height: 420px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-tabs__panel {
-      display: none;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-4xl);
-      align-items: center;
-      animation: tabFadeIn 0.4s ease;
-    }
-    .feature-tabs__panel.is-active {
-      display: grid;
-    }
-    @keyframes tabFadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .feature-tabs__badge {
-      display: inline-block;
+    .svc-accordion__number {
       font-family: var(--font-accent);
       font-size: var(--text-xs);
       color: var(--coral);
-      letter-spacing: 0.15em;
-      margin-bottom: var(--space-lg);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
     }
-    .feature-tabs__title {
-      font-size: clamp(1.75rem, 3vw, 2.75rem);
-      color: var(--white);
-      line-height: 1.15;
-      margin-bottom: var(--space-lg);
+    .svc-accordion__title {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--medium-gray);
+      flex: 1;
+      transition: color var(--transition-base);
     }
-    .feature-tabs__desc {
+    .svc-accordion__item.is-active .svc-accordion__title {
+      color: var(--dark-gray);
+    }
+    .svc-accordion__chevron {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: var(--mid-gray);
+      transition: transform var(--transition-base);
+    }
+    .svc-accordion__item.is-active .svc-accordion__chevron {
+      transform: rotate(180deg);
+      color: var(--teal);
+    }
+    .svc-accordion__body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 0 0 calc(var(--space-md) + 1.5em);
+    }
+    .svc-accordion__item.is-active .svc-accordion__body {
+      max-height: 400px;
+      padding-bottom: var(--space-xl);
+    }
+    .svc-accordion__body p {
       font-size: var(--text-base);
-      color: rgba(255,255,255,0.7);
+      color: var(--medium-gray);
       line-height: 1.7;
-      font-weight: 300;
-      margin-bottom: var(--space-2xl);
+      margin-bottom: var(--space-lg);
     }
-    .feature-tabs__link {
+    .svc-accordion__link {
       display: inline-flex;
       align-items: center;
       gap: var(--space-sm);
@@ -376,51 +362,231 @@
       color: var(--coral);
       transition: gap var(--transition-base);
     }
-    .feature-tabs__link:hover {
+    .svc-accordion__link:hover {
       gap: var(--space-md);
     }
-    .feature-tabs__link svg {
+    .svc-accordion__link svg {
       width: 14px;
       height: 14px;
     }
+    .svc-accordion__img-mobile {
+      display: none;
+    }
 
-    .feature-tabs__visual {
-      background: rgba(255,255,255,0.06);
-      border-radius: var(--radius-md);
+    /* Desktop preview image */
+    .svc-accordion__preview {
+      position: sticky;
+      top: 120px;
+    }
+    .svc-accordion__preview-inner {
+      background: var(--off-white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
       aspect-ratio: 4/3;
+    }
+    .svc-accordion__preview-inner .img-placeholder {
+      height: 100%;
+      aspect-ratio: 4/3;
+    }
+
+    @media (max-width: 768px) {
+      .svc-accordion {
+        grid-template-columns: 1fr;
+      }
+      .svc-accordion__preview {
+        display: none;
+      }
+      .svc-accordion__img-mobile {
+        display: block;
+        margin-top: var(--space-lg);
+      }
+      .svc-accordion__img-mobile .img-placeholder {
+        aspect-ratio: 16/9;
+        border-radius: var(--radius-md);
+      }
+    }
+    /* ── Interactive Nearshore Map ── */
+    .nearshore-map {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      margin: var(--space-3xl) auto 0;
+      aspect-ratio: 2.2 / 1;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #0a1628;
+    }
+    .nearshore-map__dots {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.7;
+    }
+    .nearshore-map__overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .nearshore-map__label {
+      font-family: 'Lato', sans-serif;
+      font-size: 1.4px;
+      font-weight: 700;
+      fill: var(--white);
+      text-anchor: middle;
+      pointer-events: none;
+      opacity: 0;
+      animation: mapLabelIn 0.5s ease forwards;
+    }
+    .nearshore-map__label--origin {
+      fill: var(--coral);
+      font-size: 1.8px;
+    }
+    .nearshore-map__pulse {
+      /* pulse handled via SVG <animate> */
+    }
+    .nearshore-map__path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: mapDraw 2s ease-in-out forwards;
+    }
+    .nearshore-map__dot-travel {
+      opacity: 0;
+      animation: mapDotTravel 2s ease-in-out forwards;
+    }
+    .nearshore-map__legend {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2xl);
+      margin-top: var(--space-lg);
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.6);
+    }
+    .nearshore-map__legend span {
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.25);
-      font-size: var(--text-sm);
-      border: 1px solid rgba(255,255,255,0.08);
+      gap: var(--space-xs);
     }
-    .feature-tabs__visual svg {
-      width: 32px;
-      height: 32px;
-      margin-right: var(--space-sm);
-      opacity: 0.5;
+    .nearshore-map__legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .nearshore-map__legend-dot--origin { background: var(--coral); }
+    .nearshore-map__legend-dot--dest { background: var(--teal); }
+
+    @keyframes mapDraw {
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes mapPulse {
+      0%, 100% { r: 2.5; opacity: 0.6; }
+      50% { r: 6; opacity: 0; }
+    }
+    @keyframes mapLabelIn {
+      to { opacity: 1; }
+    }
+    @keyframes mapDotTravel {
+      0% { opacity: 0; offset-distance: 0%; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; offset-distance: 100%; }
     }
 
-    @media (max-width: 1024px) {
-      .feature-tabs__panel-wrapper { padding: var(--space-3xl); }
-      .feature-tabs__panel { gap: var(--space-2xl); }
-    }
     @media (max-width: 768px) {
-      .feature-tabs__pills { gap: var(--space-sm); }
-      .feature-tabs__pill { padding: var(--space-md) var(--space-lg); font-size: var(--text-xs); min-height: 44px; }
-      .feature-tabs__panel-wrapper { padding: var(--space-2xl); min-height: auto; }
-      .feature-tabs__panel {
-        grid-template-columns: 1fr;
-        gap: var(--space-2xl);
-      }
-      .feature-tabs__visual { order: -1; }
+      .nearshore-map { aspect-ratio: 1.6 / 1; }
+      .nearshore-map__legend { gap: var(--space-lg); flex-wrap: wrap; }
     }
     @media (max-width: 480px) {
-      .feature-tabs__pills { flex-direction: column; }
-      .feature-tabs__pill { width: 100%; justify-content: center; }
+      .nearshore-map { aspect-ratio: 1.4 / 1; }
+      .nearshore-map__legend { flex-direction: column; align-items: center; gap: var(--space-sm); }
     }
   </style>
+  <!-- Schema: WebPage + Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Electromechanical Assembly Services Mexico",
+    "description": "Electromechanical assembly services in Monterrey, Mexico for U.S. OEMs. Box build, cable harness, system integration, and testing.",
+    "url": "https://gpw-solutions.com/ems/",
+    "provider": {
+      "@type": "Organization",
+      "name": "Global Precision Works",
+      "alternateName": "GPW",
+      "url": "https://gpw-solutions.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Monterrey",
+        "addressRegion": "Nuevo León",
+        "addressCountry": "MX"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "US"
+      }
+    }
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What types of products does GPW assemble?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GPW assembles electromechanical products across 8 industries — from AI server racks and telecom cabinets to medical devices and industrial control panels. If your product combines mechanical, electrical, and cabling components into a finished unit, it fits our core capability."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between electromechanical assembly and PCBA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PCBA (printed circuit board assembly) focuses on populating and soldering components onto a circuit board. Electromechanical assembly operates at the system level — integrating chassis, boards, cables, connectors, and sub-assemblies into a complete, tested product."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a typical project take from RFQ to first article?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most projects move from RFQ to first article build in 4-8 weeks, depending on BOM complexity and component availability. Production ramp follows within 2-4 weeks after first article approval."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What certifications does GPW hold?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GPW is pursuing IPC-A-610, IPC-A-620, and ISO 9001 certifications. Industry-specific certifications including ISO 13485 (medical) and AS9100 (aerospace) are also in progress. Our assembly processes follow IPC workmanship standards."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you require minimum order quantities?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. GPW handles programs from pilot builds of 10-50 units through sustained production runs of 10,000+ units per month. We scale with your demand."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where is GPW located?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GPW operates from Monterrey, Mexico — 150 miles from the U.S. border, in the same timezone (CST) as most U.S. manufacturing operations. Same-day ground shipping reaches Texas in 2 hours."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -707,114 +873,109 @@
         <p>GPW's electromechanical assembly capabilities span 5 core service areas — each one engineered for a specific stage of the build process. Most customer projects combine two or more into a single, integrated program.</p>
       </div>
 
-      <!-- Tab Pills -->
-      <div class="feature-tabs__pills reveal" role="tablist">
-        <button class="feature-tabs__pill is-active" role="tab" aria-selected="true" aria-controls="svc-panel-1" data-tab="svc-panel-1">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
-          Box Build
-        </button>
-        <button class="feature-tabs__pill" role="tab" aria-selected="false" aria-controls="svc-panel-2" data-tab="svc-panel-2">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H8"/><path d="M18 2h2.5A2.5 2.5 0 0 1 23 4.5v15"/><path d="M4 12h16"/><circle cx="12" cy="12" r="2"/></svg>
-          Cable &amp; Harness
-        </button>
-        <button class="feature-tabs__pill" role="tab" aria-selected="false" aria-controls="svc-panel-3" data-tab="svc-panel-3">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-          System Integration
-        </button>
-        <button class="feature-tabs__pill" role="tab" aria-selected="false" aria-controls="svc-panel-4" data-tab="svc-panel-4">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-          Testing &amp; QA
-        </button>
-        <button class="feature-tabs__pill" role="tab" aria-selected="false" aria-controls="svc-panel-5" data-tab="svc-panel-5">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20M6 12h4M6 16h2"/></svg>
-          Enclosures
-        </button>
-      </div>
+      <!-- Accordion + Image Feature -->
+      <div class="svc-accordion reveal">
+        <div class="svc-accordion__list">
 
-      <!-- Tab Panels -->
-      <div class="feature-tabs__panel-wrapper reveal">
-        <!-- Panel 1: Box Build -->
-        <div class="feature-tabs__panel is-active" id="svc-panel-1" role="tabpanel">
-          <div class="feature-tabs__content">
-            <span class="feature-tabs__badge">01 — From BOM to Finished Unit</span>
-            <h3 class="feature-tabs__title">Box Build Integration</h3>
-            <p class="feature-tabs__desc">Your product is more than a board. It is a chassis with components mounted inside, cables routed through, and firmware loaded onto. GPW handles the full box build — mechanical assembly, electrical integration, cabling, and testing — delivering a finished product, not a collection of parts.</p>
-            <a href="services/box-build-assembly.html" class="feature-tabs__link">
-              Explore Box Build Assembly
-              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-            </a>
+          <div class="svc-accordion__item is-active" data-svc="0">
+            <button class="svc-accordion__trigger">
+              <span class="svc-accordion__number">01</span>
+              <h3 class="svc-accordion__title">Box Build Integration</h3>
+              <svg class="svc-accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="svc-accordion__body">
+              <p>Your product is more than a board. It is a chassis with components mounted inside, cables routed through, and firmware loaded onto. GPW handles the full box build — mechanical assembly, electrical integration, cabling, and testing — delivering a finished product, not a collection of parts.</p>
+              <a href="services/box-build-assembly.html" class="svc-accordion__link">
+                Explore Box Build Assembly
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+              </a>
+              <div class="svc-accordion__img-mobile">
+                <div class="img-placeholder img-placeholder--light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Photo: Box build assembly</div>
+              </div>
+            </div>
           </div>
-          <div class="feature-tabs__visual">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            Photo: Box build assembly
+
+          <div class="svc-accordion__item" data-svc="1">
+            <button class="svc-accordion__trigger">
+              <span class="svc-accordion__number">02</span>
+              <h3 class="svc-accordion__title">Cable &amp; Wire Harness Assembly</h3>
+              <svg class="svc-accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="svc-accordion__body">
+              <p>Every electromechanical product depends on cables. GPW builds custom cable and wire harnesses to print — from simple power leads to complex multi-conductor harnesses with hundreds of termination points. We test every harness for continuity, insulation resistance, and hi-pot before it moves to integration.</p>
+              <a href="services/cable-harness-assembly.html" class="svc-accordion__link">
+                Explore Cable &amp; Harness Assembly
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+              </a>
+              <div class="svc-accordion__img-mobile">
+                <div class="img-placeholder img-placeholder--light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Photo: Cable harness assembly</div>
+              </div>
+            </div>
           </div>
+
+          <div class="svc-accordion__item" data-svc="2">
+            <button class="svc-accordion__trigger">
+              <span class="svc-accordion__number">03</span>
+              <h3 class="svc-accordion__title">System Integration</h3>
+              <svg class="svc-accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="svc-accordion__body">
+              <p>System integration is where individual sub-assemblies become a working product. GPW manages the full integration sequence: mechanical structure, component mounting, cable routing, board installation, firmware loading, and final configuration.</p>
+              <a href="services/system-integration.html" class="svc-accordion__link">
+                Explore System Integration
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+              </a>
+              <div class="svc-accordion__img-mobile">
+                <div class="img-placeholder img-placeholder--light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Photo: System integration line</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="svc-accordion__item" data-svc="3">
+            <button class="svc-accordion__trigger">
+              <span class="svc-accordion__number">04</span>
+              <h3 class="svc-accordion__title">Testing &amp; Quality Assurance</h3>
+              <svg class="svc-accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="svc-accordion__body">
+              <p>Testing is built into the process, not bolted on at the end. GPW runs end-of-line functional testing, burn-in, thermal validation, and visual inspection on every unit before it ships. Every test result is documented, traceable, and available for your quality team's review.</p>
+              <a href="services/testing-inspection.html" class="svc-accordion__link">
+                Explore Testing &amp; Inspection
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+              </a>
+              <div class="svc-accordion__img-mobile">
+                <div class="img-placeholder img-placeholder--light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Photo: Testing equipment</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="svc-accordion__item" data-svc="4">
+            <button class="svc-accordion__trigger">
+              <span class="svc-accordion__number">05</span>
+              <h3 class="svc-accordion__title">Enclosure &amp; Cabinet Assembly</h3>
+              <svg class="svc-accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="svc-accordion__body">
+              <p>Telecom cabinets. Energy distribution panels. Server racks. Industrial control enclosures. GPW assembles these high-density builds with the cable management, thermal considerations, and access requirements each application demands.</p>
+              <a href="services/enclosure-cabinet-assembly.html" class="svc-accordion__link">
+                Explore Enclosure &amp; Cabinet Assembly
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+              </a>
+              <div class="svc-accordion__img-mobile">
+                <div class="img-placeholder img-placeholder--light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Photo: Enclosure/cabinet assembly</div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Panel 2: Cable & Harness -->
-        <div class="feature-tabs__panel" id="svc-panel-2" role="tabpanel">
-          <div class="feature-tabs__content">
-            <span class="feature-tabs__badge">02 — Every Connection Verified</span>
-            <h3 class="feature-tabs__title">Cable &amp; Wire Harness Assembly</h3>
-            <p class="feature-tabs__desc">Every electromechanical product depends on cables. GPW builds custom cable and wire harnesses to print — from simple power leads to complex multi-conductor harnesses with hundreds of termination points. We test every harness for continuity, insulation resistance, and hi-pot before it moves to integration.</p>
-            <a href="services/cable-harness-assembly.html" class="feature-tabs__link">
-              Explore Cable &amp; Harness Assembly
-              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-            </a>
-          </div>
-          <div class="feature-tabs__visual">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            Photo: Cable harness assembly
-          </div>
-        </div>
-
-        <!-- Panel 3: System Integration -->
-        <div class="feature-tabs__panel" id="svc-panel-3" role="tabpanel">
-          <div class="feature-tabs__content">
-            <span class="feature-tabs__badge">03 — One Team, One Roof, One Program</span>
-            <h3 class="feature-tabs__title">System Integration</h3>
-            <p class="feature-tabs__desc">System integration is where individual sub-assemblies become a working product. GPW manages the full integration sequence: mechanical structure, component mounting, cable routing, board installation, firmware loading, and final configuration.</p>
-            <a href="services/system-integration.html" class="feature-tabs__link">
-              Explore System Integration
-              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-            </a>
-          </div>
-          <div class="feature-tabs__visual">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            Photo: System integration line
-          </div>
-        </div>
-
-        <!-- Panel 4: Testing & QA -->
-        <div class="feature-tabs__panel" id="svc-panel-4" role="tabpanel">
-          <div class="feature-tabs__content">
-            <span class="feature-tabs__badge">04 — Every Unit Tested Before It Ships</span>
-            <h3 class="feature-tabs__title">Testing &amp; Quality Assurance</h3>
-            <p class="feature-tabs__desc">Testing is built into the process, not bolted on at the end. GPW runs end-of-line functional testing, burn-in, thermal validation, and visual inspection on every unit before it ships. Every test result is documented, traceable, and available for your quality team's review.</p>
-            <a href="services/testing-inspection.html" class="feature-tabs__link">
-              Explore Testing &amp; Inspection
-              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-            </a>
-          </div>
-          <div class="feature-tabs__visual">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            Photo: Testing equipment
-          </div>
-        </div>
-
-        <!-- Panel 5: Enclosures -->
-        <div class="feature-tabs__panel" id="svc-panel-5" role="tabpanel">
-          <div class="feature-tabs__content">
-            <span class="feature-tabs__badge">05 — Built for Density, Wired for Performance</span>
-            <h3 class="feature-tabs__title">Enclosure &amp; Cabinet Assembly</h3>
-            <p class="feature-tabs__desc">Telecom cabinets. Energy distribution panels. Server racks. Industrial control enclosures. GPW assembles these high-density builds with the cable management, thermal considerations, and access requirements each application demands.</p>
-            <a href="services/enclosure-cabinet-assembly.html" class="feature-tabs__link">
-              Explore Enclosure &amp; Cabinet Assembly
-              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-            </a>
-          </div>
-          <div class="feature-tabs__visual">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            Photo: Enclosure/cabinet assembly
+        <!-- Desktop image panel -->
+        <div class="svc-accordion__preview">
+          <div class="svc-accordion__preview-inner">
+            <div class="img-placeholder img-placeholder--light" id="svcPreviewImg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+              <span id="svcPreviewText">Photo: Box build assembly</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1024,6 +1185,34 @@
             <div class="stat-card-dark__label">Monterrey produces more engineers per capita than any city in Latin America</div>
           </div>
         </div>
+
+        <!-- Interactive Nearshore Map -->
+        <div class="nearshore-map reveal" id="nearshoreMap">
+          <img src="../img/north-america-dots.svg" class="nearshore-map__dots" alt="" aria-hidden="true">
+          <svg class="nearshore-map__overlay" viewBox="20 18 44 36" preserveAspectRatio="xMidYMid meet" id="mapOverlay">
+            <defs>
+              <linearGradient id="map-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ED835E" stop-opacity="0" />
+                <stop offset="10%" stop-color="#ED835E" stop-opacity="1" />
+                <stop offset="90%" stop-color="#ED835E" stop-opacity="1" />
+                <stop offset="100%" stop-color="#ED835E" stop-opacity="0" />
+              </linearGradient>
+              <filter id="map-glow">
+                <feGaussianBlur stdDeviation="0.3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <!-- Paths and points rendered by JS -->
+          </svg>
+        </div>
+        <div class="nearshore-map__legend reveal">
+          <span><i class="nearshore-map__legend-dot nearshore-map__legend-dot--origin"></i> Monterrey, MX (GPW)</span>
+          <span><i class="nearshore-map__legend-dot nearshore-map__legend-dot--dest"></i> Major U.S. OEM Hubs</span>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1246,30 +1435,37 @@
   <!-- ============ JAVASCRIPT ============ -->
   <script src="../js/main.js"></script>
 
-  <!-- Feature Tabs: Service switching -->
+  <!-- Service Accordion: expand/collapse + image swap -->
   <script>
   (function () {
-    var pills = document.querySelectorAll('.feature-tabs__pill');
-    var panels = document.querySelectorAll('.feature-tabs__panel');
-    if (!pills.length) return;
+    var items = document.querySelectorAll('.svc-accordion__item');
+    var previewText = document.getElementById('svcPreviewText');
+    if (!items.length) return;
 
-    pills.forEach(function (pill) {
-      pill.addEventListener('click', function () {
-        var target = this.getAttribute('data-tab');
+    var photoLabels = [
+      'Photo: Box build assembly',
+      'Photo: Cable harness assembly',
+      'Photo: System integration line',
+      'Photo: Testing equipment',
+      'Photo: Enclosure/cabinet assembly'
+    ];
 
-        // Update pills
-        pills.forEach(function (p) {
-          p.classList.remove('is-active');
-          p.setAttribute('aria-selected', 'false');
-        });
-        this.classList.add('is-active');
-        this.setAttribute('aria-selected', 'true');
+    items.forEach(function (item) {
+      var trigger = item.querySelector('.svc-accordion__trigger');
+      trigger.addEventListener('click', function () {
+        var wasActive = item.classList.contains('is-active');
 
-        // Update panels
-        panels.forEach(function (panel) {
-          panel.classList.remove('is-active');
-        });
-        document.getElementById(target).classList.add('is-active');
+        // Close all
+        items.forEach(function (it) { it.classList.remove('is-active'); });
+
+        // Open clicked (unless it was already open)
+        if (!wasActive) {
+          item.classList.add('is-active');
+          var idx = parseInt(item.getAttribute('data-svc'));
+          if (previewText && photoLabels[idx]) {
+            previewText.textContent = photoLabels[idx];
+          }
+        }
       });
     });
   })();
@@ -1293,6 +1489,181 @@
         dot.classList.toggle('is-active', i === activeIndex);
       });
     }, { passive: true });
+  })();
+  </script>
+
+  <!-- Nearshore Map: animated routes from Monterrey to US cities -->
+  <script>
+  (function() {
+    var svg = document.getElementById('mapOverlay');
+    if (!svg) return;
+
+    // Curved path between two points
+    function curvePath(a, b) {
+      var mx = (a.x + b.x) / 2;
+      var dist = Math.sqrt(Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2));
+      var my = Math.min(a.y, b.y) - (dist * 0.2);
+      return 'M ' + a.x + ' ' + a.y + ' Q ' + mx + ' ' + my + ' ' + b.x + ' ' + b.y;
+    }
+
+    // Coordinates from dotted-map getPin() — exact alignment with dot background
+    var originPt = { x: 40.00, y: 44.17 };
+
+    var destinations = [
+      { x: 41.50, y: 39.84, label: 'Dallas' },
+      { x: 33.00, y: 38.97, label: 'Phoenix' },
+      { x: 29.00, y: 38.97, label: 'Los Angeles' },
+      { x: 47.50, y: 32.91, label: 'Chicago' },
+      { x: 49.00, y: 38.97, label: 'Atlanta' },
+      { x: 27.00, y: 28.58, label: 'Seattle' },
+      { x: 55.00, y: 33.77, label: 'New York' }
+    ];
+
+    var ns = 'http://www.w3.org/2000/svg';
+
+    // Draw each route
+    destinations.forEach(function(dest, i) {
+      var destPt = dest;
+      var d = curvePath(originPt, destPt);
+      var delay = i * 0.3;
+
+      // Animated path
+      var path = document.createElementNS(ns, 'path');
+      path.setAttribute('d', d);
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke', 'url(#map-grad)');
+      path.setAttribute('stroke-width', '0.15');
+      path.setAttribute('class', 'nearshore-map__path');
+      path.style.animationDelay = delay + 's';
+      svg.appendChild(path);
+
+      // Traveling dot
+      var dot = document.createElementNS(ns, 'circle');
+      dot.setAttribute('r', '0.25');
+      dot.setAttribute('fill', '#ED835E');
+      dot.setAttribute('filter', 'url(#map-glow)');
+      dot.setAttribute('class', 'nearshore-map__dot-travel');
+      dot.style.offsetPath = "path('" + d + "')";
+      dot.style.animationDelay = delay + 's';
+      svg.appendChild(dot);
+
+      // Destination dot (static)
+      var destDot = document.createElementNS(ns, 'circle');
+      destDot.setAttribute('cx', destPt.x);
+      destDot.setAttribute('cy', destPt.y);
+      destDot.setAttribute('r', '0.4');
+      destDot.setAttribute('fill', '#ADCF91');
+      destDot.setAttribute('filter', 'url(#map-glow)');
+      svg.appendChild(destDot);
+
+      // Destination pulse (SVG native animate)
+      var pulse = document.createElementNS(ns, 'circle');
+      pulse.setAttribute('cx', destPt.x);
+      pulse.setAttribute('cy', destPt.y);
+      pulse.setAttribute('r', '0.4');
+      pulse.setAttribute('fill', '#ADCF91');
+      pulse.setAttribute('opacity', '0');
+      var animR = document.createElementNS(ns, 'animate');
+      animR.setAttribute('attributeName', 'r');
+      animR.setAttribute('from', '0.4');
+      animR.setAttribute('to', '1.5');
+      animR.setAttribute('dur', '2s');
+      animR.setAttribute('begin', (delay + 0.5) + 's');
+      animR.setAttribute('repeatCount', 'indefinite');
+      pulse.appendChild(animR);
+      var animO = document.createElementNS(ns, 'animate');
+      animO.setAttribute('attributeName', 'opacity');
+      animO.setAttribute('from', '0.5');
+      animO.setAttribute('to', '0');
+      animO.setAttribute('dur', '2s');
+      animO.setAttribute('begin', (delay + 0.5) + 's');
+      animO.setAttribute('repeatCount', 'indefinite');
+      pulse.appendChild(animO);
+      svg.appendChild(pulse);
+
+      // Destination label — offset to avoid overlaps
+      var labelOffsets = {
+        'Dallas': { dx: 1.5, dy: -1 },
+        'Phoenix': { dx: 0, dy: -1 },
+        'Los Angeles': { dx: -0.8, dy: -1 },
+        'Chicago': { dx: 0, dy: -1 },
+        'Atlanta': { dx: 1.5, dy: 0.3 },
+        'Seattle': { dx: -0.8, dy: -1 },
+        'New York': { dx: 1.5, dy: -1 }
+      };
+      var off = labelOffsets[dest.label] || { dx: 0, dy: -1 };
+      var label = document.createElementNS(ns, 'text');
+      label.setAttribute('x', destPt.x + off.dx);
+      label.setAttribute('y', destPt.y + off.dy);
+      label.setAttribute('class', 'nearshore-map__label');
+      if (off.dx > 0.8) label.style.textAnchor = 'start';
+      else if (off.dx < -0.5) label.style.textAnchor = 'end';
+      label.style.animationDelay = (delay + 1) + 's';
+      label.textContent = dest.label;
+      svg.appendChild(label);
+    });
+
+    // Origin dot (Monterrey) — larger, coral
+    var originDot = document.createElementNS(ns, 'circle');
+    originDot.setAttribute('cx', originPt.x);
+    originDot.setAttribute('cy', originPt.y);
+    originDot.setAttribute('r', '0.5');
+    originDot.setAttribute('fill', '#ED835E');
+    originDot.setAttribute('filter', 'url(#map-glow)');
+    svg.appendChild(originDot);
+
+    // Origin pulse (SVG native animate)
+    var oPulse = document.createElementNS(ns, 'circle');
+    oPulse.setAttribute('cx', originPt.x);
+    oPulse.setAttribute('cy', originPt.y);
+    oPulse.setAttribute('r', '0.5');
+    oPulse.setAttribute('fill', '#ED835E');
+    oPulse.setAttribute('opacity', '0');
+    var oAnimR = document.createElementNS(ns, 'animate');
+    oAnimR.setAttribute('attributeName', 'r');
+    oAnimR.setAttribute('from', '0.5');
+    oAnimR.setAttribute('to', '2');
+    oAnimR.setAttribute('dur', '2s');
+    oAnimR.setAttribute('repeatCount', 'indefinite');
+    oPulse.appendChild(oAnimR);
+    var oAnimO = document.createElementNS(ns, 'animate');
+    oAnimO.setAttribute('attributeName', 'opacity');
+    oAnimO.setAttribute('from', '0.6');
+    oAnimO.setAttribute('to', '0');
+    oAnimO.setAttribute('dur', '2s');
+    oAnimO.setAttribute('repeatCount', 'indefinite');
+    oPulse.appendChild(oAnimO);
+    svg.appendChild(oPulse);
+
+    // Origin label — two lines: "Monterrey" + "(GPW)"
+    var oLabel = document.createElementNS(ns, 'text');
+    oLabel.setAttribute('x', originPt.x);
+    oLabel.setAttribute('y', originPt.y + 1.6);
+    oLabel.setAttribute('class', 'nearshore-map__label nearshore-map__label--origin');
+    oLabel.style.animationDelay = '0.2s';
+    var tspan1 = document.createElementNS(ns, 'tspan');
+    tspan1.setAttribute('x', originPt.x);
+    tspan1.setAttribute('dy', '0');
+    tspan1.textContent = 'Monterrey';
+    var tspan2 = document.createElementNS(ns, 'tspan');
+    tspan2.setAttribute('x', originPt.x);
+    tspan2.setAttribute('dy', '1.8');
+    tspan2.textContent = '(GPW)';
+    oLabel.appendChild(tspan1);
+    oLabel.appendChild(tspan2);
+    svg.appendChild(oLabel);
+
+    // Loop: restart animations every 8 seconds
+    function restartAnimations() {
+      var paths = svg.querySelectorAll('.nearshore-map__path, .nearshore-map__dot-travel');
+      paths.forEach(function(el) {
+        var anim = el.style.animation;
+        el.style.animation = 'none';
+        el.offsetHeight; // trigger reflow
+        el.style.animation = anim;
+      });
+    }
+    setInterval(restartAnimations, 8000);
   })();
   </script>
 </body>
