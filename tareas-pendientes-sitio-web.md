@@ -294,14 +294,15 @@
 8. B2 — prefers-reduced-motion (5 min)
 9. B3 — Corregir contraste (10 min)
 
-### Bloque 3 — SEO Social (requiere imágenes primero)
-10. D1 — Crear imágenes OG en Canva
-11. A1 — Agregar OG + Twitter Card tags
+### Bloque 3 — SEO Social
+10. ✅ A1 — OG + Twitter Card tags agregados (18 páginas) — 2026-03-26
+11. ⏳ D1 — **PENDIENTE: Crear 18 imágenes OG en Canva** (1200x630px, JPG) y colocarlas en `/img/og/`. Nombres: `corporate-home.jpg`, `ems-home.jpg`, `about-ems.jpg`, `request-quote.jpg`, `services-hub.jpg`, `box-build.jpg`, `cable-harness.jpg`, `system-integration.jpg`, `testing-inspection.jpg`, `enclosure-cabinet.jpg`, `ai-server-rack.jpg`, `industrial-equipment.jpg`, `telecom-hardware.jpg`, `medical-devices.jpg`, `automotive.jpg`, `energy.jpg`, `aerospace.jpg`, `appliances.jpg`
 
-### Bloque 4 — Cleanup técnico
-12. A8 — Renombrar archivos con espacios
-13. C1 — Mover CSS inline a archivos externos
-14. C2 — loading="lazy"
+### Bloque 4 — Cleanup técnico (COMPLETADO 2026-03-26)
+12. ✅ A8 — Archivos renombrados: `favicon.png`, `logo-white.png`, `logo-teal.png` + 18 páginas actualizadas
+13. ✅ C1 — CSS inline extraído a `css/corporate-home.css` y `css/ems-home.css`
+14. ✅ C2 — `loading="lazy"` en 20 imágenes below the fold (footer logos + map SVG)
+15. ✅ C3 — Preload Lato font (woff2) en 18 páginas
 
 ### Bloque 5 — Contenido
 15. D2 — Fotografías reales
