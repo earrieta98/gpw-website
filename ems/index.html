@@ -1186,17 +1186,7 @@
     oLabel.appendChild(tspan2);
     svg.appendChild(oLabel);
 
-    // Loop: restart animations every 8 seconds
-    function restartAnimations() {
-      var paths = svg.querySelectorAll('.nearshore-map__path, .nearshore-map__dot-travel');
-      paths.forEach(function(el) {
-        var anim = el.style.animation;
-        el.style.animation = 'none';
-        el.offsetHeight; // trigger reflow
-        el.style.animation = anim;
-      });
-    }
-    setInterval(restartAnimations, 8000);
+    // Animation loop handled by CSS infinite keyframes
   })();
   </script>
 </body>
