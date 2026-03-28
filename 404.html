@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | GPW</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Trirong:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <style>
+    :root {
+      --teal: #23555A;
+      --coral: #ED835E;
+      --coral-dark: #d46a45;
+      --deep-blue: #2A4E64;
+      --lime: #ADCF91;
+      --white: #FFFFFF;
+    }
+
+    /* Hero */
+    .nf-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0c1a1c 0%, #162a2e 40%, #1a2e33 100%);
+    }
+
+    /* Grid background */
+    .nf-hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(35,85,90,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(35,85,90,.08) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 1;
+    }
+
+    /* Floating glow dots */
+    .nf-hero__glow { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+
+    .nf-glow-dot {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: nfFloat 8s ease-in-out infinite alternate;
+    }
+
+    .nf-glow-dot--teal { background: var(--teal); }
+    .nf-glow-dot--coral { background: var(--coral); }
+
+    @keyframes nfFloat {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, -20px) scale(1.15); }
+    }
+
+    /* Vignette */
+    .nf-hero__vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      background: radial-gradient(ellipse at center, transparent 50%, rgba(12,26,28,.7) 100%);
+    }
+
+    /* Content */
+    .nf-hero__content {
+      position: relative;
+      z-index: 4;
+      text-align: center;
+      max-width: 640px;
+      padding: 2rem;
+    }
+
+    /* 404 number */
+    .nf-code {
+      font-family: 'Lato', sans-serif;
+      font-size: clamp(6rem, 15vw, 12rem);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--teal), var(--coral));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.3;
+      margin-bottom: -1.5rem;
+    }
+
+    .nf-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--coral);
+      margin: 1.5rem auto;
+      border-radius: 2px;
+    }
+
+    .nf-title {
+      font-family: 'Lato', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 900;
+      color: var(--white);
+      margin: 0 0 0.5rem;
+    }
+
+    .nf-tagline {
+      font-family: 'Trirong', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--lime);
+      margin: 0 0 1.5rem;
+    }
+
+    .nf-desc {
+      font-family: 'Lato', sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,.7);
+      margin: 0 0 2.5rem;
+    }
+
+    /* Buttons */
+    .nf-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .nf-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      transition: transform 0.3s ease;
+    }
+
+    .nf-btn--primary {
+      background: var(--coral);
+      color: var(--white);
+      border-color: var(--coral);
+    }
+
+    .nf-btn--primary:hover {
+      background: var(--coral-dark);
+      border-color: var(--coral-dark);
+      transform: translateY(-2px);
+    }
+
+    .nf-btn--primary:hover svg { transform: translateX(3px); }
+
+    .nf-btn--outline {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,.25);
+    }
+
+    .nf-btn--outline:hover {
+      border-color: rgba(255,255,255,.5);
+      transform: translateY(-2px);
+    }
+
+    .nf-btn--outline:hover svg { transform: translateX(-3px); }
+
+    /* Quick links */
+    .nf-links {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .nf-links__title {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+      margin: 0 0 1rem;
+    }
+
+    .nf-links__list {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nf-links__list a {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nf-links__list a:hover { color: var(--coral); }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      .nf-glow-dot { animation: none; }
+    }
+
+    @media (max-width: 600px) {
+      .nf-code { font-size: 6rem; margin-bottom: -1rem; }
+      .nf-title { font-size: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER — Level 1: Corporate Nav ============ -->
+  <header class="header header--scrolled header--fixed-scrolled" id="header">
+    <div class="header__inner">
+      <a href="/" class="header__logo">
+        <img src="/img/logo-white.png" alt="Global Precision Works" class="header__logo-white" fetchpriority="high" width="300" height="189">
+        <img src="/img/logo-teal.png" alt="Global Precision Works" class="header__logo-teal" width="300" height="196">
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="navMenu">
+        <button class="nav__close" id="navClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <a href="/" class="nav__link">Home</a>
+
+        <div class="nav__item">
+          <button class="nav__trigger">
+            Our Divisions
+            <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="nav__dropdown">
+            <div class="nav__dropdown-items">
+              <a href="/ems/" class="nav__dropdown-item">
+                <span class="nav__dropdown-label">Electromechanical Assembly</span>
+                <span class="nav__dropdown-desc">Box build, cable harness, system integration & testing</span>
+              </a>
+              <a href="/contract-manufacturing/" class="nav__dropdown-item">
+                <span class="nav__dropdown-label">Contract Manufacturing</span>
+                <span class="nav__dropdown-desc">CNC precision machining — coming soon</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="nav__link">About</a>
+        <a href="#" class="nav__link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ 404 HERO ============ -->
+  <main>
+    <section class="nf-hero">
+      <div class="nf-hero__bg"></div>
+
+      <!-- Glow dots -->
+      <div class="nf-hero__glow">
+        <div class="nf-glow-dot nf-glow-dot--teal" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
+        <div class="nf-glow-dot nf-glow-dot--coral" style="top: 40%; left: 75%; animation-delay: 1.5s;"></div>
+        <div class="nf-glow-dot nf-glow-dot--teal" style="top: 70%; left: 50%; animation-delay: 3s;"></div>
+      </div>
+
+      <!-- Vignette -->
+      <div class="nf-hero__vignette"></div>
+
+      <!-- Content -->
+      <div class="nf-hero__content">
+        <div class="nf-code">404</div>
+        <div class="nf-divider"></div>
+        <h1 class="nf-title">Page Not Found</h1>
+        <p class="nf-tagline">This path doesn't lead anywhere.</p>
+        <p class="nf-desc">
+          The page you're looking for may have been moved, removed, or never existed.
+          Let's get you back on track.
+        </p>
+
+        <div class="nf-actions">
+          <a href="/" class="nf-btn nf-btn--primary">
+            <span>Go to Homepage</span>
+            <svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="/ems/" class="nf-btn nf-btn--outline">
+            <svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l6 6-6 6M2 8h12"/></svg>
+            <span>Explore EMS</span>
+          </a>
+        </div>
+
+        <!-- Quick links -->
+        <div class="nf-links">
+          <p class="nf-links__title">Quick Links</p>
+          <ul class="nf-links__list">
+            <li><a href="/ems/services/">Services</a></li>
+            <li><a href="/ems/industries/ai-server-rack.html">AI & Server Rack</a></li>
+            <li><a href="/ems/request-quote.html">Request a Quote</a></li>
+            <li><a href="/ems/about.html">About GPW</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script src="/js/main.js"></script>
+  <script src="/js/cookie-consent.js"></script>
+</body>
+</html>
