@@ -32,29 +32,32 @@
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/ems-home.css">
 
-  <!-- Schema: WebPage + Organization -->
+  <!-- Schema: Service + Organization -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Electromechanical Assembly Services Mexico",
-    "description": "Electromechanical assembly services in Monterrey, Mexico for U.S. OEMs. Box build, cable harness, system integration, and testing.",
-    "url": "https://gpw-solutions.com/ems/",
+    "@type": "Service",
+    "serviceType": "Electromechanical Assembly Services",
     "provider": {
       "@type": "Organization",
       "name": "Global Precision Works",
-      "alternateName": "GPW",
-      "url": "https://gpw-solutions.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Monterrey",
-        "addressRegion": "Nuevo León",
-        "addressCountry": "MX"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "US"
-      }
+      "url": "https://gpw-solutions.com"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "description": "Full-spectrum electromechanical assembly services including box build, cable harness, system integration, and testing from Monterrey, Mexico.",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Assembly Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Box Build Integration"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cable & Wire Harness Assembly"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "System Integration"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Testing & Quality Assurance"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Enclosure & Cabinet Assembly"}}
+      ]
     }
   }
   </script>
