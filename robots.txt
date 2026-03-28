@@ -1,0 +1,24 @@
+# GPW — Global Precision Works
+# https://gpw-solutions.com
+
+User-agent: *
+Allow: /
+
+# AI Bots — allow for AI SEO visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Sitemap
+Sitemap: https://gpw-solutions.com/sitemap.xml

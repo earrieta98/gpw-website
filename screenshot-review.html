@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPW — Screenshot Review Tool</title>
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+  :root {
+    --bg: #111119;
+    --surface: #1a1a24;
+    --surface-2: #22222e;
+    --surface-3: #2a2a38;
+    --border: #333345;
+    --border-light: #3d3d52;
+    --text: #e2e2ea;
+    --text-muted: #8888a0;
+    --text-dim: #5e5e76;
+    --coral: #ED835E;
+    --coral-hover: #f4996f;
+    --coral-bg: rgba(237,131,94,0.12);
+    --coral-border: rgba(237,131,94,0.3);
+    --teal: #23555A;
+    --teal-light: #2d6b71;
+    --lime: #ADCF91;
+    --danger: #e5534b;
+    --danger-bg: rgba(229,83,75,0.12);
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --mono: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+    --radius: 6px;
+    --sidebar-width: 380px;
+  }
+
+  html, body { height: 100%; overflow: hidden; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---- Top bar ---- */
+  .topbar {
+    height: 48px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    flex-shrink: 0;
+    z-index: 100;
+  }
+  .topbar__title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .topbar__title svg { color: var(--coral); }
+  .topbar__badge {
+    background: var(--coral-bg);
+    color: var(--coral);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 99px;
+    border: 1px solid var(--coral-border);
+  }
+  .topbar__actions { display: flex; gap: 8px; }
+
+  /* ---- Buttons ---- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 150ms ease;
+    white-space: nowrap;
+  }
+  .btn:hover { background: var(--surface-3); border-color: var(--border-light); }
+  .btn svg { width: 14px; height: 14px; }
+
+  .btn--coral {
+    background: var(--coral);
+    border-color: var(--coral);
+    color: #fff;
+  }
+  .btn--coral:hover { background: var(--coral-hover); border-color: var(--coral-hover); }
+
+  .btn--danger {
+    background: var(--danger-bg);
+    border-color: transparent;
+    color: var(--danger);
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+  .btn--danger:hover { background: rgba(229,83,75,0.2); }
+
+  .btn--ghost {
+    background: transparent;
+    border-color: transparent;
+    color: var(--text-muted);
+    padding: 4px 8px;
+  }
+  .btn--ghost:hover { color: var(--text); background: var(--surface-3); }
+
+  /* ---- Main layout ---- */
+  .main {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+
+  /* ---- Canvas area ---- */
+  .canvas-area {
+    flex: 1;
+    position: relative;
+    overflow: auto;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(35,85,90,0.04) 0%, transparent 70%),
+      repeating-conic-gradient(var(--surface) 0% 25%, var(--bg) 0% 50%) 50% / 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Drop zone */
+  .dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 48px;
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    max-width: 480px;
+    text-align: center;
+    transition: all 200ms ease;
+    cursor: pointer;
+  }
+  .dropzone:hover, .dropzone--active {
+    border-color: var(--coral);
+    background: var(--coral-bg);
+  }
+  .dropzone__icon {
+    width: 56px;
+    height: 56px;
+    color: var(--text-dim);
+    transition: color 200ms ease;
+  }
+  .dropzone:hover .dropzone__icon,
+  .dropzone--active .dropzone__icon { color: var(--coral); }
+  .dropzone__text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .dropzone__text strong { color: var(--coral); }
+  .dropzone__hint {
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  /* Image wrapper */
+  .image-wrap {
+    position: relative;
+    display: none;
+    cursor: crosshair;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .image-wrap img {
+    display: block;
+    max-width: calc(100vw - var(--sidebar-width) - 48px);
+    max-height: calc(100vh - 48px - 48px);
+    border-radius: 4px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* Annotation pin */
+  .pin {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+    cursor: grab;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(237,131,94,0.5), 0 0 0 3px rgba(237,131,94,0.2);
+    transition: transform 100ms ease, box-shadow 150ms ease;
+    user-select: none;
+  }
+  .pin:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+    box-shadow: 0 2px 12px rgba(237,131,94,0.6), 0 0 0 5px rgba(237,131,94,0.25);
+  }
+  .pin--active {
+    box-shadow: 0 2px 12px rgba(237,131,94,0.7), 0 0 0 5px rgba(237,131,94,0.35);
+    z-index: 20;
+  }
+  .pin--dragging {
+    cursor: grabbing;
+    transform: translate(-50%, -50%) scale(1.2);
+    z-index: 30;
+  }
+
+  /* Pin pulse animation on creation */
+  @keyframes pin-appear {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    50% { transform: translate(-50%, -50%) scale(1.3); }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  }
+  .pin--new { animation: pin-appear 350ms cubic-bezier(0.34,1.56,0.64,1) forwards; }
+
+  /* ---- Sidebar ---- */
+  .sidebar {
+    width: var(--sidebar-width);
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .sidebar__header {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sidebar__title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+  .sidebar__count {
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  .sidebar__list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+  }
+  .sidebar__list::-webkit-scrollbar { width: 4px; }
+  .sidebar__list::-webkit-scrollbar-track { background: transparent; }
+  .sidebar__list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  .sidebar__empty {
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .sidebar__empty svg {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
+    opacity: 0.3;
+  }
+
+  /* Annotation card */
+  .annotation {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px;
+    margin-bottom: 6px;
+    transition: all 150ms ease;
+    cursor: pointer;
+  }
+  .annotation:hover { border-color: var(--border-light); }
+  .annotation--active {
+    border-color: var(--coral-border);
+    background: var(--coral-bg);
+  }
+
+  .annotation__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .annotation__badge {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .annotation__pos {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.02em;
+  }
+
+  .annotation__input {
+    width: 100%;
+    background: var(--surface-3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-family: var(--font);
+    font-size: 13px;
+    color: var(--text);
+    resize: vertical;
+    min-height: 36px;
+    line-height: 1.5;
+    transition: border-color 150ms ease;
+    outline: none;
+  }
+  .annotation__input::placeholder { color: var(--text-dim); }
+  .annotation__input:focus { border-color: var(--coral); }
+
+  .annotation__footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 6px;
+  }
+
+  /* ---- Prompt output area (inside sidebar) ---- */
+  .prompt-bar {
+    background: var(--surface-2);
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+    display: none;
+  }
+
+  .prompt-bar__header {
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+  }
+  .prompt-bar__header:hover { background: var(--surface-2); }
+  .prompt-bar__label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .prompt-bar__label svg { color: var(--lime); width: 14px; height: 14px; }
+
+  .prompt-bar__content {
+    padding: 0 16px 14px;
+  }
+
+  .prompt-output {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.7;
+    resize: vertical;
+    min-height: 80px;
+    max-height: 200px;
+    outline: none;
+  }
+  .prompt-output:focus { border-color: var(--coral); }
+
+  .prompt-bar__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    justify-content: flex-end;
+  }
+
+  /* Copied feedback */
+  .btn--copied { background: var(--lime) !important; color: var(--bg) !important; border-color: var(--lime) !important; }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 860px) {
+    :root { --sidebar-width: 280px; }
+  }
+  @media (max-width: 640px) {
+    .main { flex-direction: column; }
+    .sidebar { width: 100%; max-height: 40vh; border-left: none; border-top: 1px solid var(--border); }
+    .image-wrap img { max-width: calc(100vw - 24px); max-height: 50vh; }
+  }
+
+  /* hidden file input */
+  #fileInput { display: none; }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="topbar__title">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="7.5"/><path d="M9 5.5v3.5l2.5 1.5"/></svg>
+    Screenshot Review
+    <span class="topbar__badge" id="annotationCount" style="display:none">0</span>
+  </div>
+  <div class="topbar__actions">
+    <button class="btn" id="btnUpload" title="Upload screenshot">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 10v3a1 1 0 001 1h10a1 1 0 001-1v-3M8 2v8M5 5l3-3 3 3"/></svg>
+      Upload
+    </button>
+    <button class="btn" id="btnClearAll" style="display:none" title="Remove all annotations">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 4h10M6 4V3h4v1M5 4v8a1 1 0 001 1h4a1 1 0 001-1V4"/></svg>
+      Clear All
+    </button>
+  </div>
+</div>
+
+<input type="file" id="fileInput" accept="image/*">
+
+<!-- Main area -->
+<div class="main">
+  <div class="canvas-area" id="canvasArea">
+    <!-- Dropzone (shown before image loaded) -->
+    <div class="dropzone" id="dropzone">
+      <svg class="dropzone__icon" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="6" y="6" width="44" height="44" rx="6"/>
+        <circle cx="20" cy="20" r="4"/>
+        <path d="M50 36l-14-14L8 50"/>
+        <path d="M32 18v-6M32 18l-4-4M32 18l4-4"/>
+      </svg>
+      <div class="dropzone__text">
+        <strong>Drop a screenshot here</strong><br>
+        or click to upload
+      </div>
+      <div class="dropzone__hint">Supports PNG, JPG, WebP — or paste from clipboard (Ctrl+V)</div>
+    </div>
+
+    <!-- Image + pins (shown after image loaded) -->
+    <div class="image-wrap" id="imageWrap">
+      <img id="screenshot" alt="Screenshot">
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar__header">
+      <div class="sidebar__title">Annotations</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="sidebar__count" id="sidebarCount">0 notes</div>
+        <button class="btn btn--coral" id="btnCopyTop" style="display:none" title="Save annotated screenshot + copy prompt">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7 2v7M4 6l3 3 3-3"/><path d="M2 10v2h10v-2"/></svg>
+          Export Review
+        </button>
+      </div>
+    </div>
+    <div class="sidebar__list" id="annotationList">
+      <div class="sidebar__empty" id="emptyState">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+          <circle cx="20" cy="20" r="16"/>
+          <path d="M20 12v8M20 24v1"/>
+        </svg>
+        Upload a screenshot and click on it to add feedback annotations
+      </div>
+    </div>
+
+    <!-- Prompt output (inside sidebar) -->
+    <div class="prompt-bar" id="promptBar">
+      <div class="prompt-bar__header" id="promptToggle">
+        <div class="prompt-bar__label">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 5l4 3-4 3"/><line x1="9" y1="11" x2="13" y2="11"/></svg>
+          Generated Prompt
+        </div>
+      </div>
+      <div class="prompt-bar__content">
+        <textarea class="prompt-output" id="promptOutput" readonly></textarea>
+        <div class="prompt-bar__actions" style="flex-direction:column">
+          <button class="btn btn--coral" id="btnExport" style="width:100%">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7 2v7M4 6l3 3 3-3"/><path d="M2 10v2h10v-2"/></svg>
+            Save Annotated Image + Copy Prompt
+          </button>
+          <button class="btn" id="btnCopy" style="width:100%">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="4" y="4" width="8" height="8" rx="1"/><path d="M2 10V2.5A.5.5 0 012.5 2H10"/></svg>
+            Copy Prompt Only
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // State
+  const state = {
+    annotations: [],
+    activeId: null,
+    nextId: 1,
+    imageLoaded: false,
+    dragging: null
+  };
+
+  // DOM refs
+  const canvasArea = document.getElementById('canvasArea');
+  const dropzone = document.getElementById('dropzone');
+  const imageWrap = document.getElementById('imageWrap');
+  const screenshot = document.getElementById('screenshot');
+  const fileInput = document.getElementById('fileInput');
+  const annotationList = document.getElementById('annotationList');
+  const emptyState = document.getElementById('emptyState');
+  const promptBar = document.getElementById('promptBar');
+  const promptOutput = document.getElementById('promptOutput');
+  const btnUpload = document.getElementById('btnUpload');
+  const btnClearAll = document.getElementById('btnClearAll');
+  const btnCopy = document.getElementById('btnCopy');
+  const btnCopyTop = document.getElementById('btnCopyTop');
+  const annotationCountBadge = document.getElementById('annotationCount');
+  const sidebarCount = document.getElementById('sidebarCount');
+
+  // ---- Image loading ----
+  function loadImage(file) {
+    if (!file || !file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      screenshot.src = e.target.result;
+      screenshot.onload = function() {
+        dropzone.style.display = 'none';
+        imageWrap.style.display = 'block';
+        state.imageLoaded = true;
+        btnClearAll.style.display = '';
+      };
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Click dropzone
+  dropzone.addEventListener('click', function() { fileInput.click(); });
+  btnUpload.addEventListener('click', function() { fileInput.click(); });
+  fileInput.addEventListener('change', function(e) {
+    if (e.target.files[0]) loadImage(e.target.files[0]);
+  });
+
+  // Drag and drop
+  canvasArea.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    dropzone.classList.add('dropzone--active');
+  });
+  canvasArea.addEventListener('dragleave', function() {
+    dropzone.classList.remove('dropzone--active');
+  });
+  canvasArea.addEventListener('drop', function(e) {
+    e.preventDefault();
+    dropzone.classList.remove('dropzone--active');
+    var files = e.dataTransfer.files;
+    if (files.length > 0) loadImage(files[0]);
+  });
+
+  // Paste from clipboard
+  document.addEventListener('paste', function(e) {
+    var items = e.clipboardData.items;
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].type.startsWith('image/')) {
+        loadImage(items[i].getAsFile());
+        break;
+      }
+    }
+  });
+
+  // ---- Annotation creation ----
+  imageWrap.addEventListener('click', function(e) {
+    if (e.target.closest('.pin') || state.dragging) return;
+
+    var rect = screenshot.getBoundingClientRect();
+    var x = ((e.clientX - rect.left) / rect.width) * 100;
+    var y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    x = Math.max(0, Math.min(100, x));
+    y = Math.max(0, Math.min(100, y));
+
+    var annotation = {
+      id: state.nextId++,
+      x: Math.round(x * 10) / 10,
+      y: Math.round(y * 10) / 10,
+      text: ''
+    };
+
+    state.annotations.push(annotation);
+    state.activeId = annotation.id;
+
+    renderPin(annotation, true);
+    renderSidebar();
+    updatePrompt();
+
+    // Focus the textarea
+    setTimeout(function() {
+      var textarea = document.querySelector('.annotation--active .annotation__input');
+      if (textarea) textarea.focus();
+    }, 50);
+  });
+
+  // ---- Pin rendering ----
+  function renderPin(ann, isNew) {
+    var pin = document.createElement('div');
+    pin.className = 'pin' + (isNew ? ' pin--new' : '') + (state.activeId === ann.id ? ' pin--active' : '');
+    pin.dataset.id = ann.id;
+    pin.textContent = getAnnotationIndex(ann.id) + 1;
+    pin.style.left = ann.x + '%';
+    pin.style.top = ann.y + '%';
+
+    // Click to select
+    pin.addEventListener('mousedown', function(e) {
+      e.stopPropagation();
+      startDrag(ann.id, e);
+    });
+
+    imageWrap.appendChild(pin);
+  }
+
+  function rerenderAllPins() {
+    imageWrap.querySelectorAll('.pin').forEach(function(p) { p.remove(); });
+    state.annotations.forEach(function(ann) { renderPin(ann, false); });
+  }
+
+  function getAnnotationIndex(id) {
+    return state.annotations.findIndex(function(a) { return a.id === id; });
+  }
+
+  // ---- Pin dragging ----
+  function startDrag(id, e) {
+    state.activeId = id;
+    renderSidebar();
+    updatePinStates();
+
+    var moved = false;
+    var pin = imageWrap.querySelector('.pin[data-id="' + id + '"]');
+
+    function onMove(ev) {
+      moved = true;
+      pin.classList.add('pin--dragging');
+      var rect = screenshot.getBoundingClientRect();
+      var x = ((ev.clientX - rect.left) / rect.width) * 100;
+      var y = ((ev.clientY - rect.top) / rect.height) * 100;
+      x = Math.max(0, Math.min(100, x));
+      y = Math.max(0, Math.min(100, y));
+      pin.style.left = x + '%';
+      pin.style.top = y + '%';
+
+      var ann = state.annotations.find(function(a) { return a.id === id; });
+      if (ann) {
+        ann.x = Math.round(x * 10) / 10;
+        ann.y = Math.round(y * 10) / 10;
+      }
+    }
+
+    function onUp() {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+      pin.classList.remove('pin--dragging');
+      if (moved) {
+        renderSidebar();
+        updatePrompt();
+      }
+    }
+
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+  }
+
+  function updatePinStates() {
+    imageWrap.querySelectorAll('.pin').forEach(function(pin) {
+      if (parseInt(pin.dataset.id) === state.activeId) {
+        pin.classList.add('pin--active');
+      } else {
+        pin.classList.remove('pin--active');
+      }
+    });
+  }
+
+  // ---- Sidebar rendering ----
+  function renderSidebar() {
+    var count = state.annotations.length;
+    sidebarCount.textContent = count + (count === 1 ? ' note' : ' notes');
+
+    if (count > 0) {
+      annotationCountBadge.style.display = '';
+      annotationCountBadge.textContent = count;
+      emptyState.style.display = 'none';
+      promptBar.style.display = '';
+      btnCopyTop.style.display = '';
+    } else {
+      annotationCountBadge.style.display = 'none';
+      emptyState.style.display = '';
+      promptBar.style.display = 'none';
+      btnCopyTop.style.display = 'none';
+    }
+
+    // Build cards
+    var existingCards = annotationList.querySelectorAll('.annotation');
+    existingCards.forEach(function(c) { c.remove(); });
+
+    state.annotations.forEach(function(ann, idx) {
+      var card = document.createElement('div');
+      card.className = 'annotation' + (state.activeId === ann.id ? ' annotation--active' : '');
+      card.dataset.id = ann.id;
+
+      card.innerHTML =
+        '<div class="annotation__top">' +
+          '<div style="display:flex;align-items:center;gap:8px;">' +
+            '<div class="annotation__badge">' + (idx + 1) + '</div>' +
+            '<span class="annotation__pos">x:' + ann.x.toFixed(1) + '% y:' + ann.y.toFixed(1) + '%</span>' +
+          '</div>' +
+          '<button class="btn btn--danger btn-delete" data-id="' + ann.id + '" title="Delete">' +
+            '<svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 4h10M5 4V3h4v1M4 4v7a1 1 0 001 1h4a1 1 0 001-1V4"/></svg>' +
+          '</button>' +
+        '</div>' +
+        '<textarea class="annotation__input" placeholder="Describe what to change here..." rows="2">' +
+          escapeHTML(ann.text) +
+        '</textarea>';
+
+      // Click to select
+      card.addEventListener('click', function(e) {
+        if (e.target.closest('.btn-delete') || e.target.classList.contains('annotation__input')) return;
+        state.activeId = ann.id;
+        renderSidebar();
+        updatePinStates();
+      });
+
+      // Delete button
+      card.querySelector('.btn-delete').addEventListener('click', function(e) {
+        e.stopPropagation();
+        deleteAnnotation(ann.id);
+      });
+
+      // Text input
+      var textarea = card.querySelector('.annotation__input');
+      textarea.addEventListener('input', function() {
+        ann.text = this.value;
+        updatePrompt();
+      });
+      textarea.addEventListener('focus', function() {
+        if (state.activeId === ann.id) return;
+        state.activeId = ann.id;
+        // Update visual states without rebuilding the DOM
+        annotationList.querySelectorAll('.annotation').forEach(function(c) {
+          c.classList.toggle('annotation--active', parseInt(c.dataset.id) === ann.id);
+        });
+        updatePinStates();
+      });
+
+      annotationList.insertBefore(card, emptyState);
+    });
+
+    // Scroll active into view
+    var activeCard = annotationList.querySelector('.annotation--active');
+    if (activeCard) {
+      activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  function deleteAnnotation(id) {
+    // Remove from state
+    state.annotations = state.annotations.filter(function(a) { return a.id !== id; });
+    if (state.activeId === id) state.activeId = null;
+
+    // Remove pin
+    var pin = imageWrap.querySelector('.pin[data-id="' + id + '"]');
+    if (pin) pin.remove();
+
+    // Re-number pins
+    rerenderAllPins();
+    renderSidebar();
+    updatePrompt();
+  }
+
+  // ---- Clear all ----
+  btnClearAll.addEventListener('click', function() {
+    if (state.annotations.length === 0) return;
+    if (!confirm('Remove all ' + state.annotations.length + ' annotations?')) return;
+    state.annotations = [];
+    state.activeId = null;
+    state.nextId = 1;
+    rerenderAllPins();
+    renderSidebar();
+    updatePrompt();
+  });
+
+  // ---- Prompt generation ----
+  function updatePrompt() {
+    if (state.annotations.length === 0) {
+      promptOutput.value = '';
+      return;
+    }
+
+    var lines = ['Here are my feedback notes on the screenshot:\n'];
+    state.annotations.forEach(function(ann, idx) {
+      var comment = ann.text.trim() || '(no comment yet)';
+      lines.push((idx + 1) + '. [position: ' + ann.x.toFixed(1) + '% from left, ' + ann.y.toFixed(1) + '% from top] — ' + comment);
+    });
+    lines.push('\nPlease make these changes to the page.');
+
+    promptOutput.value = lines.join('\n');
+  }
+
+  // ---- Copy to clipboard ----
+  function copyPrompt(btn) {
+    var text = promptOutput.value;
+    if (!text) return;
+
+    navigator.clipboard.writeText(text).then(function() {
+      btn.classList.add('btn--copied');
+      var origHTML = btn.innerHTML;
+      btn.innerHTML = '<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7l3 3 5-5"/></svg> Copied!';
+      setTimeout(function() {
+        btn.classList.remove('btn--copied');
+        btn.innerHTML = origHTML;
+      }, 1800);
+    });
+  }
+
+  btnCopy.addEventListener('click', function(e) {
+    e.stopPropagation();
+    copyPrompt(btnCopy);
+  });
+
+  // ---- Export annotated image ----
+  var btnExport = document.getElementById('btnExport');
+
+  function exportAnnotatedImage(alsoDownload) {
+    return new Promise(function(resolve) {
+      var canvas = document.createElement('canvas');
+      var ctx = canvas.getContext('2d');
+
+      // Use natural image dimensions for high-res export
+      var w = screenshot.naturalWidth;
+      var h = screenshot.naturalHeight;
+      canvas.width = w;
+      canvas.height = h;
+
+      // Draw the screenshot
+      ctx.drawImage(screenshot, 0, 0, w, h);
+
+      // Draw each pin
+      var pinRadius = Math.max(18, Math.round(w * 0.018));
+      var fontSize = Math.max(12, Math.round(pinRadius * 0.75));
+      var lineWidth = Math.max(2, Math.round(pinRadius * 0.12));
+
+      state.annotations.forEach(function(ann, idx) {
+        var px = (ann.x / 100) * w;
+        var py = (ann.y / 100) * h;
+
+        // Outer glow
+        ctx.beginPath();
+        ctx.arc(px, py, pinRadius + 4, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(237, 131, 94, 0.3)';
+        ctx.fill();
+
+        // Pin circle
+        ctx.beginPath();
+        ctx.arc(px, py, pinRadius, 0, Math.PI * 2);
+        ctx.fillStyle = '#ED835E';
+        ctx.fill();
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = lineWidth;
+        ctx.stroke();
+
+        // Number
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold ' + fontSize + 'px Lato, Arial, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(String(idx + 1), px, py + 1);
+
+        // Comment label (draw next to pin)
+        var comment = ann.text.trim();
+        if (comment) {
+          var labelFontSize = Math.max(11, Math.round(w * 0.012));
+          ctx.font = '600 ' + labelFontSize + 'px Lato, Arial, sans-serif';
+
+          // Truncate long comments
+          var displayComment = comment.length > 60 ? comment.substring(0, 57) + '...' : comment;
+          var textWidth = ctx.measureText(displayComment).width;
+          var padding = 8;
+          var labelH = labelFontSize + padding * 2;
+          var labelW = textWidth + padding * 2;
+
+          // Position label to right of pin, or left if too close to edge
+          var labelX = px + pinRadius + 8;
+          if (labelX + labelW > w - 10) {
+            labelX = px - pinRadius - 8 - labelW;
+          }
+          var labelY = py - labelH / 2;
+
+          // Background
+          ctx.fillStyle = 'rgba(17, 24, 39, 0.85)';
+          ctx.beginPath();
+          ctx.roundRect(labelX, labelY, labelW, labelH, 4);
+          ctx.fill();
+
+          // Text
+          ctx.fillStyle = '#fff';
+          ctx.textAlign = 'left';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(displayComment, labelX + padding, py + 1);
+        }
+      });
+
+      if (alsoDownload) {
+        canvas.toBlob(function(blob) {
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement('a');
+          a.href = url;
+          a.download = 'review-annotated.png';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          resolve();
+        }, 'image/png');
+      } else {
+        resolve();
+      }
+    });
+  }
+
+  // Export button (bottom): save image + copy prompt
+  btnExport.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (state.annotations.length === 0) return;
+
+    exportAnnotatedImage(true).then(function() {
+      copyPrompt(btnExport);
+    });
+  });
+
+  // Top button: same behavior
+  btnCopyTop.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (state.annotations.length === 0) return;
+
+    exportAnnotatedImage(true).then(function() {
+      copyPrompt(btnCopyTop);
+    });
+  });
+
+  // ---- Helpers ----
+  function escapeHTML(str) {
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+})();
+</script>
+
+</body>
+</html>

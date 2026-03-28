@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="../img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPW | Request a Quote for Electromechanical Assembly</title>
+  <meta name="description" content="Request a quote from Global Precision Works. Tell us about your electromechanical assembly project and receive an engineering assessment within 24 hours.">
+  <link rel="canonical" href="https://gpw-solutions.com/ems/request-quote/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GPW | Request a Quote for Electromechanical Assembly">
+  <meta property="og:description" content="Request a quote from Global Precision Works. Tell us about your electromechanical assembly project and receive an engineering assessment within 24 hours.">
+  <meta property="og:url" content="https://gpw-solutions.com/ems/request-quote/">
+  <meta property="og:image" content="https://gpw-solutions.com/img/og/request-quote.jpg">
+  <meta property="og:site_name" content="Global Precision Works">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GPW | Request a Quote for Electromechanical Assembly">
+  <meta name="twitter:description" content="Request a quote from Global Precision Works. Tell us about your electromechanical assembly project and receive an engineering assessment within 24 hours.">
+  <meta name="twitter:image" content="https://gpw-solutions.com/img/og/request-quote.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjx4wXg.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Trirong:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://gpw-solutions.com/ems/request-quote/",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/MobileWebPlatform"
+      ]
+    },
+    "result": {
+      "@type": "Thing",
+      "name": "Request for Quote Response"
+    }
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What information do I need to submit an RFQ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "At minimum: your industry, the services you need, a project description, and your timeline. The more detail you provide — BOM complexity, compliance requirements, target volumes — the more accurate our initial assessment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How quickly will I receive a quote?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our engineering team reviews every submission within 24 hours and delivers a detailed quote within 3–5 business days. Urgent projects can be fast-tracked."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a minimum order quantity?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. GPW handles programs from pilot builds of 10–50 units through sustained production runs of 10,000+ units per month. We scale with your demand."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the quote include?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A GPW quote breaks down per-unit pricing by assembly stage, NRE costs, lead time to first article, production ramp timeline, recommended testing protocols, and any tooling or fixture requirements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I visit the facility before committing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We encourage facility tours for prospective OEM partners. Monterrey is a 2-hour flight from Austin, Dallas, or Phoenix."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you handle procurement and sourcing of components?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GPW can manage full kitting and procurement based on your approved vendor list (AVL), or we can work with customer-furnished materials (CFM)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What industries do you serve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GPW serves 8 industries: AI & Server Rack Assembly, Industrial Equipment, Telecommunications, Medical Devices, Automotive, Energy, Aerospace, and Appliances & White Goods."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my project information confidential?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. All RFQ submissions are treated as confidential. GPW operates under strict NDAs with all customers. We never share project details with third parties."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ============================================
+       REQUEST A QUOTE — Page-Specific Styles
+       ============================================ */
+
+    /* --- Hero (compact, conversion-focused) --- */
+    .rfq-hero {
+      position: relative;
+      padding: calc(var(--header-height) + var(--space-3xl)) 0 var(--space-3xl);
+      background: linear-gradient(135deg, var(--teal-dark) 0%, var(--deep-blue) 50%, var(--teal) 100%);
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .rfq-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(173, 207, 145, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 20%, rgba(237, 131, 94, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Subtle grid pattern */
+    .rfq-hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .rfq-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .rfq-hero h1 {
+      color: var(--white);
+      font-size: clamp(1.8rem, 1.4rem + 2vw, 2.5rem);
+      max-width: 700px;
+      margin-bottom: var(--space-lg);
+    }
+
+    .rfq-hero__subtitle {
+      font-size: var(--text-lg);
+      line-height: 1.7;
+      color: rgba(255,255,255,0.8);
+      max-width: 640px;
+      margin-bottom: var(--space-2xl);
+    }
+
+    /* Trust badges */
+    .rfq-trust {
+      display: flex;
+      gap: var(--space-xl);
+      flex-wrap: wrap;
+    }
+
+    .rfq-trust__item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      max-width: 320px;
+    }
+
+    .rfq-trust__icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: var(--lime);
+      margin-top: 2px;
+    }
+
+    .rfq-trust__content strong {
+      display: block;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .rfq-trust__content span {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+
+    /* --- Form Section --- */
+    .rfq-form-section {
+      padding: var(--space-4xl) 0;
+      background: var(--off-white);
+    }
+
+    .rfq-form-wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .rfq-form-header {
+      text-align: center;
+      margin-bottom: var(--space-3xl);
+    }
+
+    .rfq-form-header h2 {
+      margin-bottom: var(--space-md);
+    }
+
+    .rfq-form-header p {
+      color: var(--mid-gray);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Form card */
+    .rfq-form {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3xl);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--light-gray);
+    }
+
+    .rfq-form__group {
+      margin-bottom: var(--space-2xl);
+    }
+
+    .rfq-form__group:last-of-type {
+      margin-bottom: var(--space-xl);
+    }
+
+    .rfq-form__group-title {
+      font-family: var(--font-accent);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--coral);
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-sm);
+      border-bottom: 1px solid var(--warm-gray);
+    }
+
+    .rfq-form__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+
+    @media (max-width: 600px) {
+      .rfq-form__row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rfq-form__field {
+      margin-bottom: var(--space-lg);
+    }
+
+    .rfq-form__field:last-child {
+      margin-bottom: 0;
+    }
+
+    .rfq-form__label {
+      display: block;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: var(--space-xs);
+    }
+
+    .rfq-form__label .required {
+      color: var(--coral);
+      margin-left: 2px;
+    }
+
+    .rfq-form__helper {
+      display: block;
+      font-size: var(--text-xs);
+      color: var(--mid-gray);
+      margin-bottom: var(--space-sm);
+      line-height: 1.5;
+    }
+
+    .rfq-form__input,
+    .rfq-form__select,
+    .rfq-form__textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-primary);
+      font-size: var(--text-base);
+      color: var(--charcoal);
+      background: var(--white);
+      border: 1.5px solid var(--light-gray);
+      border-radius: var(--radius-md);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+      outline: none;
+    }
+
+    .rfq-form__input:focus,
+    .rfq-form__select:focus,
+    .rfq-form__textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(35, 85, 90, 0.1);
+    }
+
+    .rfq-form__input::placeholder,
+    .rfq-form__textarea::placeholder {
+      color: var(--mid-gray);
+      opacity: 0.7;
+    }
+
+    .rfq-form__input.error,
+    .rfq-form__select.error,
+    .rfq-form__textarea.error {
+      border-color: #dc2626;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.08);
+    }
+
+    .rfq-form__error-msg {
+      display: none;
+      font-size: var(--text-xs);
+      color: #dc2626;
+      margin-top: var(--space-xs);
+    }
+
+    .rfq-form__error-msg.visible {
+      display: block;
+    }
+
+    .rfq-form__select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+
+    .rfq-form__textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .rfq-form__char-count {
+      text-align: right;
+      font-size: var(--text-xs);
+      color: var(--mid-gray);
+      margin-top: var(--space-xs);
+    }
+
+    .rfq-form__char-count.warning {
+      color: var(--coral);
+    }
+
+    /* Checkboxes */
+    .rfq-form__checkbox-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm) var(--space-lg);
+    }
+
+    @media (max-width: 600px) {
+      .rfq-form__checkbox-group {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rfq-form__checkbox {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      cursor: pointer;
+      font-size: var(--text-sm);
+      color: var(--dark-gray);
+      padding: var(--space-sm);
+      border-radius: var(--radius-sm);
+      transition: background var(--transition-fast);
+    }
+
+    .rfq-form__checkbox:hover {
+      background: var(--off-white);
+    }
+
+    .rfq-form__checkbox input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--light-gray);
+      border-radius: 3px;
+      flex-shrink: 0;
+      cursor: pointer;
+      position: relative;
+      transition: all var(--transition-fast);
+    }
+
+    .rfq-form__checkbox input[type="checkbox"]:checked {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .rfq-form__checkbox input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 2px;
+      width: 5px;
+      height: 9px;
+      border: solid var(--white);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    /* Radio buttons */
+    .rfq-form__radio-group {
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .rfq-form__radio {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      cursor: pointer;
+      font-size: var(--text-sm);
+      color: var(--dark-gray);
+      padding: 0.6rem 1rem;
+      border: 1.5px solid var(--light-gray);
+      border-radius: var(--radius-full);
+      transition: all var(--transition-fast);
+    }
+
+    .rfq-form__radio:hover {
+      border-color: var(--teal);
+    }
+
+    .rfq-form__radio input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid var(--light-gray);
+      border-radius: 50%;
+      flex-shrink: 0;
+      cursor: pointer;
+      position: relative;
+      transition: all var(--transition-fast);
+    }
+
+    .rfq-form__radio input[type="radio"]:checked {
+      border-color: var(--teal);
+    }
+
+    .rfq-form__radio input[type="radio"]:checked::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .rfq-form__radio:has(input:checked) {
+      border-color: var(--teal);
+      background: rgba(35, 85, 90, 0.04);
+    }
+
+    /* Submit area */
+    .rfq-form__submit {
+      text-align: center;
+      margin-top: var(--space-2xl);
+      padding-top: var(--space-2xl);
+      border-top: 1px solid var(--warm-gray);
+    }
+
+    .rfq-form__submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      padding: 1rem 3rem;
+      font-family: var(--font-primary);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--white);
+      background: var(--coral);
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      min-width: 240px;
+    }
+
+    .rfq-form__submit-btn:hover {
+      background: var(--coral-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow-coral);
+    }
+
+    .rfq-form__submit-btn svg {
+      width: 18px;
+      height: 18px;
+      transition: transform var(--transition-base);
+    }
+
+    .rfq-form__submit-btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    .rfq-form__privacy {
+      font-size: var(--text-xs);
+      color: var(--mid-gray);
+      margin-top: var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+    }
+
+    .rfq-form__privacy svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* Success message */
+    .rfq-form__success {
+      display: none;
+      text-align: center;
+      padding: var(--space-3xl) var(--space-xl);
+    }
+
+    .rfq-form__success.visible {
+      display: block;
+    }
+
+    .rfq-form__success-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(173, 207, 145, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-xl);
+    }
+
+    .rfq-form__success-icon svg {
+      width: 32px;
+      height: 32px;
+      color: var(--lime);
+    }
+
+    .rfq-form__success h3 {
+      margin-bottom: var(--space-md);
+    }
+
+    .rfq-form__success p {
+      color: var(--mid-gray);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* --- What Happens Next --- */
+    .steps-section {
+      padding: var(--space-4xl) 0;
+    }
+
+    .steps-header {
+      text-align: center;
+      margin-bottom: var(--space-3xl);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-xl);
+      position: relative;
+    }
+
+    /* Connecting line between steps */
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--coral), var(--teal), var(--deep-blue), var(--lime));
+      opacity: 0.3;
+    }
+
+    @media (max-width: 900px) {
+      .steps-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .steps-grid::before {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .step-card {
+      text-align: center;
+      position: relative;
+    }
+
+    .step-card__number {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-lg);
+      font-family: var(--font-primary);
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      color: var(--teal);
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-card__title {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: var(--space-xs);
+    }
+
+    .step-card__time {
+      font-family: var(--font-accent);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--coral);
+      margin-bottom: var(--space-sm);
+    }
+
+    .step-card__desc {
+      font-size: var(--text-sm);
+      color: var(--mid-gray);
+      line-height: 1.6;
+    }
+
+    .steps-reassurance {
+      text-align: center;
+      margin-top: var(--space-3xl);
+      padding: var(--space-xl) var(--space-2xl);
+      background: var(--off-white);
+      border-radius: var(--radius-lg);
+      border-left: 4px solid var(--teal);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .steps-reassurance p {
+      color: var(--dark-gray);
+      font-size: var(--text-sm);
+      margin-bottom: 0;
+      font-style: italic;
+    }
+
+    /* --- Contact alternatives --- */
+    .contact-alt {
+      padding: var(--space-4xl) 0;
+      background: var(--off-white);
+    }
+
+    .contact-alt__header {
+      text-align: center;
+      margin-bottom: var(--space-3xl);
+    }
+
+    .contact-alt__header p {
+      color: var(--mid-gray);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .contact-alt__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-lg);
+    }
+
+    @media (max-width: 900px) {
+      .contact-alt__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contact-alt__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-2xl) var(--space-xl);
+      text-align: center;
+      border: 1px solid var(--light-gray);
+      transition: all var(--transition-base);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--teal);
+    }
+
+    .contact-card__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(35, 85, 90, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-md);
+    }
+
+    .contact-card__icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--teal);
+    }
+
+    .contact-card__title {
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: var(--space-sm);
+    }
+
+    .contact-card__detail {
+      font-size: var(--text-sm);
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: var(--space-xs);
+      word-break: break-all;
+    }
+
+    .contact-card__note {
+      font-size: var(--text-xs);
+      color: var(--mid-gray);
+      line-height: 1.5;
+    }
+
+    /* --- Why GPW --- */
+    .why-gpw {
+      padding: var(--space-4xl) 0;
+      background: linear-gradient(135deg, var(--teal-dark) 0%, var(--deep-blue) 100%);
+      color: var(--white);
+    }
+
+    .why-gpw__header {
+      text-align: center;
+      margin-bottom: var(--space-3xl);
+    }
+
+    .why-gpw__header h2 {
+      color: var(--white);
+    }
+
+    .why-gpw__grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--space-lg);
+    }
+
+    @media (max-width: 1100px) {
+      .why-gpw__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .why-gpw__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .why-gpw__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .why-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      transition: all var(--transition-base);
+    }
+
+    .why-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-3px);
+    }
+
+    .why-card__title {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+
+    .why-card__desc {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    .why-gpw__cta {
+      text-align: center;
+      margin-top: var(--space-3xl);
+    }
+
+    .why-gpw__cta-context {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.6);
+      margin-top: var(--space-md);
+    }
+
+    /* --- FAQ --- */
+    .rfq-faq {
+      padding: var(--space-4xl) 0;
+    }
+
+    .rfq-faq .faq__header {
+      text-align: center;
+      margin-bottom: var(--space-3xl);
+    }
+
+    .rfq-faq .faq-list {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* --- Responsive form padding --- */
+    @media (max-width: 600px) {
+      .rfq-form {
+        padding: var(--space-xl);
+      }
+
+      .rfq-form__submit-btn {
+        width: 100%;
+      }
+
+      .rfq-form__radio-group {
+        flex-direction: column;
+      }
+    }
+
+    /* ========== MOBILE OVERRIDES ========== */
+    @media (max-width: 768px) {
+      /* 1. Reduce section padding */
+      .rfq-form-section, .steps-section, .contact-alt, .rfq-faq { padding: var(--space-3xl) 0 !important; }
+      .why-gpw { padding: var(--space-3xl) 0 !important; }
+
+      /* 2. Hero bottom padding */
+      .rfq-hero { padding-bottom: var(--space-2xl) !important; }
+
+      /* 4. Step card numbers smaller */
+      .step-card__number { width: 52px !important; height: 52px !important; font-size: var(--text-xl) !important; }
+
+      /* 5. Steps reassurance padding */
+      .steps-reassurance { padding: var(--space-lg) !important; margin-top: var(--space-2xl) !important; }
+
+      /* 6. Contact cards padding */
+      .contact-card { padding: var(--space-lg) var(--space-md) !important; }
+
+      /* 7. Section header margins */
+      .steps-header, .contact-alt__header, .why-gpw__header, .rfq-faq .faq__header { margin-bottom: var(--space-2xl) !important; }
+
+      /* 9. Form header margin */
+      .rfq-form-header { margin-bottom: var(--space-2xl) !important; }
+
+      /* Why GPW CTA margin */
+      .why-gpw__cta { margin-top: var(--space-2xl) !important; }
+    }
+
+    @media (max-width: 480px) {
+      /* 8. Trust items stack vertical */
+      .rfq-trust { flex-direction: column !important; gap: var(--space-md) !important; }
+
+      /* Hero text */
+      .rfq-hero h1 { font-size: clamp(1.3rem, 1rem + 2vw, 1.8rem) !important; }
+      .rfq-hero__subtitle { font-size: var(--text-base) !important; }
+
+      /* Why cards */
+      .why-card { padding: var(--space-lg) !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER — Level 2: EMS Nav ============ -->
+  <header class="header header--top" id="header">
+    <div class="header__inner">
+      <a href="../index.html" class="header__logo">
+        <img src="../img/logo-white.png" alt="Global Precision Works" class="header__logo-white" fetchpriority="high" width="300" height="189">
+        <img src="../img/logo-teal.png" alt="Global Precision Works" class="header__logo-teal" width="300" height="196">
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="navMenu">
+        <button class="nav__close" id="navClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <a href="index.html" class="nav__link">Home EMS</a>
+
+        <div class="nav__item">
+          <button class="nav__trigger">
+            Services
+            <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="nav__dropdown">
+            <div class="nav__dropdown-items">
+              <a href="services/box-build-assembly.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Box Build Integration</span>
+                  <span class="nav__dropdown-desc">BOM to finished unit — full mechanical + electrical</span>
+                </div>
+              </a>
+              <a href="services/cable-harness-assembly.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Cable &amp; Wire Harness</span>
+                  <span class="nav__dropdown-desc">Custom harnesses built to print, every connection verified</span>
+                </div>
+              </a>
+              <a href="services/system-integration.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="8" y="14" width="8" height="8" rx="1"/><path d="M6 10v4h4M18 10v4h-4"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">System Integration</span>
+                  <span class="nav__dropdown-desc">One team, one roof, one program</span>
+                </div>
+              </a>
+              <a href="services/testing-inspection.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Testing &amp; QA</span>
+                  <span class="nav__dropdown-desc">End-of-line functional testing, burn-in, inspection</span>
+                </div>
+              </a>
+              <a href="services/enclosure-cabinet-assembly.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="12" y1="2" x2="12" y2="10"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Enclosure &amp; Cabinet</span>
+                  <span class="nav__dropdown-desc">Rack-mount, panel, and cabinet builds</span>
+                </div>
+              </a>
+              <a href="services/index.html" class="nav__dropdown-item nav__dropdown-item--all">
+                <div><span class="nav__dropdown-title">View All Services →</span></div>
+              </a>
+            </div>
+            <div class="nav__dropdown-footer">
+              <a href="services/index.html">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 10a8 8 0 1 1 16 0 8 8 0 0 1-16 0Zm6.39-2.908a.75.75 0 0 1 .766.027l3.5 2.25a.75.75 0 0 1 0 1.262l-3.5 2.25A.75.75 0 0 1 8 12.25v-4.5a.75.75 0 0 1 .39-.658Z" clip-rule="evenodd"/></svg>
+                View All Services
+              </a>
+              <a href="request-quote.html">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 0 0 6.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 0 1 2.43 8.326 13.019 13.019 0 0 1 2 5V3.5Z" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+                Request a Quote
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav__item">
+          <button class="nav__trigger">
+            Industries
+            <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="nav__dropdown">
+            <div class="nav__dropdown-items">
+              <a href="industries/industrial-equipment.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Industrial Equipment</span>
+                  <span class="nav__dropdown-desc">Controls, sub-assemblies, light machinery</span>
+                </div>
+              </a>
+              <a href="industries/telecom-hardware.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Telecommunications</span>
+                  <span class="nav__dropdown-desc">Cabinets, modules, system-level hardware</span>
+                </div>
+              </a>
+              <a href="industries/medical-devices.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"/><rect x="4" y="4" width="16" height="16" rx="4"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Medical Devices</span>
+                  <span class="nav__dropdown-desc">Controlled assembly, serialized traceability</span>
+                </div>
+              </a>
+              <a href="industries/automotive.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M7 17l1-6h8l1 6"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Automotive</span>
+                  <span class="nav__dropdown-desc">Sub-assemblies, fixtures, Tier 2 integration</span>
+                </div>
+              </a>
+              <a href="industries/energy.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Energy</span>
+                  <span class="nav__dropdown-desc">Equipment cabinets, panel integration</span>
+                </div>
+              </a>
+              <a href="industries/aerospace.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h4l2-4h8l2 4h4L12 2z"/><line x1="8" y1="16" x2="16" y2="16"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Aerospace</span>
+                  <span class="nav__dropdown-desc">Full traceability, AS9100 pathway</span>
+                </div>
+              </a>
+              <a href="industries/appliances-white-goods.html" class="nav__dropdown-item">
+                <div class="nav__dropdown-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="6" y1="8" x2="18" y2="8"/><circle cx="12" cy="5" r="1.5"/></svg>
+                </div>
+                <div>
+                  <span class="nav__dropdown-title">Appliances &amp; White Goods</span>
+                  <span class="nav__dropdown-desc">High-volume assembly, rapid changeover</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="industries/ai-server-rack.html" class="nav__link">AI &amp; Server Rack</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="request-quote.html" class="nav__link nav__link--cta nav__link--active">Request a Quote</a>
+      </nav>
+    </div>
+    <div class="nav-overlay" id="navOverlay"></div>
+  </header>
+
+  <!-- ============ SECTION 1: HERO — Headline & Reassurance ============ -->
+  <section class="rfq-hero">
+    <div class="container">
+      <nav class="breadcrumb hero-reveal hero-reveal-delay-1" aria-label="Breadcrumb">
+        <a href="../index.html" class="breadcrumb__link">GPW Corporate</a>
+        <span class="breadcrumb__sep">→</span>
+        <a href="index.html" class="breadcrumb__link">EMS Assembly</a>
+        <span class="breadcrumb__sep">→</span>
+        <span class="breadcrumb__current">Request a Quote</span>
+      </nav>
+      <span class="label label--lime hero-reveal hero-reveal-delay-1">Request a Quote</span>
+      <h1 class="hero-reveal hero-reveal-delay-2">Your Project. Our Precision.<br>Let's Build the Quote.</h1>
+      <p class="rfq-hero__subtitle hero-reveal hero-reveal-delay-3">
+        Tell us about your electromechanical assembly project — scope, timeline, and target volumes. Our engineering team reviews every submission and responds within 24 hours with an initial assessment, preliminary pricing, and recommended next steps.
+      </p>
+
+      <div class="rfq-trust hero-reveal hero-reveal-delay-4">
+        <div class="rfq-trust__item">
+          <svg class="rfq-trust__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm.75-13a.75.75 0 0 0-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 0 0 0-1.5h-3.25V5Z" clip-rule="evenodd"/></svg>
+          <div class="rfq-trust__content">
+            <strong>24-Hour Response Guarantee</strong>
+            <span>Every RFQ reviewed by our engineering team, not a sales bot</span>
+          </div>
+        </div>
+        <div class="rfq-trust__item">
+          <svg class="rfq-trust__icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M1 4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4Zm12 4a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM4 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm13-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM1.75 14.5a.75.75 0 0 0 0 1.5c4.417 0 8.693.603 12.749 1.73 1.111.309 2.251-.512 2.251-1.696V14.5H1.75Z" clip-rule="evenodd"/></svg>
+          <div class="rfq-trust__content">
+            <strong>No Minimum Order</strong>
+            <span>From pilot builds of 10 units to sustained production of 10,000+/month</span>
+          </div>
+        </div>
+        <div class="rfq-trust__item">
+          <svg class="rfq-trust__icon" viewBox="0 0 20 20" fill="currentColor"><path d="M1 8.775A3.225 3.225 0 0 1 4.225 5.55h2.325a3.225 3.225 0 0 1 0 6.45H4.225A3.225 3.225 0 0 1 1 8.775ZM13.45 5.55h2.325a3.225 3.225 0 0 1 0 6.45H13.45a3.225 3.225 0 0 1 0-6.45Z"/><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.536-9.146a.5.5 0 0 0-.707-.708L9 12.146l-1.828-1.828a.5.5 0 0 0-.707.707l2.182 2.182a.5.5 0 0 0 .707 0l4.182-4.353Z" clip-rule="evenodd"/></svg>
+          <div class="rfq-trust__content">
+            <strong>No Commitment Required</strong>
+            <span>A quote is a conversation starter, not a contract</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2: RFQ FORM ============ -->
+  <section class="rfq-form-section" id="rfq-form">
+    <div class="container">
+      <div class="rfq-form-wrapper">
+        <div class="rfq-form-header reveal">
+          <span class="label label--coral">Start Your Project</span>
+          <div class="section__divider section__divider--center"></div>
+          <h2>Tell Us About Your Project</h2>
+          <p>The more detail you provide, the more accurate our initial assessment. Every field below helps our engineering team scope your project correctly from the start — but if you are early in the process, a rough description works too.</p>
+        </div>
+
+        <div class="rfq-form reveal" id="rfqFormCard">
+          <form id="rfqForm" novalidate>
+
+            <!-- Group 1: Project Details -->
+            <div class="rfq-form__group">
+              <div class="rfq-form__group-title">Project Details</div>
+
+              <div class="rfq-form__field">
+                <label class="rfq-form__label" for="industry">Which industry is this project for? <span class="required">*</span></label>
+                <select class="rfq-form__select" id="industry" name="industry" required>
+                  <option value="" disabled selected>Select your industry</option>
+                  <option value="AI & Server Rack Assembly">AI &amp; Server Rack Assembly</option>
+                  <option value="Industrial Equipment">Industrial Equipment</option>
+                  <option value="Telecommunications">Telecommunications</option>
+                  <option value="Medical Devices & Equipment">Medical Devices &amp; Equipment</option>
+                  <option value="Automotive">Automotive</option>
+                  <option value="Energy">Energy</option>
+                  <option value="Aerospace">Aerospace</option>
+                  <option value="Appliances & White Goods">Appliances &amp; White Goods</option>
+                  <option value="Other">Other (please specify in project description)</option>
+                </select>
+                <span class="rfq-form__error-msg" id="industry-error">This field is required to process your quote.</span>
+              </div>
+
+              <div class="rfq-form__field">
+                <label class="rfq-form__label">Which services does your project require? <span class="required">*</span></label>
+                <span class="rfq-form__helper">Select all that apply. Most projects combine two or more services.</span>
+                <div class="rfq-form__checkbox-group" id="services-group">
+                  <label class="rfq-form__checkbox">
+                    <input type="checkbox" name="services" value="Box Build Integration">
+                    Box Build Integration
+                  </label>
+                  <label class="rfq-form__checkbox">
+                    <input type="checkbox" name="services" value="Cable & Wire Harness Assembly">
+                    Cable &amp; Wire Harness Assembly
+                  </label>
+                  <label class="rfq-form__checkbox">
+                    <input type="checkbox" name="services" value="System Integration">
+                    System Integration
+                  </label>
+                  <label class="rfq-form__checkbox">
+                    <input type="checkbox" name="services" value="Testing & Quality Assurance">
+                    Testing &amp; Quality Assurance
+                  </label>
+                  <label class="rfq-form__checkbox">
+                    <input type="checkbox" name="services" value="Enclosure & Cabinet Assembly">
+                    Enclosure &amp; Cabinet Assembly
+                  </label>
+                  <label class="rfq-form__checkbox">
+                    <input type="checkbox" name="services" value="Not sure">
+                    Not sure — help me determine scope
+                  </label>
+                </div>
+                <span class="rfq-form__error-msg" id="services-error">Please select at least one service.</span>
+              </div>
+
+              <div class="rfq-form__field">
+                <label class="rfq-form__label" for="description">Describe your project <span class="required">*</span></label>
+                <span class="rfq-form__helper">Include BOM complexity (number of components), any certifications required, and whether this is a new program or a transfer from another supplier.</span>
+                <textarea class="rfq-form__textarea" id="description" name="description" maxlength="2000" required placeholder="Tell us about the product, key components, assembly complexity, any compliance requirements, and what you need from an assembly partner."></textarea>
+                <div class="rfq-form__char-count"><span id="charCount">0</span> / 2,000</div>
+                <span class="rfq-form__error-msg" id="description-error">This field is required to process your quote.</span>
+              </div>
+            </div>
+
+            <!-- Group 2: Scope & Timeline -->
+            <div class="rfq-form__group">
+              <div class="rfq-form__group-title">Scope &amp; Timeline</div>
+
+              <div class="rfq-form__field">
+                <label class="rfq-form__label" for="volume">What is your estimated annual volume?</label>
+                <select class="rfq-form__select" id="volume" name="volume">
+                  <option value="" disabled selected>Select estimated volume</option>
+                  <option value="Pilot / Prototype (1–50 units)">Pilot / Prototype (1–50 units)</option>
+                  <option value="Low Volume (50–500 units/year)">Low Volume (50–500 units/year)</option>
+                  <option value="Mid Volume (500–5,000 units/year)">Mid Volume (500–5,000 units/year)</option>
+                  <option value="High Volume (5,000–50,000 units/year)">High Volume (5,000–50,000 units/year)</option>
+                  <option value="Very High Volume (50,000+ units/year)">Very High Volume (50,000+ units/year)</option>
+                  <option value="Not determined yet">Not determined yet</option>
+                </select>
+              </div>
+
+              <div class="rfq-form__field">
+                <label class="rfq-form__label">How soon do you need production to start? <span class="required">*</span></label>
+                <span class="rfq-form__helper">This helps us prioritize your project and allocate engineering resources.</span>
+                <div class="rfq-form__radio-group" id="timeline-group">
+                  <label class="rfq-form__radio">
+                    <input type="radio" name="timeline" value="Urgent — Within 4 weeks" required>
+                    Urgent — Within 4 weeks
+                  </label>
+                  <label class="rfq-form__radio">
+                    <input type="radio" name="timeline" value="Standard — 4 to 8 weeks">
+                    Standard — 4 to 8 weeks
+                  </label>
+                  <label class="rfq-form__radio">
+                    <input type="radio" name="timeline" value="Flexible — 8+ weeks or still planning">
+                    Flexible — 8+ weeks
+                  </label>
+                </div>
+                <span class="rfq-form__error-msg" id="timeline-error">Please select a timeline.</span>
+              </div>
+            </div>
+
+            <!-- Group 3: Contact Information -->
+            <div class="rfq-form__group">
+              <div class="rfq-form__group-title">Contact Information</div>
+
+              <div class="rfq-form__row">
+                <div class="rfq-form__field">
+                  <label class="rfq-form__label" for="company">Company Name <span class="required">*</span></label>
+                  <input class="rfq-form__input" type="text" id="company" name="company" required placeholder="Your company name">
+                  <span class="rfq-form__error-msg" id="company-error">This field is required to process your quote.</span>
+                </div>
+                <div class="rfq-form__field">
+                  <label class="rfq-form__label" for="contact-name">Your Name <span class="required">*</span></label>
+                  <input class="rfq-form__input" type="text" id="contact-name" name="contact-name" required placeholder="First and last name">
+                  <span class="rfq-form__error-msg" id="contact-name-error">This field is required to process your quote.</span>
+                </div>
+              </div>
+
+              <div class="rfq-form__row">
+                <div class="rfq-form__field">
+                  <label class="rfq-form__label" for="email">Work Email <span class="required">*</span></label>
+                  <input class="rfq-form__input" type="email" id="email" name="email" required placeholder="name@company.com">
+                  <span class="rfq-form__error-msg" id="email-error">Please enter a valid work email address.</span>
+                </div>
+                <div class="rfq-form__field">
+                  <label class="rfq-form__label" for="phone">Phone Number</label>
+                  <span class="rfq-form__helper">Optional — include if you prefer a call back.</span>
+                  <input class="rfq-form__input" type="tel" id="phone" name="phone" placeholder="+1 (555) 555-5555">
+                </div>
+              </div>
+
+              <div class="rfq-form__field">
+                <label class="rfq-form__label" for="referral">How did you hear about GPW?</label>
+                <select class="rfq-form__select" id="referral" name="referral">
+                  <option value="" disabled selected>Select one</option>
+                  <option value="Google Search">Google Search</option>
+                  <option value="LinkedIn">LinkedIn</option>
+                  <option value="Industry Directory">Industry Directory (ThomasNet, Kompass)</option>
+                  <option value="Referral">Referral</option>
+                  <option value="Trade Show / Conference">Trade Show / Conference</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="rfq-form__submit">
+              <button type="submit" class="rfq-form__submit-btn">
+                Request My Quote
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </button>
+              <p class="rfq-form__privacy">
+                <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8 1a3.5 3.5 0 0 0-3.5 3.5V7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7V4.5A3.5 3.5 0 0 0 8 1Zm2 6V4.5a2 2 0 1 0-4 0V7h4Z" clip-rule="evenodd"/></svg>
+                Your information is confidential. We never share project details with third parties.
+              </p>
+            </div>
+          </form>
+
+          <!-- Success State -->
+          <div class="rfq-form__success" id="rfqSuccess">
+            <div class="rfq-form__success-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h3>Thank You</h3>
+            <p>Your RFQ has been received. Our engineering team will respond within 24 hours with an initial assessment. Check your inbox for confirmation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3: WHAT HAPPENS NEXT ============ -->
+  <section class="section steps-section">
+    <div class="container">
+      <div class="steps-header reveal">
+        <span class="label label--coral">From RFQ to Production</span>
+        <div class="section__divider section__divider--center"></div>
+        <h2>What Happens Next</h2>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-card__number">1</div>
+          <div class="step-card__title">Engineering Review</div>
+          <div class="step-card__time">Within 24 Hours</div>
+          <p class="step-card__desc">Your submission goes directly to our engineering team — not a sales queue. We assess project scope, BOM complexity, and compliance needs.</p>
+        </div>
+
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-card__number">2</div>
+          <div class="step-card__title">Scope Assessment</div>
+          <div class="step-card__time">24–48 Hours</div>
+          <p class="step-card__desc">We evaluate your project against our capabilities, identify DFM considerations, and prepare a preliminary scope document.</p>
+        </div>
+
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-card__number">3</div>
+          <div class="step-card__title">Detailed Quote</div>
+          <div class="step-card__time">3–5 Business Days</div>
+          <p class="step-card__desc">You receive per-unit pricing by assembly stage, NRE costs, lead time, production ramp timeline, and recommended testing protocols.</p>
+        </div>
+
+        <div class="step-card reveal reveal-delay-4">
+          <div class="step-card__number">4</div>
+          <div class="step-card__title">First Article Build</div>
+          <div class="step-card__time">Upon Approval</div>
+          <p class="step-card__desc">We move to first article production — typically within 2–3 weeks. You approve, and we ramp to sustained production volumes.</p>
+        </div>
+      </div>
+
+      <div class="steps-reassurance reveal">
+        <p>At every stage, your dedicated program manager is your single point of contact — not a rotating team of reps. One person, one thread, from quote to delivery.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4: ALTERNATIVE CONTACT ============ -->
+  <section class="contact-alt">
+    <div class="container">
+      <div class="contact-alt__header reveal">
+        <span class="label label--coral">Other Ways to Connect</span>
+        <div class="section__divider section__divider--center"></div>
+        <h2>Prefer to Talk First?</h2>
+        <p>Not every project starts with a formal RFQ. If you are still exploring options, evaluating nearshoring, or just want to understand what GPW can do for your program — reach out directly.</p>
+      </div>
+
+      <div class="contact-alt__grid">
+        <div class="contact-card reveal reveal-delay-1">
+          <div class="contact-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="contact-card__title">Call Us</div>
+          <div class="contact-card__detail">+52 (81) XXXX-XXXX</div>
+          <div class="contact-card__note">Mon–Fri, 8:00 AM – 6:00 PM CST<br>Same timezone as Central U.S.</div>
+        </div>
+
+        <div class="contact-card reveal reveal-delay-2">
+          <div class="contact-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="contact-card__title">Email Us</div>
+          <div class="contact-card__detail">rfq@gpw-solutions.com</div>
+          <div class="contact-card__note">RFQ submissions, capability questions, or facility tour requests</div>
+        </div>
+
+        <div class="contact-card reveal reveal-delay-3">
+          <div class="contact-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-card__title">Visit Our Facility</div>
+          <div class="contact-card__detail">Monterrey, Nuevo Le&oacute;n</div>
+          <div class="contact-card__note">2 hours from the U.S. border. Direct flights from Austin, Dallas, Phoenix, and San Jose.</div>
+        </div>
+
+        <div class="contact-card reveal reveal-delay-4">
+          <div class="contact-card__icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          </div>
+          <div class="contact-card__title">LinkedIn</div>
+          <div class="contact-card__detail">Follow GPW</div>
+          <div class="contact-card__note">Manufacturing insights and company updates</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5: WHY GPW ============ -->
+  <section class="why-gpw">
+    <div class="container">
+      <div class="why-gpw__header reveal">
+        <span class="label label--lime">Why GPW</span>
+        <div class="section__divider section__divider--center"></div>
+        <h2>Built for the Projects Other Assemblers&nbsp;Avoid</h2>
+      </div>
+
+      <div class="why-gpw__grid">
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-card__title">Assembly-First, Multi-Vertical</div>
+          <p class="why-card__desc">We do not fabricate PCBAs. We assemble complete products — mechanical, electrical, cabling, and testing — across 8 industries under one roof.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-card__title">Monterrey Advantage</div>
+          <p class="why-card__desc">150 miles from the U.S. border. Same timezone. USMCA-compliant. 40–60% cost savings vs. domestic U.S. assembly.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <div class="why-card__title">Engineering-Driven Quality</div>
+          <p class="why-card__desc">Every project starts with a DFM review. Every unit passes end-of-line functional testing. IPC-A-610 and IPC-A-620 certification in progress.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-4">
+          <div class="why-card__title">Speed That Matters</div>
+          <p class="why-card__desc">48-hour RFQ response. First article in 2–3 weeks. Production ramp in 4–6 weeks.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-5">
+          <div class="why-card__title">Right-Sized for Your Program</div>
+          <p class="why-card__desc">From pilot builds to 10,000+ units/month. Dedicated program management. No minimum order to start the conversation.</p>
+        </div>
+      </div>
+
+      <div class="why-gpw__cta reveal">
+        <a href="#rfq-form" class="btn btn--interactive btn--lg">
+          <span class="btn__text">Request a Quote</span>
+          <span class="btn__hover">
+            <span>Request a Quote</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </span>
+          <span class="btn__circle"></span>
+        </a>
+        <p class="why-gpw__cta-context">No commitment. No minimum order. We respond within 24 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 6: FAQ ============ -->
+  <section class="section rfq-faq">
+    <div class="container">
+      <div class="faq__header reveal">
+        <span class="label label--coral">Frequently Asked Questions</span>
+        <div class="section__divider section__divider--center"></div>
+        <h2>RFQ &amp; Process Questions</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary class="faq-item__question">What information do I need to submit an RFQ?</summary>
+          <div class="faq-item__answer">
+            <p>At minimum: your industry, the services you need, a project description, and your timeline. The more detail you provide — BOM complexity, compliance requirements, target volumes — the more accurate our initial assessment. If you are early in the process, a rough description is enough to start the conversation.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal reveal-delay-1">
+          <summary class="faq-item__question">How quickly will I receive a quote?</summary>
+          <div class="faq-item__answer">
+            <p>Our engineering team reviews every submission within 24 hours and delivers a detailed quote within 3–5 business days. Urgent projects can be fast-tracked — select "Urgent" in the timeline field and we prioritize accordingly.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal reveal-delay-2">
+          <summary class="faq-item__question">Is there a minimum order quantity?</summary>
+          <div class="faq-item__answer">
+            <p>No. GPW handles programs from pilot builds of 10–50 units through sustained production runs of 10,000+ units per month. We scale with your demand. During the scoping phase, we align production capacity to your volume forecast so pricing reflects actual requirements.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal reveal-delay-3">
+          <summary class="faq-item__question">What does the quote include?</summary>
+          <div class="faq-item__answer">
+            <p>A GPW quote breaks down per-unit pricing by assembly stage, NRE costs, lead time to first article, production ramp timeline, recommended testing protocols, and any tooling or fixture requirements. You see exactly where cost and time go at every step.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal reveal-delay-4">
+          <summary class="faq-item__question">Can I visit the facility before committing?</summary>
+          <div class="faq-item__answer">
+            <p>Yes. We encourage facility tours for prospective OEM partners. Monterrey is a 2-hour flight from Austin, Dallas, or Phoenix. Contact us to schedule a visit with our engineering and operations team.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal reveal-delay-5">
+          <summary class="faq-item__question">Do you handle procurement and sourcing of components?</summary>
+          <div class="faq-item__answer">
+            <p>GPW can manage full kitting and procurement based on your approved vendor list (AVL), or we can work with customer-furnished materials (CFM). We determine the right approach during the scoping phase.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal reveal-delay-6">
+          <summary class="faq-item__question">What industries do you serve?</summary>
+          <div class="faq-item__answer">
+            <p>GPW serves 8 industries: AI &amp; Server Rack Assembly, Industrial Equipment, Telecommunications, Medical Devices, Automotive, Energy, Aerospace, and Appliances &amp; White Goods. Each vertical has industry-specific assembly processes, traceability requirements, and quality standards.</p>
+          </div>
+        </details>
+
+        <details class="faq-item reveal reveal-delay-7">
+          <summary class="faq-item__question">Is my project information confidential?</summary>
+          <div class="faq-item__answer">
+            <p>Yes. All RFQ submissions are treated as confidential. GPW operates under strict NDAs with all customers. We never share project details, BOM data, or proprietary specifications with third parties. If you require a mutual NDA before submitting project details, contact us and we arrange it before you submit.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="../index.html" class="footer__logo">
+            <img loading="lazy" src="../img/logo-white.png" alt="Global Precision Works" width="300" height="189">
+          </a>
+          <p class="footer__desc">
+            Global Precision Works — precision manufacturing and electromechanical assembly from Monterrey, Mexico. Two divisions, one standard of excellence.
+          </p>
+          <div class="footer__contact-line">
+            Monterrey, Nuevo Le&oacute;n, Mexico<br>
+            <a href="mailto:info@gpw-solutions.com">info@gpw-solutions.com</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer__heading">EMS Services</div>
+          <div class="footer__links">
+            <a href="services/box-build-assembly.html">Box Build Integration</a>
+            <a href="services/cable-harness-assembly.html">Cable &amp; Wire Harness</a>
+            <a href="services/system-integration.html">System Integration</a>
+            <a href="services/testing-inspection.html">Testing &amp; QA</a>
+            <a href="services/enclosure-cabinet-assembly.html">Enclosure &amp; Cabinet</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer__heading">Industries</div>
+          <div class="footer__links">
+            <a href="industries/ai-server-rack.html">AI &amp; Server Rack</a>
+            <a href="industries/industrial-equipment.html">Industrial Equipment</a>
+            <a href="industries/telecom-hardware.html">Telecommunications</a>
+            <a href="industries/medical-devices.html">Medical Devices</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer__heading">Get Started</div>
+          <div class="footer__links">
+            <a href="request-quote.html">Request a Quote</a>
+            <a href="about.html">About EMS Division</a>
+            <a href="../index.html">GPW Corporate</a>
+            <a href="mailto:info@gpw-solutions.com">Email Us</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>&copy; 2026 Global Precision Works. All rights reserved.</span>
+        <div class="footer__legal">
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          <a href="../terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script src="../js/main.js"></script>
+  <script src="../js/cookie-consent.js"></script>
+  <script>
+    // ---- Character Counter ----
+    var descField = document.getElementById('description');
+    var charCount = document.getElementById('charCount');
+
+    descField.addEventListener('input', function() {
+      var len = this.value.length;
+      charCount.textContent = len.toLocaleString();
+      if (len > 1800) {
+        charCount.parentElement.classList.add('warning');
+      } else {
+        charCount.parentElement.classList.remove('warning');
+      }
+    });
+
+    // ---- Form Validation & Submit ----
+    var form = document.getElementById('rfqForm');
+    var formCard = document.getElementById('rfqFormCard');
+    var successMsg = document.getElementById('rfqSuccess');
+
+    function showError(fieldId) {
+      var el = document.getElementById(fieldId);
+      if (el) {
+        el.classList.add('error');
+        var errMsg = document.getElementById(fieldId + '-error');
+        if (errMsg) errMsg.classList.add('visible');
+      }
+    }
+
+    function clearError(fieldId) {
+      var el = document.getElementById(fieldId);
+      if (el) {
+        el.classList.remove('error');
+        var errMsg = document.getElementById(fieldId + '-error');
+        if (errMsg) errMsg.classList.remove('visible');
+      }
+    }
+
+    // Clear errors on input
+    ['industry', 'description', 'company', 'contact-name', 'email'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', function() { clearError(id); });
+        el.addEventListener('change', function() { clearError(id); });
+      }
+    });
+
+    // Clear services error on checkbox change
+    document.querySelectorAll('input[name="services"]').forEach(function(cb) {
+      cb.addEventListener('change', function() {
+        var errMsg = document.getElementById('services-error');
+        if (errMsg) errMsg.classList.remove('visible');
+      });
+    });
+
+    // Clear timeline error on radio change
+    document.querySelectorAll('input[name="timeline"]').forEach(function(rb) {
+      rb.addEventListener('change', function() {
+        var errMsg = document.getElementById('timeline-error');
+        if (errMsg) errMsg.classList.remove('visible');
+      });
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var valid = true;
+
+      // Industry
+      if (!document.getElementById('industry').value) {
+        showError('industry');
+        valid = false;
+      } else {
+        clearError('industry');
+      }
+
+      // Services (at least one checked)
+      var checked = document.querySelectorAll('input[name="services"]:checked');
+      if (checked.length === 0) {
+        document.getElementById('services-error').classList.add('visible');
+        valid = false;
+      }
+
+      // Description
+      if (!document.getElementById('description').value.trim()) {
+        showError('description');
+        valid = false;
+      } else {
+        clearError('description');
+      }
+
+      // Timeline
+      var timelineChecked = document.querySelector('input[name="timeline"]:checked');
+      if (!timelineChecked) {
+        document.getElementById('timeline-error').classList.add('visible');
+        valid = false;
+      }
+
+      // Company
+      if (!document.getElementById('company').value.trim()) {
+        showError('company');
+        valid = false;
+      } else {
+        clearError('company');
+      }
+
+      // Contact name
+      if (!document.getElementById('contact-name').value.trim()) {
+        showError('contact-name');
+        valid = false;
+      } else {
+        clearError('contact-name');
+      }
+
+      // Email
+      var emailVal = document.getElementById('email').value.trim();
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailVal || !emailRegex.test(emailVal)) {
+        showError('email');
+        valid = false;
+      } else {
+        clearError('email');
+      }
+
+      if (valid) {
+        // Show success
+        form.style.display = 'none';
+        successMsg.classList.add('visible');
+        // Scroll to success
+        formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        // Scroll to first error
+        var firstError = formCard.querySelector('.error, .visible');
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
