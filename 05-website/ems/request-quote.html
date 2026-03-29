@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GPW | Request a Quote for Electromechanical Assembly</title>
   <meta name="description" content="Request a quote from Global Precision Works. Tell us about your electromechanical assembly project and receive an engineering assessment within 24 hours.">
-  <link rel="canonical" href="https://gpw-solutions.com/ems/request-quote/">
+  <link rel="canonical" href="https://gpw-solutions.com/ems/request-quote.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="GPW | Request a Quote for Electromechanical Assembly">
   <meta property="og:description" content="Request a quote from Global Precision Works. Tell us about your electromechanical assembly project and receive an engineering assessment within 24 hours.">
-  <meta property="og:url" content="https://gpw-solutions.com/ems/request-quote/">
+  <meta property="og:url" content="https://gpw-solutions.com/ems/request-quote.html">
   <meta property="og:image" content="https://gpw-solutions.com/img/og/request-quote.jpg">
   <meta property="og:site_name" content="Global Precision Works">
 
@@ -23,6 +23,9 @@
   <meta name="twitter:image" content="https://gpw-solutions.com/img/og/request-quote.jpg">
 
   <!-- Fonts -->
+  <!-- reCAPTCHA v3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lf9UJssAAAAAHzjMGCZOrkUknPGEoxdiBQYaIN3" async defer></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjx4wXg.woff2" as="font" type="font/woff2" crossorigin>
@@ -508,6 +511,69 @@
       background: rgba(35, 85, 90, 0.04);
     }
 
+    /* File upload */
+    .rfq-form__file-wrapper {
+      position: relative;
+    }
+
+    .rfq-form__file-input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .rfq-form__file-display {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 1rem 1.25rem;
+      background: var(--white);
+      border: 2px dashed var(--warm-gray);
+      border-radius: var(--radius-sm);
+      color: var(--mid-gray);
+      font-size: var(--text-sm);
+      transition: border-color var(--transition-base);
+      cursor: pointer;
+    }
+
+    .rfq-form__file-display:hover,
+    .rfq-form__file-wrapper:focus-within .rfq-form__file-display {
+      border-color: var(--teal);
+    }
+
+    .rfq-form__file-display.has-file {
+      border-color: var(--teal);
+      border-style: solid;
+      color: var(--charcoal);
+    }
+
+    /* Submit sending state */
+    .rfq-form__submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .rfq-form__recaptcha-note {
+      font-size: 11px;
+      color: var(--mid-gray);
+      margin-top: var(--space-sm);
+      text-align: center;
+    }
+
+    .rfq-form__recaptcha-note a {
+      color: var(--mid-gray);
+      text-decoration: underline;
+    }
+
+    /* Hide reCAPTCHA badge — attribution is inline */
+    .grecaptcha-badge { visibility: hidden !important; }
+
     /* Submit area */
     .rfq-form__submit {
       text-align: center;
@@ -956,9 +1022,9 @@
   <!-- ============ HEADER — Level 2: EMS Nav ============ -->
   <header class="header header--top" id="header">
     <div class="header__inner">
-      <a href="../index.html" class="header__logo">
-        <img src="../img/logo-white.png" alt="Global Precision Works" class="header__logo-white">
-        <img src="../img/logo-teal.png" alt="Global Precision Works" class="header__logo-teal">
+      <a href="../" class="header__logo">
+        <img src="../img/logo-white.png" alt="Global Precision Works" class="header__logo-white" fetchpriority="high" width="300" height="189">
+        <img src="../img/logo-teal.png" alt="Global Precision Works" class="header__logo-teal" width="300" height="196">
       </a>
 
       <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
@@ -971,7 +1037,7 @@
         <button class="nav__close" id="navClose" aria-label="Close menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
-        <a href="index.html" class="nav__link">Home EMS</a>
+        <a href="./" class="nav__link">Home EMS</a>
 
         <div class="nav__item">
           <button class="nav__trigger">
@@ -1025,12 +1091,12 @@
                   <span class="nav__dropdown-desc">Rack-mount, panel, and cabinet builds</span>
                 </div>
               </a>
-              <a href="services/index.html" class="nav__dropdown-item nav__dropdown-item--all">
+              <a href="services/" class="nav__dropdown-item nav__dropdown-item--all">
                 <div><span class="nav__dropdown-title">View All Services →</span></div>
               </a>
             </div>
             <div class="nav__dropdown-footer">
-              <a href="services/index.html">
+              <a href="services/">
                 <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 10a8 8 0 1 1 16 0 8 8 0 0 1-16 0Zm6.39-2.908a.75.75 0 0 1 .766.027l3.5 2.25a.75.75 0 0 1 0 1.262l-3.5 2.25A.75.75 0 0 1 8 12.25v-4.5a.75.75 0 0 1 .39-.658Z" clip-rule="evenodd"/></svg>
                 View All Services
               </a>
@@ -1128,9 +1194,9 @@
   <section class="rfq-hero">
     <div class="container">
       <nav class="breadcrumb hero-reveal hero-reveal-delay-1" aria-label="Breadcrumb">
-        <a href="../index.html" class="breadcrumb__link">GPW Corporate</a>
+        <a href="../" class="breadcrumb__link">GPW Corporate</a>
         <span class="breadcrumb__sep">→</span>
-        <a href="index.html" class="breadcrumb__link">EMS Assembly</a>
+        <a href="./" class="breadcrumb__link">EMS Assembly</a>
         <span class="breadcrumb__sep">→</span>
         <span class="breadcrumb__current">Request a Quote</span>
       </nav>
@@ -1178,7 +1244,7 @@
         </div>
 
         <div class="rfq-form reveal" id="rfqFormCard">
-          <form id="rfqForm" novalidate>
+          <form id="rfqForm" novalidate enctype="multipart/form-data">
 
             <!-- Group 1: Project Details -->
             <div class="rfq-form__group">
@@ -1324,15 +1390,38 @@
               </div>
             </div>
 
+            <!-- Group 4: File Upload -->
+            <div class="rfq-form__group">
+              <div class="rfq-form__group-title">Supporting Documents</div>
+              <div class="rfq-form__field">
+                <label class="rfq-form__label" for="attachment">Upload a file (optional)</label>
+                <span class="rfq-form__helper">Attach a BOM, drawing, spec sheet, or any document that helps us scope your project. Max 10 MB. Accepted: PDF, DOC, DOCX, XLS, XLSX, DWG, DXF, STEP, IGES, ZIP, RAR, PNG, JPG.</span>
+                <div class="rfq-form__file-wrapper">
+                  <input type="file" class="rfq-form__file-input" id="attachment" name="attachment" accept=".pdf,.doc,.docx,.xls,.xlsx,.dwg,.dxf,.step,.stp,.iges,.igs,.zip,.rar,.png,.jpg,.jpeg">
+                  <div class="rfq-form__file-display" id="fileDisplay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;opacity:.5;"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
+                    <span id="fileName">No file selected</span>
+                  </div>
+                </div>
+                <span class="rfq-form__error-msg" id="attachment-error">File is too large or type not accepted.</span>
+              </div>
+            </div>
+
             <!-- Submit -->
             <div class="rfq-form__submit">
-              <button type="submit" class="rfq-form__submit-btn">
+              <input type="hidden" id="recaptchaToken" name="recaptcha_token">
+              <button type="submit" class="rfq-form__submit-btn" id="submitBtn">
                 Request My Quote
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
               </button>
               <p class="rfq-form__privacy">
                 <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8 1a3.5 3.5 0 0 0-3.5 3.5V7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7V4.5A3.5 3.5 0 0 0 8 1Zm2 6V4.5a2 2 0 1 0-4 0V7h4Z" clip-rule="evenodd"/></svg>
                 Your information is confidential. We never share project details with third parties.
+              </p>
+              <p class="rfq-form__recaptcha-note">
+                This site is protected by reCAPTCHA and the Google
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and
+                <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a> apply.
               </p>
             </div>
           </form>
@@ -1565,8 +1654,8 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <a href="../index.html" class="footer__logo">
-            <img loading="lazy" src="../img/logo-white.png" alt="Global Precision Works">
+          <a href="../" class="footer__logo">
+            <img loading="lazy" src="../img/logo-white.png" alt="Global Precision Works" width="300" height="189">
           </a>
           <p class="footer__desc">
             Global Precision Works — precision manufacturing and electromechanical assembly from Monterrey, Mexico. Two divisions, one standard of excellence.
@@ -1603,7 +1692,7 @@
           <div class="footer__links">
             <a href="request-quote.html">Request a Quote</a>
             <a href="about.html">About EMS Division</a>
-            <a href="../index.html">GPW Corporate</a>
+            <a href="../">GPW Corporate</a>
             <a href="mailto:info@gpw-solutions.com">Email Us</a>
           </div>
         </div>
@@ -1746,17 +1835,73 @@
       }
 
       if (valid) {
-        // Show success
-        form.style.display = 'none';
-        successMsg.classList.add('visible');
-        // Scroll to success
-        formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        var submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending… <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6" stroke-dasharray="30" stroke-dashoffset="10"><animateTransform attributeName="transform" type="rotate" dur="1s" from="0 8 8" to="360 8 8" repeatCount="indefinite"/></circle></svg>';
+
+        // Get reCAPTCHA token
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6Lf9UJssAAAAAHzjMGCZOrkUknPGEoxdiBQYaIN3', {action: 'submit_rfq'}).then(function(token) {
+            document.getElementById('recaptchaToken').value = token;
+
+            var formData = new FormData(form);
+            // Fix field names for PHP
+            formData.set('contact_name', document.getElementById('contact-name').value);
+
+            fetch('process-rfq.php', {
+              method: 'POST',
+              body: formData
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+              if (data.success) {
+                form.style.display = 'none';
+                successMsg.classList.add('visible');
+                formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              } else {
+                alert(data.message || 'Something went wrong. Please try again or email sales@gpw-solutions.com.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Request My Quote <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+              }
+            })
+            .catch(function() {
+              alert('Connection error. Please try again or email sales@gpw-solutions.com.');
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = 'Request My Quote <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+            });
+          });
+        });
       } else {
         // Scroll to first error
         var firstError = formCard.querySelector('.error, .visible');
         if (firstError) {
           firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
+      }
+    });
+
+    // File upload display
+    var fileInput = document.getElementById('attachment');
+    var fileDisplay = document.getElementById('fileDisplay');
+    var fileName = document.getElementById('fileName');
+    fileInput.addEventListener('change', function() {
+      if (this.files.length > 0) {
+        var file = this.files[0];
+        var sizeMB = (file.size / 1024 / 1024).toFixed(1);
+        fileName.textContent = file.name + ' (' + sizeMB + ' MB)';
+        fileDisplay.classList.add('has-file');
+        // Validate size
+        if (file.size > 10 * 1024 * 1024) {
+          document.getElementById('attachment-error').classList.add('visible');
+          fileInput.value = '';
+          fileName.textContent = 'No file selected';
+          fileDisplay.classList.remove('has-file');
+        } else {
+          document.getElementById('attachment-error').classList.remove('visible');
+        }
+      } else {
+        fileName.textContent = 'No file selected';
+        fileDisplay.classList.remove('has-file');
       }
     });
   </script>

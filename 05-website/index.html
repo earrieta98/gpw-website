@@ -39,18 +39,20 @@
     "name": "Global Precision Works",
     "alternateName": "GPW",
     "url": "https://gpw-solutions.com",
-    "logo": "https://gpw-solutions.com/img/logo-gpw.png",
-    "description": "Precision CNC machining and electromechanical assembly from Monterrey, Mexico. Two divisions serving U.S. OEMs across 8 industries.",
+    "logo": "https://gpw-solutions.com/img/logo-teal.png",
+    "description": "Electromechanical assembly and contract manufacturing services from Monterrey, Mexico. Nearshore partner for U.S. OEMs.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Monterrey",
-      "addressRegion": "Nuevo León",
+      "addressRegion": "Nuevo Leon",
       "addressCountry": "MX"
     },
-    "areaServed": {
-      "@type": "Country",
-      "name": "US"
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "sales@gpw-solutions.com",
+      "contactType": "sales"
     },
+    "sameAs": [],
     "knowsAbout": [
       "Electromechanical Assembly",
       "Box Build Assembly",
@@ -67,9 +69,9 @@
   <!-- ============ HEADER — Level 1: Corporate Nav ============ -->
   <header class="header header--top" id="header">
     <div class="header__inner">
-      <a href="index.html" class="header__logo">
-        <img src="img/logo-white.png" alt="Global Precision Works" class="header__logo-white">
-        <img src="img/logo-teal.png" alt="Global Precision Works" class="header__logo-teal">
+      <a href="./" class="header__logo">
+        <img src="img/logo-white.png" alt="Global Precision Works" class="header__logo-white" fetchpriority="high" width="300" height="189">
+        <img src="img/logo-teal.png" alt="Global Precision Works" class="header__logo-teal" width="300" height="196">
       </a>
 
       <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
@@ -82,7 +84,7 @@
         <button class="nav__close" id="navClose" aria-label="Close menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
-        <a href="index.html" class="nav__link nav__link--active">Home</a>
+        <a href="./" class="nav__link nav__link--active">Home</a>
 
         <div class="nav__item">
           <button class="nav__trigger">
@@ -91,7 +93,7 @@
           </button>
           <div class="nav__dropdown">
             <div class="nav__dropdown-items">
-              <a href="ems/index.html" class="nav__dropdown-item">
+              <a href="ems/" class="nav__dropdown-item">
                 <div class="nav__dropdown-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18M3 15h18"/></svg>
                 </div>
@@ -100,7 +102,7 @@
                   <span class="nav__dropdown-desc">Box build, harness, system integration, and testing</span>
                 </div>
               </a>
-              <a href="contract-manufacturing/index.html" class="nav__dropdown-item">
+              <a href="contract-manufacturing/" class="nav__dropdown-item">
                 <div class="nav__dropdown-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                 </div>
@@ -111,7 +113,7 @@
               </a>
             </div>
             <div class="nav__dropdown-footer">
-              <a href="ems/index.html">
+              <a href="ems/">
                 <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 10a8 8 0 1 1 16 0 8 8 0 0 1-16 0Zm6.39-2.908a.75.75 0 0 1 .766.027l3.5 2.25a.75.75 0 0 1 0 1.262l-3.5 2.25A.75.75 0 0 1 8 12.25v-4.5a.75.75 0 0 1 .39-.658Z" clip-rule="evenodd"/></svg>
                 Explore EMS
               </a>
@@ -206,10 +208,7 @@
         <!-- Division 1: Contract Manufacturing -->
         <div class="division-card reveal reveal-delay-1">
           <div class="division-card__image">
-            <div class="img-placeholder img-placeholder--light">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              Photo: CNC machine close-up or machined parts
-            </div>
+            <img src="img/card-contract-manufacturing.jpg" alt="CNC precision machining — Contract Manufacturing" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="division-card__body">
             <span class="division-card__number">Division 01</span>
@@ -234,7 +233,7 @@
                 Quality Assurance — In-process inspection on every run
               </div>
             </div>
-            <a href="contract-manufacturing/index.html" class="division-card__link">
+            <a href="contract-manufacturing/" class="division-card__link">
               Explore Contract Manufacturing
               <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
@@ -244,10 +243,7 @@
         <!-- Division 2: EMS -->
         <div class="division-card reveal reveal-delay-2">
           <div class="division-card__image">
-            <div class="img-placeholder img-placeholder--light">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              Photo: Assembly line with cable harnesses or box build
-            </div>
+            <img src="img/card-ems.jpg" alt="Electromechanical assembly services" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="division-card__body">
             <span class="division-card__number">Division 02</span>
@@ -276,7 +272,7 @@
                 Enclosure &amp; Cabinet Assembly — Rack-mount, panel, cabinet builds
               </div>
             </div>
-            <a href="ems/index.html" class="division-card__link">
+            <a href="ems/" class="division-card__link">
               Explore EMS Services
               <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             </a>
@@ -315,7 +311,7 @@
             </div>
           </div>
 
-          <a href="ems/index.html" class="btn btn--interactive btn--interactive-teal reveal reveal-delay-5">
+          <a href="ems/" class="btn btn--interactive btn--interactive-teal reveal reveal-delay-5">
             <span class="btn__text">Get a Cost Comparison</span>
             <span class="btn__hover">
               <span>Get a Cost Comparison</span>
@@ -487,7 +483,7 @@
       </div>
 
       <div style="text-align: center; margin-top: var(--space-2xl);" class="reveal">
-        <a href="ems/index.html" class="btn btn--interactive btn--interactive-teal">
+        <a href="ems/" class="btn btn--interactive btn--interactive-teal">
           <span class="btn__text">Explore All EMS Capabilities</span>
           <span class="btn__hover">
             <span>Explore All EMS Capabilities</span>
@@ -573,8 +569,8 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <a href="index.html" class="footer__logo">
-            <img loading="lazy" src="img/logo-white.png" alt="Global Precision Works">
+          <a href="./" class="footer__logo">
+            <img loading="lazy" src="img/logo-white.png" alt="Global Precision Works" width="300" height="189">
           </a>
           <p class="footer__desc">
             Global Precision Works — precision manufacturing and electromechanical assembly from Monterrey, Mexico. Two divisions, one standard of excellence.
@@ -588,8 +584,8 @@
         <div>
           <div class="footer__heading">Our Divisions</div>
           <div class="footer__links">
-            <a href="ems/index.html">Electromechanical Assembly</a>
-            <a href="contract-manufacturing/index.html">Contract Manufacturing</a>
+            <a href="ems/">Electromechanical Assembly</a>
+            <a href="contract-manufacturing/">Contract Manufacturing</a>
           </div>
         </div>
 
@@ -774,16 +770,7 @@
     oLabel.appendChild(tspan2);
     svg.appendChild(oLabel);
 
-    function restartAnimations() {
-      var paths = svg.querySelectorAll('.nearshore-map__path, .nearshore-map__dot-travel');
-      paths.forEach(function(el) {
-        var anim = el.style.animation;
-        el.style.animation = 'none';
-        el.offsetHeight;
-        el.style.animation = anim;
-      });
-    }
-    setInterval(restartAnimations, 8000);
+    // Animation loop handled by CSS infinite keyframes
   })();
   </script>
 </body>

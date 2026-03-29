@@ -9,13 +9,32 @@
 
   var STORAGE_KEY = 'gpw_cookie_consent';
 
+  var GA_ID = 'G-538CDCDQSK';
+
   // Public API: other scripts check this before firing tracking
   window.gpwCookieConsent = function() {
     return localStorage.getItem(STORAGE_KEY) === 'accepted';
   };
 
-  // If user already responded, don't show banner
-  if (localStorage.getItem(STORAGE_KEY)) return;
+  // Load GA4 if user already accepted
+  function loadGA4() {
+    if (document.querySelector('script[src*="googletagmanager"]')) return;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){window.dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+
+  // If user already responded, load GA4 if accepted and don't show banner
+  if (localStorage.getItem(STORAGE_KEY)) {
+    if (localStorage.getItem(STORAGE_KEY) === 'accepted') loadGA4();
+    return;
+  }
 
   // Inject styles
   var style = document.createElement('style');
@@ -35,7 +54,7 @@
     '.cc-text{color:rgba(255,255,255,.85);font-size:14px;line-height:1.6;',
     'flex:1 1 400px;margin:0;}',
 
-    '.cc-text a{color:#23555A;text-decoration:underline;}',
+    '.cc-text a{color:#5bbec7;text-decoration:underline;}',
     '.cc-text a:hover{color:#ED835E;}',
 
     '.cc-actions{display:flex;gap:10px;flex-shrink:0;}',
@@ -95,6 +114,7 @@
 
   document.getElementById('ccAccept').addEventListener('click', function() {
     closeBanner('accepted');
+    loadGA4();
   });
 
   document.getElementById('ccDecline').addEventListener('click', function() {

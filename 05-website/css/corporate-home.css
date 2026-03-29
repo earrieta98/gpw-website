@@ -294,7 +294,7 @@
   text-anchor: middle;
   pointer-events: none;
   opacity: 0;
-  animation: mapLabelIn 0.5s ease forwards;
+  animation: mapLabelLoop 12s ease-in-out infinite;
 }
 .nearshore-map__label--origin {
   fill: var(--coral);
@@ -303,11 +303,11 @@
 .nearshore-map__path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: mapDraw 2s ease-in-out forwards;
+  animation: mapDrawLoop 12s ease-in-out infinite;
 }
 .nearshore-map__dot-travel {
   opacity: 0;
-  animation: mapDotTravel 2s ease-in-out forwards;
+  animation: mapDotLoop 12s ease-in-out infinite;
 }
 .nearshore-map__legend {
   display: flex;
@@ -331,15 +331,27 @@
 .nearshore-map__legend-dot--origin { background: var(--coral); }
 .nearshore-map__legend-dot--dest { background: var(--lime); }
 
-@keyframes mapDraw {
-  to { stroke-dashoffset: 0; }
+/* Map loop: 12s total — draw (0-33%), hold (33-60%), fade out (60-70%), pause (70-100%) */
+@keyframes mapDrawLoop {
+  0%   { stroke-dashoffset: 1000; opacity: 0; }
+  5%   { opacity: 1; }
+  33%  { stroke-dashoffset: 0; opacity: 1; }
+  60%  { stroke-dashoffset: 0; opacity: 1; }
+  70%  { opacity: 0; }
+  100% { stroke-dashoffset: 1000; opacity: 0; }
 }
-@keyframes mapLabelIn {
-  to { opacity: 1; }
+@keyframes mapLabelLoop {
+  0%   { opacity: 0; }
+  25%  { opacity: 0; }
+  33%  { opacity: 1; }
+  60%  { opacity: 1; }
+  70%  { opacity: 0; }
+  100% { opacity: 0; }
 }
-@keyframes mapDotTravel {
-  0% { opacity: 0; offset-distance: 0%; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { opacity: 0; offset-distance: 100%; }
+@keyframes mapDotLoop {
+  0%   { opacity: 0; offset-distance: 0%; }
+  5%   { opacity: 1; }
+  33%  { opacity: 1; offset-distance: 100%; }
+  60%  { opacity: 0; offset-distance: 100%; }
+  100% { opacity: 0; offset-distance: 0%; }
 }
