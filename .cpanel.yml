@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home3/enriqu45/public_html/
+    - /bin/cp -R 05-website/* $DEPLOYPATH
+    - /bin/cp 05-website/.htaccess $DEPLOYPATH
