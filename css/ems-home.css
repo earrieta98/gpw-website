@@ -300,7 +300,7 @@
 .svc-accordion__title {
   font-size: var(--text-lg);
   font-weight: 600;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   flex: 1;
   transition: color var(--transition-base);
 }
@@ -330,7 +330,7 @@
 }
 .svc-accordion__body p {
   font-size: var(--text-base);
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   line-height: 1.7;
   margin-bottom: var(--space-lg);
 }

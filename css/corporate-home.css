@@ -315,7 +315,7 @@
   gap: var(--space-xl);
   margin-top: var(--space-md);
   font-size: var(--text-xs);
-  color: var(--medium-gray);
+  color: var(--mid-gray);
 }
 .nearshore-map__legend span {
   display: flex;
