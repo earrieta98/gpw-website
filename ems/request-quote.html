@@ -513,6 +513,24 @@
       background: rgba(35, 85, 90, 0.04);
     }
 
+    /* Focus visible for keyboard navigation */
+    .rfq-form__checkbox input[type="checkbox"]:focus-visible {
+      outline: 2px solid var(--coral);
+      outline-offset: 2px;
+    }
+    .rfq-form__radio input[type="radio"]:focus-visible {
+      outline: 2px solid var(--coral);
+      outline-offset: 2px;
+    }
+    .rfq-form__checkbox:has(input:focus-visible) {
+      border-color: var(--coral);
+      background: rgba(237, 131, 94, 0.04);
+    }
+    .rfq-form__radio:has(input:focus-visible) {
+      border-color: var(--coral);
+      background: rgba(237, 131, 94, 0.04);
+    }
+
     /* File upload */
     .rfq-form__file-wrapper {
       position: relative;
@@ -1043,7 +1061,7 @@
         <a href="./" class="nav__link">Home EMS</a>
 
         <div class="nav__item">
-          <button class="nav__trigger">
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">
             Services
             <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
           </button>
@@ -1112,7 +1130,7 @@
         </div>
 
         <div class="nav__item">
-          <button class="nav__trigger">
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">
             Industries
             <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
           </button>
@@ -1257,7 +1275,7 @@
 
               <div class="rfq-form__field">
                 <label class="rfq-form__label" for="industry">Which industry is this project for? <span class="required">*</span></label>
-                <select class="rfq-form__select" id="industry" name="industry" required>
+                <select class="rfq-form__select" id="industry" name="industry" required aria-describedby="industry-error">
                   <option value="" disabled selected>Select your industry</option>
                   <option value="AI & Server Rack Assembly">AI &amp; Server Rack Assembly</option>
                   <option value="Industrial Equipment">Industrial Equipment</option>
@@ -1275,7 +1293,7 @@
               <fieldset class="rfq-form__field" style="border:none;padding:0;margin:0;">
                 <legend class="rfq-form__label">Which services does your project require? <span class="required">*</span></legend>
                 <span class="rfq-form__helper">Select all that apply. Most projects combine two or more services.</span>
-                <div class="rfq-form__checkbox-group" id="services-group">
+                <div class="rfq-form__checkbox-group" id="services-group" aria-describedby="services-error">
                   <label class="rfq-form__checkbox">
                     <input type="checkbox" name="services" value="Box Build Integration">
                     Box Build Integration
@@ -1307,7 +1325,7 @@
               <div class="rfq-form__field">
                 <label class="rfq-form__label" for="description">Describe your project <span class="required">*</span></label>
                 <span class="rfq-form__helper">Include BOM complexity (number of components), any certifications required, and whether this is a new program or a transfer from another supplier.</span>
-                <textarea class="rfq-form__textarea" id="description" name="description" maxlength="2000" required placeholder="Tell us about the product, key components, assembly complexity, any compliance requirements, and what you need from an assembly partner."></textarea>
+                <textarea class="rfq-form__textarea" id="description" name="description" maxlength="2000" required aria-describedby="description-error" placeholder="Tell us about the product, key components, assembly complexity, any compliance requirements, and what you need from an assembly partner."></textarea>
                 <div class="rfq-form__char-count"><span id="charCount">0</span> / 2,000</div>
                 <span class="rfq-form__error-msg" id="description-error">This field is required to process your quote.</span>
               </div>
@@ -1333,7 +1351,7 @@
               <fieldset class="rfq-form__field" style="border:none;padding:0;margin:0;">
                 <legend class="rfq-form__label">How soon do you need production to start? <span class="required">*</span></legend>
                 <span class="rfq-form__helper">This helps us prioritize your project and allocate engineering resources.</span>
-                <div class="rfq-form__radio-group" id="timeline-group">
+                <div class="rfq-form__radio-group" id="timeline-group" aria-describedby="timeline-error">
                   <label class="rfq-form__radio">
                     <input type="radio" name="timeline" value="Urgent — Within 4 weeks" required>
                     Urgent — Within 4 weeks
@@ -1358,12 +1376,12 @@
               <div class="rfq-form__row">
                 <div class="rfq-form__field">
                   <label class="rfq-form__label" for="company">Company Name <span class="required">*</span></label>
-                  <input class="rfq-form__input" type="text" id="company" name="company" required placeholder="Your company name">
+                  <input class="rfq-form__input" type="text" id="company" name="company" required aria-describedby="company-error" placeholder="Your company name">
                   <span class="rfq-form__error-msg" id="company-error">This field is required to process your quote.</span>
                 </div>
                 <div class="rfq-form__field">
                   <label class="rfq-form__label" for="contact-name">Your Name <span class="required">*</span></label>
-                  <input class="rfq-form__input" type="text" id="contact-name" name="contact-name" required placeholder="First and last name">
+                  <input class="rfq-form__input" type="text" id="contact-name" name="contact-name" required aria-describedby="contact-name-error" placeholder="First and last name">
                   <span class="rfq-form__error-msg" id="contact-name-error">This field is required to process your quote.</span>
                 </div>
               </div>
@@ -1371,7 +1389,7 @@
               <div class="rfq-form__row">
                 <div class="rfq-form__field">
                   <label class="rfq-form__label" for="email">Work Email <span class="required">*</span></label>
-                  <input class="rfq-form__input" type="email" id="email" name="email" required placeholder="name@company.com">
+                  <input class="rfq-form__input" type="email" id="email" name="email" required aria-describedby="email-error" placeholder="name@company.com">
                   <span class="rfq-form__error-msg" id="email-error">Please enter a valid work email address.</span>
                 </div>
                 <div class="rfq-form__field">
@@ -1691,6 +1709,10 @@
             <a href="industries/industrial-equipment.html">Industrial Equipment</a>
             <a href="industries/telecom-hardware.html">Telecommunications</a>
             <a href="industries/medical-devices.html">Medical Devices</a>
+            <a href="industries/automotive.html">Automotive</a>
+            <a href="industries/energy.html">Energy</a>
+            <a href="industries/aerospace.html">Aerospace</a>
+            <a href="industries/appliances-white-goods.html">Appliances &amp; White Goods</a>
           </div>
         </div>
 

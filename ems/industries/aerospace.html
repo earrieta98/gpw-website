@@ -147,7 +147,7 @@
         "@type": "ListItem",
         "position": 4,
         "name": "Aerospace Sub-Assemblies",
-        "item": "https://gpw-solutions.com/ems/industries/aerospace/"
+        "item": "https://gpw-solutions.com/ems/industries/aerospace.html"
       }
     ]
   }
@@ -625,7 +625,7 @@
         <a href="../" class="nav__link">Home EMS</a>
 
         <div class="nav__item">
-          <button class="nav__trigger">
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">
             Services
             <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
           </button>
@@ -694,7 +694,7 @@
         </div>
 
         <div class="nav__item">
-          <button class="nav__trigger">
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">
             Industries
             <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
           </button>
@@ -1240,65 +1240,65 @@
         </div>
         <div class="faq-split__list">
           <div class="faq-accord reveal" data-faq-index="0">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-1">
               <span>Is GPW AS9100 certified?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-1" role="region">
               <p>GPW is actively pursuing AS9100 certification. All aerospace assembly processes are designed to meet AS9100 quality management standards, including documented procedures, material traceability systems, operator qualification programs, first article inspection per AS9102, and corrective action management. The quality system structure supports aerospace audit readiness while formal certification is completed.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-1" data-faq-index="1">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-2">
               <span>What types of aerospace sub-assemblies does GPW build?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-2" role="region">
               <p>GPW builds aerospace wire harnesses, avionics junction boxes, electromechanical components, sensor sub-assemblies, power distribution units, relay panels, and connector assemblies. Programs range from individual cable assemblies with a dozen terminations to complex avionics modules integrating PCBAs, EMI shielding, and mil-spec connectors with full material traceability documentation.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-2" data-faq-index="2">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-3">
               <span>How does GPW handle material traceability for aerospace programs?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-3" role="region">
               <p>Every material is tracked from supplier through finished assembly. GPW's traceability system links conductor lot numbers, connector lot codes, solder batch numbers, and consumables to individual units by serial number. Material certifications including mill certificates and certificates of conformance are maintained as permanent quality records available for customer audit.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-3" data-faq-index="3">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-4">
               <span>Does GPW perform first article inspection for aerospace parts?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-4" role="region">
               <p>Yes. GPW performs first article inspection per AS9102 on initial production units for every new aerospace part number. FAI reports document dimensional measurements, material verifications, process validation results, and functional test data. FAI packages are submitted to the OEM for approval before the program transitions to full-rate production.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-4" data-faq-index="4">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-5">
               <span>What workmanship standards does GPW follow for aerospace assembly?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-5" role="region">
               <p>GPW follows IPC/WHMA-A-620 for wire harness and cable assembly workmanship, IPC J-STD-001 for solder operations at aerospace class applicability, and IPC-A-610 for electronic assembly. Operators are qualified to the applicable standard and maintain current certification with recertification at intervals defined by each standard's requirements.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-5" data-faq-index="5">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-6">
               <span>Can GPW support defense-related aerospace programs?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-6" role="region">
               <p>GPW works within the regulatory framework applicable to defense-related sub-assemblies manufactured in Mexico. For programs with ITAR considerations, GPW maintains the access controls, documentation practices, and personnel screening that ITAR compliance requires. Specific program requirements are addressed during the qualification process.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-6" data-faq-index="6">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-7">
               <span>How are finished aerospace sub-assemblies shipped to the U.S.?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-7" role="region">
               <p>Sub-assemblies ship by truck from Monterrey, reaching U.S. distribution points in 1-2 days. GPW designs packaging specific to each product's sensitivity and fragility, maintains environmental controls during storage, manages export documentation, and provides USMCA-compliant paperwork for preferential tariff treatment on cross-border shipments.</p>
             </div>
           </div>
@@ -1411,6 +1411,10 @@
             <a href="industrial-equipment.html">Industrial Equipment</a>
             <a href="telecom-hardware.html">Telecommunications</a>
             <a href="medical-devices.html">Medical Devices</a>
+            <a href="automotive.html">Automotive</a>
+            <a href="energy.html">Energy</a>
+            <a href="aerospace.html">Aerospace</a>
+            <a href="appliances-white-goods.html">Appliances &amp; White Goods</a>
           </div>
         </div>
 

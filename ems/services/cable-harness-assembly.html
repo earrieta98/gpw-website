@@ -258,7 +258,7 @@
         </button>
         <a href="../" class="nav__link">Home EMS</a>
         <div class="nav__item">
-          <button class="nav__trigger">Services <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg></button>
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">Services <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg></button>
           <div class="nav__dropdown">
             <div class="nav__dropdown-items">
               <a href="box-build-assembly.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg></div><div><span class="nav__dropdown-title">Box Build Integration</span><span class="nav__dropdown-desc">BOM to finished unit — full mechanical + electrical</span></div></a>
@@ -277,7 +277,7 @@
           </div>
         </div>
         <div class="nav__item">
-          <button class="nav__trigger">Industries <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg></button>
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">Industries <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg></button>
           <div class="nav__dropdown">
             <div class="nav__dropdown-items">
               <a href="../industries/industrial-equipment.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><div><span class="nav__dropdown-title">Industrial Equipment</span><span class="nav__dropdown-desc">Controls, sub-assemblies, light machinery</span></div></a>
@@ -744,65 +744,65 @@
         </div>
         <div class="faq-split__list">
           <div class="faq-accord reveal" data-faq-index="0">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-1">
               <span>How does GPW ensure cable harness quality?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-1" role="region">
               <p>Every harness GPW produces passes automated continuity testing before leaving the production floor. Testing fixtures verify every pin-to-pin connection against the wiring diagram simultaneously, flagging opens, shorts, and miswires. Crimp quality is validated through pull-force testing and periodic cross-section analysis per IPC-A-620 criteria.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-1" data-faq-index="1">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-2">
               <span>Does GPW offer harness design review?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-2" role="region">
               <p>Yes. GPW's engineering team reviews customer cable drawings for manufacturability before quoting. The review evaluates connector compatibility, wire gauge selection, routing feasibility, and termination method suitability. If a customer provides a sample harness instead of formal drawings, GPW reverse-engineers it and produces a documented drawing package for production.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-2" data-faq-index="2">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-3">
               <span>What wire gauges and connector types does GPW support?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-3" role="region">
               <p>GPW builds harnesses using wire gauges from AWG 30 (fine signal wire) through AWG 4 (high-current power cables). Supported connector families include Molex, TE Connectivity, JST, Amphenol, and Deutsch. Custom connectors are supported when the customer provides specifications and approved components.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-3" data-faq-index="3">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-4">
               <span>Can GPW build harnesses for integration into box build programs?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-4" role="region">
               <p>Yes. A significant portion of GPW's harness production feeds directly into box build and system integration programs on the same production floor. This integration means harness specifications are optimized for the actual assembly -- cable lengths match routing paths, connector orientation supports installation ergonomics, and labeling aligns with station-level work instructions.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-4" data-faq-index="4">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-5">
               <span>What is IPC-A-620 and how does GPW apply it?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-5" role="region">
               <p>IPC-A-620 is the industry standard for cable and wire harness assembly acceptability. It defines workmanship criteria for crimping, soldering, wire preparation, cable protection, and marking. GPW applies IPC-A-620 Class 2 criteria as the default standard and Class 3 criteria for programs requiring higher reliability -- such as aerospace and medical device applications.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-5" data-faq-index="5">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-6">
               <span>How long does a cable harness program take from RFQ to production?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-6" role="region">
               <p>GPW typically delivers first article harnesses in 1-2 weeks from drawing approval, with production ramp in 2-4 weeks. Complex harnesses with custom connectors or specialized testing requirements may extend the timeline. Engineering provides a detailed schedule as part of every RFQ response.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-6" data-faq-index="6">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-7">
               <span>What is the minimum order for cable harness assembly?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-7" role="region">
               <p>GPW does not enforce a fixed minimum. Programs range from prototype builds of 5-10 harnesses to sustained production exceeding 50,000 harnesses per month. The engineering team evaluates each project on complexity, tooling requirements, and volume projections -- not arbitrary quantity thresholds.</p>
             </div>
           </div>
@@ -900,6 +900,10 @@
             <a href="../industries/industrial-equipment.html">Industrial Equipment</a>
             <a href="../industries/telecom-hardware.html">Telecommunications</a>
             <a href="../industries/medical-devices.html">Medical Devices</a>
+            <a href="../industries/automotive.html">Automotive</a>
+            <a href="../industries/energy.html">Energy</a>
+            <a href="../industries/aerospace.html">Aerospace</a>
+            <a href="../industries/appliances-white-goods.html">Appliances &amp; White Goods</a>
           </div>
         </div>
         <div>

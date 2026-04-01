@@ -224,7 +224,7 @@
         </button>
         <a href="../" class="nav__link">Home EMS</a>
         <div class="nav__item">
-          <button class="nav__trigger">Services <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg></button>
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">Services <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg></button>
           <div class="nav__dropdown">
             <div class="nav__dropdown-items">
               <a href="box-build-assembly.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg></div><div><span class="nav__dropdown-title">Box Build Integration</span><span class="nav__dropdown-desc">BOM to finished unit — full mechanical + electrical</span></div></a>
@@ -243,7 +243,7 @@
           </div>
         </div>
         <div class="nav__item">
-          <button class="nav__trigger">Industries <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg></button>
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">Industries <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg></button>
           <div class="nav__dropdown">
             <div class="nav__dropdown-items">
               <a href="../industries/industrial-equipment.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><div><span class="nav__dropdown-title">Industrial Equipment</span><span class="nav__dropdown-desc">Controls, sub-assemblies, light machinery</span></div></a>
@@ -663,65 +663,65 @@
         </div>
         <div class="faq-split__list">
           <div class="faq-accord reveal" data-faq-index="0">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-1">
               <span>What services does GPW offer?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-1" role="region">
               <p>GPW provides five core electromechanical assembly services: box build assembly, cable and wire harness assembly, system integration, testing and inspection, and enclosure and cabinet assembly. These services combine to cover the full assembly spectrum — from individual cable harnesses to complete multi-unit system builds.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-1" data-faq-index="1">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-2">
               <span>Can GPW handle projects that require multiple services?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-2" role="region">
               <p>Yes. Most customer programs combine two or more services within a single production line. GPW manages the full assembly scope — mechanical, electrical, cabling, testing, and packaging — under one program manager and one quality system. This eliminates the coordination overhead of managing multiple subcontractors.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-2" data-faq-index="2">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-3">
               <span>What industries does GPW serve?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-3" role="region">
               <p>GPW serves 8 industries: AI and server rack assembly, industrial equipment, telecommunications, medical devices, automotive, energy, aerospace, and appliances. Each vertical has dedicated assembly processes and compliance protocols tailored to its regulatory and quality requirements.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-3" data-faq-index="3">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-4">
               <span>How does GPW quote an assembly project?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-4" role="region">
               <p>Every RFQ is reviewed by GPW's engineering team for technical feasibility, DFM considerations, and process requirements before generating a quote. Submit your BOM, specifications, and target volumes through the RFQ form. Engineering responds within 24 hours with a detailed technical review and proposal.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-4" data-faq-index="4">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-5">
               <span>What certifications does GPW hold?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-5" role="region">
               <p>GPW is pursuing IPC-A-610, IPC-A-620, and ISO 9001 certifications. All assembly processes already follow the workmanship criteria defined by these standards. Industry-specific certifications (AS9100, IATF 16949, FDA 21 CFR Part 820 compliance) are structured into the quality framework and pursued as customer programs require.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-5" data-faq-index="5">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-6">
               <span>Where is GPW located?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-6" role="region">
               <p>GPW operates from Monterrey, Nuevo Leon, Mexico — 150 miles from the U.S. border, 2 hours by road. Direct flights connect from Austin, Dallas, Houston, Phoenix, and San Jose. Same timezone as Central U.S. (CST), enabling real-time collaboration with your engineering team. All production is USMCA-compliant for duty-free cross-border shipping.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-6" data-faq-index="6">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-7">
               <span>What is the minimum order quantity?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-7" role="region">
               <p>GPW does not enforce a fixed minimum order quantity. Programs range from pilot builds of 10 units to sustained production of 10,000+ units per month. The engineering team evaluates each project on scope, complexity, and production requirements — not arbitrary volume thresholds.</p>
             </div>
           </div>
@@ -810,6 +810,10 @@
             <a href="../industries/industrial-equipment.html">Industrial Equipment</a>
             <a href="../industries/telecom-hardware.html">Telecommunications</a>
             <a href="../industries/medical-devices.html">Medical Devices</a>
+            <a href="../industries/automotive.html">Automotive</a>
+            <a href="../industries/energy.html">Energy</a>
+            <a href="../industries/aerospace.html">Aerospace</a>
+            <a href="../industries/appliances-white-goods.html">Appliances &amp; White Goods</a>
           </div>
         </div>
         <div>

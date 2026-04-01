@@ -267,7 +267,7 @@
         </button>
         <a href="../" class="nav__link">Home EMS</a>
         <div class="nav__item">
-          <button class="nav__trigger">Services <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg></button>
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">Services <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg></button>
           <div class="nav__dropdown">
             <div class="nav__dropdown-items">
               <a href="box-build-assembly.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg></div><div><span class="nav__dropdown-title">Box Build Integration</span><span class="nav__dropdown-desc">BOM to finished unit — full mechanical + electrical</span></div></a>
@@ -286,7 +286,7 @@
           </div>
         </div>
         <div class="nav__item">
-          <button class="nav__trigger">Industries <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg></button>
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">Industries <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg></button>
           <div class="nav__dropdown">
             <div class="nav__dropdown-items">
               <a href="../industries/industrial-equipment.html" class="nav__dropdown-item"><div class="nav__dropdown-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><div><span class="nav__dropdown-title">Industrial Equipment</span><span class="nav__dropdown-desc">Controls, sub-assemblies, light machinery</span></div></a>
@@ -769,65 +769,65 @@
         </div>
         <div class="faq-split__list">
           <div class="faq-accord reveal" data-faq-index="0">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-1">
               <span>What types of testing does GPW perform?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-1" role="region">
               <p>GPW performs functional testing, burn-in testing, Hi-Pot and ground continuity testing, cable continuity testing, visual inspection per IPC-A-610/A-620, dimensional inspection, and environmental stress testing. Each program receives a product-specific test protocol designed for its requirements -- not a generic checklist.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-1" data-faq-index="1">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-2">
               <span>What is the difference between functional testing and burn-in testing?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-2" role="region">
               <p>Functional testing verifies that a product meets its design specifications at a point in time -- power on, communication, performance parameters. Burn-in testing runs the product under sustained load and elevated temperature for 24-72 hours to identify early-life failures that functional testing alone cannot detect.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-2" data-faq-index="2">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-3">
               <span>Does GPW design custom test fixtures?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-3" role="region">
               <p>Yes. GPW designs and builds test fixtures in-house for each program: functional test beds, cable continuity jigs, burn-in racks, and inspection fixtures. The fixtures are validated during the first article build and maintained as production tooling throughout the program life cycle.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-3" data-faq-index="3">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-4">
               <span>How does GPW handle test failures?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-4" role="region">
               <p>Technicians route failed units to a dedicated rework or diagnostic station. The team documents the failure, performs root cause analysis, and implements corrective action. Reworked units must pass the original test gate before continuing through production. Failure data feeds back into engineering for process improvement.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-4" data-faq-index="4">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-5">
               <span>What documentation comes with tested products?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-5" role="region">
               <p>Every unit carries a serialized test record tied to its serial number. Depending on the program, documentation includes functional test results, burn-in logs, certificates of conformance, device history records (medical), first article inspection reports (aerospace), and SPC data (high-volume programs).</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-5" data-faq-index="5">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-6">
               <span>What certifications apply to GPW's testing services?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-6" role="region">
               <p>GPW is pursuing IPC-A-610 (electronic assembly), IPC-A-620 (cable and wire harness), and ISO 9001 certifications. All testing processes already follow these workmanship standards. Industry-specific certifications -- AS9100 for aerospace, IATF 16949 for automotive -- are pursued as customer programs require.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-6" data-faq-index="6">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-7">
               <span>Can GPW develop test protocols for new products?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-7" role="region">
               <p>Yes. GPW's engineering team designs test protocols from scratch based on the product's electrical specifications, mechanical tolerances, performance criteria, and regulatory requirements. The protocol is reviewed and approved by the customer before production begins. Protocol development is included in the NPI timeline.</p>
             </div>
           </div>
@@ -925,6 +925,10 @@
             <a href="../industries/industrial-equipment.html">Industrial Equipment</a>
             <a href="../industries/telecom-hardware.html">Telecommunications</a>
             <a href="../industries/medical-devices.html">Medical Devices</a>
+            <a href="../industries/automotive.html">Automotive</a>
+            <a href="../industries/energy.html">Energy</a>
+            <a href="../industries/aerospace.html">Aerospace</a>
+            <a href="../industries/appliances-white-goods.html">Appliances &amp; White Goods</a>
           </div>
         </div>
         <div>

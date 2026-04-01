@@ -147,7 +147,7 @@
         "@type": "ListItem",
         "position": 4,
         "name": "Automotive Sub-Assembly",
-        "item": "https://gpw-solutions.com/ems/industries/automotive/"
+        "item": "https://gpw-solutions.com/ems/industries/automotive.html"
       }
     ]
   }
@@ -992,7 +992,7 @@
         <a href="../" class="nav__link">Home EMS</a>
 
         <div class="nav__item">
-          <button class="nav__trigger">
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">
             Services
             <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
           </button>
@@ -1061,7 +1061,7 @@
         </div>
 
         <div class="nav__item">
-          <button class="nav__trigger">
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">
             Industries
             <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
           </button>
@@ -1597,65 +1597,65 @@
         </div>
         <div class="faq-split__list">
           <div class="faq-accord reveal" data-faq-index="0">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-1">
               <span>What types of automotive sub-assemblies does GPW build?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-1" role="region">
               <p>GPW builds wire harnesses, electrical fixtures, bracket-mounted sensor assemblies, control modules, connector panels, cable routing sub-assemblies, and integrated electromechanical modules. Programs range from standalone harnesses with 20 circuits to multi-component assemblies integrating PCBAs, sensors, and mechanical structures for Tier 1 and Tier 2 suppliers.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-1" data-faq-index="1">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-2">
               <span>Does GPW have IATF 16949 certification?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-2" role="region">
               <p>GPW is aligning its quality system with IATF 16949 requirements and has formal certification on the roadmap. Current quality practices include documented work instructions, process FMEAs, control plans, MSA studies, and PPAP capability -- the core elements of an IATF-compliant quality system.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-2" data-faq-index="2">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-3">
               <span>Can GPW support just-in-time delivery to U.S. automotive plants?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-3" role="region">
               <p>Yes. GPW ships from Monterrey by truck, reaching Texas distribution points in 1-2 days. Production scheduling aligns with your release schedule, and delivery frequency adjusts to match line-side consumption rates -- from weekly consolidated shipments to daily deliveries for high-volume programs.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-3" data-faq-index="3">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-4">
               <span>Does GPW perform 100% electrical testing on wire harnesses?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-4" role="region">
               <p>Every harness assembled at GPW passes through 100% electrical testing on a dedicated test fixture. Testing validates continuity on every circuit, isolation between circuits, and correct pin-out at every connector. Test results are recorded and traceable to the individual harness by serial number.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-4" data-faq-index="4">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-5">
               <span>How does GPW handle automotive program launches (PPAP)?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-5" role="region">
               <p>GPW supports the production part approval process with dimensional reports, material certifications, process flow diagrams, control plans, FMEA documentation, and sample submissions. The engineering team works with the OEM through each PPAP phase to ensure all deliverables meet the submission level the customer specifies.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-5" data-faq-index="5">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-6">
               <span>Can GPW manage engineering changes mid-production?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-6" role="region">
               <p>GPW uses a formal engineering change order workflow. The engineering team assesses impact on assembly process, materials, tooling, and test fixtures, then implements changes with documented effectivity that aligns with the OEM's change management timeline. Most changes integrate into production flow without line interruption.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-6" data-faq-index="6">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-7">
               <span>Are GPW sub-assemblies USMCA-compliant?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-7" role="region">
               <p>Yes. Sub-assemblies built at GPW in Monterrey qualify for USMCA preferential tariff treatment. GPW maintains detailed records of component origin and assembly location to support the OEM's USMCA compliance documentation and regional value content calculations required for cross-border shipments.</p>
             </div>
           </div>
@@ -1768,6 +1768,10 @@
             <a href="industrial-equipment.html">Industrial Equipment</a>
             <a href="telecom-hardware.html">Telecommunications</a>
             <a href="medical-devices.html">Medical Devices</a>
+            <a href="automotive.html">Automotive</a>
+            <a href="energy.html">Energy</a>
+            <a href="aerospace.html">Aerospace</a>
+            <a href="appliances-white-goods.html">Appliances &amp; White Goods</a>
           </div>
         </div>
 

@@ -147,7 +147,7 @@
         "@type": "ListItem",
         "position": 4,
         "name": "Industrial Equipment Assembly",
-        "item": "https://gpw-solutions.com/ems/industries/industrial-equipment/"
+        "item": "https://gpw-solutions.com/ems/industries/industrial-equipment.html"
       }
     ]
   }
@@ -995,7 +995,7 @@
         <a href="../" class="nav__link">Home EMS</a>
 
         <div class="nav__item">
-          <button class="nav__trigger">
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">
             Services
             <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
           </button>
@@ -1064,7 +1064,7 @@
         </div>
 
         <div class="nav__item">
-          <button class="nav__trigger">
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">
             Industries
             <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
           </button>
@@ -1591,65 +1591,65 @@
         </div>
         <div class="faq-split__list">
           <div class="faq-accord reveal" data-faq-index="0">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-1">
               <span>What types of industrial equipment does GPW assemble?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-1" role="region">
               <p>GPW assembles control panels, motor-driven machinery sub-assemblies, instrumentation enclosures, operator interface stations, and complete equipment builds that integrate mechanical, electrical, and pneumatic systems. Programs range from simple single-panel builds to multi-system equipment integrations with hundreds of wired connections and multiple sub-assembly stages.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-1" data-faq-index="1">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-2">
               <span>Can GPW work from our existing engineering documentation?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-2" role="region">
               <p>Yes. GPW works from your electrical schematics, mechanical drawings, BOMs, and test specifications. During program onboarding, GPW's engineering team reviews your documentation, identifies any gaps or ambiguities, and develops internal work instructions and visual aids that translate your design intent into repeatable assembly steps.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-2" data-faq-index="2">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-3">
               <span>How does GPW handle multiple product variants within a single program?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-3" role="region">
               <p>GPW manages variant control through configuration-specific BOMs, work instructions, and test protocols. Each variant is assigned a unique configuration identifier that links the correct documentation set to the production order. Operators work from variant-specific instructions -- reducing the risk of cross-configuration errors that occur when multiple variants share a single generic build document.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-3" data-faq-index="3">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-4">
               <span>What is the typical lead time for a new industrial equipment program?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-4" role="region">
               <p>Program onboarding -- including DFM review, process planning, fixture development, and first article builds -- typically takes 3-6 weeks depending on product complexity. Production ramp follows first article approval. For programs with stable designs and available materials, GPW can compress onboarding to meet aggressive launch timelines.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-4" data-faq-index="4">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-5">
               <span>Does GPW provide UL 508A-listed control panels?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-5" role="region">
               <p>GPW is pursuing UL 508A listing for industrial control panel assembly. In the interim, GPW builds panels to UL 508A requirements and works with customers who maintain their own UL listings. GPW's assembly process, wire management practices, and documentation are aligned with UL 508A standards so that panels meet listing requirements at the point of assembly.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-5" data-faq-index="5">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-6">
               <span>How does GPW ensure consistent quality across production runs?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-6" role="region">
               <p>Every program operates under a documented process plan with defined quality gates at each assembly stage. Incoming materials are inspected against approved specifications. In-process checks verify mechanical assembly, electrical connections, and component placement before the unit advances to the next stage. Final testing follows the customer's test protocol, and every unit ships with a traceable quality record.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-6" data-faq-index="6">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-7">
               <span>Can GPW scale production volume up or down based on demand?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-7" role="region">
               <p>Yes. GPW's staffing and production model is designed for volume flexibility. Programs can scale from low-volume initial production to high-volume runs without requiring new capital investment or long-lead capacity commitments. GPW manages this through cross-trained operators, configurable workstations, and a capacity planning process that aligns labor allocation with customer demand forecasts.</p>
             </div>
           </div>
@@ -1762,6 +1762,10 @@
             <a href="industrial-equipment.html">Industrial Equipment</a>
             <a href="telecom-hardware.html">Telecommunications</a>
             <a href="medical-devices.html">Medical Devices</a>
+            <a href="automotive.html">Automotive</a>
+            <a href="energy.html">Energy</a>
+            <a href="aerospace.html">Aerospace</a>
+            <a href="appliances-white-goods.html">Appliances &amp; White Goods</a>
           </div>
         </div>
 

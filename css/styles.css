@@ -2392,6 +2392,16 @@ p { margin-bottom: var(--space-md); }
   .footer__legal {
     justify-content: center;
   }
+  .footer__legal a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .footer__bottom span {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
 }
 
 @media (max-width: 480px) {

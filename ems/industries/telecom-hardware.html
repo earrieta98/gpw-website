@@ -147,7 +147,7 @@
         "@type": "ListItem",
         "position": 4,
         "name": "Telecom Hardware Assembly",
-        "item": "https://gpw-solutions.com/ems/industries/telecom-hardware/"
+        "item": "https://gpw-solutions.com/ems/industries/telecom-hardware.html"
       }
     ]
   }
@@ -388,7 +388,7 @@
         <a href="../" class="nav__link">Home EMS</a>
 
         <div class="nav__item">
-          <button class="nav__trigger">
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">
             Services
             <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
           </button>
@@ -457,7 +457,7 @@
         </div>
 
         <div class="nav__item">
-          <button class="nav__trigger">
+          <button class="nav__trigger" aria-expanded="false" aria-haspopup="true">
             Industries
             <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
           </button>
@@ -992,65 +992,65 @@
         </div>
         <div class="faq-split__list">
           <div class="faq-accord reveal" data-faq-index="0">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-1">
               <span>What types of telecom hardware does GPW assemble?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-1" role="region">
               <p>GPW assembles telecom cabinets, network modules, shelf assemblies, fiber distribution frames, power distribution units, and system-level equipment builds. Programs range from plug-in modules with a single PCBA to fully integrated outdoor cabinets with power, thermal, and fiber management systems. If it involves electromechanical integration for carrier network deployment, GPW builds it.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-1" data-faq-index="1">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-2">
               <span>Does GPW handle both indoor and outdoor telecom equipment?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-2" role="region">
               <p>Yes. GPW assembles equipment rated for indoor central office environments and outdoor deployments requiring NEMA 3R, NEMA 4, or IP-rated enclosures. Outdoor cabinet assembly includes environmental sealing verification, UV-rated component selection, and thermal cycling considerations specific to exposed installation sites.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-2" data-faq-index="2">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-3">
               <span>What is GPW's experience with fiber management in telecom assemblies?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-3" role="region">
               <p>GPW installs and validates fiber management systems including splice trays, patch panels, fiber routing guides, and cable strain relief. Every fiber path follows the OEM's bend radius specification, and optical loss testing confirms that each connection meets the customer's attenuation requirements before the unit ships.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-3" data-faq-index="3">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-4">
               <span>Can GPW support rapid production scaling for carrier rollout programs?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-4" role="region">
               <p>Yes. GPW scales production to match carrier deployment timelines. Staffing, workstation configuration, and material procurement adjust to support volume ramps -- from initial production at 50 units per month to sustained volumes of 1,000+ units during peak rollout periods. No minimum volume commitments restrict your ability to scale.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-4" data-faq-index="4">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-5">
               <span>Does GPW manage ESD-sensitive component handling for telecom modules?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-5" role="region">
               <p>GPW maintains ESD-controlled workstations with continuous monitoring for all programs involving sensitive electronic components. Every operator follows documented ESD protocols, and compliance is verified through regular audits. ESD protection covers the entire assembly flow from incoming inspection through final packaging.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-5" data-faq-index="5">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-6">
               <span>How does GPW handle engineering changes during production?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-6" role="region">
               <p>GPW uses a formal engineering change order (ECO) workflow. The engineering team assesses the impact on assembly sequence, materials, fixtures, and test protocols, then updates documentation and implements the change with defined effectivity. Most changes require no production interruption -- the transition integrates into normal production flow.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-6" data-faq-index="6">
-            <button class="faq-accord__trigger" aria-expanded="false">
+            <button class="faq-accord__trigger" aria-expanded="false" aria-controls="faq-panel-7">
               <span>How are finished telecom assemblies shipped to the U.S.?</span>
               <span class="faq-accord__icon"></span>
             </button>
-            <div class="faq-accord__panel">
+            <div class="faq-accord__panel" id="faq-panel-7" role="region">
               <p>Assemblies ship by truck from Monterrey, reaching Texas distribution points in 1-2 days. GPW designs custom packaging for each product's weight, fragility, and fiber sensitivity, handles export documentation, and provides USMCA-compliant paperwork for preferential tariff treatment on cross-border shipments.</p>
             </div>
           </div>
@@ -1163,6 +1163,10 @@
             <a href="industrial-equipment.html">Industrial Equipment</a>
             <a href="telecom-hardware.html">Telecommunications</a>
             <a href="medical-devices.html">Medical Devices</a>
+            <a href="automotive.html">Automotive</a>
+            <a href="energy.html">Energy</a>
+            <a href="aerospace.html">Aerospace</a>
+            <a href="appliances-white-goods.html">Appliances &amp; White Goods</a>
           </div>
         </div>
 
