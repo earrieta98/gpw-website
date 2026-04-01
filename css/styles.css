@@ -95,6 +95,25 @@
   --transition-reveal: 800ms var(--ease-out-expo);
 }
 
+/* --- Skip to Main Content --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-md);
+  z-index: 9999;
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--teal);
+  color: var(--white);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+.skip-link:focus {
+  top: var(--space-md);
+}
+
 /* --- Reset & Base --- */
 *,
 *::before,
