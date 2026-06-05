@@ -1,5 +1,8 @@
 # GPW — Website Project
 
+> **Contexto general de la empresa:** Ver `../CLAUDE.md` en la raiz de GLOBAL PRECISION WORKS.
+> Este archivo solo cubre el proyecto del sitio web.
+
 ## Project Overview
 Building the website for Global Precision Works (GPW), a B2B manufacturing company in Monterrey, Mexico. Two divisions under one domain (gpw-solutions.com):
 
@@ -55,15 +58,19 @@ U.S. OEM procurement/supply chain decision-makers looking to nearshore electrome
 ## Key Project Files
 - `PROCESO-DE-TRABAJO-WEB-v3.md` — Master process document with all 5 phases, tool inventory, prompts
 - `PROCESO-DE-TRABAJO-GPW-v3.docx` — Same content in Word format
-- `product-marketing-context.md` — Phase 0 deliverable: personas, pain points, competitive landscape, differentiation
-- `MANUAL_IDENTIDAD_GPW_2025.docx` — Full brand identity manual
+- `product-marketing-context.md` — Phase 0 deliverable (also in `../03_Marketing/Estrategia/`)
 - `02-research/competitive-analysis-ems-mexico.md` — 13 EMS competitors analyzed
 - `02-research/keyword-research-ems-nearshoring.xlsx` — Keyword data (57 keywords, 5 sheets)
 - `02-research/site-architecture-gpw.md` — Site structure (31 pages, 8 industries, updated)
-- `03-estrategia/content-strategy-gpw.md` — Phase 2.1: Content Strategy (2,073 lines, complete)
-- `03-estrategia/content-strategy-gpw.docx` — Same content in branded DOCX
-- `03-estrategia/ai-seo-strategy-gpw.md` — Phase 2.2: AI SEO Strategy (2,523 lines, complete)
-- `03-estrategia/ai-seo-strategy-gpw.docx` — Same content in branded DOCX
+- `03-estrategia/` — Content strategy, AI SEO strategy, copywriting guide (also in `../03_Marketing/Estrategia/`)
+
+## Key Files in Other Folders (cross-reference)
+- Brand manual: `../04_Branding y Diseño/Branding GPW/ENTREGABLES - GPW 01/BRAND GUIDE/MANUAL_IDENTIDAD_GPW_2025.docx`
+- Marketing strategy: `../03_Marketing/Estrategia/` (content strategy, AI SEO, copywriting guide, product marketing context)
+- Factory layout: `../05_Operaciones/Factory Layout/`
+- Manufacturing research: `../05_Operaciones/Investigacion Manufactura/`
+- Investor deck: `../02_Finanzas e Inversion/Inversion/Investor Deck/`
+- Sales leave-behinds: `../01_Ventas/Materiales de Venta/`
 
 ## Project Phases & Current Status
 
@@ -195,7 +202,7 @@ At the START of every session, BEFORE asking the user anything:
 4. Do NOT ask "where did we leave off?" — the answer is always here in this file
 
 ## Current Work Status (update at the END of every work session)
-**Last updated:** 2026-03-23
+**Last updated:** 2026-03-31
 
 ### Completed (Phase 3 — Copy Creation)
 - A — Core Pages (5/5): Corporate Home, EMS Division Home, Request Quote, About EMS, Services Hub
@@ -205,6 +212,17 @@ At the START of every session, BEFORE asking the user anything:
 ### Next Up
 - D — Comparison Pages (0/3): Nearshore vs Offshore, Mid-Market vs Mega-EMS, Agile vs Traditional EMS
 - E — Blog posts (Phase 3 stretch goal)
+
+### Pending Site Fixes (from UI/UX audit 2026-03-31)
+- [ ] **Replace phone placeholder** — `+52 (81) XXXX-XXXX` appears in 15 HTML files (footers of all EMS pages). Replace with real number when available.
+- [ ] **Add Capabilities Brochure PDF** — Button was removed from homepage. Re-add when PDF is ready.
+- [ ] **Replace image placeholders with real photos** — Multiple pages have gray boxes with "Photo: [description]" text. Worst: AI Server Rack page (7 placeholders).
+- [ ] **Remaining UI/UX fixes from audit** — Accessibility improvements (aria attributes, fieldset/legend on forms, skip-nav link, <main> landmark), footer showing all 8 industries, extract inline CSS to external files. See session log 2026-03-31 for full list.
+
+### Git Branch Notes
+- **`main`** = deployment branch (cPanel pulls from here). Website files at root level.
+- **`master`** = project branch (copy, strategy, research files). Website files inside `05-website/`.
+- **NEVER switch cPanel to `master`** — it will break the site (different directory structure).
 
 ### Session Log
 - 2026-03-23: Wrote AI & Server Rack Assembly industry page copy (01-ai-server-rack-assembly.md, ~3,400 words). Updated CLAUDE.md with Session Start Protocol and Current Work Status tracking.
@@ -216,3 +234,19 @@ At the START of every session, BEFORE asking the user anything:
 - 2026-03-23: Wrote Energy Sector Equipment Assembly industry page copy (06-energy-equipment-assembly.md + .docx, ~3,400 words). Checklist: 1 fix (all 7 FAQ answers expanded from 29-39 to 40-55 words).
 - 2026-03-23: Wrote Aerospace Sub-Assemblies industry page copy (07-aerospace-assembly.md + .docx, ~3,800 words). Checklist: 1 fix (passive voice in USMCA line).
 - 2026-03-23: Wrote Appliances & White Goods Assembly industry page copy (08-appliance-assembly.md + .docx, ~3,100 words). Checklist: 1 fix (FAQ Q5 expanded from 39 to 46 words). ALL 8 INDUSTRY PAGES COMPLETE.
+- 2026-03-31: Improved SEO meta tags (title, description, OG, Twitter) across all 22 HTML pages on main branch. Added favicon sizes + apple-touch-icon. Set up Google Search Console (verified via HTML file). Submitted sitemap.
+- 2026-03-31: Ran full UI/UX audit (code + visual via Chrome DevTools). Found 24 issues across 3 severity levels. Fixed 5 critical issues: CSS --medium-gray variable, LinkedIn link on RFQ, sameAs schema, removed broken brochure button. Pending: phone number (15 files), image placeholders, accessibility improvements. Added "Git Branch Notes" to CLAUDE.md to prevent cPanel deploy breakage.
+
+## Agent skills
+
+### Issue tracker
+
+Issues and PRDs live as markdown files under `.scratch/<feature-slug>/` in this repo (`PRD.md` + `issues/NN-slug.md`). See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Canonical defaults (needs-triage, needs-info, ready-for-agent, ready-for-human, wontfix), recorded as a `Status:` line in each issue file. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: one `CONTEXT.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.

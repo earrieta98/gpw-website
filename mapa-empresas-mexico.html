@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecosistema Industrial de México — GPW</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Trirong:wght@300;400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0e14;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .canvas {
+    width: 1920px;
+    height: 1080px;
+    background: linear-gradient(160deg, #0c151e 0%, #11222e 35%, #152b38 60%, #0c151e 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Dot grid texture */
+  .canvas::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(35, 85, 90, 0.06) 1px, transparent 0);
+    background-size: 32px 32px;
+    z-index: 0;
+  }
+
+  /* Ambient glow behind map */
+  .glow-mty {
+    position: absolute;
+    width: 350px; height: 350px;
+    top: 220px; left: 780px;
+    background: radial-gradient(ellipse, rgba(237, 131, 94, 0.06) 0%, transparent 70%);
+    z-index: 0;
+  }
+  .glow-gdl {
+    position: absolute;
+    width: 350px; height: 350px;
+    top: 380px; left: 620px;
+    background: radial-gradient(ellipse, rgba(173, 207, 145, 0.06) 0%, transparent 70%);
+    z-index: 0;
+  }
+  .glow-qro {
+    position: absolute;
+    width: 350px; height: 350px;
+    top: 350px; left: 750px;
+    background: radial-gradient(ellipse, rgba(91, 164, 201, 0.06) 0%, transparent 70%);
+    z-index: 0;
+  }
+
+  /* Header */
+  .header {
+    position: absolute;
+    top: 52px;
+    left: 80px;
+    z-index: 10;
+  }
+
+  .header-label {
+    font-family: 'Trirong', serif;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #ED835E;
+    margin-bottom: 10px;
+  }
+
+  .header-title {
+    font-size: 36px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+
+  .header-title span {
+    color: #3a8a8f;
+  }
+
+  .header-sub {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    margin-top: 12px;
+    letter-spacing: 0.3px;
+  }
+
+  /* Stats row under header */
+  .stats-row {
+    position: absolute;
+    top: 190px;
+    left: 80px;
+    z-index: 10;
+    display: flex;
+    gap: 40px;
+  }
+
+  .stat-item {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .stat-number {
+    font-size: 32px;
+    font-weight: 900;
+    color: #ffffff;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(255,255,255,0.08);
+    align-self: center;
+  }
+
+  /* Map container — centered */
+  .map-container {
+    position: absolute;
+    top: 120px;
+    left: 440px;
+    width: 700px;
+    height: 540px;
+    z-index: 2;
+  }
+
+  .mexico-map {
+    width: 100%;
+    height: 100%;
+  }
+
+  .mexico-map .land {
+    fill: rgba(35, 85, 90, 0.18);
+    stroke: rgba(35, 85, 90, 0.35);
+    stroke-width: 1.2;
+    stroke-linejoin: round;
+  }
+
+  /* City markers with labels */
+  .city-marker {
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .marker-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 3;
+    flex-shrink: 0;
+  }
+
+  .marker-dot::before {
+    content: '';
+    position: absolute;
+    top: -6px; left: -6px;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid;
+    animation: pulse 3s ease-out infinite;
+  }
+
+  .marker-dot::after {
+    content: '';
+    position: absolute;
+    top: -12px; left: -12px;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid;
+    animation: pulse 3s ease-out 0.8s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    100% { transform: scale(2); opacity: 0; }
+  }
+
+  .marker-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  }
+
+  /* Monterrey */
+  .city-monterrey { top: 170px; left: 330px; }
+  .city-monterrey .marker-dot { background: #ED835E; box-shadow: 0 0 24px rgba(237,131,94,0.5); }
+  .city-monterrey .marker-dot::before { border-color: rgba(237,131,94,0.25); }
+  .city-monterrey .marker-dot::after { border-color: rgba(237,131,94,0.12); }
+  .city-monterrey .marker-label { color: #ED835E; }
+
+  /* Guadalajara */
+  .city-guadalajara { top: 310px; left: 230px; }
+  .city-guadalajara .marker-dot { background: #ADCF91; box-shadow: 0 0 24px rgba(173,207,145,0.5); }
+  .city-guadalajara .marker-dot::before { border-color: rgba(173,207,145,0.25); }
+  .city-guadalajara .marker-dot::after { border-color: rgba(173,207,145,0.12); }
+  .city-guadalajara .marker-label { color: #ADCF91; }
+
+  /* Queretaro */
+  .city-queretaro { top: 300px; left: 315px; }
+  .city-queretaro .marker-dot { background: #5BA4C9; box-shadow: 0 0 24px rgba(91,164,201,0.5); }
+  .city-queretaro .marker-dot::before { border-color: rgba(91,164,201,0.25); }
+  .city-queretaro .marker-dot::after { border-color: rgba(91,164,201,0.12); }
+  .city-queretaro .marker-label { color: #5BA4C9; }
+
+  /* Connection lines SVG */
+  .connections {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .conn-line {
+    stroke-dasharray: 3 5;
+    stroke-width: 1;
+    fill: none;
+  }
+
+  /* Company cards */
+  .company-card {
+    position: absolute;
+    z-index: 8;
+    background: rgba(12, 20, 30, 0.94);
+    border: 1px solid rgba(35, 85, 90, 0.3);
+    border-radius: 10px;
+    padding: 20px 24px;
+    backdrop-filter: blur(12px);
+    width: 320px;
+  }
+
+  .company-card::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 24px; right: 24px;
+    height: 2px;
+    border-radius: 0 0 2px 2px;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+
+  .card-city {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .card-state {
+    font-family: 'Trirong', serif;
+    font-size: 10px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.5px;
+  }
+
+  .card-speciality {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+
+  .company-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+  }
+
+  .company-grid li {
+    font-size: 12.5px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.78);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 3px 0;
+  }
+
+  .company-grid li .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .company-grid li .sector {
+    font-size: 9px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.25);
+    margin-left: auto;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    display: none;
+  }
+
+  /* Single column version for cleaner look */
+  .company-single {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .company-single li {
+    font-size: 12.5px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.78);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .company-single li .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+
+  .company-single li .sector {
+    font-size: 9px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.22);
+    margin-left: auto;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  /* Monterrey card — top right */
+  .card-monterrey {
+    top: 55px;
+    right: 70px;
+  }
+  .card-monterrey::before { background: #ED835E; }
+  .card-monterrey .card-city { color: #ED835E; }
+  .card-monterrey .card-speciality {
+    background: rgba(237, 131, 94, 0.08);
+    color: rgba(237, 131, 94, 0.8);
+    border: 1px solid rgba(237, 131, 94, 0.15);
+  }
+  .card-monterrey .dot { background: #ED835E; }
+
+  /* Guadalajara card — bottom left */
+  .card-guadalajara {
+    bottom: 90px;
+    left: 70px;
+  }
+  .card-guadalajara::before { background: #ADCF91; }
+  .card-guadalajara .card-city { color: #ADCF91; }
+  .card-guadalajara .card-speciality {
+    background: rgba(173, 207, 145, 0.08);
+    color: rgba(173, 207, 145, 0.8);
+    border: 1px solid rgba(173, 207, 145, 0.15);
+  }
+  .card-guadalajara .dot { background: #ADCF91; }
+
+  /* Queretaro card — bottom right */
+  .card-queretaro {
+    bottom: 90px;
+    right: 70px;
+  }
+  .card-queretaro::before { background: #5BA4C9; }
+  .card-queretaro .card-city { color: #5BA4C9; }
+  .card-queretaro .card-speciality {
+    background: rgba(91, 164, 201, 0.08);
+    color: rgba(91, 164, 201, 0.8);
+    border: 1px solid rgba(91, 164, 201, 0.15);
+  }
+  .card-queretaro .dot { background: #5BA4C9; }
+
+  /* Brand footer */
+  .brand-footer {
+    position: absolute;
+    bottom: 32px;
+    left: 80px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-logo {
+    font-size: 18px;
+    font-weight: 900;
+    color: #23555A;
+    letter-spacing: 3px;
+  }
+
+  .brand-divider {
+    width: 1px;
+    height: 16px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .brand-tagline {
+    font-family: 'Trirong', serif;
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.8px;
+  }
+
+  /* Corner decoration */
+  .corner-deco {
+    position: absolute;
+    z-index: 1;
+  }
+  .corner-deco.top-right {
+    top: 30px; right: 30px;
+    width: 80px; height: 80px;
+    border-top: 1px solid rgba(35, 85, 90, 0.15);
+    border-right: 1px solid rgba(35, 85, 90, 0.15);
+  }
+  .corner-deco.bottom-left {
+    bottom: 30px; left: 30px;
+    width: 80px; height: 80px;
+    border-bottom: 1px solid rgba(35, 85, 90, 0.15);
+    border-left: 1px solid rgba(35, 85, 90, 0.15);
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <!-- Glows -->
+  <div class="glow-mty"></div>
+  <div class="glow-gdl"></div>
+  <div class="glow-qro"></div>
+
+  <!-- Corner decorations -->
+  <div class="corner-deco top-right"></div>
+  <div class="corner-deco bottom-left"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-label">Industrial Ecosystem</div>
+    <div class="header-title">México's Manufacturing<br><span>Powerhouse Cities</span></div>
+    <div class="header-sub">Key OEMs &amp; global players across three strategic hubs</div>
+  </div>
+
+  <!-- Stats under header -->
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Strategic<br>Hubs</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-number">24+</div>
+      <div class="stat-label">Global<br>OEMs</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-number">8</div>
+      <div class="stat-label">Industry<br>Verticals</div>
+    </div>
+  </div>
+
+  <!-- Mexico Map SVG -->
+  <div class="map-container">
+    <svg class="mexico-map" viewBox="0 0 700 540" xmlns="http://www.w3.org/2000/svg">
+      <!-- More accurate Mexico mainland -->
+      <path class="land" d="
+        M 155,65 L 175,60 200,58 230,62 260,58 290,64 320,60 350,66 380,62 410,68 435,64 460,72 480,68 500,75
+        C 510,80 515,90 512,105
+        L 508,120 514,138 518,158 522,178
+        C 526,195 532,210 538,225
+        L 544,245 550,265 554,285 556,305
+        C 554,322 548,335 540,345
+        L 535,355 540,370 548,385
+        C 545,400 538,415 525,425
+        L 510,435 490,440 470,442 450,438 430,442 410,445 390,443
+        L 370,438 350,435 330,437 310,440
+        C 295,438 280,432 270,420
+        L 260,405 255,385 248,365 240,345
+        C 232,328 224,310 218,292
+        L 212,272 205,252 198,232
+        C 192,215 185,198 178,180
+        L 168,160 160,140 155,118 152,95
+        C 153,82 154,72 155,65 Z
+      "/>
+      <!-- Baja California -->
+      <path class="land" d="
+        M 85,68 L 105,62 125,65 142,72 152,85 155,100 152,118
+        C 148,135 140,155 132,175
+        L 122,200 112,228 105,258 100,285 102,305
+        C 100,318 94,325 85,322
+        L 76,315 70,298 68,275 72,250 78,225
+        C 82,205 85,185 86,165
+        L 85,140 82,115 84,92 85,68 Z
+      "/>
+      <!-- Yucatan -->
+      <path class="land" d="
+        M 510,340 L 530,332 550,325 570,322 590,325
+        C 608,330 622,340 630,352
+        L 635,365 630,378 620,388
+        C 608,395 595,398 580,395
+        L 560,390 545,385 535,375 525,360 515,348 510,340 Z
+      "/>
+    </svg>
+
+    <!-- City markers with labels -->
+    <div class="city-marker city-monterrey">
+      <div class="marker-dot"></div>
+      <div class="marker-label">MTY</div>
+    </div>
+    <div class="city-marker city-guadalajara">
+      <div class="marker-dot"></div>
+      <div class="marker-label">GDL</div>
+    </div>
+    <div class="city-marker city-queretaro">
+      <div class="marker-dot"></div>
+      <div class="marker-label">QRO</div>
+    </div>
+  </div>
+
+  <!-- Connection lines -->
+  <svg class="connections" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <!-- MTY marker (~790,290) to MTY card (right:70 → x≈1530, top:55 → y≈150) -->
+    <path class="conn-line" d="M 800,290 C 1000,280 1300,200 1530,150" stroke="rgba(237,131,94,0.25)"/>
+    <!-- GDL marker (~700,430) to GDL card (left:70 → x≈390, bottom:90 → y≈750) -->
+    <path class="conn-line" d="M 700,430 C 550,500 420,600 390,720" stroke="rgba(173,207,145,0.25)"/>
+    <!-- QRO marker (~780,420) to QRO card (right:70 → x≈1530, bottom:90 → y≈750) -->
+    <path class="conn-line" d="M 785,420 C 1000,500 1300,600 1530,720" stroke="rgba(91,164,201,0.25)"/>
+  </svg>
+
+  <!-- Monterrey Card -->
+  <div class="company-card card-monterrey">
+    <div class="card-header">
+      <div>
+        <div class="card-city">Monterrey</div>
+        <div class="card-state">Nuevo León</div>
+      </div>
+    </div>
+    <div class="card-speciality">Manufacturing &amp; Heavy Industry</div>
+    <ul class="company-single">
+      <li><span class="dot"></span>CEMEX<span class="sector">Materials</span></li>
+      <li><span class="dot"></span>John Deere<span class="sector">Industrial</span></li>
+      <li><span class="dot"></span>Whirlpool<span class="sector">Appliances</span></li>
+      <li><span class="dot"></span>Mercedes-Benz<span class="sector">Automotive</span></li>
+      <li><span class="dot"></span>KIA Motors<span class="sector">Automotive</span></li>
+      <li><span class="dot"></span>Caterpillar<span class="sector">Industrial</span></li>
+      <li><span class="dot"></span>Siemens<span class="sector">Energy</span></li>
+      <li><span class="dot"></span>Pratt &amp; Whitney<span class="sector">Aerospace</span></li>
+    </ul>
+  </div>
+
+  <!-- Guadalajara Card -->
+  <div class="company-card card-guadalajara">
+    <div class="card-header">
+      <div>
+        <div class="card-city">Guadalajara</div>
+        <div class="card-state">Jalisco — Mexico's Silicon Valley</div>
+      </div>
+    </div>
+    <div class="card-speciality">Tech &amp; Electronics Hub</div>
+    <ul class="company-single">
+      <li><span class="dot"></span>Intel<span class="sector">Semiconductors</span></li>
+      <li><span class="dot"></span>Oracle<span class="sector">Cloud</span></li>
+      <li><span class="dot"></span>Flex<span class="sector">EMS</span></li>
+      <li><span class="dot"></span>Jabil<span class="sector">EMS</span></li>
+      <li><span class="dot"></span>Sanmina<span class="sector">EMS</span></li>
+      <li><span class="dot"></span>Bosch<span class="sector">Electronics</span></li>
+      <li><span class="dot"></span>IBM<span class="sector">Technology</span></li>
+      <li><span class="dot"></span>Celestica<span class="sector">EMS</span></li>
+    </ul>
+  </div>
+
+  <!-- Queretaro Card -->
+  <div class="company-card card-queretaro">
+    <div class="card-header">
+      <div>
+        <div class="card-city">Querétaro</div>
+        <div class="card-state">Querétaro — Aerospace Capital</div>
+      </div>
+    </div>
+    <div class="card-speciality">Aerospace &amp; Automotive</div>
+    <ul class="company-single">
+      <li><span class="dot"></span>Airbus<span class="sector">Aerospace</span></li>
+      <li><span class="dot"></span>Bombardier<span class="sector">Aerospace</span></li>
+      <li><span class="dot"></span>Safran<span class="sector">Aerospace</span></li>
+      <li><span class="dot"></span>GE Aerospace<span class="sector">Aviation</span></li>
+      <li><span class="dot"></span>Continental<span class="sector">Automotive</span></li>
+      <li><span class="dot"></span>BMW<span class="sector">Automotive</span></li>
+      <li><span class="dot"></span>Magna<span class="sector">Auto Parts</span></li>
+      <li><span class="dot"></span>Michelin<span class="sector">Automotive</span></li>
+    </ul>
+  </div>
+
+  <!-- Brand footer -->
+  <div class="brand-footer">
+    <div class="brand-logo">GPW</div>
+    <div class="brand-divider"></div>
+    <div class="brand-tagline">Global Precision Works — Monterrey, México</div>
+  </div>
+</div>
+</body>
+</html>

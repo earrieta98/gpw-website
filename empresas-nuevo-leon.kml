@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+  <name>Ecosistema Industrial — Nuevo León</name>
+  <description>Principales OEMs y proveedores Tier 1 con operaciones en el área metropolitana de Monterrey. Coordenadas basadas en direcciones verificadas.</description>
+
+  <!-- STYLES BY SECTOR -->
+  <Style id="auto">
+    <IconStyle><scale>1.3</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle>
+    <LabelStyle><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="aero">
+    <IconStyle><scale>1.3</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/orange-circle.png</href></Icon></IconStyle>
+    <LabelStyle><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="appliance">
+    <IconStyle><scale>1.3</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/ylw-circle.png</href></Icon></IconStyle>
+    <LabelStyle><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="ems">
+    <IconStyle><scale>1.3</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href></Icon></IconStyle>
+    <LabelStyle><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="industrial">
+    <IconStyle><scale>1.3</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/purple-circle.png</href></Icon></IconStyle>
+    <LabelStyle><scale>0.85</scale></LabelStyle>
+  </Style>
+  <Style id="vehicle">
+    <IconStyle><scale>1.3</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/blu-circle.png</href></Icon></IconStyle>
+    <LabelStyle><scale>0.85</scale></LabelStyle>
+  </Style>
+
+  <!-- ============ AUTOMOTRIZ (Rojo) ============ -->
+  <Folder>
+    <name>Automotriz</name>
+    <description>OEMs y Tier 1 automotrices</description>
+
+    <Placemark>
+      <name>Kia Motors</name>
+      <description><![CDATA[<b>Kia Motors Assembly Plant</b><br/>Blvd. KIA No. 777, Pesquería, NL 66679<br/>Corea del Sur<br/>Capacidad: 400K vehículos/año, 7,000 empleados]]></description>
+      <styleUrl>#auto</styleUrl>
+      <Point><coordinates>-100.1100,25.8800,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Mercedes-Benz / Daimler</name>
+      <description><![CDATA[<b>Daimler Buses Manufacturing</b><br/>Carretera a García Km 6.5, García, NL 66000<br/>Alemania<br/>Autobuses y vehículos comerciales]]></description>
+      <styleUrl>#auto</styleUrl>
+      <Point><coordinates>-100.2800,25.7500,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Nemak (HQ Global)</name>
+      <description><![CDATA[<b>Nemak — Corporativo Global</b><br/>Libramiento Arco Vial Km 3.8, García, NL<br/>México / Global Tier 1<br/>Componentes de aluminio: bloques de motor, cabezas de cilindro. Top 60 autopartes global.]]></description>
+      <styleUrl>#auto</styleUrl>
+      <Point><coordinates>-100.2600,25.7400,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Metalsa (HQ)</name>
+      <description><![CDATA[<b>Metalsa — Corporativo y Planta</b><br/>Carretera Miguel Alemán Km 16.5, Apodaca, NL 66633<br/>México / Global Tier 1<br/>Chasis, bastidores y componentes estructurales para OEMs globales.]]></description>
+      <styleUrl>#auto</styleUrl>
+      <Point><coordinates>-100.2013,25.7487,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Ficosa</name>
+      <description><![CDATA[<b>Ficosa North America</b><br/>Carretera MTY-Colombia Km 10.5, Salinas Victoria, NL 65500<br/>España<br/>Componentes automotrices: espejos, sistemas de freno.]]></description>
+      <styleUrl>#auto</styleUrl>
+      <Point><coordinates>-100.2950,25.8100,0</coordinates></Point>
+    </Placemark>
+  </Folder>
+
+  <!-- ============ AEROESPACIAL (Naranja) ============ -->
+  <Folder>
+    <name>Aeroespacial</name>
+    <description>Manufactura y componentes aeroespaciales</description>
+
+    <Placemark>
+      <name>PCC Aerostructures</name>
+      <description><![CDATA[<b>PCC Aerostructures Monterrey</b><br/>Blvd. TLC No. 150, Parque Industrial FINSA, Apodaca, NL 66629<br/>USA<br/>Ensambles estructurales, sheet metal, Nadcap certified. 85,000 ft².]]></description>
+      <styleUrl>#aero</styleUrl>
+      <Point><coordinates>-100.1550,25.7850,0</coordinates></Point>
+    </Placemark>
+  </Folder>
+
+  <!-- ============ ELECTRODOMÉSTICOS (Amarillo) ============ -->
+  <Folder>
+    <name>Electrodomésticos</name>
+    <description>Manufactura de línea blanca y electrodomésticos</description>
+
+    <Placemark>
+      <name>Whirlpool (Planta SUPSA)</name>
+      <description><![CDATA[<b>Whirlpool Mexico — Planta SUPSA</b><br/>Antigua Carretera a Roma Km 9, Col. El Milagro, Apodaca, NL 66634<br/>USA<br/>~10,500 empleados en el complejo.]]></description>
+      <styleUrl>#appliance</styleUrl>
+      <Point><coordinates>-100.1650,25.7750,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>BSH / Bosch-Siemens</name>
+      <description><![CDATA[<b>BSH Electrodomésticos — Planta de Refrigeradores</b><br/>Salinas Victoria, NL<br/>Alemania<br/>1,500 empleados, inversión $260M USD (2024). Planta carbono-neutral. 300K unidades/año.]]></description>
+      <styleUrl>#appliance</styleUrl>
+      <Point><coordinates>-100.3050,25.8400,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>LG Electronics</name>
+      <description><![CDATA[<b>LG Electronics México</b><br/>Av. Industrias No. 180, Parque Industrial Kronos, Apodaca, NL 66603<br/>Corea del Sur<br/>Compresores y refrigeración.]]></description>
+      <styleUrl>#appliance</styleUrl>
+      <Point><coordinates>-100.1900,25.7500,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Mabe</name>
+      <description><![CDATA[<b>Mabe — Planta Monterrey</b><br/>Av. Miguel Alemán Km 5, Fracc. Vista Sol, Guadalupe, NL<br/>México / Global<br/>Refrigeradores, lavadoras, estufas.]]></description>
+      <styleUrl>#appliance</styleUrl>
+      <Point><coordinates>-100.2200,25.6750,0</coordinates></Point>
+    </Placemark>
+  </Folder>
+
+  <!-- ============ EMS / ELECTRÓNICA (Verde) ============ -->
+  <Folder>
+    <name>EMS y Electrónica</name>
+    <description>Servicios de manufactura electrónica</description>
+
+    <Placemark>
+      <name>Jabil</name>
+      <description><![CDATA[<b>Jabil Monterrey</b><br/>Av. Innova 1061, Parque Industrial Milenium Innova, Apodaca, NL 66628<br/>USA<br/>Ensamble electrónico: industrial, médico, consumo.]]></description>
+      <styleUrl>#ems</styleUrl>
+      <Point><coordinates>-100.1400,25.7900,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Celestica</name>
+      <description><![CDATA[<b>Celestica Monterrey CMX</b><br/>Calle 8ª Poniente No. 1000, Parque Industrial Monterrey, Apodaca, NL 66600<br/>Canadá<br/>PCBA y box build para telecom. $132M USD ingresos en México.]]></description>
+      <styleUrl>#ems</styleUrl>
+      <Point><coordinates>-100.1700,25.7700,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Sanmina</name>
+      <description><![CDATA[<b>Sanmina Monterrey</b><br/>Blvd. Interamericano 120, Parque Industrial FINSA, Apodaca, NL 66600<br/>USA<br/>Cables, arneses e integración de sistemas. ISO 13485.]]></description>
+      <styleUrl>#ems</styleUrl>
+      <Point><coordinates>-100.1550,25.7830,0</coordinates></Point>
+    </Placemark>
+  </Folder>
+
+  <!-- ============ INDUSTRIAL / ENERGÍA (Morado) ============ -->
+  <Folder>
+    <name>Industrial y Energía</name>
+    <description>Automatización, controles y equipos de energía</description>
+
+    <Placemark>
+      <name>Honeywell</name>
+      <description><![CDATA[<b>Honeywell — Global Supply Chain Center of Excellence</b><br/>Calzada San Pedro 250 Nte, Edif. HQ, Monterrey, NL 64660<br/>USA<br/>12,000 empleados en México. $60M+ invertidos en proveedores de NL.]]></description>
+      <styleUrl>#industrial</styleUrl>
+      <Point><coordinates>-100.3500,25.6700,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Siemens (Planta Mitras)</name>
+      <description><![CDATA[<b>Siemens — Planta Mitras</b><br/>Libramiento Arco Vial Km 42, Santa Catarina, NL<br/>Alemania<br/>Automatización industrial. LEED Platinum. Inversión MX$1,100M, 450+ empleos.]]></description>
+      <styleUrl>#industrial</styleUrl>
+      <Point><coordinates>-100.4600,25.6400,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Schneider Electric</name>
+      <description><![CDATA[<b>Schneider Electric — Planta 6 "Smart Factory"</b><br/>Blvd. Escobedo 317, Apodaca, NL 66627<br/>Francia<br/>6 plantas, 450,000 ft². Circuit breakers, tableros para data centers. Inversión $29M USD.]]></description>
+      <styleUrl>#industrial</styleUrl>
+      <Point><coordinates>-100.1800,25.7600,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Prolec GE (GE Vernova / Xignux)</name>
+      <description><![CDATA[<b>Prolec GE — Transformadores</b><br/>Blvd. Carlos Salinas de Gortari Km 9.25, Apodaca, NL 66600<br/>USA / México JV<br/>Planta de transformadores más grande de las Américas. Expansión $85M USD.]]></description>
+      <styleUrl>#industrial</styleUrl>
+      <Point><coordinates>-100.1450,25.7950,0</coordinates></Point>
+    </Placemark>
+  </Folder>
+
+  <!-- ============ VEHÍCULOS / POWERSPORTS (Azul) ============ -->
+  <Folder>
+    <name>Vehículos y Powersports</name>
+    <description>Ensamble de vehículos off-road y componentes</description>
+
+    <Placemark>
+      <name>Polaris Industries</name>
+      <description><![CDATA[<b>Polaris — Monterrey Operations</b><br/>American Industries Industrial Park, Apodaca, NL<br/>USA<br/>850,000 ft², 4,500 empleados, vehículos off-road Side-by-Side.]]></description>
+      <styleUrl>#vehicle</styleUrl>
+      <Point><coordinates>-100.1166,25.7197,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Kawasaki Motors</name>
+      <description><![CDATA[<b>Kawasaki Motors Manufacturing</b><br/>Av. Internacional No. 102, Fracc. Industrial Interpuerto Monterrey, Salinas Victoria, NL 65513<br/>Japón<br/>Planta nueva $200M USD (2024). 30K unidades/año. 1,500 empleos.]]></description>
+      <styleUrl>#vehicle</styleUrl>
+      <Point><coordinates>-100.2700,25.8600,0</coordinates></Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Panasonic Automotive</name>
+      <description><![CDATA[<b>Panasonic Automotive Systems</b><br/>Av. Isidoro Sepúlveda No. 851, Regio Parque Industrial, Apodaca, NL 66648<br/>Japón<br/>Cámaras, infotainment, switches, micrófonos.]]></description>
+      <styleUrl>#vehicle</styleUrl>
+      <Point><coordinates>-100.1890,25.7440,0</coordinates></Point>
+    </Placemark>
+  </Folder>
+
+</Document>
+</kml>

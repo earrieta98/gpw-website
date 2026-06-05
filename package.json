@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "docx": "^9.6.1",
+    "dotted-map": "^3.1.0",
+    "exceljs": "^4.4.0"
+  }
+}
