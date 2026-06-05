@@ -8,3 +8,18 @@ Thumbs.db
 
 # Node
 node_modules/
+
+# Local Claude settings
+.claude/settings.local.json
+
+# Working artifacts (not part of the deliverable site)
+audit-screenshots/
+Imagenes pagina web/
+.scratch/nav-cascade-backup/
+
+# Build / deploy artifacts
+*.zip
+
+# Generated / scratch outputs
+1.docx
+mapa-empresas-mexico.png
