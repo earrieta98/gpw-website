@@ -2,91 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service | Global Precision Works</title>
-  <meta name="description" content="Terms of service for the Global Precision Works (GPW) website. Review the terms and conditions governing your use of gpw-solutions.com.">
-  <link rel="canonical" href="https://gpw-solutions.com/terms.html">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Unified Global Nav (Keller) — Issue #02 Reference · GPW</title>
+  <meta name="description" content="Issue #02 reference: the unified global navigation (Keller model) on the production design system. Not a live page.">
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Terms of Service | Global Precision Works">
-  <meta property="og:description" content="Terms of service for the Global Precision Works (GPW) website. Review the terms and conditions governing your use of gpw-solutions.com.">
-  <meta property="og:url" content="https://gpw-solutions.com/terms.html">
-  <meta property="og:image" content="https://gpw-solutions.com/img/og/corporate-home.jpg">
-  <meta property="og:site_name" content="Global Precision Works">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Terms of Service | Global Precision Works">
-  <meta name="twitter:description" content="Terms of service for the Global Precision Works (GPW) website. Review the terms and conditions governing your use of gpw-solutions.com.">
-  <meta name="twitter:image" content="https://gpw-solutions.com/img/og/corporate-home.jpg">
-
-  <!-- Fonts -->
+  <!-- Brand fonts: Lato (primary) + Trirong (accent only) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjx4wXg.woff2" as="font" type="font/woff2" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Trirong:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Trirong:ital,wght@0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
+  <!-- Production design system (Issue #01) -->
   <link rel="stylesheet" href="css/styles.css">
-
   <link rel="stylesheet" href="css/utility-bar.css">
-  <link rel="stylesheet" href="css/global-nav.css">
+  <!-- Issue #02 deltas (folds into styles.css on sign-off) -->
+  <link rel="stylesheet" href="css/nav-preview.css">
+
   <style>
-    .legal-page {
-      padding-top: calc(var(--header-height) + var(--space-3xl));
-      padding-bottom: var(--space-4xl);
-    }
-    .legal-page__inner {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 0 var(--space-xl);
-    }
-    .legal-page h1 {
-      font-size: var(--text-4xl);
-      font-weight: 900;
-      color: var(--dark-gray);
-      margin-bottom: var(--space-sm);
-    }
-    .legal-page__updated {
-      font-size: var(--text-sm);
-      color: var(--mid-gray);
-      margin-bottom: var(--space-3xl);
-    }
-    .legal-page h2 {
-      font-size: var(--text-xl);
+    /* Page-local scaffolding for the reference only (not part of the nav) */
+    .pv-note {
+      background: var(--lime);
+      color: var(--ink);
+      font-size: var(--text-xs);
+      text-align: center;
+      padding: var(--space-sm) var(--space-md);
       font-weight: 700;
-      color: var(--dark-gray);
-      margin-top: var(--space-2xl);
-      margin-bottom: var(--space-md);
+      letter-spacing: 0.02em;
     }
-    .legal-page p,
-    .legal-page li {
-      font-size: var(--text-base);
-      color: var(--mid-gray);
-      line-height: 1.8;
-      margin-bottom: var(--space-md);
+    .pv-hero {
+      background: linear-gradient(150deg, #06302F 0%, var(--teal) 55%, var(--deep-blue) 100%);
+      color: #fff;
+      padding: calc(var(--top-offset) + var(--space-3xl)) var(--space-xl) var(--space-4xl);
     }
-    .legal-page ul {
-      padding-left: var(--space-xl);
-      margin-bottom: var(--space-lg);
+    .pv-hero__inner { max-width: var(--max-width); margin: 0 auto; }
+    .pv-hero .eyebrow, .pv-hero__eyebrow {
+      font-family: var(--font-accent); color: var(--lime);
+      text-transform: uppercase; letter-spacing: 0.16em; font-size: var(--text-sm);
+      font-weight: 600; display: inline-block; margin-bottom: var(--space-md);
     }
-    .legal-page li {
-      margin-bottom: var(--space-sm);
-    }
-    .legal-page a {
-      color: var(--teal);
-      text-decoration: underline;
-    }
-    .legal-page a:hover {
-      color: var(--coral);
-    }
+    .pv-hero h1 { color: #fff; font-size: var(--text-5xl); max-width: 18ch; margin-bottom: var(--space-lg); }
+    .pv-hero p { color: rgba(255,255,255,0.82); font-size: var(--text-lg); max-width: 56ch; }
+    .pv-section { max-width: var(--max-width); margin: 0 auto; padding: var(--space-4xl) var(--space-xl); }
+    .pv-section--alt { background: var(--off-white); max-width: none; }
+    .pv-section--alt > * { max-width: var(--max-width); margin-left: auto; margin-right: auto; }
+    .pv-section h2 { font-size: var(--text-3xl); margin-bottom: var(--space-md); color: var(--text-heading); }
+    .pv-section p { color: var(--mid-gray); max-width: 60ch; }
+    .pv-checklist { margin-top: var(--space-lg); display: grid; gap: var(--space-sm); }
+    .pv-checklist li { display: flex; gap: var(--space-sm); align-items: flex-start; color: var(--dark-gray); font-size: var(--text-sm); }
+    .pv-checklist svg { width: 18px; height: 18px; color: var(--teal); flex: none; margin-top: 3px; }
+    .pv-footer { background: #06302F; color: rgba(255,255,255,0.6); padding: var(--space-3xl) var(--space-xl); text-align: center; font-size: var(--text-xs); }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ============ UTILITY BAR — no division switcher (removed per #02) ============ -->
   <div class="utility-bar" role="complementary" aria-label="Contact and location">
@@ -113,7 +81,7 @@
   </div>
 
   <!-- ============ HEADER — Unified Global Nav (Keller two-capability model) ============ -->
-  <header class="header header--scrolled header--fixed-scrolled" id="header">
+  <header class="header header--top" id="header">
     <div class="header__inner">
       <a href="./" class="header__logo" aria-label="Global Precision Works home">
         <img src="img/logo-white.png" alt="Global Precision Works" class="header__logo-white" fetchpriority="high" width="300" height="189">
@@ -328,119 +296,43 @@
     <div class="nav-overlay" id="navOverlay"></div>
   </header>
 
-  <!-- ============ CONTENT ============ -->
-  <main class="legal-page">
-    <div class="legal-page__inner">
-      <h1>Terms of Service</h1>
-      <p class="legal-page__updated">Last updated: March 26, 2026</p>
+  <main id="main">
+    <div class="pv-note">Reference page · Issue #02 — Unified Global Navigation (Keller). Not a live page. Hover the capability tabs, scroll to see the solid state, and try the mobile menu (&lt;768px).</div>
 
-      <p>Welcome to gpw-solutions.com, operated by Global Precision Works ("GPW," "we," "us," or "our"). By accessing or using this website, you agree to be bound by these Terms of Service. If you do not agree, please do not use the website.</p>
+    <section class="pv-hero">
+      <div class="pv-hero__inner">
+        <span class="pv-hero__eyebrow">Global Precision Works</span>
+        <h1>One nav. Two capabilities. Ten end markets.</h1>
+        <p>This is the unified global navigation that replaces the three independent navs. Transparent over the hero, it turns solid on scroll and collapses to a clean mobile drawer with large touch targets.</p>
+      </div>
+    </section>
 
-      <h2>1. Use of This Website</h2>
-      <p>This website is provided for informational purposes about Global Precision Works and its manufacturing and electromechanical assembly services. You may use this website for lawful purposes only. You agree not to:</p>
-      <ul>
-        <li>Use the website in any way that violates applicable laws or regulations</li>
-        <li>Attempt to interfere with the proper functioning of the website</li>
-        <li>Use automated systems or software to extract data from the website without prior written consent</li>
-        <li>Misrepresent your identity or affiliation when submitting a request for quote</li>
+    <section class="pv-section">
+      <h2>What this reference proves</h2>
+      <p>Built entirely on the production design system from Issue #01 — same tokens, same mega-menu components, same <code>main.js</code> behavior. Nothing here is a parallel system.</p>
+      <ul class="pv-checklist">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Capability tabs link to their hub <strong>and</strong> open a services mega-menu (hover on desktop, accordion on mobile).</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Industries lists all 10 verticals; AI &amp; Server Rack is also a featured top-level shortcut.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> No division-switcher; one consistent header. RFQ is a persistent coral button (ink text, never white-on-coral).</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> CNC copy honors ADR-0002: a managed Monterrey network, never owned machines.</li>
       </ul>
+    </section>
 
-      <h2>2. Request for Quote (RFQ) Submissions</h2>
-      <p>When you submit a Request for Quote through our website, you agree that:</p>
-      <ul>
-        <li>The information you provide is accurate and complete to the best of your knowledge</li>
-        <li>Submission of an RFQ does not constitute a binding contract or commitment from either party</li>
-        <li>GPW reserves the right to accept or decline any RFQ at its sole discretion</li>
-        <li>Any pricing or timelines provided in response to an RFQ are preliminary estimates and subject to change upon detailed engineering review</li>
-      </ul>
+    <section class="pv-section pv-section--alt">
+      <h2>Scroll to see the solid state</h2>
+      <p>Keep scrolling — the header cross-fades from transparent (white logo) to the solid white state (teal logo) past 40px, exactly as every production page already does.</p>
+    </section>
 
-      <h2>3. Intellectual Property</h2>
-      <p>All content on this website — including but not limited to text, graphics, logos, images, page layouts, and software — is the property of Global Precision Works or its content suppliers and is protected by applicable intellectual property laws.</p>
-      <p>You may not reproduce, distribute, modify, or create derivative works from any content on this website without prior written permission from GPW.</p>
-
-      <h2>4. Confidentiality</h2>
-      <p>GPW understands that RFQ submissions and project discussions may involve proprietary information. We treat all project-related information shared through our website with commercially reasonable confidentiality. However, for formal confidentiality protections, we recommend executing a separate Non-Disclosure Agreement (NDA) before sharing sensitive technical specifications.</p>
-
-      <h2>5. Disclaimer of Warranties</h2>
-      <p>This website is provided "as is" and "as available" without warranties of any kind, whether express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
-      <p>GPW does not warrant that the website will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
-
-      <h2>6. Limitation of Liability</h2>
-      <p>To the fullest extent permitted by law, Global Precision Works shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of this website, even if we have been advised of the possibility of such damages.</p>
-
-      <h2>7. Third-Party Links</h2>
-      <p>This website may contain links to third-party websites. These links are provided for your convenience only. GPW does not endorse or assume responsibility for the content, privacy policies, or practices of any third-party websites.</p>
-
-      <h2>8. Governing Law</h2>
-      <p>These Terms of Service shall be governed by and construed in accordance with the laws of Mexico. Any disputes arising from or related to these terms shall be subject to the jurisdiction of the courts of Monterrey, Nuevo Le&oacute;n, Mexico.</p>
-
-      <h2>9. Changes to These Terms</h2>
-      <p>We reserve the right to update or modify these Terms of Service at any time. Any changes will be posted on this page with an updated "Last updated" date. Continued use of the website after changes are posted constitutes your acceptance of the revised terms.</p>
-
-      <h2>10. Contact Us</h2>
-      <p>If you have questions about these Terms of Service, please contact us at:</p>
-      <p>
-        Global Precision Works<br>
-        Monterrey, Nuevo Le&oacute;n, Mexico<br>
-        <a href="mailto:info@gpw-solutions.com">info@gpw-solutions.com</a>
-      </p>
-    </div>
+    <section class="pv-section">
+      <h2>Spacer</h2>
+      <p>Extra height so the scroll-state transition is easy to trigger and review.</p>
+    </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a href="./" class="footer__logo">
-            <img loading="lazy" src="img/logo-white.png" alt="Global Precision Works" width="300" height="189">
-          </a>
-          <p class="footer__desc">
-            Global Precision Works — precision manufacturing and electromechanical assembly from Monterrey, Mexico. Two divisions, one standard of excellence.
-          </p>
-          <div class="footer__contact-line">
-            Monterrey, Nuevo Le&oacute;n, Mexico<br>
-            <a href="mailto:info@gpw-solutions.com">info@gpw-solutions.com</a>
-          </div>
-        </div>
-
-        <div>
-          <div class="footer__heading">Our Divisions</div>
-          <div class="footer__links">
-            <a href="ems/">Electromechanical Assembly</a>
-            <a href="contract-manufacturing/">Contract Manufacturing</a>
-          </div>
-        </div>
-
-        <div>
-          <div class="footer__heading">Company</div>
-          <div class="footer__links">
-            <a href="about.html">About GPW</a>
-            <a href="contact.html">Contact</a>
-          </div>
-        </div>
-
-        <div>
-          <div class="footer__heading">Get Started</div>
-          <div class="footer__links">
-            <a href="ems/request-quote.html">Request a Quote</a>
-            <a href="mailto:info@gpw-solutions.com">Email Us</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        <span>&copy; 2026 Global Precision Works. All rights reserved.</span>
-        <div class="footer__legal">
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-        </div>
-      </div>
-    </div>
+  <footer class="pv-footer">
+    Reference only — Issue #02. © Global Precision Works (GPW). Monterrey, Mexico.
   </footer>
 
-  <!-- ============ JAVASCRIPT ============ -->
   <script src="js/main.js"></script>
-  <script src="js/cookie-consent.js"></script>
 </body>
 </html>
