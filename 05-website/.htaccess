@@ -10,6 +10,13 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteCond %{HTTP_HOST} ^www\.gpw-solutions\.com [NC]
 RewriteRule ^(.*)$ https://gpw-solutions.com/$1 [L,R=301]
 
+# Blog moved from /contract-manufacturing/blog/ to /blog/ (corporate-level)
+RewriteRule ^contract-manufacturing/blog/?$ /blog/ [L,R=301]
+RewriteRule ^contract-manufacturing/blog/(.+)$ /blog/$1 [L,R=301]
+
+# Unified RFQ — old assembly-only quote URL moved to /request-a-quote/ (Issue #05)
+RewriteRule ^ems/request-quote\.html$ /request-a-quote/ [L,R=301]
+
 # Browser Caching
 <IfModule mod_expires.c>
   ExpiresActive On
