@@ -6,24 +6,24 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contract Manufacturing — CNC Precision Machining | GPW</title>
-  <meta name="description" content="GPW Contract Manufacturing division — CNC precision machining from Monterrey, Mexico. Coming soon. Visit our Electromechanical Assembly division.">
+  <meta name="robots" content="index, follow">
+  <title>Contract Manufacturing Services Mexico | CNC Machining | GPW</title>
+  <meta name="description" content="Precision CNC machining from Monterrey, Mexico for U.S. OEMs. Milling, turning, EDM, sheet metal, and finishing — 25–45% landed cost savings vs domestic. Request a quote.">
   <link rel="canonical" href="https://gpw-solutions.com/contract-manufacturing/">
-  <meta name="robots" content="noindex, nofollow">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Contract Manufacturing — CNC Precision Machining | GPW">
-  <meta property="og:description" content="GPW Contract Manufacturing division — CNC precision machining from Monterrey, Mexico. Coming soon.">
+  <meta property="og:title" content="Contract Manufacturing Services Mexico | CNC Machining | GPW">
+  <meta property="og:description" content="Precision CNC machining from Monterrey, Mexico for U.S. OEMs. Milling, turning, EDM, sheet metal, and finishing — 25–45% landed cost savings vs domestic. Request a quote.">
   <meta property="og:url" content="https://gpw-solutions.com/contract-manufacturing/">
-  <meta property="og:image" content="https://gpw-solutions.com/img/og/corporate-home.jpg">
+  <meta property="og:image" content="https://gpw-solutions.com/img/og/contract-manufacturing.jpg">
   <meta property="og:site_name" content="Global Precision Works">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contract Manufacturing — CNC Precision Machining | GPW">
-  <meta name="twitter:description" content="GPW Contract Manufacturing division — CNC precision machining from Monterrey, Mexico. Coming soon.">
-  <meta name="twitter:image" content="https://gpw-solutions.com/img/og/corporate-home.jpg">
+  <meta name="twitter:title" content="Contract Manufacturing Services Mexico | CNC Machining | GPW">
+  <meta name="twitter:description" content="Precision CNC machining from Monterrey, Mexico for U.S. OEMs. Milling, turning, EDM, sheet metal, and finishing — 25–45% landed cost savings vs domestic. Request a quote.">
+  <meta name="twitter:image" content="https://gpw-solutions.com/img/og/contract-manufacturing.jpg">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,339 +33,809 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/cm-home.css">
+  <link rel="stylesheet" href="../css/utility-bar.css">
+  <link rel="stylesheet" href="../css/global-nav.css">
 
-  <style>
-    /* ── Coming Soon: Full-viewport hero ── */
-    .cs-hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+  <!-- Schema: Service + OfferCatalog -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Contract Manufacturing — CNC Machining",
+    "provider": {
+      "@type": "Organization",
+      "name": "Global Precision Works",
+      "url": "https://gpw-solutions.com"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "description": "Precision CNC machining services from Monterrey, Mexico for U.S. OEMs. CNC milling, turning, wire EDM, sheet metal fabrication, and surface finishing.",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "CNC Machining Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "CNC Milling"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "CNC Turning"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Wire EDM"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sheet Metal Fabrication"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Surface Finishing"}}
+      ]
     }
+  }
+  </script>
 
-    /* Dark engineering grid background */
-    .cs-hero__bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      background: #0a1628;
-    }
-    .cs-hero__bg::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(35, 85, 90, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(35, 85, 90, 0.07) 1px, transparent 1px),
-        linear-gradient(rgba(35, 85, 90, 0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(35, 85, 90, 0.15) 1px, transparent 1px);
-      background-size: 40px 40px, 40px 40px, 200px 200px, 200px 200px;
-    }
-
-    /* Glow dots */
-    .cs-hero__glow {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-    }
-    .cs-glow-dot {
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      filter: blur(90px);
-      opacity: 0;
-      animation: csGlow 7s ease-in-out infinite;
-    }
-    .cs-glow-dot--teal  { background: rgba(35, 85, 90, 0.4); }
-    .cs-glow-dot--coral { background: rgba(237, 131, 94, 0.25); }
-    .cs-glow-dot--lime  { background: rgba(173, 207, 145, 0.2); }
-
-    @keyframes csGlow {
-      0%, 100% { opacity: 0; transform: scale(0.8); }
-      50% { opacity: 1; transform: scale(1.2); }
-    }
-
-    /* Vignette */
-    .cs-hero__vignette {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(35, 85, 90, 0.12) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 50%, rgba(237, 131, 94, 0.06) 0%, transparent 50%),
-        radial-gradient(ellipse at center, transparent 40%, rgba(10, 22, 40, 0.5) 100%);
-    }
-
-    /* Content */
-    .cs-hero__content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 640px;
-      padding: 0 var(--space-xl);
-    }
-
-    /* Icon */
-    .cs-icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto var(--space-xl);
-      opacity: 0;
-      animation: csFadeUp 0.8s ease forwards 0.3s;
-    }
-    .cs-icon svg {
-      width: 100%;
-      height: 100%;
-      stroke: var(--coral);
-      stroke-width: 1.2;
-      fill: none;
-    }
-
-    /* Label */
-    .cs-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-family: var(--font-primary);
-      font-size: var(--text-xs);
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--coral);
-      margin-bottom: var(--space-lg);
-      opacity: 0;
-      animation: csFadeUp 0.8s ease forwards 0.5s;
-    }
-    .cs-label::before,
-    .cs-label::after {
-      content: '';
-      width: 32px;
-      height: 1px;
-      background: rgba(237, 131, 94, 0.4);
-    }
-
-    /* Title */
-    .cs-title {
-      font-family: var(--font-primary);
-      font-size: var(--text-5xl);
-      font-weight: 900;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: var(--space-md);
-      opacity: 0;
-      animation: csFadeUp 0.8s ease forwards 0.7s;
-    }
-
-    /* Tagline */
-    .cs-tagline {
-      font-family: var(--font-accent);
-      font-size: var(--text-xl);
-      font-weight: 300;
-      font-style: italic;
-      color: var(--lime);
-      margin-bottom: var(--space-xl);
-      opacity: 0;
-      animation: csFadeUp 0.8s ease forwards 0.9s;
-    }
-
-    /* Description */
-    .cs-desc {
-      font-size: var(--text-base);
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.8;
-      margin-bottom: var(--space-2xl);
-      opacity: 0;
-      animation: csFadeUp 0.8s ease forwards 1.1s;
-    }
-
-    /* Buttons */
-    .cs-actions {
-      display: flex;
-      gap: var(--space-md);
-      justify-content: center;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: csFadeUp 0.8s ease forwards 1.3s;
-    }
-    .cs-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 14px 32px;
-      border-radius: var(--radius-sm);
-      font-family: var(--font-primary);
-      font-size: var(--text-sm);
-      font-weight: 700;
-      text-decoration: none;
-      transition: background 0.25s, border-color 0.25s, transform 0.2s;
-    }
-    .cs-btn:hover { transform: translateY(-2px); }
-    .cs-btn--primary {
-      background: var(--coral);
-      color: var(--white);
-    }
-    .cs-btn--primary:hover { background: #d96f4a; }
-    .cs-btn--outline {
-      background: transparent;
-      color: rgba(255, 255, 255, 0.85);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-    }
-    .cs-btn--outline:hover {
-      border-color: rgba(255, 255, 255, 0.5);
-      color: var(--white);
-    }
-    .cs-btn svg {
-      width: 16px;
-      height: 16px;
-      stroke: currentColor;
-      stroke-width: 2;
-      fill: none;
-    }
-
-    /* Divider line */
-    .cs-divider {
-      width: 48px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--teal), var(--coral));
-      margin: 0 auto var(--space-xl);
-      border-radius: 1px;
-      opacity: 0;
-      animation: csFadeUp 0.8s ease forwards 0.6s;
-    }
-
-    /* Animation */
-    @keyframes csFadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      .cs-glow-dot,
-      .cs-icon,
-      .cs-label,
-      .cs-title,
-      .cs-tagline,
-      .cs-desc,
-      .cs-actions,
-      .cs-divider {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-      }
-    }
-
-    /* Mobile */
-    @media (max-width: 600px) {
-      .cs-title { font-size: var(--text-4xl); }
-      .cs-icon { width: 60px; height: 60px; }
-    }
-  </style>
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "GPW", "item": "https://gpw-solutions.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Contract Manufacturing", "item": "https://gpw-solutions.com/contract-manufacturing/"}
+    ]
+  }
+  </script>
 </head>
 <body>
 
-  <!-- ============ HEADER — Level 1: Corporate Nav ============ -->
-  <header class="header header--scrolled header--fixed-scrolled" id="header">
+  <!-- ============ UTILITY BAR — no division switcher (removed per #02) ============ -->
+  <div class="utility-bar" role="complementary" aria-label="Contact and location">
+    <div class="utility-bar__inner">
+      <div class="utility-bar__contact">
+        <a href="mailto:sales@gpw-solutions.com" class="utility-bar__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          sales@gpw-solutions.com
+        </a>
+        <a href="https://www.linkedin.com/company/gpw-solutions" target="_blank" rel="noopener" class="utility-bar__item">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.14.93-2.06 2.06-2.06 1.14 0 2.06.93 2.06 2.06 0 1.14-.92 2.07-2.06 2.07zm1.78 13.02H3.55V9h3.57v11.45z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="utility-bar__meta">
+        <span class="utility-bar__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Monterrey, Mexico
+        </span>
+        <span class="utility-bar__meta-sep" aria-hidden="true"></span>
+        <span class="utility-bar__item utility-bar__meta-tagline">Nearshore manufacturing for U.S. OEMs</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER — Unified Global Nav (Keller two-capability model) ============ -->
+  <header class="header header--top" id="header">
     <div class="header__inner">
-      <a href="../" class="header__logo">
+      <a href="../" class="header__logo" aria-label="Global Precision Works home">
         <img src="../img/logo-white.png" alt="Global Precision Works" class="header__logo-white" fetchpriority="high" width="300" height="189">
-        <img src="../img/logo-teal.png" alt="Global Precision Works" class="header__logo-teal" width="300" height="196">
+        <img src="../img/logo-teal.png" alt="" aria-hidden="true" class="header__logo-teal" width="300" height="196">
       </a>
 
-      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-controls="navMenu" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
 
-      <nav class="nav" id="navMenu">
+      <nav class="nav" id="navMenu" aria-label="Primary">
         <button class="nav__close" id="navClose" aria-label="Close menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
-        <a href="../" class="nav__link">Home</a>
 
-        <div class="nav__item">
-          <button class="nav__trigger">
-            Our Divisions
+        <!-- ===== Capability 1: CNC Machining (link to hub + mega) ===== -->
+        <div class="nav__item nav__item--capability">
+          <a href="../contract-manufacturing/" class="nav__link nav__link--has-mega">CNC Machining</a>
+          <button class="nav__trigger nav__trigger--caret" aria-label="Open CNC Machining menu" aria-haspopup="true" aria-expanded="false">
             <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
           </button>
-          <div class="nav__dropdown">
-            <div class="nav__dropdown-items">
-              <a href="../ems/" class="nav__dropdown-item">
-                <span class="nav__dropdown-label">Electromechanical Assembly</span>
-                <span class="nav__dropdown-desc">Box build, cable harness, system integration & testing</span>
-              </a>
-              <a href="./" class="nav__dropdown-item">
-                <span class="nav__dropdown-label">Contract Manufacturing</span>
-                <span class="nav__dropdown-desc">CNC precision machining — coming soon</span>
-              </a>
+          <div class="nav__dropdown nav__dropdown--mega-full">
+            <div class="nav__mega">
+              <div class="nav__mega-header">
+                <div class="nav__mega-promise">
+                  <span class="nav__mega-promise-eyebrow">CNC Machining</span>
+                  <h3 class="nav__mega-promise-title">Precision components, documented to your spec</h3>
+                  <p class="nav__mega-promise-desc">A managed network of vetted Monterrey machine shops — GPW owns the DFM, quality governance, and on-time delivery. One point of accountability, scalable capacity.</p>
+                </div>
+                <div class="nav__mega-ctas">
+                  <a href="../request-a-quote/" class="nav__mega-cta nav__mega-cta--primary">Get a Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                  <a href="../contract-manufacturing/engineering-support/" class="nav__mega-cta nav__mega-cta--secondary">Free DFM Review
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+              </div>
+              <div class="nav__mega-section">
+                <span class="nav__mega-section-title">Core Machining</span>
+                <div class="nav__mega-grid">
+                  <a href="../contract-manufacturing/cnc-milling/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M9 4v16M4 9h16"/></svg></span>
+                    <span><span class="nav__mega-card__title">CNC Milling</span><span class="nav__mega-card__desc">3- / 4- / 5-axis prismatic parts</span></span>
+                  </a>
+                  <a href="../contract-manufacturing/cnc-turning/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></span>
+                    <span><span class="nav__mega-card__title">CNC Turning</span><span class="nav__mega-card__desc">Lathe-turned cylindrical parts</span></span>
+                  </a>
+                  <a href="../contract-manufacturing/wire-edm/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 10-13h-7z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Wire EDM</span><span class="nav__mega-card__desc">Fine, burr-free hard-metal cuts</span></span>
+                  </a>
+                  <a href="../contract-manufacturing/sheet-metal/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 13l9 4 9-4"/></svg></span>
+                    <span><span class="nav__mega-card__title">Sheet Metal</span><span class="nav__mega-card__desc">Laser, bend, fabricate, weld</span></span>
+                  </a>
+                  <a href="../contract-manufacturing/surface-finishing/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Surface Finishing</span><span class="nav__mega-card__desc">Anodize, plate, coat, passivate</span></span>
+                  </a>
+                </div>
+              </div>
+              <div class="nav__mega-section">
+                <span class="nav__mega-section-title">Adjacent Capabilities</span>
+                <div class="nav__mega-grid nav__mega-grid--3">
+                  <a href="../contract-manufacturing/engineering-support/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 7v6l4 2"/></svg></span>
+                    <span><span class="nav__mega-card__title">Engineering Support</span><span class="nav__mega-card__desc">Free DFM &amp; material selection</span></span>
+                  </a>
+                  <a href="../contract-manufacturing/metals/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg></span>
+                    <span><span class="nav__mega-card__title">Metals</span><span class="nav__mega-card__desc">Alloys, tempers, tolerances</span></span>
+                  </a>
+                  <a href="../contract-manufacturing/plastics/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l-1 5 4 9a3 3 0 0 1-3 4H9a3 3 0 0 1-3-4l4-9z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Plastics</span><span class="nav__mega-card__desc">Engineering polymers machined</span></span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <a href="#" class="nav__link">About</a>
-        <a href="#" class="nav__link">Contact</a>
+        <!-- ===== Capability 2: Assembly & Integration (link to hub + mega) ===== -->
+        <div class="nav__item nav__item--capability">
+          <a href="../ems/" class="nav__link nav__link--has-mega">Assembly &amp; Integration</a>
+          <button class="nav__trigger nav__trigger--caret" aria-label="Open Assembly &amp; Integration menu" aria-haspopup="true" aria-expanded="false">
+            <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="nav__dropdown nav__dropdown--mega-full">
+            <div class="nav__mega">
+              <div class="nav__mega-header">
+                <div class="nav__mega-promise">
+                  <span class="nav__mega-promise-eyebrow">Assembly &amp; Integration</span>
+                  <h3 class="nav__mega-promise-title">From BOM to finished, tested unit on your dock</h3>
+                  <p class="nav__mega-promise-desc">In-house electromechanical assembly — box build, harness, system integration and end-of-line test under one roof in Monterrey.</p>
+                </div>
+                <div class="nav__mega-ctas">
+                  <a href="../request-a-quote/" class="nav__mega-cta nav__mega-cta--primary">Get a Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                  <a href="../ems/about.html" class="nav__mega-cta nav__mega-cta--secondary">About Assembly
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+              </div>
+              <div class="nav__mega-section">
+                <span class="nav__mega-section-title">Core Services</span>
+                <div class="nav__mega-grid">
+                  <a href="../ems/services/box-build-assembly.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg></span>
+                    <span><span class="nav__mega-card__title">Box Build</span><span class="nav__mega-card__desc">Mechanical + electrical integration</span></span>
+                  </a>
+                  <a href="../ems/services/cable-harness-assembly.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="17" r="2"/><path d="M6 9v4a4 4 0 0 0 4 4h6"/></svg></span>
+                    <span><span class="nav__mega-card__title">Cable &amp; Wire Harness</span><span class="nav__mega-card__desc">Build to IPC/WHMA-A-620</span></span>
+                  </a>
+                  <a href="../ems/services/system-integration.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17h7"/></svg></span>
+                    <span><span class="nav__mega-card__title">System Integration</span><span class="nav__mega-card__desc">Structure, cabling, firmware</span></span>
+                  </a>
+                  <a href="../ems/services/testing-inspection.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 5-6"/><circle cx="12" cy="12" r="9"/></svg></span>
+                    <span><span class="nav__mega-card__title">Testing &amp; Inspection</span><span class="nav__mega-card__desc">Functional test, burn-in, QA</span></span>
+                  </a>
+                  <a href="../ems/services/enclosure-cabinet-assembly.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h6M9 11h6M15 15h.01"/></svg></span>
+                    <span><span class="nav__mega-card__title">Enclosure &amp; Cabinet</span><span class="nav__mega-card__desc">Racks, cabinets, sub-assemblies</span></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Industries (dropdown only, 10 verticals) ===== -->
+        <div class="nav__item">
+          <button class="nav__trigger" aria-haspopup="true" aria-expanded="false">Industries
+            <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="nav__dropdown nav__dropdown--mega-full">
+            <div class="nav__mega">
+              <div class="nav__mega-header">
+                <div class="nav__mega-promise">
+                  <span class="nav__mega-promise-eyebrow">Industries</span>
+                  <h3 class="nav__mega-promise-title">Ten end markets we build for</h3>
+                  <p class="nav__mega-promise-desc">One partner across machining and assembly — organized by your end market, not by component type.</p>
+                </div>
+                <div class="nav__mega-ctas">
+                  <a href="../request-a-quote/" class="nav__mega-cta nav__mega-cta--primary">Get a Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+              </div>
+              <div class="nav__mega-section">
+                <span class="nav__mega-section-title">Industries We Serve</span>
+                <div class="nav__mega-grid nav__mega-grid--industries">
+                  <a href="../industries/aerospace-defense/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l20-7-7 20-3-8-10-5z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Aerospace &amp; Defense</span></span>
+                  </a>
+                  <a href="../industries/automotive/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-5h14l2 5v5h-3v-2H6v2H3z"/><circle cx="7" cy="16" r="1.5"/><circle cx="17" cy="16" r="1.5"/></svg></span>
+                    <span><span class="nav__mega-card__title">Automotive</span></span>
+                  </a>
+                  <a href="../industries/medical-devices/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+                    <span><span class="nav__mega-card__title">Medical Devices</span></span>
+                  </a>
+                  <a href="../industries/industrial-equipment/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span>
+                    <span><span class="nav__mega-card__title">Industrial Equipment</span></span>
+                  </a>
+                  <a href="../industries/energy/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 10-13h-7z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Energy</span></span>
+                  </a>
+                  <a href="../industries/oil-gas/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Oil &amp; Gas</span></span>
+                  </a>
+                  <a href="../industries/telecom/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19a14 14 0 0 1 14-14M8 19a8 8 0 0 1 8-8"/><circle cx="6" cy="18" r="1.5"/></svg></span>
+                    <span><span class="nav__mega-card__title">Telecom</span></span>
+                  </a>
+                  <a href="../industries/electronics/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></span>
+                    <span><span class="nav__mega-card__title">Electronics</span></span>
+                  </a>
+                  <a href="../industries/ai-server-rack/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="6" rx="1"/><rect x="4" y="11" width="16" height="6" rx="1"/><path d="M8 6h.01M8 14h.01"/></svg></span>
+                    <span><span class="nav__mega-card__title">AI &amp; Server Rack</span></span>
+                  </a>
+                  <a href="../industries/appliances/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h.01"/></svg></span>
+                    <span><span class="nav__mega-card__title">Appliances &amp; White Goods</span></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Featured top-level slot ===== -->
+        <a href="../industries/ai-server-rack/" class="nav__link nav__feature">AI &amp; Server Rack</a>
+
+        <!-- ===== Plain top-level links ===== -->
+        <a href="../quality/" class="nav__link nav__link--row">Quality</a>
+        <a href="../about.html" class="nav__link nav__link--row">About</a>
+        <a href="../contact.html" class="nav__link nav__link--row">Contact</a>
+
+        <!-- ===== Persistent RFQ CTA ===== -->
+        <a href="../request-a-quote/" class="btn btn--primary nav__cta">Request a Quote</a>
       </nav>
     </div>
+    <div class="nav-overlay" id="navOverlay"></div>
   </header>
 
-  <!-- ============ COMING SOON HERO ============ -->
-  <main>
-    <section class="cs-hero">
-      <div class="cs-hero__bg"></div>
+  <!-- ============ HERO ============ -->
+  <section class="cm-hero">
+    <div class="cm-hero__grid"></div>
 
-      <!-- Glow dots -->
-      <div class="cs-hero__glow">
-        <div class="cs-glow-dot cs-glow-dot--teal"  style="top: 18%; left: 12%; animation-delay: 0s;"></div>
-        <div class="cs-glow-dot cs-glow-dot--coral"  style="top: 35%; left: 78%; animation-delay: 1.5s;"></div>
-        <div class="cs-glow-dot cs-glow-dot--teal"  style="top: 65%; left: 45%; animation-delay: 3s;"></div>
-        <div class="cs-glow-dot cs-glow-dot--lime"   style="top: 80%; left: 22%; animation-delay: 4.5s;"></div>
-        <div class="cs-glow-dot cs-glow-dot--coral"  style="top: 50%; left: 85%; animation-delay: 2s;"></div>
-        <div class="cs-glow-dot cs-glow-dot--teal"  style="top: 10%; left: 60%; animation-delay: 3.5s;"></div>
+    <div class="cm-hero__inner">
+      <nav class="breadcrumb hero-reveal hero-reveal-delay-1" aria-label="Breadcrumb" style="position: absolute; top: calc(var(--header-height) + var(--space-md)); left: var(--space-xl); z-index: 3; text-align: left; width: 100%;">
+        <a href="../" class="breadcrumb__link">GPW Corporate</a>
+        <span class="breadcrumb__sep">&rarr;</span>
+        <span class="breadcrumb__current">Contract Manufacturing</span>
+      </nav>
+
+      <span class="cm-hero__label hero-reveal hero-reveal-delay-1">Division 01 &mdash; Contract Manufacturing</span>
+      <h1 class="hero-reveal hero-reveal-delay-2">Contract Manufacturing &mdash;<br>Precision CNC Machining from&nbsp;Mexico</h1>
+      <p class="cm-hero__sub hero-reveal hero-reveal-delay-3">
+        Precision-machined components from Monterrey, Mexico &mdash; milling, turning, EDM, sheet metal, and finishing. For U.S. OEMs who need tight tolerances, documented quality, and 25&ndash;45% landed cost savings over&nbsp;domestic.
+      </p>
+      <div class="btn-group hero-reveal hero-reveal-delay-4">
+        <a href="#services" class="btn btn--interactive btn--lg">
+          <span class="btn__text">See Our Services</span>
+          <span class="btn__hover">
+            <span>See Our Services</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </span>
+          <span class="btn__circle"></span>
+        </a>
+        <a href="request-quote/" class="btn btn--interactive btn--interactive-outline btn--lg">
+          <span class="btn__text">Request a Quote</span>
+          <span class="btn__hover">
+            <span>Request a Quote</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </span>
+          <span class="btn__circle"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS BAR ============ -->
+  <section class="cm-stats-bar">
+    <div class="cm-stats-bar__grid">
+      <div class="cm-stat-card">
+        <span class="cm-stat-card__number">5</span>
+        <span class="cm-stat-card__label">Core Processes</span>
+      </div>
+      <div class="cm-stat-card">
+        <span class="cm-stat-card__number">6</span>
+        <span class="cm-stat-card__label">Industries Served</span>
+      </div>
+      <div class="cm-stat-card">
+        <span class="cm-stat-card__number">Up to 47%</span>
+        <span class="cm-stat-card__label">Landed Cost Savings</span>
+      </div>
+      <div class="cm-stat-card">
+        <span class="cm-stat-card__number">24 hrs</span>
+        <span class="cm-stat-card__label">Quote Response</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT WE MANUFACTURE ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div class="two-col__content reveal">
+          <span class="label label--coral">Precision Components, Documented to Your Spec</span>
+          <div class="section__divider"></div>
+          <div class="definition-block">
+            <p><strong>Contract manufacturing</strong> is the fabrication of precision components and parts &mdash; machined from metal or plastic stock to your drawings, tolerances, and quality requirements. It covers everything from a single prototype to recurring production runs of thousands of parts per month.</p>
+          </div>
+        </div>
+        <div class="two-col__content reveal reveal-delay-2">
+          <h2>What GPW Does for&nbsp;You</h2>
+          <p>GPW connects U.S. OEMs with verified precision machining operations in Mexico. We manage your project from quote to delivery &mdash; selecting the right process, sourcing the right material, coordinating finishing, and documenting every step.</p>
+          <p>Every project starts with a free DFM review. Before we cut a single chip, our engineering team analyzes your design for manufacturability &mdash; identifying tolerance risks, recommending material alternatives, and flagging geometry that could drive unnecessary cost.</p>
+          <p>You get finished parts. Inspected, documented, and shipped to your dock.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5 CORE SERVICES ============ -->
+  <section class="section section--light" id="services">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--space-3xl);" class="reveal">
+        <span class="label label--coral">From Raw Stock to Finished Part</span>
+        <div class="section__divider section__divider--center"></div>
+        <h2>5 Core Machining Services</h2>
+        <p style="max-width: 700px; margin: 0 auto;">GPW's contract manufacturing capabilities span five core processes. Most customer projects use one or two. Complex programs combine three or more &mdash; managed under a single point of contact.</p>
       </div>
 
-      <!-- Vignette -->
-      <div class="cs-hero__vignette"></div>
+      <div class="cm-services-list reveal">
+        <a href="cnc-milling/" class="cm-service-row">
+          <span class="cm-service-row__number">01</span>
+          <div class="cm-service-row__title-block">
+            <span class="cm-service-row__title">CNC Milling</span>
+            <span class="cm-service-row__tagline">Complex geometries, pockets &amp; contours</span>
+          </div>
+          <div class="cm-service-row__spec">
+            <span class="cm-service-row__spec-label">Tolerance</span>
+            <span class="cm-service-row__spec-value">&plusmn;0.001"</span>
+          </div>
+          <div class="cm-service-row__spec">
+            <span class="cm-service-row__spec-label">Capability</span>
+            <span class="cm-service-row__spec-value">3 to 5-axis</span>
+          </div>
+          <div class="cm-service-row__expand">
+            <p>3-axis, 4-axis, and 5-axis milling for structural brackets, housings, manifold blocks, and fixture plates. Built for parts that demand tight geometry and repeatability across production runs.</p>
+          </div>
+          <span class="cm-service-row__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
 
-      <!-- Content -->
-      <div class="cs-hero__content">
-        <!-- CNC Gear Icon -->
-        <div class="cs-icon">
-          <svg viewBox="0 0 64 64" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M32 22a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/>
-            <path d="M32 6v6M32 52v6M6 32h6M52 32h6M13.9 13.9l4.2 4.2M45.9 45.9l4.2 4.2M13.9 50.1l4.2-4.2M45.9 18.1l4.2-4.2"/>
-            <circle cx="32" cy="32" r="5"/>
-          </svg>
+        <a href="cnc-turning/" class="cm-service-row">
+          <span class="cm-service-row__number">02</span>
+          <div class="cm-service-row__title-block">
+            <span class="cm-service-row__title">CNC Turning</span>
+            <span class="cm-service-row__tagline">Cylindrical parts &amp; live tooling</span>
+          </div>
+          <div class="cm-service-row__spec">
+            <span class="cm-service-row__spec-label">Tolerance</span>
+            <span class="cm-service-row__spec-value">&plusmn;0.0005"</span>
+          </div>
+          <div class="cm-service-row__spec">
+            <span class="cm-service-row__spec-label">Capability</span>
+            <span class="cm-service-row__spec-value">Live tooling</span>
+          </div>
+          <div class="cm-service-row__expand">
+            <p>Precision lathe work for shafts, pins, fittings, bushings, spacers, connectors, and threaded components. Live tooling available for combined turning and milling in a single setup.</p>
+          </div>
+          <span class="cm-service-row__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a href="wire-edm/" class="cm-service-row">
+          <span class="cm-service-row__number">03</span>
+          <div class="cm-service-row__title-block">
+            <span class="cm-service-row__title">Wire EDM</span>
+            <span class="cm-service-row__tagline">Where conventional cutting can&rsquo;t reach</span>
+          </div>
+          <div class="cm-service-row__spec">
+            <span class="cm-service-row__spec-label">Tolerance</span>
+            <span class="cm-service-row__spec-value">&plusmn;0.0001"</span>
+          </div>
+          <div class="cm-service-row__spec">
+            <span class="cm-service-row__spec-label">Materials</span>
+            <span class="cm-service-row__spec-value">Hardened steel, carbide</span>
+          </div>
+          <div class="cm-service-row__expand">
+            <p>Electrical discharge machining for hardened tool steel, tungsten carbide, and complex profiles. When your part demands precision in the hardest materials, EDM delivers what milling and turning cannot.</p>
+          </div>
+          <span class="cm-service-row__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a href="sheet-metal/" class="cm-service-row">
+          <span class="cm-service-row__number">04</span>
+          <div class="cm-service-row__title-block">
+            <span class="cm-service-row__title">Sheet Metal Fabrication</span>
+            <span class="cm-service-row__tagline">Cut, formed, welded &amp; finished</span>
+          </div>
+          <div class="cm-service-row__spec">
+            <span class="cm-service-row__spec-label">Gauges</span>
+            <span class="cm-service-row__spec-value">24ga to 1"</span>
+          </div>
+          <div class="cm-service-row__spec">
+            <span class="cm-service-row__spec-label">Processes</span>
+            <span class="cm-service-row__spec-value">Laser, bend, weld</span>
+          </div>
+          <div class="cm-service-row__expand">
+            <p>Laser cutting, CNC bending, punching, and welding across steel, stainless, aluminum, copper, and brass. Enclosures, brackets, panels, guards, and chassis delivered ready for assembly.</p>
+          </div>
+          <span class="cm-service-row__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a href="surface-finishing/" class="cm-service-row">
+          <span class="cm-service-row__number">05</span>
+          <div class="cm-service-row__title-block">
+            <span class="cm-service-row__title">Surface Finishing</span>
+            <span class="cm-service-row__tagline">Complete parts, ready to install</span>
+          </div>
+          <div class="cm-service-row__spec">
+            <span class="cm-service-row__spec-label">Finishes</span>
+            <span class="cm-service-row__spec-value">8+ types</span>
+          </div>
+          <div class="cm-service-row__spec">
+            <span class="cm-service-row__spec-label">Includes</span>
+            <span class="cm-service-row__spec-value">Anodize, plate, coat</span>
+          </div>
+          <div class="cm-service-row__expand">
+            <p>Anodizing, powder coating, plating, passivation, heat treatment, bead blasting, electropolishing, and laser marking. We deliver complete parts &mdash; machined, finished, and ready to install &mdash; not raw stock.</p>
+          </div>
+          <span class="cm-service-row__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DFM HIGHLIGHT BLOCK ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="cm-dfm-block reveal">
+        <div class="cm-dfm-block__content">
+          <span class="cm-dfm-block__label">Engineering Support</span>
+          <h2>Free DFM Review on Every&nbsp;Project</h2>
+          <p>Most shops quote what you send. If your design has a feature that triples cycle time, you find out when the invoice arrives. GPW reviews every design before quoting &mdash; checking wall thickness, radii, tolerances, material selection, and number of setups. Then we tell you where to save money without sacrificing function.</p>
+          <p>This is not automated software feedback. It is an engineer reviewing your part and giving you specific, actionable recommendations &mdash; at no cost.</p>
         </div>
-
-        <span class="cs-label">Contract Manufacturing</span>
-        <div class="cs-divider"></div>
-        <h1 class="cs-title">Under Construction</h1>
-        <p class="cs-tagline">Precision is worth the wait.</p>
-        <p class="cs-desc">
-          Our Contract Manufacturing division — CNC precision machining from Monterrey, Mexico — is being built with the same attention to detail we bring to every part we make. This section is coming soon.
-        </p>
-
-        <div class="cs-actions">
-          <a href="../ems/" class="cs-btn cs-btn--primary">
-            <span>Explore EMS Division</span>
-            <svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        <div class="cm-dfm-block__cta">
+          <a href="engineering-support/" class="btn btn--interactive btn--lg">
+            <span class="btn__text">Upload Your Part</span>
+            <span class="btn__hover">
+              <span>Free DFM Review</span>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+            <span class="btn__circle"></span>
           </a>
-          <a href="../" class="cs-btn cs-btn--outline">
-            <svg viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
-            <span>Back to Home</span>
+          <a href="engineering-support/" class="cm-dfm-block__sub-link">
+            See Engineering Support
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
           </a>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <!-- ============ JAVASCRIPT ============ -->
+  <!-- ============ MATERIALS ============ -->
+  <section class="section section--light">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--space-3xl);" class="reveal">
+        <span class="label label--coral">Metals &amp; Engineering Plastics</span>
+        <div class="section__divider section__divider--center"></div>
+        <h2>Materials We Machine</h2>
+        <p style="max-width: 700px; margin: 0 auto;">We machine the metals and engineering plastics that your application demands. Not sure which material is right? Our engineering team recommends the best option during your free DFM review.</p>
+      </div>
+
+      <div class="cm-materials reveal">
+        <div class="cm-materials__group">
+          <div class="cm-materials__group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+            Metals
+          </div>
+          <div class="cm-materials__list">
+            <span class="cm-materials__chip">Aluminum 6061</span>
+            <span class="cm-materials__chip">Aluminum 7075</span>
+            <span class="cm-materials__chip">Steel 1018</span>
+            <span class="cm-materials__chip">Steel 4140</span>
+            <span class="cm-materials__chip">Stainless 304</span>
+            <span class="cm-materials__chip">Stainless 316</span>
+            <span class="cm-materials__chip">Stainless 17-4PH</span>
+            <span class="cm-materials__chip">Titanium Gr. 2 / 5</span>
+            <span class="cm-materials__chip">Brass 360</span>
+            <span class="cm-materials__chip">Copper 101 / 110</span>
+            <span class="cm-materials__chip">Bronze 932</span>
+            <span class="cm-materials__chip">Tool Steel D2 / A2 / H13</span>
+          </div>
+          <a href="metals/" class="cm-materials__link">
+            See all metals with grades and properties
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </a>
+        </div>
+
+        <div class="cm-materials__group">
+          <div class="cm-materials__group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg>
+            Plastics
+          </div>
+          <div class="cm-materials__list">
+            <span class="cm-materials__chip">Delrin / Acetal</span>
+            <span class="cm-materials__chip">PEEK</span>
+            <span class="cm-materials__chip">Nylon 6/6</span>
+            <span class="cm-materials__chip">PTFE / Teflon</span>
+            <span class="cm-materials__chip">Polycarbonate</span>
+            <span class="cm-materials__chip">ABS</span>
+            <span class="cm-materials__chip">Acrylic</span>
+            <span class="cm-materials__chip">UHMW-PE</span>
+            <span class="cm-materials__chip">Ultem / PEI</span>
+            <span class="cm-materials__chip">Garolite G-10</span>
+            <span class="cm-materials__chip">Torlon</span>
+            <span class="cm-materials__chip">PVC</span>
+            <span class="cm-materials__chip">Polypropylene</span>
+          </div>
+          <a href="plastics/" class="cm-materials__link">
+            See all plastics with grades and properties
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INDUSTRIES ============ -->
+  <section class="section">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--space-3xl);" class="reveal">
+        <span class="label label--coral">Multi-Industry Precision</span>
+        <div class="section__divider section__divider--center"></div>
+        <h2>Industries We Serve</h2>
+        <p style="max-width: 700px; margin: 0 auto;">Precision machining for OEMs across six sectors. Each industry brings its own materials, tolerances, certifications, and documentation requirements. GPW adapts to yours.</p>
+      </div>
+
+      <div class="cm-industry-grid">
+        <a href="aerospace-defense/" class="cm-industry-card reveal reveal-delay-1" aria-label="Aerospace and Defense CNC Machining">
+          <span class="cm-industry-card__title">Aerospace &amp; Defense</span>
+          <span class="cm-industry-card__desc">Titanium, Inconel, aluminum 7075. Full traceability, MIL-spec documentation, AS9100 pathway.</span>
+          <span class="cm-industry-card__link">See Aerospace &amp; Defense <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+
+        <a href="automotive/" class="cm-industry-card reveal reveal-delay-2" aria-label="Automotive CNC Machining">
+          <span class="cm-industry-card__title">Automotive</span>
+          <span class="cm-industry-card__desc">Prototype to production. Steel, aluminum, brass. PPAP documentation, IATF 16949 pathway.</span>
+          <span class="cm-industry-card__link">See Automotive <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+
+        <a href="medical-devices/" class="cm-industry-card reveal reveal-delay-3" aria-label="Medical Device CNC Machining">
+          <span class="cm-industry-card__title">Medical Devices</span>
+          <span class="cm-industry-card__desc">Surgical instruments, implant components. Stainless 316, titanium, PEEK. ISO 13485 pathway, lot traceability.</span>
+          <span class="cm-industry-card__link">See Medical Devices <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+
+        <a href="industrial-equipment/" class="cm-industry-card reveal reveal-delay-4" aria-label="Industrial Equipment CNC Machining">
+          <span class="cm-industry-card__title">Industrial Equipment</span>
+          <span class="cm-industry-card__desc">Gears, shafts, housings, fixtures. Steel, bronze, aluminum. Low-to-medium volume, custom one-offs to recurring production.</span>
+          <span class="cm-industry-card__link">See Industrial Equipment <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+
+        <a href="oil-gas-energy/" class="cm-industry-card reveal reveal-delay-5" aria-label="Oil and Gas CNC Machining">
+          <span class="cm-industry-card__title">Oil &amp; Gas / Energy</span>
+          <span class="cm-industry-card__desc">Downhole tools, fittings, valve bodies. Inconel, stainless 316, PEEK. NACE-compliant materials, full material test reports.</span>
+          <span class="cm-industry-card__link">See Oil &amp; Gas <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+
+        <a href="electronics-telecom/" class="cm-industry-card reveal reveal-delay-6" aria-label="Electronics and Telecom CNC Machining">
+          <span class="cm-industry-card__title">Electronics &amp; Telecom</span>
+          <span class="cm-industry-card__desc">Heat sinks, enclosures, connectors, chassis. Aluminum, copper, brass. Machine the parts &mdash; then assemble the product through our EMS division.</span>
+          <span class="cm-industry-card__link">See Electronics &amp; Telecom <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY MEXICO ============ -->
+  <section class="section section--dark">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--space-3xl);" class="reveal">
+        <span class="label label--lime">The Nearshore Advantage</span>
+        <div class="section__divider section__divider--center"></div>
+        <h2>Why Manufacture in Mexico?</h2>
+      </div>
+
+      <div class="cm-nearshore-bar reveal">
+        <div class="cm-nearshore-stat" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
+          <span class="cm-nearshore-stat__number" style="color: var(--coral);">25&ndash;45%</span>
+          <span class="cm-nearshore-stat__label" style="color: rgba(255,255,255,0.5);">Landed Cost Savings vs U.S.</span>
+        </div>
+        <div class="cm-nearshore-stat" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
+          <span class="cm-nearshore-stat__number" style="color: var(--coral);">2 hrs</span>
+          <span class="cm-nearshore-stat__label" style="color: rgba(255,255,255,0.5);">From the Border</span>
+        </div>
+        <div class="cm-nearshore-stat" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
+          <span class="cm-nearshore-stat__number" style="color: var(--coral);">CST</span>
+          <span class="cm-nearshore-stat__label" style="color: rgba(255,255,255,0.5);">Same Timezone</span>
+        </div>
+        <div class="cm-nearshore-stat" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
+          <span class="cm-nearshore-stat__number" style="color: var(--coral);">USMCA</span>
+          <span class="cm-nearshore-stat__label" style="color: rgba(255,255,255,0.5);">Tariff Advantage</span>
+        </div>
+      </div>
+
+      <div style="max-width: 800px; margin: 0 auto; text-align: center;" class="reveal">
+        <p style="color: rgba(255,255,255,0.75); font-size: var(--text-lg); line-height: 1.7;">Manufacturing in Mexico is not offshoring. It is nearshoring &mdash; same continent, same timezone, same trade agreement. Your parts are machined 150 miles from Texas, not 8,000 miles across an ocean. The machines are the same brands your U.S. shops run. The standards are the same. The difference is cost.</p>
+        <div style="margin-top: var(--space-2xl);">
+          <a href="why-mexico/" class="btn btn--interactive btn--lg">
+            <span class="btn__text">See the Full Data</span>
+            <span class="btn__hover">
+              <span>See the Full Data</span>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+            <span class="btn__circle"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="section section--teal">
+    <div class="container" style="text-align: center;">
+      <h2 class="reveal" style="margin-bottom: var(--space-lg);">Ready to Get Started?</h2>
+      <p class="reveal reveal-delay-1" style="color: rgba(255,255,255,0.8); font-size: var(--text-lg); max-width: 650px; margin: 0 auto var(--space-2xl);">
+        Tell us about your project. Upload a CAD file or drawing, describe what you need, and we respond within 24 business hours with pricing and a free DFM review &mdash; at no cost and no obligation.
+      </p>
+      <div class="reveal reveal-delay-2" style="margin-bottom: var(--space-lg);">
+        <a href="request-quote/" class="btn btn--interactive btn--lg">
+          <span class="btn__text">Request a Quote</span>
+          <span class="btn__hover">
+            <span>Request a Quote</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </span>
+          <span class="btn__circle"></span>
+        </a>
+      </div>
+      <p class="reveal reveal-delay-3" style="color: rgba(255,255,255,0.5); font-size: var(--text-sm);">
+        No minimum order &middot; NDA available &middot; sales@gpw-solutions.com
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED INSIGHT (BLOG TEASER) ============ -->
+  <section class="section section--light">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--space-2xl);" class="reveal">
+        <span class="label label--coral">Featured Insight</span>
+        <div class="section__divider section__divider--center"></div>
+        <h2>The Real Cost of Nearshoring CNC to Mexico</h2>
+        <p style="max-width: 700px; margin: 0 auto;">Forget the hand-wavy "60% savings" claims. Our 2026 study triangulates eight Tier 1 sources to show what landed cost actually looks like, broken out by part complexity.</p>
+      </div>
+      <a href="../blog/cnc-cost-mexico-vs-us-2026/" style="display: block; max-width: 900px; margin: 0 auto; text-decoration: none; color: inherit;">
+        <div class="reveal" style="display: grid; grid-template-columns: 1fr 280px; gap: var(--space-2xl); padding: var(--space-2xl); background: var(--white); border: 1px solid var(--light-gray); border-radius: var(--radius-lg); transition: all var(--transition-base); align-items: center;" onmouseover="this.style.borderColor='var(--teal)';this.style.boxShadow='var(--shadow-md)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--light-gray)';this.style.boxShadow='none';this.style.transform='none'">
+          <div>
+            <span style="display: block; font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-on-light); margin-bottom: var(--space-sm);">Cost Study &middot; April 2026</span>
+            <h3 style="font-size: var(--text-2xl); margin-bottom: var(--space-md); color: var(--near-black); line-height: 1.25;">Mexico vs US CNC Machining Cost: A 2026 Total Landed Cost Study</h3>
+            <p style="color: var(--mid-gray); margin-bottom: var(--space-md);">8 sourced datasets &middot; downloadable XLSX cost model &middot; interactive savings calculator.</p>
+            <span style="display: inline-flex; align-items: center; gap: var(--space-sm); color: var(--teal); font-weight: 700;">
+              Read the study
+              <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+          </div>
+          <div style="background: linear-gradient(135deg, var(--teal) 0%, var(--deep-blue) 100%); color: var(--white); padding: var(--space-2xl); border-radius: var(--radius-md); text-align: center; min-height: 160px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 2.4rem; font-weight: 900; color: var(--coral); line-height: 1; margin-bottom: var(--space-sm); letter-spacing: -0.02em;">25&ndash;45%</div>
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7);">Landed Cost Savings</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ CROSS-DIVISION BANNER ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="cm-cross-banner reveal">
+        <div class="cm-cross-banner__content">
+          <h3>Need assembly, not just parts?</h3>
+          <p>GPW's Electromechanical Assembly division integrates components into finished products &mdash; box build, cable harness, system integration, and testing.</p>
+        </div>
+        <a href="../ems/" class="btn btn--interactive btn--interactive-teal">
+          <span class="btn__text">See EMS Assembly</span>
+          <span class="btn__hover">
+            <span>See EMS Assembly</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </span>
+          <span class="btn__circle"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img loading="lazy" src="../img/logo-white.png" alt="Global Precision Works" width="300" height="189">
+          <p class="footer__tagline">Precision manufacturing from Monterrey, Mexico for U.S. OEMs.</p>
+          <div class="footer__contact">
+            <a href="mailto:sales@gpw-solutions.com" class="footer__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              sales@gpw-solutions.com
+            </a>
+            <a href="https://www.linkedin.com/company/gpw-solutions" target="_blank" rel="noopener" class="footer__contact-item">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.14.93-2.06 2.06-2.06 1.14 0 2.06.93 2.06 2.06 0 1.14-.92 2.07-2.06 2.07zm1.78 13.02H3.55V9h3.57v11.45z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Contract Manufacturing</h4>
+          <a href="cnc-milling/" class="footer__link">CNC Milling</a>
+          <a href="cnc-turning/" class="footer__link">CNC Turning</a>
+          <a href="wire-edm/" class="footer__link">Wire EDM</a>
+          <a href="sheet-metal/" class="footer__link">Sheet Metal</a>
+          <a href="surface-finishing/" class="footer__link">Surface Finishing</a>
+          <a href="engineering-support/" class="footer__link">Engineering Support</a>
+          <a href="why-mexico/" class="footer__link">Why Mexico?</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Assembly &amp; Integration</h4>
+          <a href="../ems/services/box-build-assembly.html" class="footer__link">Box Build</a>
+          <a href="../ems/services/cable-harness-assembly.html" class="footer__link">Cable &amp; Harness</a>
+          <a href="../ems/services/system-integration.html" class="footer__link">System Integration</a>
+          <a href="../ems/services/testing-inspection.html" class="footer__link">Testing &amp; Inspection</a>
+          <a href="../ems/services/enclosure-cabinet-assembly.html" class="footer__link">Enclosure &amp; Cabinet</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Company</h4>
+          <a href="../" class="footer__link">Home</a>
+          <a href="../ems/about.html" class="footer__link">About</a>
+          <a href="../blog/" class="footer__link">Insights</a>
+          <a href="request-quote/" class="footer__link">Request a Quote</a>
+          <a href="../privacy-policy.html" class="footer__link">Privacy Policy</a>
+          <a href="../terms.html" class="footer__link">Terms</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Global Precision Works. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
   <script src="../js/main.js"></script>
   <script src="../js/cookie-consent.js"></script>
 </body>

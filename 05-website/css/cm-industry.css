@@ -1,0 +1,926 @@
+/* ==========================================================================
+   CM-INDUSTRY.CSS — Components specific to Contract Manufacturing industry pages
+   Loaded ONLY on /contract-manufacturing/[industry]/ pages
+   Builds on top of styles.css + cm-home.css — does not override them
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. IMAGE PLACEHOLDER
+   Reusable component — replace <div class="img-ph"> with <img src="..."> later
+   ========================================================================== */
+
+.img-ph {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 50%, var(--teal-dark) 100%);
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  text-align: center;
+  padding: var(--space-xl);
+  isolation: isolate;
+}
+
+/* Decorative grid overlay */
+.img-ph::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+/* Coral accent corner */
+.img-ph::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, transparent 50%, var(--coral) 50%);
+  z-index: -1;
+}
+
+.img-ph__icon {
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--space-md);
+  opacity: 0.85;
+}
+
+.img-ph__label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: var(--space-xs);
+}
+
+.img-ph__caption {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.9);
+  font-style: italic;
+  max-width: 320px;
+  line-height: 1.4;
+}
+
+.img-ph__dim {
+  position: absolute;
+  bottom: var(--space-sm);
+  right: var(--space-md);
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: monospace;
+  letter-spacing: 0.05em;
+}
+
+/* Aspect ratio variants */
+.img-ph--16x9 { aspect-ratio: 16 / 9; }
+.img-ph--4x3  { aspect-ratio: 4 / 3; }
+.img-ph--3x4  { aspect-ratio: 3 / 4; }
+.img-ph--1x1  { aspect-ratio: 1 / 1; }
+.img-ph--21x9 { aspect-ratio: 21 / 9; }
+
+
+/* ==========================================================================
+   2. INDUSTRY HERO
+   Editorial hero with image background slot + dark overlay
+   ========================================================================== */
+
+.industry-hero {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: flex-end;
+  /* Top padding clears the sticky header + utility bar with breathing room */
+  padding: calc(var(--top-offset, 136px) + var(--space-2xl)) 0 var(--space-4xl);
+  color: #fff;
+  overflow: hidden;
+  isolation: isolate;
+  margin-top: 0;
+}
+
+.industry-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 50%, var(--teal-light) 100%);
+}
+
+.industry-hero__bg-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Coral diagonal accent */
+.industry-hero__accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(115deg, transparent 50%, rgba(237, 131, 94, 0.15) 50%);
+  pointer-events: none;
+}
+
+/* Dark vignette for legibility on real photos */
+.industry-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(26, 63, 66, 0.3) 0%, rgba(26, 63, 66, 0.7) 100%);
+}
+
+.industry-hero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+  width: 100%;
+}
+
+.industry-hero__breadcrumb {
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-2xl);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.industry-hero__breadcrumb a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.industry-hero__breadcrumb a:hover { color: var(--coral); }
+
+.industry-hero__breadcrumb-sep {
+  margin: 0 var(--space-sm);
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.industry-hero__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: end;
+}
+
+@media (min-width: 980px) {
+  .industry-hero__layout {
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-3xl);
+  }
+}
+
+.industry-hero__content {
+  max-width: 720px;
+}
+
+.industry-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--text-xs);
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: var(--space-lg);
+}
+
+.industry-hero__eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  background: var(--coral);
+}
+
+.industry-hero h1 {
+  font-size: clamp(2.4rem, 1.8rem + 2.8vw, 4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0 0 var(--space-lg);
+  color: #fff;
+}
+
+.industry-hero h1 em {
+  font-family: 'Trirong', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--coral);
+}
+
+.industry-hero__sub {
+  font-size: var(--text-lg);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 var(--space-xl);
+  max-width: 600px;
+}
+
+.industry-hero__sub strong { color: #fff; font-weight: 700; }
+
+.industry-hero__ctas {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* Hero image slot — visible on desktop */
+.industry-hero__image {
+  display: none;
+}
+
+@media (min-width: 980px) {
+  .industry-hero__image {
+    display: block;
+    align-self: end;
+    transform: translateY(80px);
+    /* Image will overflow into snapshot section */
+  }
+
+  .industry-hero__image .img-ph {
+    aspect-ratio: 4 / 5;
+    min-height: 420px;
+  }
+}
+
+
+/* ==========================================================================
+   3. INDUSTRY SNAPSHOT — Asymmetric: 1 dominant stat + 3 compact data points
+   ========================================================================== */
+
+.industry-snapshot {
+  background: #fff;
+  padding: var(--space-3xl) 0;
+  border-bottom: 1px solid rgba(35, 85, 90, 0.08);
+}
+
+.industry-snapshot__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+.industry-snapshot__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 880px) {
+  .industry-snapshot__grid {
+    grid-template-columns: 1.6fr 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+  }
+}
+
+.industry-snapshot__hero {
+  position: relative;
+  padding: var(--space-2xl);
+  background: linear-gradient(135deg, var(--off-white) 0%, #fff 100%);
+  border-left: 6px solid var(--coral);
+  border-radius: var(--radius-md);
+}
+
+.industry-snapshot__hero-label {
+  font-size: var(--text-xs);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--coral);
+  margin-bottom: var(--space-sm);
+}
+
+.industry-snapshot__hero-value {
+  font-size: clamp(2.5rem, 1.8rem + 3vw, 4.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  color: var(--teal);
+  letter-spacing: -0.03em;
+  margin: 0 0 var(--space-md);
+  font-family: 'Trirong', serif;
+}
+
+.industry-snapshot__hero-desc {
+  font-size: var(--text-base);
+  color: var(--teal);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.industry-snapshot__hero-desc strong { color: var(--coral); }
+
+.industry-snapshot__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.industry-snapshot__item {
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid rgba(35, 85, 90, 0.1);
+}
+
+.industry-snapshot__item:last-child {
+  border-bottom: none;
+}
+
+.industry-snapshot__item-value {
+  display: block;
+  font-size: var(--text-2xl);
+  font-weight: 900;
+  color: var(--teal);
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.industry-snapshot__item-label {
+  display: block;
+  font-size: var(--text-xs);
+  color: rgba(35, 85, 90, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+
+/* ==========================================================================
+   4. INDUSTRY STORYBOARD — Sequential visual narrative
+   Editorial layout with images + captions, alternating sides
+   ========================================================================== */
+
+.industry-storyboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.industry-storyboard__step {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+@media (min-width: 880px) {
+  .industry-storyboard__step {
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-3xl);
+  }
+  /* Alternate image / text orientation */
+  .industry-storyboard__step:nth-child(even) {
+    grid-template-columns: 1fr 1.2fr;
+  }
+  .industry-storyboard__step:nth-child(even) .industry-storyboard__image {
+    order: 2;
+  }
+}
+
+.industry-storyboard__image .img-ph {
+  aspect-ratio: 4 / 3;
+  min-height: 280px;
+}
+
+.industry-storyboard__content {
+  position: relative;
+  padding-left: var(--space-lg);
+  border-left: 3px solid var(--coral);
+}
+
+.industry-storyboard__step-num {
+  display: inline-block;
+  font-family: 'Trirong', serif;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--coral);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+
+.industry-storyboard__title {
+  font-size: var(--text-2xl);
+  font-weight: 900;
+  color: var(--teal);
+  margin: 0 0 var(--space-md);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.industry-storyboard__desc {
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: rgba(35, 85, 90, 0.85);
+  margin: 0;
+}
+
+.industry-storyboard__desc strong { color: var(--teal); }
+
+
+/* ==========================================================================
+   5. INDUSTRY CUSTOMER PROFILE — Asymmetric 40/60 humanizing block
+   ========================================================================== */
+
+.industry-customer {
+  background: var(--off-white);
+  padding: var(--space-4xl) 0;
+}
+
+.industry-customer__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+.industry-customer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+@media (min-width: 880px) {
+  .industry-customer__grid {
+    grid-template-columns: 4fr 6fr;
+    gap: var(--space-3xl);
+  }
+}
+
+.industry-customer__image .img-ph {
+  aspect-ratio: 4 / 5;
+  min-height: 360px;
+}
+
+.industry-customer__content {
+  padding: var(--space-md) 0;
+}
+
+.industry-customer__eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--coral);
+  margin-bottom: var(--space-sm);
+}
+
+.industry-customer__title {
+  font-size: var(--text-3xl);
+  font-weight: 900;
+  color: var(--teal);
+  margin: 0 0 var(--space-md);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.industry-customer__title em {
+  font-family: 'Trirong', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--coral);
+}
+
+.industry-customer__desc {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: rgba(35, 85, 90, 0.85);
+  margin: 0 0 var(--space-lg);
+}
+
+.industry-customer__criteria {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+@media (min-width: 600px) {
+  .industry-customer__criteria { grid-template-columns: 1fr 1fr; }
+}
+
+.industry-customer__criterion {
+  padding: var(--space-md);
+  background: #fff;
+  border-left: 3px solid var(--coral);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.industry-customer__criterion-label {
+  display: block;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--coral);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.industry-customer__criterion-text {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--teal);
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+
+/* ==========================================================================
+   6. INDUSTRY EDITORIAL QUOTE — Large, magazine-style, asymmetric
+   ========================================================================== */
+
+.industry-quote {
+  background: var(--teal-dark);
+  color: #fff;
+  padding: var(--space-4xl) 0;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.industry-quote::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  z-index: -1;
+}
+
+.industry-quote__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+}
+
+@media (min-width: 880px) {
+  .industry-quote__container {
+    grid-template-columns: 7fr 4fr;
+    gap: var(--space-3xl);
+    align-items: center;
+  }
+}
+
+.industry-quote__text {
+  position: relative;
+  padding-left: var(--space-2xl);
+}
+
+.industry-quote__text::before {
+  content: "\201C";
+  position: absolute;
+  top: -40px;
+  left: -10px;
+  font-family: 'Trirong', serif;
+  font-size: 8rem;
+  line-height: 1;
+  color: var(--coral);
+  opacity: 0.7;
+}
+
+.industry-quote__text p {
+  font-family: 'Trirong', serif;
+  font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem);
+  font-weight: 400;
+  line-height: 1.35;
+  color: #fff;
+  margin: 0 0 var(--space-md);
+  font-style: italic;
+}
+
+.industry-quote__attribution {
+  font-size: var(--text-sm);
+  color: var(--coral);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-style: normal;
+}
+
+.industry-quote__data {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.industry-quote__datum {
+  padding: var(--space-md) var(--space-lg);
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid var(--coral);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.industry-quote__datum-value {
+  display: block;
+  font-size: var(--text-2xl);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.industry-quote__datum-label {
+  display: block;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 700;
+}
+
+
+/* ==========================================================================
+   7. INDUSTRY SECTION INTRO — Looser, more editorial than service pages
+   ========================================================================== */
+
+.industry-section-intro {
+  text-align: center;
+  margin: 0 auto var(--space-3xl);
+  max-width: 760px;
+}
+
+.industry-section-intro__eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--coral);
+  margin-bottom: var(--space-sm);
+  display: inline-block;
+}
+
+.industry-section-intro__eyebrow::before,
+.industry-section-intro__eyebrow::after {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--coral);
+  vertical-align: middle;
+  margin: 0 var(--space-sm);
+}
+
+.industry-section-intro h2 {
+  font-size: var(--text-4xl);
+  font-weight: 900;
+  color: var(--teal);
+  margin: 0 0 var(--space-md);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.industry-section-intro h2 em {
+  font-family: 'Trirong', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--coral);
+}
+
+.industry-section-intro p {
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: rgba(35, 85, 90, 0.85);
+  margin: 0;
+}
+
+
+/* ==========================================================================
+   8. INDUSTRY CTA WITH PHOTO BACKGROUND
+   ========================================================================== */
+
+.industry-cta {
+  position: relative;
+  padding: var(--space-5xl) 0;
+  color: #fff;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.industry-cta__bg .img-ph {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border-radius: 0;
+  aspect-ratio: auto;
+}
+
+.industry-cta__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, rgba(26, 63, 66, 0.92) 0%, rgba(35, 85, 90, 0.85) 100%);
+}
+
+.industry-cta__container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.industry-cta__eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--coral);
+  margin-bottom: var(--space-md);
+}
+
+.industry-cta h2 {
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 var(--space-lg);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.industry-cta p {
+  font-size: var(--text-lg);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 auto var(--space-2xl);
+  max-width: 600px;
+}
+
+.industry-cta__ctas {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.industry-cta__small {
+  margin-top: var(--space-xl);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* ==========================================================================
+   9. UTILITY: Section spacing for industry pages
+   ========================================================================== */
+
+.section--industry {
+  padding: var(--space-4xl) 0;
+}
+
+.section--industry-tight {
+  padding: var(--space-3xl) 0;
+}
+
+@media (max-width: 768px) {
+  .industry-hero {
+    min-height: 480px;
+    /* Mobile header is shorter (88px) — still clear it with breathing room */
+    padding: calc(var(--top-offset, 128px) + var(--space-xl)) 0 var(--space-3xl);
+  }
+  .industry-hero__breadcrumb {
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+}
+
+
+/* ==========================================================================
+   11. FINISH GRID — 3-column variant for industry Quality sections
+   The base .cm-finish-grid is 4 columns. Industry pages have 6 cards in
+   their Quality section, which leaves 2 orphans on the second row.
+   This modifier forces 3 columns = 2 balanced rows.
+   ========================================================================== */
+
+.cm-finish-grid.cm-finish-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 980px) {
+  .cm-finish-grid.cm-finish-grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cm-finish-grid.cm-finish-grid--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================================
+   10. FAQ FIX — make native <details> work with cm-faq__* classes
+   The base cm-home.css FAQ accordion uses .is-open class toggled by JS.
+   Industry pages use <details>/<summary> instead — fix that here.
+   ========================================================================== */
+
+/* Style <summary> to look like the original .cm-faq__question button */
+details.cm-faq__item > summary.cm-faq__question {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-xl) 0;
+  background: none;
+  border: none;
+  font-family: var(--font-primary, 'Lato', sans-serif);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--teal);
+  text-align: left;
+  transition: color 0.15s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hide default details marker across browsers */
+details.cm-faq__item > summary.cm-faq__question::-webkit-details-marker {
+  display: none;
+}
+details.cm-faq__item > summary.cm-faq__question::marker {
+  content: "";
+}
+
+/* Append a chevron via pseudo-element so we don't need inline SVG */
+details.cm-faq__item > summary.cm-faq__question::after {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  margin-left: var(--space-md);
+  border-right: 2px solid var(--coral);
+  border-bottom: 2px solid var(--coral);
+  transform: rotate(45deg);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+details.cm-faq__item[open] > summary.cm-faq__question::after {
+  transform: rotate(-135deg);
+}
+
+details.cm-faq__item > summary.cm-faq__question:hover {
+  color: var(--coral);
+}
+
+details.cm-faq__item > summary.cm-faq__question:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* When <details> is open, expand the answer (override max-height: 0 from cm-home.css) */
+details.cm-faq__item[open] .cm-faq__answer {
+  max-height: none;
+  overflow: visible;
+}
+
+/* Keep visual spacing on the inner content */
+details.cm-faq__item .cm-faq__answer-inner {
+  padding-bottom: var(--space-xl);
+  color: rgba(35, 85, 90, 0.85);
+  font-size: var(--text-base);
+  line-height: 1.7;
+}
+
+details.cm-faq__item .cm-faq__answer-inner p {
+  margin: 0;
+}
+
+details.cm-faq__item .cm-faq__answer-inner p + p {
+  margin-top: var(--space-sm);
+}
