@@ -1,0 +1,55 @@
+| # | Archivo / URL | Estado | Nav | Foot | In(viv) | Redirect .htaccess (sal) | Links→redirect (sal) | Smap | Robots | Breadcrumb→reach | Propósito | Acción |
+|--|--|--|:-:|:-:|:-:|--|:-:|:-:|:-:|--|--|--|
+| 1 | `about.html`<br>`/about.html` | Live + Linked | Y | Y | 77 | — | — | Y | — | ok | Unified company About page | KEEP + fix inbound EMS links |
+| 2 | `blog/cnc-cost-mexico-vs-us-2026/index.html`<br>`/blog/cnc-cost-mexico-vs-us-2026/` | Live + Linked | — | · | 2 | — | — | Y | — | ok | Cost-study article (MX vs US CNC 2026) | KEEP |
+| 3 | `blog/index.html`<br>`/blog/` | Live + Linked | — | Y | 6 | — | — | Y | — | ok | Blog / Insights hub | KEEP (consider nav/footer promotion) |
+| 4 | `contact.html`<br>`/contact.html` | Live + Linked | Y | Y | 68 | — | — | Y | — | ok | Unified contact page + form | KEEP |
+| 5 | `contract-manufacturing/aerospace-defense/index.html`<br>`/contract-manufacturing/aerospace-defense/` | Redirected (file exists) | — | · | 12 | 301→/industries/aerospace-defense/ (L36) | — | — | — | ok | Standalone aerospace CNC deep-dive (built, then 301'd) | DECISION: delete-or-restore (see D-1) |
+| 6 | `contract-manufacturing/automotive/index.html`<br>`/contract-manufacturing/automotive/` | Redirected (file exists) | — | · | 12 | 301→/industries/automotive/ (L37) | — | — | — | ok | Standalone automotive CNC deep-dive | DECISION: delete-or-restore (D-1) |
+| 7 | `contract-manufacturing/cnc-milling/index.html`<br>`/contract-manufacturing/cnc-milling/` | Live + Linked | Y | Y | 78 | — | 6 | Y | — | ok | CNC milling service page | FIX-LINKS (6 industry pills → redirected spokes) |
+| 8 | `contract-manufacturing/cnc-turning/index.html`<br>`/contract-manufacturing/cnc-turning/` | Live + Linked | Y | Y | 75 | — | 6 | Y | — | ok | CNC turning service page | FIX-LINKS (6 industry pills) |
+| 9 | `contract-manufacturing/electronics-telecom/index.html`<br>`/contract-manufacturing/electronics-telecom/` | Redirected (file exists) | — | · | 14 | 301→/industries/electronics/ (L40) | — | — | — | ok | Combined electronics+telecom CNC deep-dive | DECISION: delete-or-restore (D-1/D-2) |
+| 10 | `contract-manufacturing/engineering-support/index.html`<br>`/contract-manufacturing/engineering-support/` | Live + Linked | Y | Y | 159 | — | 6 | Y | — | ok | Engineering Support / free DFM (most-linked CM page) | FIX-LINKS (6 industry pills) |
+| 11 | `contract-manufacturing/index.html`<br>`/contract-manufacturing/` | Live + Linked | Y | Y | 71 | — | — | Y | — | ok | CNC division hub | KEEP |
+| 12 | `contract-manufacturing/industrial-equipment/index.html`<br>`/contract-manufacturing/industrial-equipment/` | Redirected (file exists) | — | · | 12 | 301→/industries/industrial-equipment/ (L39) | — | — | — | ok | Standalone industrial CNC deep-dive | DECISION: delete-or-restore (D-1) |
+| 13 | `contract-manufacturing/medical-devices/index.html`<br>`/contract-manufacturing/medical-devices/` | Redirected (file exists) | — | · | 12 | 301→/industries/medical-devices/ (L38) | — | — | — | ok | Standalone medical CNC deep-dive | DECISION: delete-or-restore (D-1) |
+| 14 | `contract-manufacturing/metals/index.html`<br>`/contract-manufacturing/metals/` | Live + Linked | Y | · | 64 | — | — | Y | — | ok | Materials reference — metals | KEEP + add to footer (absent from all footers) |
+| 15 | `contract-manufacturing/oil-gas-energy/index.html`<br>`/contract-manufacturing/oil-gas-energy/` | Redirected (file exists) | — | · | 14 | 301→/industries/oil-gas/ (L41) | — | — | — | ok | Combined oil-gas+energy CNC deep-dive | DECISION: delete-or-restore (D-1/D-2) |
+| 16 | `contract-manufacturing/plastics/index.html`<br>`/contract-manufacturing/plastics/` | Live + Linked | Y | · | 55 | — | — | Y | — | ok | Materials reference — plastics | KEEP + add to footer (absent from all footers) |
+| 17 | `contract-manufacturing/sheet-metal/index.html`<br>`/contract-manufacturing/sheet-metal/` | Live + Linked | Y | Y | 72 | — | 6 | Y | — | ok | Sheet-metal fabrication service page | FIX-LINKS (6 industry pills) |
+| 18 | `contract-manufacturing/surface-finishing/index.html`<br>`/contract-manufacturing/surface-finishing/` | Live + Linked | Y | Y | 75 | — | 6 | Y | — | ok | Surface-finishing service page | FIX-LINKS (6 industry pills) |
+| 19 | `contract-manufacturing/why-mexico/index.html`<br>`/contract-manufacturing/why-mexico/` | Live + Linked | — | Y | 21 | — | — | Y | — | ok | Nearshore cost/proximity proof page | KEEP (decide canonical URL — see Decisions) |
+| 20 | `contract-manufacturing/wire-edm/index.html`<br>`/contract-manufacturing/wire-edm/` | Live + Linked | Y | Y | 72 | — | 6 | Y | — | ok | Wire EDM service page | FIX-LINKS (6 industry pills) |
+| 21 | `ems/about.html`<br>`/ems/about.html` | Redirected (file exists) | — | Y | 8 | 301→/about.html (L44) | — | — | — | ok | Legacy EMS-only About (dup of /about.html) | REMOVE-REDIRECT: delete file, repoint 8 links to /about.html |
+| 22 | `ems/index.html`<br>`/ems/` | Live + Linked | Y | Y | 117 | — | 1 | Y | — | ok | EMS Assembly division home | KEEP + fix footer About link |
+| 23 | `ems/request-quote.html`<br>`/ems/request-quote.html` | Redirected (file exists) | — | · | 0 | 301→/request-a-quote/ (L18) | — | — | — | ok | Legacy EMS-only RFQ form (orphan) | DELETE (0 inbound; superseded by /request-a-quote/) |
+| 24 | `ems/services/box-build-assembly.html`<br>`/ems/services/box-build-assembly.html` | Live + Linked | Y | Y | 108 | — | 1 | Y | — | ❌ 'Services'→/ems/services/ no en menú | Service — Box Build | FIX-LINKS (footer About → /ems/about.html) |
+| 25 | `ems/services/cable-harness-assembly.html`<br>`/ems/services/cable-harness-assembly.html` | Live + Linked | Y | Y | 112 | — | 1 | Y | — | ❌ 'Services'→/ems/services/ no en menú | Service — Cable & Harness | FIX-LINKS (footer About) |
+| 26 | `ems/services/enclosure-cabinet-assembly.html`<br>`/ems/services/enclosure-cabinet-assembly.html` | Live + Linked | Y | Y | 100 | — | 1 | Y | — | ❌ 'Services'→/ems/services/ no en menú | Service — Enclosure & Cabinet | FIX-LINKS (footer About) |
+| 27 | `ems/services/index.html`<br>`/ems/services/` | Live + Linked | — | · | 12 | — | 1 | Y | — | ok | EMS Services hub (breadcrumb 'Services' target) | DECISION: promote to menu or keep body-only (D-3) |
+| 28 | `ems/services/system-integration.html`<br>`/ems/services/system-integration.html` | Live + Linked | Y | Y | 104 | — | 1 | Y | — | ❌ 'Services'→/ems/services/ no en menú | Service — System Integration | FIX-LINKS (footer About) |
+| 29 | `ems/services/testing-inspection.html`<br>`/ems/services/testing-inspection.html` | Live + Linked | Y | Y | 122 | — | 1 | Y | — | ❌ 'Services'→/ems/services/ no en menú | Service — Testing & Inspection | FIX-LINKS (footer About) |
+| 30 | `index.html`<br>`/` | Live + Linked | Y | Y | 146 | — | — | Y | — | — | Corporate homepage / umbrella hub for both divisions | KEEP |
+| 31 | `industries/aerospace-defense/index.html`<br>`/industries/aerospace-defense/` | Live + Linked | Y | Y | 56 | — | 1 | Y | — | ok | Unified Aerospace industry page | FIX-LINKS (CNC deep-dive self-loop) |
+| 32 | `industries/ai-server-rack/index.html`<br>`/industries/ai-server-rack/` | Live + Linked | Y | Y | 72 | — | — | Y | — | ok | AI & Server Rack industry (EMS-native) | KEEP (cleanest) |
+| 33 | `industries/appliances/index.html`<br>`/industries/appliances/` | Live + Linked | Y | Y | 55 | — | — | Y | — | ok | Appliances industry (EMS-native) | KEEP |
+| 34 | `industries/automotive/index.html`<br>`/industries/automotive/` | Live + Linked | Y | Y | 56 | — | 1 | Y | — | ok | Automotive industry page | FIX-LINKS (self-loop) |
+| 35 | `industries/electronics/index.html`<br>`/industries/electronics/` | Live + Linked | Y | · | 45 | — | 2 | Y | — | ok | Electronics industry page | KEEP + add to footer + FIX-LINKS (self-loop) |
+| 36 | `industries/energy/index.html`<br>`/industries/energy/` | Live + Linked | Y | Y | 58 | — | 1 | Y | — | ok | Energy industry page | FIX-LINKS — WRONG-DEST: link lands on /industries/oil-gas/ |
+| 37 | `industries/industrial-equipment/index.html`<br>`/industries/industrial-equipment/` | Live + Linked | Y | Y | 77 | — | 1 | Y | — | ok | Industrial Equipment industry page | FIX-LINKS (self-loop) |
+| 38 | `industries/medical-devices/index.html`<br>`/industries/medical-devices/` | Live + Linked | Y | Y | 74 | — | 1 | Y | — | ok | Medical Devices industry page | FIX-LINKS (self-loop) |
+| 39 | `industries/oil-gas/index.html`<br>`/industries/oil-gas/` | Live + Linked | Y | · | 45 | — | 2 | Y | — | ok | Oil & Gas industry page | KEEP + add to footer + FIX-LINKS (self-loop) |
+| 40 | `industries/telecom/index.html`<br>`/industries/telecom/` | Live + Linked | Y | Y | 76 | — | 1 | Y | — | ok | Telecom industry page | FIX-LINKS — WRONG-DEST: link lands on /industries/electronics/ |
+| 41 | `privacy-policy.html`<br>`/privacy-policy.html` | Live + Linked | — | Y | 44 | — | — | Y | — | — | Legal — privacy policy | KEEP |
+| 42 | `quality/index.html`<br>`/quality/` | Live + Linked | Y | Y | 44 | — | — | Y | — | ok | Cross-division Quality / inspection page | KEEP |
+| 43 | `request-a-quote/index.html`<br>`/request-a-quote/` | Live + Linked | Y | Y | 318 | — | — | Y | — | ok | Unified RFQ — primary conversion | KEEP |
+| 44 | `terms.html`<br>`/terms.html` | Live + Linked | — | Y | 43 | — | — | Y | — | — | Legal — terms of service | KEEP |
+| 45 | `404.html`<br>`/404.html` | Error 404 | — | — | 0 | — | — | — | — | — | Error page (recovery menu) | KEEP (update links after deletions) |
+| 46 | `ems/process-rfq.php`<br>`/ems/process-rfq.php` | Backend | — | · | 0 | — | — | — | — | — | Legacy EMS RFQ processor (dead; header-injection risk) | DELETE (only caller is the orphan) |
+| 47 | `request-a-quote/process-rfq.php`<br>`/request-a-quote/process-rfq.php` | Backend | — | · | 0 | — | — | — | — | — | LIVE unified RFQ processor | KEEP (backend) |
+| 48 | `request-a-quote/rfq-lib.php`<br>`/request-a-quote/rfq-lib.php` | Backend | — | · | 0 | — | — | — | — | — | RFQ logic library (used by live handler+tests) | KEEP (backend) |
+| 49 | `nav-preview.html`<br>`/nav-preview.html` | Dev-Preview | — | · | 0 | — | — | — | Y | — | Issue #02 nav design reference (dev) | DELETE (spent scaffolding) |
+| 50 | `refresh-preview-cm.html`<br>`/refresh-preview-cm.html` | Dev-Preview | — | · | 0 | — | — | — | Y | — | CNC hub preview wrapper (dev, es) | DELETE |
+| 51 | `refresh-preview.html`<br>`/refresh-preview.html` | Dev-Preview | — | · | 0 | — | — | — | Y | — | Design-refresh homepage mock (dev) | DELETE |
+| 52 | `screenshot-review.html`<br>`/screenshot-review.html` | Dev-Preview | — | · | 0 | — | — | — | Y | — | Internal screenshot-review tool (dev) | DELETE |
+| 53 | `tests/run-tests.php`<br>`/tests/run-tests.php` | Test | — | · | 0 | — | — | — | — | — | CLI test runner for rfq-lib | KEEP but deny-list /tests/ from deploy |

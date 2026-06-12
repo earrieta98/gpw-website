@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1350" width="2400" height="1350" role="img" aria-label="Integration photo placeholder">
+  <defs>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" fill="none" stroke="#2c4055" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="2400" height="1350" fill="#1b2a3d"/>
+  <rect width="2400" height="1350" fill="url(#grid)" opacity="0.6"/>
+  <text x="130" y="700" font-family="Lato, Arial, sans-serif" font-size="44" fill="#5f7689">&#8592; text area (headline + CTAs)</text>
+  <rect x="1150" y="150" width="1200" height="1050" rx="16" fill="none" stroke="#F27257" stroke-width="6" stroke-dasharray="26 16" opacity="0.9"/>
+  <g fill="none" stroke="#aebcc8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" transform="translate(1750 560)">
+    <rect x="-100" y="-76" width="200" height="152" rx="12"/>
+    <circle cx="-40" cy="-24" r="22"/>
+    <path d="M-100 56 L-24 -14 L36 48 L70 16 L100 48"/>
+  </g>
+  <text x="1750" y="730" text-anchor="middle" font-family="Lato, Arial, sans-serif" font-size="58" font-weight="700" fill="#dbe4ec">PARTS / INTEGRATION</text>
+  <text x="1750" y="794" text-anchor="middle" font-family="Lato, Arial, sans-serif" font-size="34" fill="#aebcc8">finished assembly &#183; subject on the right</text>
+  <text x="1750" y="848" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="30" fill="#aebcc8">replace: img/hero/integration-closeup.jpg</text>
+</svg>

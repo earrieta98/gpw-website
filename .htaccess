@@ -10,6 +10,33 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteCond %{HTTP_HOST} ^www\.gpw-solutions\.com [NC]
 RewriteRule ^(.*)$ https://gpw-solutions.com/$1 [L,R=301]
 
+# --- 301s kept (Phase 5 prune, 2026-06-09) ---
+# These map OLD EMS-era URLs that were live & indexed before the unified restructure,
+# so they must keep resolving on deploy. The contract-manufacturing/* spokes, the
+# /why-mexico/ alias, and the old CM blog/request-quote URLs were never deployed
+# (working-tree only) and never indexed — their 301s were removed once every internal
+# link was repointed to the canonical destination. Crawl verifies 0 broken / 0 links
+# to a redirect. (See docs/ia-audit-2026-06-09.md, decision D-6.)
+
+# Unified RFQ — old assembly-only quote URL moved to /request-a-quote/ (Issue #05)
+RewriteRule ^ems/request-quote\.html$ /request-a-quote/ [L,R=301]
+
+# Industries moved to shared /industries/* (Issue #13)
+RewriteRule ^ems/industries/aerospace\.html$ /industries/aerospace-defense/ [L,R=301]
+RewriteRule ^ems/industries/ai-server-rack\.html$ /industries/ai-server-rack/ [L,R=301]
+RewriteRule ^ems/industries/appliances-white-goods\.html$ /industries/appliances/ [L,R=301]
+RewriteRule ^ems/industries/automotive\.html$ /industries/automotive/ [L,R=301]
+RewriteRule ^ems/industries/energy\.html$ /industries/energy/ [L,R=301]
+RewriteRule ^ems/industries/industrial-equipment\.html$ /industries/industrial-equipment/ [L,R=301]
+RewriteRule ^ems/industries/medical-devices\.html$ /industries/medical-devices/ [L,R=301]
+RewriteRule ^ems/industries/telecom-hardware\.html$ /industries/telecom/ [L,R=301]
+
+# Corporate About consolidated — old EMS "About Assembly" page -> corporate About (Issue #18)
+RewriteRule ^ems/about\.html$ /about.html [L,R=301]
+
+# EMS services hub retired — intermediate /ems/services/ folded into /ems/ (Phase 4, symmetry with CNC)
+RewriteRule ^ems/services/?(index\.html)?$ /ems/ [L,R=301]
+
 # Browser Caching
 <IfModule mod_expires.c>
   ExpiresActive On
@@ -44,12 +71,23 @@ RewriteRule ^(.*)$ https://gpw-solutions.com/$1 [L,R=301]
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
-  Header set X-XSS-Protection "1; mode=block"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # Content-Security-Policy — READY but commented out. ENABLE AFTER DEPLOY and verify
+  # the RFQ reCAPTCHA + Google Fonts still load (and add GA/GTM domains when analytics ships).
+  # Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com; frame-src https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google.com; base-uri 'self'; form-action 'self'"
 </IfModule>
 
 # Block directory listing
 Options -Indexes
+
+# Block internal CLI test runner from web access (tests/run-tests.php is dev-only)
+RedirectMatch 404 ^/tests/
+
+# /quality/ held offline pre-launch (Phase 6, 2026-06-09) — page built but not yet
+# published; file stays in repo, unlinked + out of sitemap. Remove this line to go live.
+RedirectMatch 404 ^/quality/
 
 # Custom 404
 ErrorDocument 404 /404.html

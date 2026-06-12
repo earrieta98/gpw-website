@@ -1,0 +1,85 @@
+# GPW — Global Precision Works
+# https://gpw-solutions.com
+
+# Force HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Remove www (canonical: non-www)
+RewriteCond %{HTTP_HOST} ^www\.gpw-solutions\.com [NC]
+RewriteRule ^(.*)$ https://gpw-solutions.com/$1 [L,R=301]
+
+# --- 301s kept (Phase 5 prune, 2026-06-09) ---
+# These map OLD EMS-era URLs that were live & indexed before the unified restructure,
+# so they must keep resolving on deploy. The contract-manufacturing/* spokes, the
+# /why-mexico/ alias, and the old CM blog/request-quote URLs were never deployed
+# (working-tree only) and never indexed — their 301s were removed once every internal
+# link was repointed to the canonical destination. Crawl verifies 0 broken / 0 links
+# to a redirect. (See docs/ia-audit-2026-06-09.md, decision D-6.)
+
+# Unified RFQ — old assembly-only quote URL moved to /request-a-quote/ (Issue #05)
+RewriteRule ^ems/request-quote\.html$ /request-a-quote/ [L,R=301]
+
+# Industries moved to shared /industries/* (Issue #13)
+RewriteRule ^ems/industries/aerospace\.html$ /industries/aerospace-defense/ [L,R=301]
+RewriteRule ^ems/industries/ai-server-rack\.html$ /industries/ai-server-rack/ [L,R=301]
+RewriteRule ^ems/industries/appliances-white-goods\.html$ /industries/appliances/ [L,R=301]
+RewriteRule ^ems/industries/automotive\.html$ /industries/automotive/ [L,R=301]
+RewriteRule ^ems/industries/energy\.html$ /industries/energy/ [L,R=301]
+RewriteRule ^ems/industries/industrial-equipment\.html$ /industries/industrial-equipment/ [L,R=301]
+RewriteRule ^ems/industries/medical-devices\.html$ /industries/medical-devices/ [L,R=301]
+RewriteRule ^ems/industries/telecom-hardware\.html$ /industries/telecom/ [L,R=301]
+
+# Corporate About consolidated — old EMS "About Assembly" page -> corporate About (Issue #18)
+RewriteRule ^ems/about\.html$ /about.html [L,R=301]
+
+# EMS services hub retired — intermediate /ems/services/ folded into /ems/ (Phase 4, symmetry with CNC)
+RewriteRule ^ems/services/?(index\.html)?$ /ems/ [L,R=301]
+
+# Browser Caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType application/json "access plus 1 month"
+  ExpiresByType text/xml "access plus 1 month"
+  ExpiresByType text/plain "access plus 1 month"
+</IfModule>
+
+# Cache-Control headers
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|png|jpg|jpeg|svg|ico|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# GZIP Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json text/xml image/svg+xml text/plain
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Block directory listing
+Options -Indexes
+
+# Block internal CLI test runner from web access (tests/run-tests.php is dev-only)
+RedirectMatch 404 ^/tests/
+
+# Custom 404
+ErrorDocument 404 /404.html

@@ -1,0 +1,884 @@
+{
+  "no_footer": [
+    "404.html"
+  ],
+  "footer_count": 44,
+  "footer_sigs": 11,
+  "ind_count": {
+    "telecom": 19,
+    "industrial-equipment": 19,
+    "ai-server-rack": 19,
+    "medical-devices": 19,
+    "automotive": 1,
+    "aerospace-defense": 1,
+    "appliances": 1,
+    "energy": 1
+  },
+  "cm_count": {
+    "cnc-turning": 22,
+    "wire-edm": 22,
+    "sheet-metal": 22,
+    "cnc-milling": 22,
+    "surface-finishing": 20,
+    "why-mexico": 18,
+    "engineering-support": 19
+  },
+  "ems_count": {
+    "testing-inspection": 41,
+    "cable-harness-assembly": 41,
+    "enclosure-cabinet-assembly": 41,
+    "box-build-assembly": 41,
+    "system-integration": 41
+  },
+  "actionable_redirected": [
+    {
+      "source": "contract-manufacturing/cnc-milling/index.html",
+      "raw": "../aerospace-defense/",
+      "target": "/contract-manufacturing/aerospace-defense/",
+      "redirect_to": "/industries/aerospace-defense/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/aerospace-defense/",
+          "to": "/industries/aerospace-defense/",
+          "code": 301,
+          "rule_line": 36,
+          "pattern": "^contract-manufacturing/aerospace-defense/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/cnc-milling/index.html",
+      "raw": "../medical-devices/",
+      "target": "/contract-manufacturing/medical-devices/",
+      "redirect_to": "/industries/medical-devices/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/medical-devices/",
+          "to": "/industries/medical-devices/",
+          "code": 301,
+          "rule_line": 38,
+          "pattern": "^contract-manufacturing/medical-devices/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/cnc-milling/index.html",
+      "raw": "../automotive/",
+      "target": "/contract-manufacturing/automotive/",
+      "redirect_to": "/industries/automotive/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/automotive/",
+          "to": "/industries/automotive/",
+          "code": 301,
+          "rule_line": 37,
+          "pattern": "^contract-manufacturing/automotive/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/cnc-milling/index.html",
+      "raw": "../industrial-equipment/",
+      "target": "/contract-manufacturing/industrial-equipment/",
+      "redirect_to": "/industries/industrial-equipment/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/industrial-equipment/",
+          "to": "/industries/industrial-equipment/",
+          "code": 301,
+          "rule_line": 39,
+          "pattern": "^contract-manufacturing/industrial-equipment/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/cnc-milling/index.html",
+      "raw": "../oil-gas-energy/",
+      "target": "/contract-manufacturing/oil-gas-energy/",
+      "redirect_to": "/industries/oil-gas/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/oil-gas-energy/",
+          "to": "/industries/oil-gas/",
+          "code": 301,
+          "rule_line": 41,
+          "pattern": "^contract-manufacturing/oil-gas-energy/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/cnc-milling/index.html",
+      "raw": "../electronics-telecom/",
+      "target": "/contract-manufacturing/electronics-telecom/",
+      "redirect_to": "/industries/electronics/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/electronics-telecom/",
+          "to": "/industries/electronics/",
+          "code": 301,
+          "rule_line": 40,
+          "pattern": "^contract-manufacturing/electronics-telecom/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/cnc-turning/index.html",
+      "raw": "../automotive/",
+      "target": "/contract-manufacturing/automotive/",
+      "redirect_to": "/industries/automotive/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/automotive/",
+          "to": "/industries/automotive/",
+          "code": 301,
+          "rule_line": 37,
+          "pattern": "^contract-manufacturing/automotive/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/cnc-turning/index.html",
+      "raw": "../oil-gas-energy/",
+      "target": "/contract-manufacturing/oil-gas-energy/",
+      "redirect_to": "/industries/oil-gas/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/oil-gas-energy/",
+          "to": "/industries/oil-gas/",
+          "code": 301,
+          "rule_line": 41,
+          "pattern": "^contract-manufacturing/oil-gas-energy/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/cnc-turning/index.html",
+      "raw": "../medical-devices/",
+      "target": "/contract-manufacturing/medical-devices/",
+      "redirect_to": "/industries/medical-devices/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/medical-devices/",
+          "to": "/industries/medical-devices/",
+          "code": 301,
+          "rule_line": 38,
+          "pattern": "^contract-manufacturing/medical-devices/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/cnc-turning/index.html",
+      "raw": "../industrial-equipment/",
+      "target": "/contract-manufacturing/industrial-equipment/",
+      "redirect_to": "/industries/industrial-equipment/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/industrial-equipment/",
+          "to": "/industries/industrial-equipment/",
+          "code": 301,
+          "rule_line": 39,
+          "pattern": "^contract-manufacturing/industrial-equipment/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/cnc-turning/index.html",
+      "raw": "../aerospace-defense/",
+      "target": "/contract-manufacturing/aerospace-defense/",
+      "redirect_to": "/industries/aerospace-defense/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/aerospace-defense/",
+          "to": "/industries/aerospace-defense/",
+          "code": 301,
+          "rule_line": 36,
+          "pattern": "^contract-manufacturing/aerospace-defense/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/cnc-turning/index.html",
+      "raw": "../electronics-telecom/",
+      "target": "/contract-manufacturing/electronics-telecom/",
+      "redirect_to": "/industries/electronics/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/electronics-telecom/",
+          "to": "/industries/electronics/",
+          "code": 301,
+          "rule_line": 40,
+          "pattern": "^contract-manufacturing/electronics-telecom/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/engineering-support/index.html",
+      "raw": "../aerospace-defense/",
+      "target": "/contract-manufacturing/aerospace-defense/",
+      "redirect_to": "/industries/aerospace-defense/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/aerospace-defense/",
+          "to": "/industries/aerospace-defense/",
+          "code": 301,
+          "rule_line": 36,
+          "pattern": "^contract-manufacturing/aerospace-defense/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/engineering-support/index.html",
+      "raw": "../medical-devices/",
+      "target": "/contract-manufacturing/medical-devices/",
+      "redirect_to": "/industries/medical-devices/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/medical-devices/",
+          "to": "/industries/medical-devices/",
+          "code": 301,
+          "rule_line": 38,
+          "pattern": "^contract-manufacturing/medical-devices/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/engineering-support/index.html",
+      "raw": "../automotive/",
+      "target": "/contract-manufacturing/automotive/",
+      "redirect_to": "/industries/automotive/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/automotive/",
+          "to": "/industries/automotive/",
+          "code": 301,
+          "rule_line": 37,
+          "pattern": "^contract-manufacturing/automotive/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/engineering-support/index.html",
+      "raw": "../industrial-equipment/",
+      "target": "/contract-manufacturing/industrial-equipment/",
+      "redirect_to": "/industries/industrial-equipment/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/industrial-equipment/",
+          "to": "/industries/industrial-equipment/",
+          "code": 301,
+          "rule_line": 39,
+          "pattern": "^contract-manufacturing/industrial-equipment/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/engineering-support/index.html",
+      "raw": "../oil-gas-energy/",
+      "target": "/contract-manufacturing/oil-gas-energy/",
+      "redirect_to": "/industries/oil-gas/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/oil-gas-energy/",
+          "to": "/industries/oil-gas/",
+          "code": 301,
+          "rule_line": 41,
+          "pattern": "^contract-manufacturing/oil-gas-energy/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/engineering-support/index.html",
+      "raw": "../electronics-telecom/",
+      "target": "/contract-manufacturing/electronics-telecom/",
+      "redirect_to": "/industries/electronics/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/electronics-telecom/",
+          "to": "/industries/electronics/",
+          "code": 301,
+          "rule_line": 40,
+          "pattern": "^contract-manufacturing/electronics-telecom/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/sheet-metal/index.html",
+      "raw": "../industrial-equipment/",
+      "target": "/contract-manufacturing/industrial-equipment/",
+      "redirect_to": "/industries/industrial-equipment/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/industrial-equipment/",
+          "to": "/industries/industrial-equipment/",
+          "code": 301,
+          "rule_line": 39,
+          "pattern": "^contract-manufacturing/industrial-equipment/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/sheet-metal/index.html",
+      "raw": "../electronics-telecom/",
+      "target": "/contract-manufacturing/electronics-telecom/",
+      "redirect_to": "/industries/electronics/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/electronics-telecom/",
+          "to": "/industries/electronics/",
+          "code": 301,
+          "rule_line": 40,
+          "pattern": "^contract-manufacturing/electronics-telecom/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/sheet-metal/index.html",
+      "raw": "../oil-gas-energy/",
+      "target": "/contract-manufacturing/oil-gas-energy/",
+      "redirect_to": "/industries/oil-gas/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/oil-gas-energy/",
+          "to": "/industries/oil-gas/",
+          "code": 301,
+          "rule_line": 41,
+          "pattern": "^contract-manufacturing/oil-gas-energy/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/sheet-metal/index.html",
+      "raw": "../automotive/",
+      "target": "/contract-manufacturing/automotive/",
+      "redirect_to": "/industries/automotive/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/automotive/",
+          "to": "/industries/automotive/",
+          "code": 301,
+          "rule_line": 37,
+          "pattern": "^contract-manufacturing/automotive/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/sheet-metal/index.html",
+      "raw": "../medical-devices/",
+      "target": "/contract-manufacturing/medical-devices/",
+      "redirect_to": "/industries/medical-devices/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/medical-devices/",
+          "to": "/industries/medical-devices/",
+          "code": 301,
+          "rule_line": 38,
+          "pattern": "^contract-manufacturing/medical-devices/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/sheet-metal/index.html",
+      "raw": "../aerospace-defense/",
+      "target": "/contract-manufacturing/aerospace-defense/",
+      "redirect_to": "/industries/aerospace-defense/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/aerospace-defense/",
+          "to": "/industries/aerospace-defense/",
+          "code": 301,
+          "rule_line": 36,
+          "pattern": "^contract-manufacturing/aerospace-defense/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/surface-finishing/index.html",
+      "raw": "../aerospace-defense/",
+      "target": "/contract-manufacturing/aerospace-defense/",
+      "redirect_to": "/industries/aerospace-defense/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/aerospace-defense/",
+          "to": "/industries/aerospace-defense/",
+          "code": 301,
+          "rule_line": 36,
+          "pattern": "^contract-manufacturing/aerospace-defense/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/surface-finishing/index.html",
+      "raw": "../medical-devices/",
+      "target": "/contract-manufacturing/medical-devices/",
+      "redirect_to": "/industries/medical-devices/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/medical-devices/",
+          "to": "/industries/medical-devices/",
+          "code": 301,
+          "rule_line": 38,
+          "pattern": "^contract-manufacturing/medical-devices/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/surface-finishing/index.html",
+      "raw": "../automotive/",
+      "target": "/contract-manufacturing/automotive/",
+      "redirect_to": "/industries/automotive/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/automotive/",
+          "to": "/industries/automotive/",
+          "code": 301,
+          "rule_line": 37,
+          "pattern": "^contract-manufacturing/automotive/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/surface-finishing/index.html",
+      "raw": "../industrial-equipment/",
+      "target": "/contract-manufacturing/industrial-equipment/",
+      "redirect_to": "/industries/industrial-equipment/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/industrial-equipment/",
+          "to": "/industries/industrial-equipment/",
+          "code": 301,
+          "rule_line": 39,
+          "pattern": "^contract-manufacturing/industrial-equipment/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/surface-finishing/index.html",
+      "raw": "../oil-gas-energy/",
+      "target": "/contract-manufacturing/oil-gas-energy/",
+      "redirect_to": "/industries/oil-gas/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/oil-gas-energy/",
+          "to": "/industries/oil-gas/",
+          "code": 301,
+          "rule_line": 41,
+          "pattern": "^contract-manufacturing/oil-gas-energy/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/surface-finishing/index.html",
+      "raw": "../electronics-telecom/",
+      "target": "/contract-manufacturing/electronics-telecom/",
+      "redirect_to": "/industries/electronics/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/electronics-telecom/",
+          "to": "/industries/electronics/",
+          "code": 301,
+          "rule_line": 40,
+          "pattern": "^contract-manufacturing/electronics-telecom/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/wire-edm/index.html",
+      "raw": "../aerospace-defense/",
+      "target": "/contract-manufacturing/aerospace-defense/",
+      "redirect_to": "/industries/aerospace-defense/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/aerospace-defense/",
+          "to": "/industries/aerospace-defense/",
+          "code": 301,
+          "rule_line": 36,
+          "pattern": "^contract-manufacturing/aerospace-defense/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/wire-edm/index.html",
+      "raw": "../medical-devices/",
+      "target": "/contract-manufacturing/medical-devices/",
+      "redirect_to": "/industries/medical-devices/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/medical-devices/",
+          "to": "/industries/medical-devices/",
+          "code": 301,
+          "rule_line": 38,
+          "pattern": "^contract-manufacturing/medical-devices/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/wire-edm/index.html",
+      "raw": "../automotive/",
+      "target": "/contract-manufacturing/automotive/",
+      "redirect_to": "/industries/automotive/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/automotive/",
+          "to": "/industries/automotive/",
+          "code": 301,
+          "rule_line": 37,
+          "pattern": "^contract-manufacturing/automotive/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/wire-edm/index.html",
+      "raw": "../industrial-equipment/",
+      "target": "/contract-manufacturing/industrial-equipment/",
+      "redirect_to": "/industries/industrial-equipment/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/industrial-equipment/",
+          "to": "/industries/industrial-equipment/",
+          "code": 301,
+          "rule_line": 39,
+          "pattern": "^contract-manufacturing/industrial-equipment/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/wire-edm/index.html",
+      "raw": "../oil-gas-energy/",
+      "target": "/contract-manufacturing/oil-gas-energy/",
+      "redirect_to": "/industries/oil-gas/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/oil-gas-energy/",
+          "to": "/industries/oil-gas/",
+          "code": 301,
+          "rule_line": 41,
+          "pattern": "^contract-manufacturing/oil-gas-energy/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "contract-manufacturing/wire-edm/index.html",
+      "raw": "../electronics-telecom/",
+      "target": "/contract-manufacturing/electronics-telecom/",
+      "redirect_to": "/industries/electronics/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/electronics-telecom/",
+          "to": "/industries/electronics/",
+          "code": 301,
+          "rule_line": 40,
+          "pattern": "^contract-manufacturing/electronics-telecom/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "ems/index.html",
+      "raw": "about.html",
+      "target": "/ems/about.html",
+      "redirect_to": "/about.html",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/ems/about.html",
+          "to": "/about.html",
+          "code": 301,
+          "rule_line": 44,
+          "pattern": "^ems/about\\.html$"
+        }
+      ]
+    },
+    {
+      "source": "ems/services/box-build-assembly.html",
+      "raw": "../about.html",
+      "target": "/ems/about.html",
+      "redirect_to": "/about.html",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/ems/about.html",
+          "to": "/about.html",
+          "code": 301,
+          "rule_line": 44,
+          "pattern": "^ems/about\\.html$"
+        }
+      ]
+    },
+    {
+      "source": "ems/services/cable-harness-assembly.html",
+      "raw": "../about.html",
+      "target": "/ems/about.html",
+      "redirect_to": "/about.html",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/ems/about.html",
+          "to": "/about.html",
+          "code": 301,
+          "rule_line": 44,
+          "pattern": "^ems/about\\.html$"
+        }
+      ]
+    },
+    {
+      "source": "ems/services/enclosure-cabinet-assembly.html",
+      "raw": "../about.html",
+      "target": "/ems/about.html",
+      "redirect_to": "/about.html",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/ems/about.html",
+          "to": "/about.html",
+          "code": 301,
+          "rule_line": 44,
+          "pattern": "^ems/about\\.html$"
+        }
+      ]
+    },
+    {
+      "source": "ems/services/index.html",
+      "raw": "../about.html",
+      "target": "/ems/about.html",
+      "redirect_to": "/about.html",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/ems/about.html",
+          "to": "/about.html",
+          "code": 301,
+          "rule_line": 44,
+          "pattern": "^ems/about\\.html$"
+        }
+      ]
+    },
+    {
+      "source": "ems/services/system-integration.html",
+      "raw": "../about.html",
+      "target": "/ems/about.html",
+      "redirect_to": "/about.html",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/ems/about.html",
+          "to": "/about.html",
+          "code": 301,
+          "rule_line": 44,
+          "pattern": "^ems/about\\.html$"
+        }
+      ]
+    },
+    {
+      "source": "ems/services/testing-inspection.html",
+      "raw": "../about.html",
+      "target": "/ems/about.html",
+      "redirect_to": "/about.html",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/ems/about.html",
+          "to": "/about.html",
+          "code": 301,
+          "rule_line": 44,
+          "pattern": "^ems/about\\.html$"
+        }
+      ]
+    },
+    {
+      "source": "industries/aerospace-defense/index.html",
+      "raw": "../../contract-manufacturing/aerospace-defense/",
+      "target": "/contract-manufacturing/aerospace-defense/",
+      "redirect_to": "/industries/aerospace-defense/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/aerospace-defense/",
+          "to": "/industries/aerospace-defense/",
+          "code": 301,
+          "rule_line": 36,
+          "pattern": "^contract-manufacturing/aerospace-defense/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "industries/automotive/index.html",
+      "raw": "../../contract-manufacturing/automotive/",
+      "target": "/contract-manufacturing/automotive/",
+      "redirect_to": "/industries/automotive/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/automotive/",
+          "to": "/industries/automotive/",
+          "code": 301,
+          "rule_line": 37,
+          "pattern": "^contract-manufacturing/automotive/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "industries/electronics/index.html",
+      "raw": "../../contract-manufacturing/electronics-telecom/",
+      "target": "/contract-manufacturing/electronics-telecom/",
+      "redirect_to": "/industries/electronics/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/electronics-telecom/",
+          "to": "/industries/electronics/",
+          "code": 301,
+          "rule_line": 40,
+          "pattern": "^contract-manufacturing/electronics-telecom/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "industries/electronics/index.html",
+      "raw": "../../contract-manufacturing/electronics-telecom/",
+      "target": "/contract-manufacturing/electronics-telecom/",
+      "redirect_to": "/industries/electronics/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/electronics-telecom/",
+          "to": "/industries/electronics/",
+          "code": 301,
+          "rule_line": 40,
+          "pattern": "^contract-manufacturing/electronics-telecom/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "industries/energy/index.html",
+      "raw": "../../contract-manufacturing/oil-gas-energy/",
+      "target": "/contract-manufacturing/oil-gas-energy/",
+      "redirect_to": "/industries/oil-gas/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/oil-gas-energy/",
+          "to": "/industries/oil-gas/",
+          "code": 301,
+          "rule_line": 41,
+          "pattern": "^contract-manufacturing/oil-gas-energy/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "industries/industrial-equipment/index.html",
+      "raw": "../../contract-manufacturing/industrial-equipment/",
+      "target": "/contract-manufacturing/industrial-equipment/",
+      "redirect_to": "/industries/industrial-equipment/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/industrial-equipment/",
+          "to": "/industries/industrial-equipment/",
+          "code": 301,
+          "rule_line": 39,
+          "pattern": "^contract-manufacturing/industrial-equipment/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "industries/medical-devices/index.html",
+      "raw": "../../contract-manufacturing/medical-devices/",
+      "target": "/contract-manufacturing/medical-devices/",
+      "redirect_to": "/industries/medical-devices/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/medical-devices/",
+          "to": "/industries/medical-devices/",
+          "code": 301,
+          "rule_line": 38,
+          "pattern": "^contract-manufacturing/medical-devices/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "industries/oil-gas/index.html",
+      "raw": "../../contract-manufacturing/oil-gas-energy/",
+      "target": "/contract-manufacturing/oil-gas-energy/",
+      "redirect_to": "/industries/oil-gas/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/oil-gas-energy/",
+          "to": "/industries/oil-gas/",
+          "code": 301,
+          "rule_line": 41,
+          "pattern": "^contract-manufacturing/oil-gas-energy/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "industries/oil-gas/index.html",
+      "raw": "../../contract-manufacturing/oil-gas-energy/",
+      "target": "/contract-manufacturing/oil-gas-energy/",
+      "redirect_to": "/industries/oil-gas/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/oil-gas-energy/",
+          "to": "/industries/oil-gas/",
+          "code": 301,
+          "rule_line": 41,
+          "pattern": "^contract-manufacturing/oil-gas-energy/(index\\.html)?$"
+        }
+      ]
+    },
+    {
+      "source": "industries/telecom/index.html",
+      "raw": "../../contract-manufacturing/electronics-telecom/",
+      "target": "/contract-manufacturing/electronics-telecom/",
+      "redirect_to": "/industries/electronics/",
+      "hops": 1,
+      "chain": [
+        {
+          "from": "/contract-manufacturing/electronics-telecom/",
+          "to": "/industries/electronics/",
+          "code": 301,
+          "rule_line": 40,
+          "pattern": "^contract-manufacturing/electronics-telecom/(index\\.html)?$"
+        }
+      ]
+    }
+  ],
+  "actionable_total": 53
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>GPW — Preview: Hub CNC Corporativo (no destructivo)</title>
+  <style>
+    :root { --bar: 132px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body { font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #0F2B2A; color: #fff; display: flex; flex-direction: column; }
+
+    .toolbar {
+      flex: 0 0 auto;
+      padding: 14px 22px;
+      display: flex; flex-direction: column; gap: 10px; justify-content: center;
+      background: linear-gradient(180deg, #0F2B2A 0%, #134542 100%);
+      border-bottom: 2px solid #F27257;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .toolbar__row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .toolbar__title { font-weight: 900; font-size: 15px; letter-spacing: 0.02em; }
+    .toolbar__title span { color: #A6D98E; font-weight: 400; font-size: 12px; margin-left: 8px; }
+    .seg { display: inline-flex; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); border-radius: 6px; overflow: hidden; }
+    .seg button {
+      appearance: none; border: 0; background: transparent; color: #cfe3e1;
+      font: inherit; font-weight: 700; font-size: 13px; padding: 9px 16px; cursor: pointer;
+      border-right: 1px solid rgba(255,255,255,0.12); transition: background .15s, color .15s; min-height: 38px;
+    }
+    .seg button:last-child { border-right: 0; }
+    .seg button:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .seg button.is-active { background: #F27257; color: #1A1A1A; }
+    .legend { font-size: 12.5px; line-height: 1.5; color: #bcd3d1; max-width: 1100px; }
+    .legend b { color: #fff; }
+    .legend .tag { display: inline-block; background: rgba(166,217,142,0.16); color: #cdeab9; padding: 1px 7px; border-radius: 4px; font-weight: 700; margin-right: 4px; }
+    .note { color: #8fb3b0; font-size: 11.5px; }
+    .frame-wrap { flex: 1 1 auto; min-height: 0; background: #fff; }
+    iframe { width: 100%; height: 100%; border: 0; display: block; }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <div class="toolbar__row">
+      <div class="toolbar__title">GPW · Preview Hub CNC <span>no destructivo — no toca producción</span></div>
+      <div class="seg" role="tablist" aria-label="Variantes de diseño">
+        <button data-variant="actual" class="is-active" type="button">Actual</button>
+        <button data-variant="corp" type="button">Corporativo</button>
+        <button data-variant="mono" type="button">Corp + Mono</button>
+        <button data-variant="notri" type="button">Corp + Mono &minus; Trirong</button>
+      </div>
+      <a class="note" href="/contract-manufacturing/" target="_blank" rel="noopener" style="color:#8fb3b0;">abrir hub en pestaña ↗</a>
+    </div>
+    <div class="legend" id="legend"></div>
+  </div>
+  <div class="frame-wrap">
+    <iframe id="preview" src="/contract-manufacturing/" title="Hub CNC preview"></iframe>
+  </div>
+
+  <script>
+    // ============================================================
+    // OVERRIDES — injected into the iframe's <head> at runtime.
+    // Nothing here is written to the real hub or to styles.css.
+    // ============================================================
+
+    // Variant A — "Corporativo": white-dominant canvas, crisper edges,
+    // cooler hairlines, ONE warm-cream accent section (the FAQ).
+    const CSS_CORP = `
+      :root {
+        /* White-dominant cool canvas (was warm cream #FCF3EC) */
+        --off-white: #F4F6F7;
+        --cream: #F4F6F7;
+        --warm-gray: #EDEFF1;
+        --surface-sunken: #F4F6F7;
+        --on-sunken: #1A1A1A;
+        /* Cooler hairlines / dividers (were warm) */
+        --light-gray: #E2E6E9;
+        --warm-stone: #CBD1D6;
+        /* Crisper, near-square radii (industrial) */
+        --radius-xs: 1px; --radius-sm: 2px; --radius-md: 3px;
+        --radius-lg: 4px;  --radius-xl: 6px;
+        /* Flatter, cooler shadows */
+        --shadow-xs: 0 1px 1px rgba(16,40,48,0.04);
+        --shadow-sm: 0 1px 2px rgba(16,40,48,0.06);
+        --shadow-md: 0 2px 4px rgba(16,40,48,0.06);
+        --shadow-lg: 0 4px 10px rgba(16,40,48,0.08);
+        --shadow-xl: 0 8px 18px rgba(16,40,48,0.10);
+      }
+      /* Pure-white body so light sections read white-dominant */
+      body { background: #FFFFFF; }
+      /* Faint top hairline gives structure between stacked light sections */
+      .section--light { border-top: 1px solid var(--light-gray); }
+      /* Crisp 1px card edges instead of soft shadow blobs */
+      .cm-industry-card,
+      .cm-materials__group { border: 1px solid var(--light-gray); }
+      /* The ONE warm-cream accent (per direction: cream as a rare accent) */
+      .section:has(.faq-list) { background: #FCF3EC; }
+    `;
+
+    // Variant B — "+ Plex Mono": layered on top of Corporativo.
+    // Mono ONLY on data/specs (numbers, tolerances, grades) — never body text.
+    const CSS_MONO = `
+      :root { --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .cm-stat-card__number,
+      .cm-service-row__number,
+      .cm-service-row__spec-value,
+      .cm-service-row__spec-label,
+      .cm-materials__chip,
+      .cm-nearshore-stat__number {
+        font-family: var(--font-mono);
+        font-feature-settings: 'tnum' 1, 'zero' 1;
+      }
+      .cm-stat-card__number,
+      .cm-service-row__spec-value,
+      .cm-nearshore-stat__number { letter-spacing: -0.01em; }
+      .cm-service-row__number { font-weight: 500; }
+      .cm-service-row__spec-label { letter-spacing: 0.06em; }
+      .cm-materials__chip { letter-spacing: 0; font-weight: 500; }
+    `;
+
+    // Variant C — "− Trirong": layered on top of Corp + Mono.
+    // Kills Trirong globally (→ Lato); eyebrows adopt Plex Mono as the new
+    // technical accent, taking over the "second font" role Trirong had.
+    const CSS_NOTRIRONG = `
+      :root { --font-accent: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif; }
+      /* Eyebrows fall back to plain Lato (keep uppercase + tracking from .label base). */
+    `;
+
+    const FONT_HREF = 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap';
+
+    const LEGENDS = {
+      actual: '<span class="tag">ACTUAL</span> El hub tal cual está hoy: fondo cream cálido (<b>#FCF3EC</b>), esquinas redondeadas (radius 10–16px), Trirong como acento.',
+      corp:   '<span class="tag">CORPORATIVO</span> <b>Blanco dominante</b> (cream → blanco frío), <b>bordes más secos</b> (radius 1–6px + sombras planas), hairlines fríos, y <b>una sola sección en cream</b> (FAQ) como acento. El ritmo oscuro (hero/stats/DFM/why-mexico) se mantiene y ahora <b>contrasta más</b>. <span class="note">Colores de marca y fonts intactos.</span>',
+      mono:   '<span class="tag">+ PLEX MONO</span> Lo anterior <b>+ IBM Plex Mono solo en datos</b>: cifras del stat bar, tolerancias/specs de servicios, y grados de material. El texto general sigue en Lato. <span class="note">Mira el stat bar, los specs de cada servicio y los chips de materiales.</span>',
+      notri:  '<span class="tag">+ MONO &minus; TRIRONG</span> <b>Direcci&oacute;n final.</b> Sin Trirong &rarr; eyebrows en <b>Lato plano</b> (caja alta, mismo tracking). Plex Mono solo en datos/specs; canvas blanco dominante; cream &uacute;nicamente en el FAQ. <span class="note">Esto es lo que se aplicar&iacute;a a todo el sitio.</span>'
+    };
+
+    const FRAME = document.getElementById('preview');
+    const LEGEND = document.getElementById('legend');
+    let current = 'actual';
+
+    function apply() {
+      let doc;
+      try { doc = FRAME.contentDocument; } catch (e) { return; }
+      if (!doc || !doc.head) return;
+      doc.querySelectorAll('[data-gpw-preview]').forEach(n => n.remove());
+      if (current === 'actual') return;
+      const usesMono = (current === 'mono' || current === 'notri');
+      if (usesMono) {
+        const link = doc.createElement('link');
+        link.rel = 'stylesheet'; link.href = FONT_HREF;
+        link.setAttribute('data-gpw-preview', '');
+        doc.head.appendChild(link);
+      }
+      let css = CSS_CORP;
+      if (usesMono) css += CSS_MONO;
+      if (current === 'notri') css += CSS_NOTRIRONG;
+      const style = doc.createElement('style');
+      style.setAttribute('data-gpw-preview', '');
+      style.textContent = css;
+      doc.head.appendChild(style); // appended last → wins over styles.css :root
+    }
+
+    function setVariant(name) {
+      current = name;
+      LEGEND.innerHTML = LEGENDS[name] || '';
+      document.querySelectorAll('[data-variant]').forEach(b =>
+        b.classList.toggle('is-active', b.dataset.variant === name));
+      apply();
+    }
+
+    // Re-apply on every iframe load (covers internal navigation inside the hub).
+    FRAME.addEventListener('load', apply);
+    document.querySelectorAll('[data-variant]').forEach(b =>
+      b.addEventListener('click', () => setVariant(b.dataset.variant)));
+
+    setVariant('actual');
+  </script>
+</body>
+</html>

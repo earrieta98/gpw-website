@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="icon" type="image/png" sizes="192x192" href="../img/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Quality, Inspection &amp; Documentation | GPW</title>
+  <meta name="description" content="How GPW governs quality across its Monterrey machining network and in-house assembly — incoming and first-article inspection, Certificate of Conformance, and full lot traceability, against documented workmanship and inspection standards.">
+  <link rel="canonical" href="https://gpw-solutions.com/quality/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Quality, Inspection &amp; Documentation | GPW">
+  <meta property="og:description" content="How GPW governs quality across its Monterrey machining network and in-house assembly — inspection, Certificate of Conformance, traceability, and audit-ready documentation.">
+  <meta property="og:url" content="https://gpw-solutions.com/quality/">
+  <meta property="og:image" content="https://gpw-solutions.com/img/og/quality.jpg">
+  <meta property="og:site_name" content="Global Precision Works">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Quality, Inspection &amp; Documentation | GPW">
+  <meta name="twitter:description" content="Quality governed end to end — machining network to in-house assembly. Inspection, CoC, traceability, and audit-ready documentation.">
+  <meta name="twitter:image" content="https://gpw-solutions.com/img/og/quality.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Lato:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Styles (#19 design system) -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/cm-home.css">
+  <link rel="stylesheet" href="../css/cm-service.css">
+  <link rel="stylesheet" href="../css/utility-bar.css">
+  <link rel="stylesheet" href="../css/global-nav.css">
+
+  <style>
+    /* Page-scoped helpers — composed from existing #19 tokens only (no new colors/fonts). */
+    .q-legend { display: grid; grid-template-columns: 1fr; gap: var(--space-md); max-width: 880px; margin: 0 auto; }
+    @media (min-width: 760px) { .q-legend { grid-template-columns: 1fr 1fr; } }
+    .q-legend__item { padding: var(--space-lg); background: #fff; border: 1px solid rgba(35,85,90,0.12); border-radius: var(--radius-md); border-left: 3px solid var(--coral); }
+    .q-legend__item p { margin: var(--space-sm) 0 0; font-size: var(--text-sm); color: rgba(35,85,90,0.8); line-height: 1.55; }
+    .q-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.2; padding: 4px 10px; border-radius: 100px; border: 1px solid; white-space: nowrap; }
+    .q-pill svg { width: 13px; height: 13px; flex-shrink: 0; }
+    .q-pill--inplace { background: rgba(35,85,90,0.08); color: var(--teal); border-color: rgba(35,85,90,0.35); }
+    .q-pill--progress { background: rgba(237,131,94,0.12); color: var(--teal); border-color: var(--coral); }
+    .q-pill--buildto { background: rgba(35,85,90,0.05); color: var(--teal); border-color: rgba(35,85,90,0.22); }
+    .q-status { display: block; margin-top: var(--space-sm); }
+    .q-status__target { font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.04em; color: var(--accent-on-light); margin-left: 8px; }
+    .q-roadmap-date { display: block; font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.06em; color: var(--accent-on-light); margin-bottom: 6px; }
+  </style>
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "GPW Corporate", "item": "https://gpw-solutions.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Quality", "item": "https://gpw-solutions.com/quality/"}
+  ]}
+  </script>
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+    {"@type": "Question", "name": "How does GPW manage quality?", "acceptedAnswer": {"@type": "Answer", "text": "Every build follows documented workmanship and inspection standards, with first-article inspection, in-process checks, and full traceability. Document control and lot traceability are in place now, and we align to the quality requirements each customer program defines."}},
+    {"@type": "Question", "name": "How can you guarantee quality if you don't own the machines?", "acceptedAnswer": {"@type": "Answer", "text": "GPW owns the quality outcome, not the machines. The Monterrey machining network is qualified and audited, and every job runs to GPW's inspection and documentation standard: incoming inspection, first-article inspection, and a Certificate of Conformance. One accountable owner, scalable capacity — never a broker hand-off."}},
+    {"@type": "Question", "name": "What documentation ships with my parts?", "acceptedAnswer": {"@type": "Answer", "text": "On request: a signed Certificate of Conformance, material certifications and mill test reports traced to the lot, and a first-article inspection report. Tell us your requirements with the RFQ and we confirm the documentation package before production begins."}},
+    {"@type": "Question", "name": "Do you do first-article inspection (FAI)?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Before a production run, the first part is inspected against every drawing dimension and signed off. A PPAP-style first-article inspection report is available when your program requires it."}},
+    {"@type": "Question", "name": "What workmanship standards do you build assemblies to?", "acceptedAnswer": {"@type": "Answer", "text": "In-house assemblies are built against documented workmanship and inspection criteria for electronic assemblies and for cable and wire harnesses, with first-article inspection and in-process checks. We align to the workmanship requirements each customer program defines."}},
+    {"@type": "Question", "name": "Can you support aerospace or medical traceability requirements?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. GPW operates full lot traceability and documented inspection today, with audit-ready documentation. We build to the documentation, traceability, and inspection requirements your aerospace or medical program defines."}},
+    {"@type": "Question", "name": "What does GPW's quality system cover today?", "acceptedAnswer": {"@type": "Answer", "text": "Documented work instructions and document control, the network inspection regime, first-article and in-process inspection, the Certificate of Conformance, full lot traceability, and in-house assembly test — all against documented criteria. We align to the quality requirements each customer program defines."}}
+  ]}
+  </script>
+</head>
+<body>
+
+  <!-- Skip link (a11y) -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ============ UTILITY BAR ============ -->
+
+  <!-- ============ HEADER — Unified Global Nav (Keller two-capability model) ============ -->
+  <header class="header header--top" id="header">
+    <div class="header__inner">
+      <a href="../" class="header__logo" aria-label="Global Precision Works home">
+        <img src="../img/logo-white.png" alt="Global Precision Works" class="header__logo-white" fetchpriority="high" width="300" height="189">
+        <img src="../img/logo-teal.png" alt="" aria-hidden="true" class="header__logo-teal" width="300" height="196">
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-controls="navMenu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="navMenu" aria-label="Primary">
+        <button class="nav__close" id="navClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+
+        <!-- ===== Capability 1: CNC Machining ===== -->
+        <div class="nav__item nav__item--capability">
+          <a href="../contract-manufacturing/" class="nav__link nav__link--has-mega">CNC Machining</a>
+          <button class="nav__trigger nav__trigger--caret" aria-label="Open CNC Machining menu" aria-haspopup="true" aria-expanded="false">
+            <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="nav__dropdown nav__dropdown--mega-full">
+            <div class="nav__mega">
+              <div class="nav__mega-header">
+                <div class="nav__mega-promise">
+                  <span class="nav__mega-promise-eyebrow">CNC Machining</span>
+                  <p class="nav__mega-promise-title">Precision components, documented to your spec</p>
+                  <p class="nav__mega-promise-desc">A managed network of vetted Monterrey machine shops — GPW owns the DFM, quality governance, and on-time delivery. One point of accountability, scalable capacity.</p>
+                </div>
+                <div class="nav__mega-ctas">
+                  <a href="../request-a-quote/" class="nav__mega-cta nav__mega-cta--primary">Get a Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                  <a href="../contract-manufacturing/engineering-support/" class="nav__mega-cta nav__mega-cta--secondary">Free DFM Review
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+              </div>
+              <div class="nav__mega-section">
+                <span class="nav__mega-section-title">Core Machining</span>
+                <div class="nav__mega-grid">
+                  <a href="../contract-manufacturing/cnc-milling/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M9 4v16M4 9h16"/></svg></span>
+                    <span><span class="nav__mega-card__title">CNC Milling</span><span class="nav__mega-card__desc">3- / 4- / 5-axis prismatic parts</span></span>
+                  </a>
+                  <a href="../contract-manufacturing/cnc-turning/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></span>
+                    <span><span class="nav__mega-card__title">CNC Turning</span><span class="nav__mega-card__desc">Lathe-turned cylindrical parts</span></span>
+                  </a>
+                  <a href="../contract-manufacturing/wire-edm/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 10-13h-7z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Wire EDM</span><span class="nav__mega-card__desc">Fine, burr-free hard-metal cuts</span></span>
+                  </a>
+                  <a href="../contract-manufacturing/sheet-metal/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 13l9 4 9-4"/></svg></span>
+                    <span><span class="nav__mega-card__title">Sheet Metal</span><span class="nav__mega-card__desc">Laser, bend, fabricate, weld</span></span>
+                  </a>
+                  <a href="../contract-manufacturing/surface-finishing/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Surface Finishing</span><span class="nav__mega-card__desc">Anodize, plate, coat, passivate</span></span>
+                  </a>
+                </div>
+              </div>
+              <div class="nav__mega-section">
+                <span class="nav__mega-section-title">Adjacent Capabilities</span>
+                <div class="nav__mega-grid nav__mega-grid--3">
+                  <a href="../contract-manufacturing/engineering-support/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 7v6l4 2"/></svg></span>
+                    <span><span class="nav__mega-card__title">Engineering Support</span><span class="nav__mega-card__desc">Free DFM &amp; material selection</span></span>
+                  </a>
+                  <a href="../contract-manufacturing/metals/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg></span>
+                    <span><span class="nav__mega-card__title">Metals</span><span class="nav__mega-card__desc">Alloys, tempers, tolerances</span></span>
+                  </a>
+                  <a href="../contract-manufacturing/plastics/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6l-1 5 4 9a3 3 0 0 1-3 4H9a3 3 0 0 1-3-4l4-9z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Plastics</span><span class="nav__mega-card__desc">Engineering polymers machined</span></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Capability 2: Assembly & Integration ===== -->
+        <div class="nav__item nav__item--capability">
+          <a href="../ems/" class="nav__link nav__link--has-mega">Assembly &amp; Integration</a>
+          <button class="nav__trigger nav__trigger--caret" aria-label="Open Assembly &amp; Integration menu" aria-haspopup="true" aria-expanded="false">
+            <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="nav__dropdown nav__dropdown--mega-full">
+            <div class="nav__mega">
+              <div class="nav__mega-header">
+                <div class="nav__mega-promise">
+                  <span class="nav__mega-promise-eyebrow">Assembly &amp; Integration</span>
+                  <p class="nav__mega-promise-title">From BOM to finished, tested unit on your dock</p>
+                  <p class="nav__mega-promise-desc">In-house electromechanical assembly — box build, harness, system integration and end-of-line test under one roof in Monterrey.</p>
+                </div>
+                <div class="nav__mega-ctas">
+                  <a href="../request-a-quote/" class="nav__mega-cta nav__mega-cta--primary">Get a Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                  <a href="/ems/" class="nav__mega-cta nav__mega-cta--secondary">About Assembly
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+              </div>
+              <div class="nav__mega-section">
+                <span class="nav__mega-section-title">Core Services</span>
+                <div class="nav__mega-grid">
+                  <a href="../ems/services/box-build-assembly.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg></span>
+                    <span><span class="nav__mega-card__title">Box Build</span><span class="nav__mega-card__desc">Mechanical + electrical integration</span></span>
+                  </a>
+                  <a href="../ems/services/cable-harness-assembly.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="17" r="2"/><path d="M6 9v4a4 4 0 0 0 4 4h6"/></svg></span>
+                    <span><span class="nav__mega-card__title">Cable &amp; Wire Harness</span><span class="nav__mega-card__desc">Documented workmanship &amp; inspection</span></span>
+                  </a>
+                  <a href="../ems/services/system-integration.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17h7"/></svg></span>
+                    <span><span class="nav__mega-card__title">System Integration</span><span class="nav__mega-card__desc">Structure, cabling, firmware</span></span>
+                  </a>
+                  <a href="../ems/services/testing-inspection.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 5-6"/><circle cx="12" cy="12" r="9"/></svg></span>
+                    <span><span class="nav__mega-card__title">Testing &amp; Inspection</span><span class="nav__mega-card__desc">Functional test, burn-in, QA</span></span>
+                  </a>
+                  <a href="../ems/services/enclosure-cabinet-assembly.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h6M9 11h6M15 15h.01"/></svg></span>
+                    <span><span class="nav__mega-card__title">Enclosure &amp; Cabinet</span><span class="nav__mega-card__desc">Racks, cabinets, sub-assemblies</span></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Industries ===== -->
+        <div class="nav__item">
+          <button class="nav__trigger" aria-haspopup="true" aria-expanded="false">Industries
+            <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="nav__dropdown nav__dropdown--mega-full">
+            <div class="nav__mega">
+              <div class="nav__mega-header">
+                <div class="nav__mega-promise">
+                  <span class="nav__mega-promise-eyebrow">Industries</span>
+                  <p class="nav__mega-promise-title">Ten end markets we build for</p>
+                  <p class="nav__mega-promise-desc">One partner across machining and assembly — organized by your end market, not by component type.</p>
+                </div>
+                <div class="nav__mega-ctas">
+                  <a href="../request-a-quote/" class="nav__mega-cta nav__mega-cta--primary">Get a Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+              </div>
+              <div class="nav__mega-section">
+                <span class="nav__mega-section-title">Industries We Serve</span>
+                <div class="nav__mega-grid nav__mega-grid--industries">
+                  <a href="../industries/aerospace-defense/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12l20-7-7 20-3-8-10-5z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Aerospace &amp; Defense</span></span>
+                  </a>
+                  <a href="../industries/automotive/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13l2-5h14l2 5v5h-3v-2H6v2H3z"/><circle cx="7" cy="16" r="1.5"/><circle cx="17" cy="16" r="1.5"/></svg></span>
+                    <span><span class="nav__mega-card__title">Automotive</span></span>
+                  </a>
+                  <a href="../industries/medical-devices/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+                    <span><span class="nav__mega-card__title">Medical Devices</span></span>
+                  </a>
+                  <a href="../industries/industrial-equipment/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span>
+                    <span><span class="nav__mega-card__title">Industrial Equipment</span></span>
+                  </a>
+                  <a href="../industries/energy/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 10-13h-7z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Energy</span></span>
+                  </a>
+                  <a href="../industries/oil-gas/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Oil &amp; Gas</span></span>
+                  </a>
+                  <a href="../industries/telecom/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19a14 14 0 0 1 14-14M8 19a8 8 0 0 1 8-8"/><circle cx="6" cy="18" r="1.5"/></svg></span>
+                    <span><span class="nav__mega-card__title">Telecom</span></span>
+                  </a>
+                  <a href="../industries/electronics/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></span>
+                    <span><span class="nav__mega-card__title">Electronics</span></span>
+                  </a>
+                  <a href="../industries/ai-server-rack/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="6" rx="1"/><rect x="4" y="11" width="16" height="6" rx="1"/><path d="M8 6h.01M8 14h.01"/></svg></span>
+                    <span><span class="nav__mega-card__title">AI &amp; Server Rack</span><span class="nav__mega-card__badge">High demand</span></span>
+                  </a>
+                  <a href="../industries/appliances/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h.01"/></svg></span>
+                    <span><span class="nav__mega-card__title">Appliances &amp; White Goods</span></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ===== Plain top-level links ===== -->
+        <a href="../quality/" class="nav__link nav__link--row" aria-current="page">Quality</a>
+        <a href="../about.html" class="nav__link nav__link--row">About</a>
+        <a href="../contact.html" class="nav__link nav__link--row">Contact</a>
+
+        <!-- ===== Persistent RFQ CTA ===== -->
+        <a href="../request-a-quote/" class="btn btn--primary nav__cta">Request a Quote</a>
+      </nav>
+    </div>
+    <div class="nav-overlay" id="navOverlay"></div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+  <!-- Scrollspy sidebar -->
+  <aside class="scrollspy" id="scrollspy">
+    <nav class="scrollspy__nav">
+      <a href="#legend" class="scrollspy__link is-active" data-section="legend">How to read this</a>
+      <a href="#qms" class="scrollspy__link" data-section="qms">QMS</a>
+      <a href="#machining" class="scrollspy__link" data-section="machining">Machining Network</a>
+      <a href="#assembly" class="scrollspy__link" data-section="assembly">Assembly QA</a>
+      <a href="#certifications" class="scrollspy__link" data-section="certifications">Standards We Build To</a>
+      <a href="#roadmap" class="scrollspy__link" data-section="roadmap">How We Document Quality</a>
+      <a href="#faq" class="scrollspy__link" data-section="faq">FAQ</a>
+    </nav>
+  </aside>
+
+  <!-- ============ HERO ============ -->
+  <section class="service-hero service-hero--with-photo" id="hero">
+    <div class="service-hero__photo"><img src="/img/tech/hero-quality.webp" alt="CMM probe inspecting a machined part on a granite table" fetchpriority="high"></div>
+    <div class="service-hero__bg"></div>
+
+    <div class="service-hero__inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../" class="breadcrumb__link">GPW Corporate</a>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="breadcrumb__current" aria-current="page">Quality</span>
+      </nav>
+
+      <span class="service-hero__eyebrow">Quality &amp; Compliance</span>
+      <h1>Quality you can audit &mdash; from the machining network to in-house assembly.</h1>
+      <p class="service-hero__sub">
+        GPW owns the quality outcome on every order. Parts produced through our managed Monterrey machining network and assemblies built in-house run under <strong>one governance model</strong> &mdash; inspection, documentation, and full lot traceability built into the process, not added at the end. Every build follows <strong>documented workmanship and inspection standards</strong>, against documented criteria. We align to the quality requirements each customer program defines.
+      </p>
+
+      <div class="service-hero__capabilities">
+        <div class="service-hero__cap">
+          <span class="service-hero__cap-label">Inspection</span>
+          <span class="service-hero__cap-value">Incoming + FAI</span>
+        </div>
+        <div class="service-hero__cap">
+          <span class="service-hero__cap-label">Documentation</span>
+          <span class="service-hero__cap-value">CoC + Mill Certs</span>
+        </div>
+        <div class="service-hero__cap">
+          <span class="service-hero__cap-label">Traceability</span>
+          <span class="service-hero__cap-value">By Lot</span>
+        </div>
+        <div class="service-hero__cap">
+          <span class="service-hero__cap-label">Documentation</span>
+          <span class="service-hero__cap-value">Audit-Ready</span>
+        </div>
+      </div>
+
+      <div class="service-hero__ctas">
+        <a href="../request-a-quote/" class="btn btn--primary btn--lg">Request a Quote</a>
+        <a href="../contact.html" class="btn btn--outline btn--lg">Talk to Our Team</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ HONESTY LEGEND ============ -->
+  <section class="section--service" id="legend" data-anchor>
+    <div class="container">
+      <div class="service-section-intro service-section-intro--center">
+        <span class="service-section-intro__eyebrow">How to read this page</span>
+        <h2>Two labels. No gray areas.</h2>
+        <p>Risk-averse buyers get burned by suppliers who blur capability and credential. GPW does not. Every quality control on this page carries one of two labels &mdash; so you always know what is operating today and what is a documented standard we build to.</p>
+      </div>
+
+      <div class="q-legend reveal">
+        <div class="q-legend__item">
+          <span class="q-pill q-pill--inplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span>
+          <p>A process or document control built into GPW's standard workflow and applied on every order GPW takes &mdash; operational and ready, not a future promise.</p>
+        </div>
+        <div class="q-legend__item">
+          <span class="q-pill q-pill--buildto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 7v13h16V7M9 11h6"/></svg>Build-to standard</span>
+          <p>A documented workmanship and inspection standard GPW builds to today, with first-article inspection and in-process checks &mdash; so the work is verifiable against documented criteria, not a self-graded claim.</p>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2" style="margin: var(--space-xl) auto 0; max-width: 880px; padding: var(--space-md) var(--space-lg); background: rgba(35,85,90,0.04); border: 1px solid rgba(35,85,90,0.12); border-left: 3px solid var(--teal); border-radius: 4px; font-size: var(--text-sm); color: rgba(35,85,90,0.85);">
+        You will not find a certification logo on this page that GPW does not hold. We describe the documented standards we build to and the documentation we ship &mdash; nothing more.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QMS ============ -->
+  <section class="section--service" id="qms" data-anchor style="background: var(--off-white);">
+    <div class="container">
+      <div class="service-section-intro service-section-intro--center">
+        <span class="service-section-intro__eyebrow">Quality Management System</span>
+        <h2>One accountable owner for the whole quality outcome.</h2>
+        <p>GPW is the prime, accountable party on every order. Whether your part is machined through the network or assembled in-house, one team owns the DFM review, the inspection plan, the documentation package, and the corrective action if something is off. You hold one contract and talk to one quality owner &mdash; not a broker who hands you to a shop.</p>
+      </div>
+
+      <div class="parts-grid reveal" style="max-width: 1000px; margin: 0 auto;">
+        <div class="parts-grid__cell">
+          <svg class="parts-grid__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span class="q-pill q-pill--inplace" style="margin-bottom: var(--space-sm);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span>
+          <h3 class="parts-grid__title">Single Point of Accountability</h3>
+          <p class="parts-grid__desc">One contract, one quality owner, one corrective-action path &mdash; across both capabilities. The managed-network model never means GPW steps out of the quality chain.</p>
+        </div>
+        <div class="parts-grid__cell">
+          <svg class="parts-grid__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z" fill="none"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
+          <span class="q-pill q-pill--inplace" style="margin-bottom: var(--space-sm);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span>
+          <h3 class="parts-grid__title">Document &amp; Revision Control</h3>
+          <p class="parts-grid__desc">Drawings, revisions, inspection plans, and as-shipped records are version-controlled per part number &mdash; so the part you reorder in 2027 matches the one you approve today.</p>
+        </div>
+        <div class="parts-grid__cell">
+          <svg class="parts-grid__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <span class="q-pill q-pill--inplace" style="margin-bottom: var(--space-sm);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span>
+          <h3 class="parts-grid__title">One Standard, Both Capabilities</h3>
+          <p class="parts-grid__desc">The same inspection and documentation discipline governs a machined housing and the assembly it goes into &mdash; so a vertically-integrated job speaks one quality language end to end.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MACHINING NETWORK GOVERNANCE ============ -->
+  <section class="section--service" id="machining" data-anchor>
+    <div class="container">
+      <div class="service-section-intro service-section-intro--center">
+        <span class="service-section-intro__eyebrow">CNC Machining &middot; Network Quality Governance</span>
+        <h2>How GPW governs quality without owning the machines.</h2>
+        <p>GPW produces machined parts through a vetted manufacturing network of Monterrey machine shops. <strong>GPW does not operate the machines</strong> &mdash; and it does own the quality outcome. The network is qualified, audited, and held to GPW's inspection and documentation standard on every job. Capacity scales across shops; the quality bar does not move.</p>
+      </div>
+
+      <div class="reveal" style="max-width: 980px; margin: 0 auto;">
+        <div class="spec-matrix">
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Supplier Qualification</div>
+            <div class="spec-matrix__value">GPW vets shops on capability, equipment, and quality record before they receive work; performance is monitored and re-evaluated as work runs.<span class="q-status"><span class="q-pill q-pill--inplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Incoming Material Inspection</div>
+            <div class="spec-matrix__value">GPW checks raw stock against the order &mdash; alloy, grade, temper, dimensions &mdash; before machining begins.<span class="q-status"><span class="q-pill q-pill--inplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">First-Article Inspection (FAI)</div>
+            <div class="spec-matrix__value">Before a production run, GPW inspects the first part against every drawing dimension and signs it off. A PPAP-style first-article inspection report is available on request.<span class="q-status"><span class="q-pill q-pill--inplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">In-Process &amp; Final Inspection</div>
+            <div class="spec-matrix__value">GPW runs dimensional checks during the run and a final inspection against the drawing before parts ship. Inspection level scales to the part's criticality.<span class="q-status"><span class="q-pill q-pill--inplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Certificate of Conformance</div>
+            <div class="spec-matrix__value">GPW can include a signed CoC with every shipment, stating the parts were produced and inspected to your drawing and specification.<span class="q-status"><span class="q-pill q-pill--inplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Material Certs / Mill Reports</div>
+            <div class="spec-matrix__value">GPW traces mill certificates and material test reports to the lot and ships them with the parts when required.<span class="q-status"><span class="q-pill q-pill--inplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Lot Traceability</div>
+            <div class="spec-matrix__value">Parts are traceable by lot back to material and shop &mdash; so a question on a delivered part can be answered, not guessed.<span class="q-status"><span class="q-pill q-pill--inplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span></span></div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-2" style="margin-top: var(--space-xl); padding: var(--space-md) var(--space-lg); background: rgba(237,131,94,0.08); border-left: 3px solid var(--coral); border-radius: 4px; font-size: var(--text-sm); color: rgba(35,85,90,0.9);">
+          <strong>What GPW does not claim:</strong> owned machining equipment, machine counts, or a GPW shop floor. The machines belong to the network shops. GPW owns the engineering, the inspection regime, the documentation, and the accountability &mdash; the first quality gate is a free in-house <a href="../contract-manufacturing/engineering-support/" style="color: var(--accent-on-light); font-weight: 700;">DFM review</a> before any shop opens your file.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ASSEMBLY QA ============ -->
+  <section class="section--service" id="assembly" data-anchor style="background: var(--off-white);">
+    <div class="container">
+      <div class="service-section-intro service-section-intro--center">
+        <span class="service-section-intro__eyebrow">Assembly &amp; Integration &middot; In-House QA</span>
+        <h2>Assembly quality is in-house &mdash; start to finish.</h2>
+        <p>Electromechanical assembly is GPW's in-house capability. Incoming inspection, in-process checks, functional test, and final QA all happen under GPW's roof in Monterrey, by GPW's team. This is the half of the business where GPW runs the floor &mdash; and the documentation reflects it.</p>
+      </div>
+
+      <div class="reveal" style="max-width: 980px; margin: 0 auto;">
+        <div class="spec-matrix">
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Incoming Inspection (IQC)</div>
+            <div class="spec-matrix__value">GPW inspects components and sub-assemblies against the BOM before they enter the build.<span class="q-status"><span class="q-pill q-pill--inplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">In-Process Inspection</div>
+            <div class="spec-matrix__value">Quality checks at defined build stages &mdash; so a defect is caught at the station that caused it, not at final test.<span class="q-status"><span class="q-pill q-pill--inplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Functional &amp; End-of-Line Test</div>
+            <div class="spec-matrix__value">GPW functionally tests every assembly against the acceptance criteria before it is cleared to ship.<span class="q-status"><span class="q-pill q-pill--inplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Burn-In / Stress Screening</div>
+            <div class="spec-matrix__value">Where the spec calls for it, units run under power and temperature to surface early-life failures before they reach you.<span class="q-status"><span class="q-pill q-pill--inplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Final / Outgoing QA</div>
+            <div class="spec-matrix__value">GPW runs a final inspection and documentation check before pack-out &mdash; recording what ships against what was ordered.<span class="q-status"><span class="q-pill q-pill--inplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Workmanship Standards</div>
+            <div class="spec-matrix__value">Assemblies are <strong>built against</strong> documented workmanship and inspection criteria for electronic assemblies and for cable &amp; harness work.<span class="q-status"><span class="q-pill q-pill--buildto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 7v13h16V7M9 11h6"/></svg>Build-to standard</span></span></div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-2" style="margin-top: var(--space-xl); padding: var(--space-md) var(--space-lg); background: rgba(35,85,90,0.04); border: 1px solid rgba(35,85,90,0.12); border-left: 3px solid var(--teal); border-radius: 4px; font-size: var(--text-sm); color: rgba(35,85,90,0.9);">
+          <strong style="color: var(--teal);">Verifiable workmanship:</strong> GPW builds to documented workmanship and inspection criteria today, with first-article inspection and in-process checks, and aligns to the workmanship requirements each customer program defines. See the full <a href="../ems/services/testing-inspection.html" style="color: var(--accent-on-light); font-weight: 700;">Testing &amp; Inspection</a> capability.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STANDARDS WE BUILD TO -> INDUSTRIES ============ -->
+  <section class="section--service" id="certifications" data-anchor>
+    <div class="container">
+      <div class="service-section-intro service-section-intro--center">
+        <span class="service-section-intro__eyebrow">Standards &amp; Documentation</span>
+        <h2>The standards we build to &mdash; mapped to your industry.</h2>
+        <p>GPW builds to documented workmanship and inspection standards today, with first-article inspection, in-process checks, and full traceability. For each end market, we build to the documentation, traceability, and inspection requirements your program defines &mdash; and ship audit-ready documentation to prove it.</p>
+      </div>
+
+      <div class="reveal" style="max-width: 980px; margin: 0 auto;">
+        <div class="spec-matrix">
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Documented Quality System</div>
+            <div class="spec-matrix__value">Documented work instructions, document and revision control, control plans, and audit-ready records &mdash; the foundation every build runs on.<span class="q-status"><span class="q-pill q-pill--inplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>In place</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Aerospace &amp; Defense Programs</div>
+            <div class="spec-matrix__value">We build to the documentation, traceability, and inspection requirements your aerospace or defense program defines, with first-article inspection reports.<span class="q-status"><span class="q-pill q-pill--buildto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 7v13h16V7M9 11h6"/></svg>Build-to standard</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Medical Device Programs</div>
+            <div class="spec-matrix__value">We build to the documentation, traceability, and inspection requirements your medical program defines, with full lot traceability.<span class="q-status"><span class="q-pill q-pill--buildto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 7v13h16V7M9 11h6"/></svg>Build-to standard</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Automotive Programs</div>
+            <div class="spec-matrix__value">We build to the documentation, control-plan, and inspection requirements your automotive program defines, with PPAP-style documentation on request.<span class="q-status"><span class="q-pill q-pill--buildto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 7v13h16V7M9 11h6"/></svg>Build-to standard</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Electronic Assembly Workmanship</div>
+            <div class="spec-matrix__value">Documented workmanship and inspection criteria for electronic assemblies &mdash; the build-to standard for in-house assembly.<span class="q-status"><span class="q-pill q-pill--buildto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 7v13h16V7M9 11h6"/></svg>Build-to standard</span></span></div>
+          </div>
+          <div class="spec-matrix__row">
+            <div class="spec-matrix__label">Cable &amp; Harness Workmanship</div>
+            <div class="spec-matrix__value">Documented workmanship and inspection criteria for cable &amp; wire harness assemblies &mdash; the build-to standard for harness work.<span class="q-status"><span class="q-pill q-pill--buildto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 7v13h16V7M9 11h6"/></svg>Build-to standard</span></span></div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-2" style="margin-top: var(--space-xl); padding: var(--space-md) var(--space-lg); background: rgba(35,85,90,0.04); border: 1px solid rgba(35,85,90,0.12); border-left: 3px solid var(--teal); border-radius: 4px; font-size: var(--text-sm); color: rgba(35,85,90,0.9);">
+          <strong style="color: var(--teal);">No aspirational logos:</strong> GPW describes only the documented standards it builds to and the documentation it ships. We align to the quality requirements each customer program defines &mdash; and the inspection records prove it.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW WE DOCUMENT QUALITY ============ -->
+  <section class="section--service" id="roadmap" data-anchor style="background: var(--off-white);">
+    <div class="container">
+      <div class="service-section-intro service-section-intro--center">
+        <span class="service-section-intro__eyebrow">How We Document Quality</span>
+        <h2>Every build, documented against criteria.</h2>
+        <p>Quality at GPW is built into the workflow, not added at the end. Here is how each order moves through documented inspection and record-keeping &mdash; so what ships is verifiable against what was ordered, every time.</p>
+      </div>
+
+      <div class="process-flow reveal" style="max-width: 1200px; margin: 0 auto;">
+        <div class="process-flow__step">
+          <span class="process-flow__num">01</span>
+          <span class="q-roadmap-date">Before the run</span>
+          <h3 class="process-flow__title">Documented Plan</h3>
+          <p class="process-flow__desc">Documented work instructions, control plans, and the inspection plan are defined per part number across machining governance and in-house assembly.</p>
+        </div>
+        <div class="process-flow__step">
+          <span class="process-flow__num">02</span>
+          <span class="q-roadmap-date">First part</span>
+          <h3 class="process-flow__title">First-Article Inspection</h3>
+          <p class="process-flow__desc">The first part is inspected against every drawing dimension and signed off before a production run begins &mdash; recorded in a first-article inspection report.</p>
+        </div>
+        <div class="process-flow__step">
+          <span class="process-flow__num">03</span>
+          <span class="q-roadmap-date">During the run</span>
+          <h3 class="process-flow__title">In-Process Checks</h3>
+          <p class="process-flow__desc">Dimensional and workmanship checks at defined stages against documented criteria &mdash; so a defect is caught where it happens, not at final test.</p>
+        </div>
+        <div class="process-flow__step">
+          <span class="process-flow__num">04</span>
+          <span class="q-roadmap-date">At ship</span>
+          <h3 class="process-flow__title">Documentation &amp; Traceability</h3>
+          <p class="process-flow__desc">Final QA, a signed Certificate of Conformance, material certs, and full lot traceability &mdash; audit-ready documentation that matches what was ordered.</p>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2" style="margin: var(--space-xl) auto 0; max-width: 980px; padding: var(--space-md) var(--space-lg); background: rgba(237,131,94,0.08); border-left: 3px solid var(--coral); border-radius: 4px; font-size: var(--text-sm); color: rgba(35,85,90,0.9);">
+        <strong>Built for the programs we serve.</strong> Across aerospace, medical, automotive, and the rest, GPW builds to the documentation, traceability, and inspection requirements each customer program defines &mdash; with audit-ready records to back it.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section--service" id="faq" data-anchor>
+    <div class="container">
+      <div class="service-section-intro service-section-intro--center">
+        <span class="service-section-intro__eyebrow">FAQ</span>
+        <h2>Quality &amp; compliance &mdash; answered.</h2>
+      </div>
+
+      <div class="reveal" style="max-width: 850px; margin: 0 auto;">
+        <details class="cm-faq__item"><summary class="cm-faq__question">How does GPW manage quality?</summary><div class="cm-faq__answer"><div class="cm-faq__answer-inner"><p>Every build follows <strong>documented workmanship and inspection standards</strong>, with first-article inspection, in-process checks, and full traceability. Document control and lot traceability are in place now, and we align to the quality requirements each customer program defines.</p></div></div></details>
+        <details class="cm-faq__item"><summary class="cm-faq__question">How can you guarantee quality if you don't own the machines?</summary><div class="cm-faq__answer"><div class="cm-faq__answer-inner"><p>GPW owns the quality outcome, not the machines. The Monterrey machining network is qualified and audited, and every job runs to GPW's inspection and documentation standard: incoming inspection, first-article inspection, and a Certificate of Conformance. One accountable owner, scalable capacity &mdash; never a broker hand-off.</p></div></div></details>
+        <details class="cm-faq__item"><summary class="cm-faq__question">What documentation ships with my parts?</summary><div class="cm-faq__answer"><div class="cm-faq__answer-inner"><p>On request: a signed Certificate of Conformance, material certifications and mill test reports traced to the lot, and a first-article inspection report. Tell us your requirements with the RFQ and we confirm the documentation package before production begins.</p></div></div></details>
+        <details class="cm-faq__item"><summary class="cm-faq__question">Do you do first-article inspection (FAI)?</summary><div class="cm-faq__answer"><div class="cm-faq__answer-inner"><p>Yes. Before a production run, the first part is inspected against every drawing dimension and signed off. A PPAP-style first-article inspection report is available when your program requires it.</p></div></div></details>
+        <details class="cm-faq__item"><summary class="cm-faq__question">What workmanship standards do you build assemblies to?</summary><div class="cm-faq__answer"><div class="cm-faq__answer-inner"><p>In-house assemblies are built against <strong>documented workmanship and inspection criteria</strong> for electronic assemblies and for cable and wire harnesses, with first-article inspection and in-process checks. We align to the workmanship requirements each customer program defines.</p></div></div></details>
+        <details class="cm-faq__item"><summary class="cm-faq__question">Can you support aerospace or medical traceability requirements?</summary><div class="cm-faq__answer"><div class="cm-faq__answer-inner"><p>Yes. GPW operates <strong>full lot traceability</strong> and documented inspection today, with audit-ready documentation. We build to the documentation, traceability, and inspection requirements your aerospace or medical program defines.</p></div></div></details>
+        <details class="cm-faq__item"><summary class="cm-faq__question">What does GPW's quality system cover today?</summary><div class="cm-faq__answer"><div class="cm-faq__answer-inner"><p>Documented work instructions and document control, the network inspection regime, first-article and in-process inspection, the Certificate of Conformance, full lot traceability, and in-house assembly test &mdash; all against documented criteria. We align to the quality requirements each customer program defines.</p></div></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="service-cta">
+    <div class="service-cta__container">
+      <span class="service-cta__eyebrow">// Quality you can verify</span>
+      <h2>Put our quality system to the test &mdash; start with an RFQ.</h2>
+      <p>Send a drawing or a BOM. We confirm the inspection and documentation package with the quote &mdash; before you commit. Every project starts with a free in-house engineering review.</p>
+      <div class="service-cta__ctas">
+        <a href="../request-a-quote/" class="btn btn--primary btn--lg">Request a Quote</a>
+        <a href="../contact.html" class="btn btn--outline btn--lg">Talk to Our Team</a>
+      </div>
+      <p class="service-cta__small">One accountable partner &middot; machining network + in-house assembly &middot; sales@gpw-solutions.com</p>
+    </div>
+  </section>
+
+  <!-- ============ RELATED ============ -->
+  <section class="section--service-tight" style="background: var(--off-white);">
+    <div class="container">
+      <div class="service-section-intro service-section-intro--center">
+        <span class="service-section-intro__eyebrow">Related</span>
+        <h2>Where quality starts and where it's documented.</h2>
+      </div>
+
+      <div class="parts-grid reveal" style="max-width: 1000px; margin: 0 auto;">
+        <a href="../contract-manufacturing/engineering-support/" class="parts-grid__cell" style="text-decoration: none;">
+          <svg class="parts-grid__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 7v6l4 2"/></svg>
+          <h3 class="parts-grid__title">Engineering Support &rarr;</h3>
+          <p class="parts-grid__desc">The first quality gate &mdash; a free in-house DFM review on every project, before any shop touches your file.</p>
+        </a>
+        <a href="../ems/services/testing-inspection.html" class="parts-grid__cell" style="text-decoration: none;">
+          <svg class="parts-grid__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 5-6"/><circle cx="12" cy="12" r="9"/></svg>
+          <h3 class="parts-grid__title">Testing &amp; Inspection &rarr;</h3>
+          <p class="parts-grid__desc">In-house functional test, burn-in, and QA for electromechanical assembly &mdash; the assembly side of quality.</p>
+        </a>
+        <a href="../contract-manufacturing/why-mexico/" class="parts-grid__cell" style="text-decoration: none;">
+          <svg class="parts-grid__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <h3 class="parts-grid__title">Why Mexico &rarr;</h3>
+          <p class="parts-grid__desc">The nearshore case &mdash; proximity, same timezone, and USMCA &mdash; that puts GPW two hours from Texas.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="/" class="footer__logo">
+            <img loading="lazy" src="/img/logo-white.png" alt="Global Precision Works" width="300" height="189">
+          </a>
+          <p class="footer__desc">Global Precision Works &mdash; precision manufacturing and electromechanical assembly from Monterrey, Mexico. Two divisions, one standard of quality.</p>
+          <div class="footer__contact">
+            <span class="footer__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              Monterrey, Nuevo Le&oacute;n, Mexico
+            </span>
+            <a href="mailto:sales@gpw-solutions.com" class="footer__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              sales@gpw-solutions.com
+            </a>
+            <a href="https://www.linkedin.com/company/gpw-solutions" target="_blank" rel="noopener" class="footer__contact-item">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.14.93-2.06 2.06-2.06 1.14 0 2.06.93 2.06 2.06 0 1.14-.92 2.07-2.06 2.07zm1.78 13.02H3.55V9h3.57v11.45z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">CNC Machining</div>
+          <div class="footer__links">
+            <a href="/contract-manufacturing/cnc-milling/">CNC Milling</a>
+            <a href="/contract-manufacturing/cnc-turning/">CNC Turning</a>
+            <a href="/contract-manufacturing/wire-edm/">Wire EDM</a>
+            <a href="/contract-manufacturing/sheet-metal/">Sheet Metal</a>
+            <a href="/contract-manufacturing/surface-finishing/">Surface Finishing</a>
+            <a href="/contract-manufacturing/engineering-support/">Engineering Support</a>
+            <a href="/contract-manufacturing/metals/">Metals</a>
+            <a href="/contract-manufacturing/plastics/">Plastics</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Assembly &amp; Integration</div>
+          <div class="footer__links">
+            <a href="/ems/services/box-build-assembly.html">Box Build</a>
+            <a href="/ems/services/cable-harness-assembly.html">Cable &amp; Harness</a>
+            <a href="/ems/services/system-integration.html">System Integration</a>
+            <a href="/ems/services/testing-inspection.html">Testing &amp; Inspection</a>
+            <a href="/ems/services/enclosure-cabinet-assembly.html">Enclosure &amp; Cabinet</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Industries</div>
+          <div class="footer__links">
+            <a href="/industries/ai-server-rack/">AI &amp; Server Rack</a>
+            <a href="/industries/industrial-equipment/">Industrial Equipment</a>
+            <a href="/industries/telecom/">Telecom</a>
+            <a href="/industries/medical-devices/">Medical Devices</a>
+            <a href="/industries/automotive/">Automotive</a>
+            <a href="/industries/aerospace-defense/">Aerospace &amp; Defense</a>
+            <a href="/industries/electronics/">Electronics</a>
+            <a href="/industries/oil-gas/">Oil &amp; Gas</a>
+            <a href="/industries/energy/">Energy</a>
+            <a href="/industries/appliances/">Appliances &amp; White Goods</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Company</div>
+          <div class="footer__links">
+            <a href="/about.html">About</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/quality/">Quality</a>
+            <a href="/blog/">Insights</a>
+            <a href="/contract-manufacturing/why-mexico/">Why Mexico</a>
+            <a href="/request-a-quote/">Request a Quote</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Global Precision Works. All rights reserved.</span>
+        <div class="footer__legal">
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script src="../js/main.js"></script>
+  <script src="../js/cookie-consent.js"></script>
+
+  <!-- Scrollspy -->
+  <script>
+  (function() {
+    var spy = document.getElementById('scrollspy');
+    if (!spy) return;
+    var links = spy.querySelectorAll('.scrollspy__link');
+    var sections = [];
+    links.forEach(function(link) {
+      var id = link.getAttribute('data-section');
+      var el = document.getElementById(id);
+      if (el) sections.push({ id: id, el: el, link: link });
+    });
+
+    var footer = document.querySelector('.footer');
+    var heroEl = document.getElementById('hero');
+    var activeId = 'hero';
+
+    var darkSelectors = '.svc-hero, .hero, .ind-hero, .hub-hero, .mid-cta, .final-cta, .faq-split, .footer, .service-hero, .cm-hero';
+    var darkSections = document.querySelectorAll(darkSelectors);
+
+    function checkDarkBg() {
+      var spyCenter = spy.getBoundingClientRect().top + spy.getBoundingClientRect().height / 2;
+      var onDark = false;
+      darkSections.forEach(function(ds) {
+        var r = ds.getBoundingClientRect();
+        if (spyCenter >= r.top && spyCenter <= r.bottom) onDark = true;
+      });
+      spy.classList.toggle('on-dark', onDark);
+    }
+
+    function onScroll() {
+      var scrollY = window.scrollY;
+      var winH = window.innerHeight;
+
+      var pastHero = heroEl ? heroEl.getBoundingClientRect().bottom < 0 : true;
+      var atFooter = footer ? footer.getBoundingClientRect().top <= winH : false;
+      spy.classList.toggle('is-visible', pastHero && !atFooter);
+
+      checkDarkBg();
+
+      var trigger = scrollY + winH * 0.35;
+      var current = sections[0] ? sections[0].id : '';
+      for (var i = sections.length - 1; i >= 0; i--) {
+        if (sections[i].el.offsetTop <= trigger) {
+          current = sections[i].id;
+          break;
+        }
+      }
+      if (current && current !== activeId) {
+        activeId = current;
+        links.forEach(function(l) { l.classList.remove('is-active'); });
+        sections.forEach(function(s) {
+          if (s.id === current) s.link.classList.add('is-active');
+        });
+      }
+    }
+
+    links.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var id = link.getAttribute('data-section');
+        var target = document.getElementById(id);
+        if (target) {
+          var top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+  </script>
+
+</body>
+</html>

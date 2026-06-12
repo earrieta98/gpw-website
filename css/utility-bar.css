@@ -1,0 +1,255 @@
+/* ============================================
+   GPW — Mega-menu CSS (formerly Utility Bar sheet)
+   Utility bar + division switcher retired 2026-06-08 (removed site-wide);
+   their dead .utility-bar*/.division-switcher* and body:has(.utility-bar)
+   offset rules were pruned. This sheet now only carries the live mega-menu
+   CSS below, plus the --utility-bar-height: 0px collapse override.
+   ============================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --utility-bar-height: 0px;           /* audit 2026-06-08: utility bar removed site-wide */
+  }
+}
+
+/* ============================================
+   MEGA MENU FULL-WIDTH — HubSpot-style
+   For Services dropdown in CM nav
+   ============================================ */
+
+.nav__dropdown--mega-full {
+  position: fixed;
+  top: var(--top-offset);          /* flush to the header bottom (2026-06-08: removed the +8px gap that leaked the dark hero behind it) */
+  left: 50%;
+  right: auto;
+  width: calc(100% - 96px);
+  max-width: 1180px;
+  min-width: 0;
+  transform: translateX(-50%) translateY(8px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--light-gray);
+  box-shadow: var(--shadow-xl);   /* #16: align mega-full panel to flat-cool --shadow-* family */
+  padding: 0;
+  overflow: hidden;
+}
+
+.nav__item:hover .nav__dropdown--mega-full {
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav__mega {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* --- Mega header — promise + CTAs --- */
+.nav__mega-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-2xl);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--warm-gray);
+}
+
+.nav__mega-promise {
+  max-width: 480px;
+}
+
+.nav__mega-promise-eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-on-light);   /* #19 AA: coral on white mega-panel fails (2.87:1) -> teal; global nav, all pages */
+  margin-bottom: 6px;
+}
+
+.nav__mega-promise-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--teal);
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+
+.nav__mega-promise-desc {
+  font-size: 0.875rem;
+  color: var(--mid-gray);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.nav__mega-ctas {
+  display: flex;
+  gap: var(--space-md);
+  flex-shrink: 0;
+}
+
+.nav__mega-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav__mega-cta--primary {
+  background: var(--coral);
+  color: var(--white);
+}
+
+.nav__mega-cta--primary:hover {
+  background: var(--coral-dark);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+.nav__mega-cta--secondary {
+  background: transparent;
+  color: var(--teal);
+  border: 1px solid var(--light-gray);
+}
+
+.nav__mega-cta--secondary:hover {
+  background: var(--off-white);
+  border-color: var(--teal);
+}
+
+.nav__mega-cta svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* --- Mega section (machining, adjacent) --- */
+.nav__mega-section {
+  padding: var(--space-xl) 0;
+}
+
+.nav__mega-section + .nav__mega-section {
+  border-top: 1px solid var(--warm-gray);
+  padding-top: var(--space-xl);
+}
+
+.nav__mega-section-title {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  margin-bottom: var(--space-lg);
+}
+
+.nav__mega-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-sm);
+}
+
+.nav__mega-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 900px;
+}
+
+.nav__mega-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.nav__mega-card:hover {
+  background: var(--off-white);
+  border-color: var(--warm-gray);
+}
+
+.nav__mega-card--active {
+  background: rgba(35, 85, 90, 0.06);
+  border-color: rgba(35, 85, 90, 0.15);
+}
+
+.nav__mega-card__icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  color: var(--coral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.nav__mega-card__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.nav__mega-card__title {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--teal);
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+.nav__mega-card__desc {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--mid-gray);
+  line-height: 1.4;
+}
+
+.nav__mega-card--active .nav__mega-card__title {
+  color: var(--teal);
+}
+
+@media (max-width: 1024px) {
+  .nav__mega-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .nav__mega-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav__dropdown--mega-full {
+    position: absolute;
+    top: 100%;
+    transform: translateY(0);
+  }
+  .nav__mega {
+    padding: var(--space-lg);
+  }
+  .nav__mega-header {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  .nav__mega-ctas {
+    width: 100%;
+  }
+  .nav__mega-cta {
+    flex: 1;
+    justify-content: center;
+  }
+  .nav__mega-grid,
+  .nav__mega-grid--3 {
+    grid-template-columns: 1fr;
+  }
+}

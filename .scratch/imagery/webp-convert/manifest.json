@@ -1,0 +1,443 @@
+[
+  {
+    "jpg": "img/card-contract-manufacturing.jpg",
+    "webp": "img/card-contract-manufacturing.webp",
+    "old": 58938,
+    "new": 47606,
+    "pct": 19
+  },
+  {
+    "jpg": "img/card-ems.jpg",
+    "webp": "img/card-ems.webp",
+    "old": 87196,
+    "new": 68110,
+    "pct": 22
+  },
+  {
+    "jpg": "img/hero-box-build.jpg",
+    "webp": "img/hero-box-build.webp",
+    "old": 121116,
+    "new": 89580,
+    "pct": 26
+  },
+  {
+    "jpg": "img/hero-cable-harness.jpg",
+    "webp": "img/hero-cable-harness.webp",
+    "old": 122834,
+    "new": 89732,
+    "pct": 27
+  },
+  {
+    "jpg": "img/hero-enclosure-cabinet.jpg",
+    "webp": "img/hero-enclosure-cabinet.webp",
+    "old": 109088,
+    "new": 81148,
+    "pct": 26
+  },
+  {
+    "jpg": "img/hero-system-integration.jpg",
+    "webp": "img/hero-system-integration.webp",
+    "old": 140521,
+    "new": 124954,
+    "pct": 11
+  },
+  {
+    "jpg": "img/hero-testing-inspection.jpg",
+    "webp": "img/hero-testing-inspection.webp",
+    "old": 104135,
+    "new": 71240,
+    "pct": 32
+  },
+  {
+    "jpg": "img/process-burn-in.jpg",
+    "webp": "img/process-burn-in.webp",
+    "old": 87296,
+    "new": 67620,
+    "pct": 23
+  },
+  {
+    "jpg": "img/process-cable-assembly.jpg",
+    "webp": "img/process-cable-assembly.webp",
+    "old": 31733,
+    "new": 19794,
+    "pct": 38
+  },
+  {
+    "jpg": "img/process-component-staging.jpg",
+    "webp": "img/process-component-staging.webp",
+    "old": 74964,
+    "new": 54786,
+    "pct": 27
+  },
+  {
+    "jpg": "img/process-design-review.jpg",
+    "webp": "img/process-design-review.webp",
+    "old": 97068,
+    "new": 64458,
+    "pct": 34
+  },
+  {
+    "jpg": "img/process-firmware-loading.jpg",
+    "webp": "img/process-firmware-loading.webp",
+    "old": 51130,
+    "new": 34670,
+    "pct": 32
+  },
+  {
+    "jpg": "img/process-first-article.jpg",
+    "webp": "img/process-first-article.webp",
+    "old": 63812,
+    "new": 44728,
+    "pct": 30
+  },
+  {
+    "jpg": "img/process-functional-testing.jpg",
+    "webp": "img/process-functional-testing.webp",
+    "old": 78158,
+    "new": 65692,
+    "pct": 16
+  },
+  {
+    "jpg": "img/process-packaging.jpg",
+    "webp": "img/process-packaging.webp",
+    "old": 74246,
+    "new": 51190,
+    "pct": 31
+  },
+  {
+    "jpg": "img/process-production-assembly.jpg",
+    "webp": "img/process-production-assembly.webp",
+    "old": 99306,
+    "new": 79236,
+    "pct": 20
+  },
+  {
+    "jpg": "img/service-box-build.jpg",
+    "webp": "img/service-box-build.webp",
+    "old": 67119,
+    "new": 48426,
+    "pct": 28
+  },
+  {
+    "jpg": "img/service-cable-harness.jpg",
+    "webp": "img/service-cable-harness.webp",
+    "old": 61455,
+    "new": 45878,
+    "pct": 25
+  },
+  {
+    "jpg": "img/service-enclosure-cabinet.jpg",
+    "webp": "img/service-enclosure-cabinet.webp",
+    "old": 102889,
+    "new": 77008,
+    "pct": 25
+  },
+  {
+    "jpg": "img/service-system-integration.jpg",
+    "webp": "img/service-system-integration.webp",
+    "old": 70749,
+    "new": 46720,
+    "pct": 34
+  },
+  {
+    "jpg": "img/service-testing-inspection.jpg",
+    "webp": "img/service-testing-inspection.webp",
+    "old": 71064,
+    "new": 48170,
+    "pct": 32
+  },
+  {
+    "jpg": "img/hero/assembly-closeup.jpg",
+    "webp": "img/hero/assembly-closeup.webp",
+    "old": 445952,
+    "new": 332106,
+    "pct": 26
+  },
+  {
+    "jpg": "img/hero/integration-closeup.jpg",
+    "webp": "img/hero/integration-closeup.webp",
+    "old": 150220,
+    "new": 34140,
+    "pct": 77
+  },
+  {
+    "jpg": "img/hero/machining-closeup.jpg",
+    "webp": "img/hero/machining-closeup.webp",
+    "old": 230613,
+    "new": 53086,
+    "pct": 77
+  },
+  {
+    "jpg": "img/tech/band-aerospace.jpg",
+    "webp": "img/tech/band-aerospace.webp",
+    "old": 255350,
+    "new": 69218,
+    "pct": 73
+  },
+  {
+    "jpg": "img/tech/band-ai-server-rack.jpg",
+    "webp": "img/tech/band-ai-server-rack.webp",
+    "old": 290443,
+    "new": 68928,
+    "pct": 76
+  },
+  {
+    "jpg": "img/tech/band-appliances.jpg",
+    "webp": "img/tech/band-appliances.webp",
+    "old": 209068,
+    "new": 44058,
+    "pct": 79
+  },
+  {
+    "jpg": "img/tech/band-automotive.jpg",
+    "webp": "img/tech/band-automotive.webp",
+    "old": 255913,
+    "new": 60884,
+    "pct": 76
+  },
+  {
+    "jpg": "img/tech/band-electronics.jpg",
+    "webp": "img/tech/band-electronics.webp",
+    "old": 226370,
+    "new": 46226,
+    "pct": 80
+  },
+  {
+    "jpg": "img/tech/band-energy.jpg",
+    "webp": "img/tech/band-energy.webp",
+    "old": 229428,
+    "new": 48738,
+    "pct": 79
+  },
+  {
+    "jpg": "img/tech/band-industrial-equipment.jpg",
+    "webp": "img/tech/band-industrial-equipment.webp",
+    "old": 207465,
+    "new": 46560,
+    "pct": 78
+  },
+  {
+    "jpg": "img/tech/band-medical-devices.jpg",
+    "webp": "img/tech/band-medical-devices.webp",
+    "old": 185266,
+    "new": 37344,
+    "pct": 80
+  },
+  {
+    "jpg": "img/tech/band-oil-gas.jpg",
+    "webp": "img/tech/band-oil-gas.webp",
+    "old": 231216,
+    "new": 61806,
+    "pct": 73
+  },
+  {
+    "jpg": "img/tech/band-telecom-hardware.jpg",
+    "webp": "img/tech/band-telecom-hardware.webp",
+    "old": 270139,
+    "new": 62124,
+    "pct": 77
+  },
+  {
+    "jpg": "img/tech/cnc-engineering-dfm.jpg",
+    "webp": "img/tech/cnc-engineering-dfm.webp",
+    "old": 141193,
+    "new": 74336,
+    "pct": 47
+  },
+  {
+    "jpg": "img/tech/cnc-hub-inspection.jpg",
+    "webp": "img/tech/cnc-hub-inspection.webp",
+    "old": 374385,
+    "new": 273530,
+    "pct": 27
+  },
+  {
+    "jpg": "img/tech/cnc-metals.jpg",
+    "webp": "img/tech/cnc-metals.webp",
+    "old": 209051,
+    "new": 36818,
+    "pct": 82
+  },
+  {
+    "jpg": "img/tech/cnc-milling-5axis.jpg",
+    "webp": "img/tech/cnc-milling-5axis.webp",
+    "old": 81734,
+    "new": 46078,
+    "pct": 44
+  },
+  {
+    "jpg": "img/tech/cnc-plastics.jpg",
+    "webp": "img/tech/cnc-plastics.webp",
+    "old": 118316,
+    "new": 56024,
+    "pct": 53
+  },
+  {
+    "jpg": "img/tech/cnc-sheet-metal-laser.jpg",
+    "webp": "img/tech/cnc-sheet-metal-laser.webp",
+    "old": 174692,
+    "new": 105308,
+    "pct": 40
+  },
+  {
+    "jpg": "img/tech/cnc-surface-finishing.jpg",
+    "webp": "img/tech/cnc-surface-finishing.webp",
+    "old": 285666,
+    "new": 61530,
+    "pct": 78
+  },
+  {
+    "jpg": "img/tech/cnc-turning-parts.jpg",
+    "webp": "img/tech/cnc-turning-parts.webp",
+    "old": 136491,
+    "new": 95160,
+    "pct": 30
+  },
+  {
+    "jpg": "img/tech/cnc-why-mexico.jpg",
+    "webp": "img/tech/cnc-why-mexico.webp",
+    "old": 196923,
+    "new": 43898,
+    "pct": 78
+  },
+  {
+    "jpg": "img/tech/cnc-wire-edm.jpg",
+    "webp": "img/tech/cnc-wire-edm.webp",
+    "old": 185897,
+    "new": 29626,
+    "pct": 84
+  },
+  {
+    "jpg": "img/tech/hero-about.jpg",
+    "webp": "img/tech/hero-about.webp",
+    "old": 361770,
+    "new": 246596,
+    "pct": 32
+  },
+  {
+    "jpg": "img/tech/hero-aerospace.jpg",
+    "webp": "img/tech/hero-aerospace.webp",
+    "old": 123760,
+    "new": 65856,
+    "pct": 47
+  },
+  {
+    "jpg": "img/tech/hero-ai-server-rack.jpg",
+    "webp": "img/tech/hero-ai-server-rack.webp",
+    "old": 179943,
+    "new": 102568,
+    "pct": 43
+  },
+  {
+    "jpg": "img/tech/hero-appliances.jpg",
+    "webp": "img/tech/hero-appliances.webp",
+    "old": 159972,
+    "new": 87026,
+    "pct": 46
+  },
+  {
+    "jpg": "img/tech/hero-automotive.jpg",
+    "webp": "img/tech/hero-automotive.webp",
+    "old": 191730,
+    "new": 117898,
+    "pct": 39
+  },
+  {
+    "jpg": "img/tech/hero-box-build.jpg",
+    "webp": "img/tech/hero-box-build.webp",
+    "old": 192268,
+    "new": 113674,
+    "pct": 41
+  },
+  {
+    "jpg": "img/tech/hero-cable-harness.jpg",
+    "webp": "img/tech/hero-cable-harness.webp",
+    "old": 195349,
+    "new": 116388,
+    "pct": 40
+  },
+  {
+    "jpg": "img/tech/hero-contact.jpg",
+    "webp": "img/tech/hero-contact.webp",
+    "old": 160355,
+    "new": 25974,
+    "pct": 84
+  },
+  {
+    "jpg": "img/tech/hero-electronics.jpg",
+    "webp": "img/tech/hero-electronics.webp",
+    "old": 150229,
+    "new": 76230,
+    "pct": 49
+  },
+  {
+    "jpg": "img/tech/hero-enclosure-cabinet.jpg",
+    "webp": "img/tech/hero-enclosure-cabinet.webp",
+    "old": 165652,
+    "new": 90584,
+    "pct": 45
+  },
+  {
+    "jpg": "img/tech/hero-energy.jpg",
+    "webp": "img/tech/hero-energy.webp",
+    "old": 182902,
+    "new": 103870,
+    "pct": 43
+  },
+  {
+    "jpg": "img/tech/hero-industrial-equipment.jpg",
+    "webp": "img/tech/hero-industrial-equipment.webp",
+    "old": 170687,
+    "new": 102206,
+    "pct": 40
+  },
+  {
+    "jpg": "img/tech/hero-medical-devices.jpg",
+    "webp": "img/tech/hero-medical-devices.webp",
+    "old": 115071,
+    "new": 62122,
+    "pct": 46
+  },
+  {
+    "jpg": "img/tech/hero-oil-gas.jpg",
+    "webp": "img/tech/hero-oil-gas.webp",
+    "old": 207181,
+    "new": 144792,
+    "pct": 30
+  },
+  {
+    "jpg": "img/tech/hero-quality.jpg",
+    "webp": "img/tech/hero-quality.webp",
+    "old": 168658,
+    "new": 33752,
+    "pct": 80
+  },
+  {
+    "jpg": "img/tech/hero-rfq.jpg",
+    "webp": "img/tech/hero-rfq.webp",
+    "old": 142613,
+    "new": 23802,
+    "pct": 83
+  },
+  {
+    "jpg": "img/tech/hero-system-integration.jpg",
+    "webp": "img/tech/hero-system-integration.webp",
+    "old": 237281,
+    "new": 163108,
+    "pct": 31
+  },
+  {
+    "jpg": "img/tech/hero-telecom-hardware.jpg",
+    "webp": "img/tech/hero-telecom-hardware.webp",
+    "old": 200517,
+    "new": 119714,
+    "pct": 40
+  },
+  {
+    "jpg": "img/tech/hero-testing-inspection.jpg",
+    "webp": "img/tech/hero-testing-inspection.webp",
+    "old": 183861,
+    "new": 105322,
+    "pct": 43
+  }
+]

@@ -3,3 +3,7 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home3/enriqu45/public_html/
     - /bin/cp -R * $DEPLOYPATH
+    # `cp -R *` does NOT copy top-level dotfiles, so .htaccess must be copied
+    # explicitly — without it production loses HTTPS-force, the www→non-www
+    # canonical, the EMS-era 301s, security headers, gzip and the /quality/+/tests/ guards.
+    - /bin/cp .htaccess $DEPLOYPATH

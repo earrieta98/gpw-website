@@ -1,0 +1,347 @@
+/* ============================================================
+   GPW — Unified Global Nav (Keller)  ·  Issue #02 — PREVIEW deltas
+   ------------------------------------------------------------
+   Reuses the PRODUCTION chassis (styles.css + utility-bar.css +
+   main.js): fixed utility-bar -> fixed header with --top/--scrolled
+   scroll states, logo cross-fade, mega-menus, mobile drawer.
+   This sheet ONLY adds the deltas the Keller structure needs:
+     · utility-bar right-side meta (replaces the removed switcher)
+     · capability tab = link-to-hub + caret-button that opens a mega
+     · AI & Server Rack promoted to first Industries card (de-dup 2026-06-08)
+     · 10-card Industries mega tuning
+   Brand-locked: production tokens only (--teal/--coral/--deep-blue/
+   --lime). Never white-on-coral; teal focus ring inherited.
+   On HITL sign-off these rules fold into styles.css during cascade.
+   ============================================================ */
+
+/* ---- Utility bar: right-side meta (replaces division-switcher) ---- */
+.utility-bar__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-lg);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.utility-bar__meta .utility-bar__item {
+  cursor: default;
+}
+.utility-bar__meta-sep {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.14);
+}
+@media (max-width: 900px) {
+  .utility-bar__meta-tagline { display: none; }
+}
+@media (max-width: 768px) {
+  /* production hides .utility-bar__contact and centers; keep the
+     location pill visible so the bar is never empty */
+  .utility-bar__inner { justify-content: center; }
+  .utility-bar__meta-sep { display: none; }
+}
+
+/* ============================================================
+   FIT — the Keller nav has 8 top-level items (busier than the old
+   4-item navs). Protect the logo from collapsing and tighten the
+   horizontal rhythm so it fits cleanly down to the 1024 breakpoint.
+   ============================================================ */
+.header__logo { flex: none; }              /* never let the nav squeeze the logo to 0 */
+.nav { gap: clamp(var(--space-md), 1.1vw, var(--space-lg)); }
+
+/* ============================================================
+   CAPABILITY TAB — link to hub + caret-button that opens the mega
+   (CNC Machining, Assembly & Integration)
+   ============================================================ */
+.nav__item--capability {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* The label is a real link to the capability hub. It reuses
+   .nav__link styling (coral underline reveal, scroll-state colors). */
+.nav__item--capability .nav__link { padding-right: 0; }
+
+/* The caret is its own button so the keyboard exposes "open submenu"
+   distinctly from "go to hub". main.js already binds .nav__trigger
+   for the mobile accordion; on desktop the hover opens the mega. */
+.nav__trigger--caret {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs);
+  margin: 0;
+  color: inherit;
+  line-height: 0;
+  border-radius: var(--radius-sm);
+}
+.nav__trigger--caret .nav__trigger-arrow {
+  width: 15px;
+  height: 15px;
+  opacity: 0.55;
+  transition: transform var(--transition-base), opacity var(--transition-fast);
+}
+.nav__item--capability:hover .nav__trigger-arrow,
+.nav__item--capability:focus-within .nav__trigger-arrow {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* Open the mega on focus-within too (keyboard users tabbing in). */
+.nav__item--capability:focus-within .nav__dropdown--mega-full {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Keyboard users: open the Industries (and any plain) centered mega on focus-within too.
+   Mirrors the hover open-state in styles.css (.nav__item:hover .nav__dropdown).
+   Mobile is unaffected: the 768px breakpoint sets .nav__dropdown { transform: none !important }. */
+.nav__item:focus-within .nav__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Scroll-state colors for the caret (mirror .nav__link). */
+.header--top .nav__trigger--caret { color: rgba(255, 255, 255, 0.85); }
+.header--top .nav__item--capability:hover .nav__trigger--caret { color: var(--white); }
+.header--scrolled .nav__trigger--caret { color: var(--dark-gray); }
+.header--scrolled .nav__item--capability:hover .nav__trigger--caret { color: var(--teal); }
+
+/* ============================================================
+   AI & SERVER RACK — de-duplicated (audit 2026-06-08)
+   Removed from the top-level nav (it was the only weight-900 + teal
+   + dotted item → read as permanently "active" on every other page,
+   and over-spotlighted one vertical against the 40/60 brand goal).
+   It now lives ONCE, promoted to the first card of the Industries
+   mega with a quiet lime "High demand" badge.
+   ============================================================ */
+.nav__mega-grid--industries a[href$="ai-server-rack/"] {
+  order: -1;                 /* first card without touching markup order */
+  position: relative;
+}
+.nav__mega-card__badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 1px 7px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: var(--lime);
+  border-radius: 100px;
+}
+
+/* ============================================================
+   CURRENT-PAGE STATE — color now means LOCATION (aria-current)
+   The teal/persistent-underline treatment that used to be wasted on
+   the always-on AI item now marks the page the visitor is actually on.
+   ============================================================ */
+.header--scrolled .nav__link[aria-current="page"] { color: var(--teal); }
+.header--top .nav__link[aria-current="page"] { color: var(--white); }
+.nav__link[aria-current="page"]::after { width: 100%; }   /* persistent coral underline */
+/* Industries is a trigger button (no hub link); mirror the active-page color on it */
+.header--scrolled .nav__trigger[aria-current="page"] { color: var(--teal); }
+.header--top .nav__trigger[aria-current="page"] { color: var(--white); }
+
+/* ============================================================
+   NAV RHYTHM — uniform 16px gap between ALL links (2026-06-08:
+   dropped the product/utility group-gap; it read as uneven, not
+   deliberate). Only the coral CTA keeps extra air, as a button should.
+   Desktop only; the <=1024 drawer stacks items full-width.
+   ============================================================ */
+@media (min-width: 1025px) {
+  .nav__cta { margin-left: var(--space-lg); }   /* breathing room before the coral button */
+}
+
+/* ============================================================
+   INDUSTRIES MEGA — 10 verticals in a tidy 5x2 grid
+   ============================================================ */
+.nav__mega-grid--industries {
+  grid-template-columns: repeat(5, 1fr);
+}
+/* Slightly tighter cards so 10 fit comfortably; icon optional. */
+.nav__mega-grid--industries .nav__mega-card {
+  align-items: center;
+  gap: var(--space-sm);
+}
+@media (max-width: 1024px) {
+  .nav__mega-grid--industries { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ============================================================
+   DRAWER BREAKPOINT — raise to 1024px
+   The busy Keller nav cannot fit horizontally between 768–1024, so it
+   collapses to the hamburger drawer at <=1024 (which is ALSO the
+   breakpoint main.js already uses for the accordion — they now align).
+   This block replicates the production drawer (styles.css @768) at
+   <=1024 and adds the Keller-specific rows. In the cascade this is a
+   one-line change: move the styles.css drawer @media from 768 to 1024.
+   ============================================================ */
+@media (max-width: 1024px) {
+  /* --- show hamburger, hide horizontal nav / turn it into a panel --- */
+  .nav__toggle { display: block; }
+  .nav__toggle span { width: 33px; height: 3px; margin: 7px 0; }
+  .nav__toggle--active { opacity: 0; pointer-events: none; }
+
+  .nav {
+    position: fixed;
+    top: 0; right: 0;
+    width: 85%;
+    max-width: 380px;
+    height: 100vh;
+    background: var(--white);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: calc(var(--header-height) + var(--space-xl)) var(--space-xl) var(--space-xl);
+    gap: var(--space-sm);
+    transform: translateX(100%);
+    /* visibility keeps the parked drawer's links out of the tab order while
+       closed; the 0s delay lets the slide-out transform finish first.
+       (Mirrors the same pair in styles.css @768 — this block wins the cascade.) */
+    visibility: hidden;
+    transition: transform var(--transition-base), visibility 0s var(--transition-base);
+    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 999;
+  }
+  .nav--open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform var(--transition-base), visibility 0s;
+  }
+  .nav--open .nav__link { color: var(--dark-gray) !important; }
+  .nav--open .nav__link:hover { color: var(--teal) !important; }
+
+  .nav__close {
+    display: block;
+    position: absolute;
+    top: var(--space-xl);
+    right: var(--space-xl);
+    padding: var(--space-sm);
+    z-index: 10;
+  }
+  .nav__close svg { width: 32px; height: 32px; color: var(--dark-gray); }
+
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+  }
+  .nav-overlay--visible { opacity: 1; visibility: visible; }
+
+  /* --- dropdowns + megas flatten into in-panel accordions --- */
+  .nav__dropdown {
+    position: static !important;
+    left: auto !important; top: auto !important; right: auto !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    min-width: 0 !important; max-width: 100% !important; width: 100% !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    opacity: 0; visibility: hidden; display: none;
+  }
+  .nav__dropdown--open { opacity: 1 !important; visibility: visible !important; display: block !important; }
+  .nav__item:hover .nav__dropdown { transform: none !important; }
+  .nav__mega { max-width: 100%; margin: 0; padding: var(--space-xs) 0 var(--space-sm); }
+  /* In the drawer the desktop promise + CTAs are noise — the RFQ CTA
+     already lives at the bottom of the panel. Show just the links. */
+  .nav__mega-header { display: none; }
+  .nav__mega-section { padding: var(--space-xs) 0; }
+  .nav__mega-section + .nav__mega-section { border-top: none; padding-top: 0; }
+  .nav__mega-section-title {
+    margin-bottom: var(--space-xs);
+    font-size: 0.66rem;
+    color: var(--mid-gray);
+  }
+  .nav__mega-grid,
+  .nav__mega-grid--3,
+  .nav__mega-grid--industries { grid-template-columns: 1fr; gap: 0; }
+  .nav__mega-card { padding: var(--space-sm) 0; border: none; }
+  .nav__mega-card:hover { background: transparent; }
+  .nav__mega-card__icon { display: none; }      /* compact list in the drawer */
+  .nav__mega-card__desc { display: none; }
+  .nav__mega-card__title { font-size: var(--text-sm); color: var(--dark-gray); }
+  .nav__item { width: 100%; }
+
+  /* --- Keller rows: capability label left, caret right --- */
+  .nav__item--capability {
+    width: 100%;
+    flex-wrap: wrap;               /* let the mega wrap to its own full-width row */
+    justify-content: space-between;
+    border-bottom: 1px solid var(--warm-gray);
+  }
+  /* the mega is in-flow here (static) — give it the whole row, not a
+     squished flex cell beside the label */
+  .nav__item--capability > .nav__dropdown {
+    flex: 0 0 100%;
+    width: 100% !important;
+  }
+  .nav__item--capability .nav__link {
+    flex: 1 1 calc(100% - 48px);   /* label fills the row but leaves room for the caret */
+    min-width: 0;
+    font-size: var(--text-base);
+    color: var(--dark-gray) !important;
+    padding: var(--space-sm) 0;
+  }
+  .nav__item--capability .nav__link::after { display: none; }
+  .nav__trigger--caret {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    color: var(--dark-gray) !important;
+  }
+  .nav__trigger--caret .nav__trigger-arrow { width: 18px; height: 18px; opacity: 0.7; }
+
+  /* Industries trigger gets the full-width accordion row treatment */
+  .nav__item > .nav__trigger {
+    width: 100%;
+    justify-content: space-between;
+    color: var(--dark-gray) !important;
+    font-size: var(--text-base);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--warm-gray);
+  }
+
+  /* Plain links: comfortable >=44px touch rows */
+  .nav__link--row {
+    width: 100%;
+    padding: var(--space-md) 0;
+    font-size: var(--text-base);
+    border-bottom: 1px solid var(--warm-gray);
+  }
+
+  /* RFQ stays a real button, full-width, last */
+  .nav .nav__cta {
+    width: 100%;
+    margin-top: var(--space-md);
+    justify-content: center;
+  }
+}
+
+.nav__mega-card__title { color: var(--teal); }
+.nav__mega-card__desc { color: var(--mid-gray); }
+
+/* ============================================================
+   WCAG FIX — mega CTA must never be white-on-coral
+   utility-bar.css ships .nav__mega-cta--primary { color: white } on a
+   coral fill (~2.87:1, fails AA). Brand rule + Issue #01: ink on coral
+   (6.07:1). Overridden here; fold the same fix into utility-bar.css
+   site-wide during the cascade (EMS/CM megas inherit the same bug).
+   ============================================================ */
+.nav__mega-cta--primary,
+.nav__mega-cta--primary:hover {
+  color: var(--ink);
+}
+.nav__mega-cta--primary svg { color: var(--ink); }

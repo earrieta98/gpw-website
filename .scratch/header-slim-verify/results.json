@@ -1,0 +1,242 @@
+[
+  {
+    "page": "home",
+    "vp": "desktop",
+    "top": {
+      "utilityBarPresent": false,
+      "headerHeight": 72,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 44,
+      "headerBottom": 72,
+      "firstHeadingTop": 214,
+      "headingClipped": false
+    },
+    "scrolled": {
+      "utilityBarPresent": false,
+      "headerHeight": 72,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 44,
+      "headerBottom": 72,
+      "firstHeadingTop": -353,
+      "headingClipped": true
+    }
+  },
+  {
+    "page": "ai-server-rack",
+    "vp": "desktop",
+    "top": {
+      "utilityBarPresent": false,
+      "headerHeight": 72,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 44,
+      "headerBottom": 72,
+      "firstHeadingTop": 353,
+      "headingClipped": false
+    },
+    "scrolled": {
+      "utilityBarPresent": false,
+      "headerHeight": 72,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 44,
+      "headerBottom": 72,
+      "firstHeadingTop": -227,
+      "headingClipped": true
+    }
+  },
+  {
+    "page": "ems-service",
+    "vp": "desktop",
+    "top": {
+      "utilityBarPresent": false,
+      "headerHeight": 72,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 44,
+      "headerBottom": 72,
+      "firstHeadingTop": 376,
+      "headingClipped": false
+    },
+    "scrolled": {
+      "utilityBarPresent": false,
+      "headerHeight": 72,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 44,
+      "headerBottom": 72,
+      "firstHeadingTop": -208,
+      "headingClipped": true
+    }
+  },
+  {
+    "page": "cm-industry",
+    "vp": "desktop",
+    "top": {
+      "utilityBarPresent": false,
+      "headerHeight": 72,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 44,
+      "headerBottom": 72,
+      "firstHeadingTop": 335,
+      "headingClipped": false
+    },
+    "scrolled": {
+      "utilityBarPresent": false,
+      "headerHeight": 72,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 44,
+      "headerBottom": 72,
+      "firstHeadingTop": -247,
+      "headingClipped": true
+    }
+  },
+  {
+    "page": "cm-home",
+    "vp": "desktop",
+    "top": {
+      "utilityBarPresent": false,
+      "headerHeight": 72,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 44,
+      "headerBottom": 72,
+      "firstHeadingTop": 209,
+      "headingClipped": false
+    },
+    "scrolled": {
+      "utilityBarPresent": false,
+      "headerHeight": 72,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 44,
+      "headerBottom": 72,
+      "firstHeadingTop": -369,
+      "headingClipped": true
+    }
+  },
+  {
+    "page": "home",
+    "vp": "mobile",
+    "top": {
+      "utilityBarPresent": false,
+      "headerHeight": 64,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 36,
+      "headerBottom": 64,
+      "firstHeadingTop": 179,
+      "headingClipped": false
+    },
+    "scrolled": {
+      "utilityBarPresent": false,
+      "headerHeight": 64,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 36,
+      "headerBottom": 64,
+      "firstHeadingTop": -397,
+      "headingClipped": true
+    }
+  },
+  {
+    "page": "ai-server-rack",
+    "vp": "mobile",
+    "top": {
+      "utilityBarPresent": false,
+      "headerHeight": 64,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 36,
+      "headerBottom": 64,
+      "firstHeadingTop": 146,
+      "headingClipped": false
+    },
+    "scrolled": {
+      "utilityBarPresent": false,
+      "headerHeight": 64,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 36,
+      "headerBottom": 64,
+      "firstHeadingTop": -443,
+      "headingClipped": true
+    }
+  },
+  {
+    "page": "ems-service",
+    "vp": "mobile",
+    "top": {
+      "utilityBarPresent": false,
+      "headerHeight": 64,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 36,
+      "headerBottom": 64,
+      "firstHeadingTop": 143,
+      "headingClipped": false
+    },
+    "scrolled": {
+      "utilityBarPresent": false,
+      "headerHeight": 64,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 36,
+      "headerBottom": 64,
+      "firstHeadingTop": -443,
+      "headingClipped": true
+    }
+  },
+  {
+    "page": "cm-industry",
+    "vp": "mobile",
+    "top": {
+      "utilityBarPresent": false,
+      "headerHeight": 64,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 36,
+      "headerBottom": 64,
+      "firstHeadingTop": 230,
+      "headingClipped": false
+    },
+    "scrolled": {
+      "utilityBarPresent": false,
+      "headerHeight": 64,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 36,
+      "headerBottom": 64,
+      "firstHeadingTop": -352,
+      "headingClipped": true
+    }
+  },
+  {
+    "page": "cm-home",
+    "vp": "mobile",
+    "top": {
+      "utilityBarPresent": false,
+      "headerHeight": 64,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 36,
+      "headerBottom": 64,
+      "firstHeadingTop": 189,
+      "headingClipped": false
+    },
+    "scrolled": {
+      "utilityBarPresent": false,
+      "headerHeight": 64,
+      "headerTop": 0,
+      "headerPosition": "fixed",
+      "logoHeight": 36,
+      "headerBottom": 64,
+      "firstHeadingTop": -395,
+      "headingClipped": true
+    }
+  }
+]

@@ -93,7 +93,10 @@
       // Close all other dropdowns first
       document.querySelectorAll('.nav__dropdown--open').forEach(function(d) {
         d.classList.remove('nav__dropdown--open');
-        d.closest('.nav__item').classList.remove('nav__item--open');
+        var otherItem = d.closest('.nav__item');
+        otherItem.classList.remove('nav__item--open');
+        var otherTrigger = otherItem.querySelector('.nav__trigger');
+        if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
       });
 
       // Toggle current one
@@ -101,6 +104,7 @@
         dropdown.classList.add('nav__dropdown--open');
         parentItem.classList.add('nav__item--open');
       }
+      trigger.setAttribute('aria-expanded', String(!isOpen));
     });
   });
 

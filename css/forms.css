@@ -1,0 +1,565 @@
+/* ============================================================
+   GPW — Forms component (RFQ + future forms)
+   ------------------------------------------------------------
+   Promoted from the inline EMS RFQ styles (Issue #05) so the
+   unified Request-a-Quote and any future form share ONE
+   brand-locked, accessible component.
+
+   Brand rules enforced here (see styles.css tokens):
+   - Primary action = coral fill + INK text (never white on coral).
+     The submit button uses .btn.btn--primary for color/contrast;
+     this file only adds layout, never overrides its color.
+   - Focus ring = teal (--focus-color), 3px, offset 2px.
+   - Lato for controls; group eyebrow in Lato (Trirong removed in #19).
+   Loaded AFTER styles.css / utility-bar.css and BEFORE
+   global-nav.css so the nav delta still wins the cascade.
+   ============================================================ */
+
+/* --- Form card ------------------------------------------------ */
+.rfq-form {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--light-gray);
+}
+
+/* Groups are real <fieldset>s for accessibility; reset chrome. */
+.rfq-form__group {
+  border: 0;
+  padding: 0;
+  margin: 0 0 var(--space-2xl);
+  min-width: 0; /* allow grid/flex children to shrink inside fieldset */
+}
+
+.rfq-form__group:last-of-type {
+  margin-bottom: var(--space-xl);
+}
+
+/* The eyebrow group title — works as a styled <legend> or a <div>. */
+.rfq-form__group-title {
+  display: block;
+  width: 100%;
+  font-family: var(--font-accent);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-on-light);   /* #19 AA: coral on the white form card fails (2.9:1) -> teal (#01 pattern) */
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--warm-gray);
+}
+
+/* <legend> needs an explicit padding reset to align flush-left. */
+legend.rfq-form__group-title {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.rfq-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+@media (max-width: 600px) {
+  .rfq-form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rfq-form__field {
+  margin-bottom: var(--space-lg);
+}
+
+.rfq-form__field:last-child {
+  margin-bottom: 0;
+}
+
+.rfq-form__label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: var(--space-xs);
+}
+
+.rfq-form__label .required {
+  color: var(--accent-on-light);   /* #16 AA: coral asterisk on light form fails (2.87:1) -> teal */
+  margin-left: 2px;
+}
+
+.rfq-form__helper {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--mid-gray);
+  margin-bottom: var(--space-sm);
+  line-height: 1.5;
+}
+
+/* --- Text controls ------------------------------------------- */
+.rfq-form__input,
+.rfq-form__select,
+.rfq-form__textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  color: var(--charcoal);
+  background: var(--white);
+  border: 1.5px solid var(--light-gray);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+}
+
+.rfq-form__input:focus,
+.rfq-form__select:focus,
+.rfq-form__textarea:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(9, 95, 92, 0.12); /* official teal #095F5C */
+}
+
+/* Keyboard users still get the global teal focus ring as well. */
+.rfq-form__input:focus-visible,
+.rfq-form__select:focus-visible,
+.rfq-form__textarea:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+.rfq-form__input::placeholder,
+.rfq-form__textarea::placeholder {
+  color: var(--mid-gray);
+  opacity: 0.7;
+}
+
+.rfq-form__input.error,
+.rfq-form__select.error,
+.rfq-form__textarea.error {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.08);
+}
+
+.rfq-form__error-msg {
+  display: none;
+  font-size: var(--text-xs);
+  color: #b91c1c; /* AA on white (5.9:1) */
+  margin-top: var(--space-xs);
+}
+
+.rfq-form__error-msg.visible {
+  display: block;
+}
+
+.rfq-form__select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.rfq-form__textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.rfq-form__char-count {
+  text-align: right;
+  font-size: var(--text-xs);
+  color: var(--mid-gray);
+  margin-top: var(--space-xs);
+}
+
+.rfq-form__char-count.warning {
+  color: var(--accent-on-light);   /* #16 AA: coral warning on light fails -> teal (AA-safe, founder-approved) */
+}
+
+/* --- Capability selector (the branching control) ------------- */
+.rfq-form__capability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+@media (max-width: 600px) {
+  .rfq-form__capability-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rfq-form__capability {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  min-height: 44px; /* touch target */
+  padding: var(--space-md) var(--space-lg);
+  border: 1.5px solid var(--light-gray);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.rfq-form__capability:hover {
+  border-color: var(--teal);
+}
+
+.rfq-form__capability input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border: 1.5px solid var(--light-gray);
+  border-radius: 50%;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+  transition: border-color var(--transition-fast);
+}
+
+.rfq-form__capability input[type="radio"]:checked {
+  border-color: var(--teal);
+}
+
+.rfq-form__capability input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.rfq-form__capability input[type="radio"]:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+.rfq-form__capability:has(input:checked) {
+  border-color: var(--teal);
+  background: rgba(9, 95, 92, 0.05);
+}
+
+.rfq-form__capability-text {
+  display: block;
+}
+
+.rfq-form__capability-title {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+.rfq-form__capability-desc {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--mid-gray);
+  line-height: 1.5;
+  margin-top: 2px;
+}
+
+/* Conditional capability field groups. Hidden = removed from flow
+   AND disabled in JS so they never submit or block validation. */
+.rfq-form__conditional[hidden] {
+  display: none;
+}
+
+/* --- Checkboxes ---------------------------------------------- */
+.rfq-form__checkbox-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm) var(--space-lg);
+}
+
+@media (max-width: 600px) {
+  .rfq-form__checkbox-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rfq-form__checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  color: var(--dark-gray);
+  min-height: 44px; /* touch target */
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.rfq-form__checkbox:hover {
+  background: var(--off-white);
+}
+
+.rfq-form__checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--light-gray);
+  border-radius: 3px;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.rfq-form__checkbox input[type="checkbox"]:checked {
+  background: var(--teal);
+  border-color: var(--teal);
+}
+
+.rfq-form__checkbox input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid var(--white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.rfq-form__checkbox input[type="checkbox"]:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+/* Single inline checkbox (e.g. free DFM review) */
+.rfq-form__checkbox--inline {
+  display: inline-flex;
+}
+
+/* --- Radio buttons (timeline) -------------------------------- */
+.rfq-form__radio-group {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.rfq-form__radio {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  color: var(--dark-gray);
+  min-height: 44px; /* touch target */
+  padding: 0.6rem 1rem;
+  border: 1.5px solid var(--light-gray);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.rfq-form__radio:hover {
+  border-color: var(--teal);
+}
+
+.rfq-form__radio input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--light-gray);
+  border-radius: 50%;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.rfq-form__radio input[type="radio"]:checked {
+  border-color: var(--teal);
+}
+
+.rfq-form__radio input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.rfq-form__radio input[type="radio"]:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+.rfq-form__radio:has(input:checked) {
+  border-color: var(--teal);
+  background: rgba(9, 95, 92, 0.05);
+}
+
+/* --- File upload --------------------------------------------- */
+.rfq-form__file-wrapper {
+  position: relative;
+}
+
+.rfq-form__file-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.rfq-form__file-display {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 1rem 1.25rem;
+  background: var(--white);
+  border: 2px dashed var(--warm-gray);
+  border-radius: var(--radius-sm);
+  color: var(--mid-gray);
+  font-size: var(--text-sm);
+  transition: border-color var(--transition-base);
+  cursor: pointer;
+}
+
+.rfq-form__file-display:hover,
+.rfq-form__file-wrapper:focus-within .rfq-form__file-display {
+  border-color: var(--teal);
+}
+
+.rfq-form__file-display.has-file {
+  border-color: var(--teal);
+  border-style: solid;
+  color: var(--charcoal);
+}
+
+/* --- Submit area --------------------------------------------- */
+.rfq-form__submit {
+  text-align: center;
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--warm-gray);
+}
+
+/* The button itself carries .btn.btn--primary for coral+INK contrast.
+   This class only sizes it — it must NOT set color/background. */
+.rfq-form__submit-btn {
+  gap: var(--space-sm);
+  padding: 1rem 3rem;
+  font-size: var(--text-base);
+  min-width: 240px;
+}
+
+.rfq-form__submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.rfq-form__submit-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-base);
+}
+
+.rfq-form__submit-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.rfq-form__privacy {
+  font-size: var(--text-xs);
+  color: var(--mid-gray);
+  margin-top: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+}
+
+.rfq-form__privacy svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.rfq-form__recaptcha-note {
+  font-size: 11px;
+  color: var(--mid-gray);
+  margin-top: var(--space-sm);
+  text-align: center;
+}
+
+.rfq-form__recaptcha-note a {
+  color: var(--mid-gray);
+  text-decoration: underline;
+}
+
+/* Hide reCAPTCHA badge — attribution is inline (Google ToS-compliant) */
+.grecaptcha-badge { visibility: hidden !important; }
+
+/* --- Success state ------------------------------------------- */
+.rfq-form__success {
+  display: none;
+  text-align: center;
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+.rfq-form__success.visible {
+  display: block;
+}
+
+.rfq-form__success-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(166, 217, 142, 0.18);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-xl);
+}
+
+.rfq-form__success-icon svg {
+  width: 32px;
+  height: 32px;
+  color: var(--teal);
+}
+
+.rfq-form__success h3 {
+  margin-bottom: var(--space-md);
+}
+
+.rfq-form__success p {
+  color: var(--mid-gray);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .rfq-form {
+    padding: var(--space-xl);
+  }
+
+  .rfq-form__submit-btn {
+    width: 100%;
+  }
+
+  .rfq-form__radio-group {
+    flex-direction: column;
+  }
+}

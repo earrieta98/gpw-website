@@ -1,0 +1,14 @@
+# GPW — Global Precision Works — deploy repo (branch: main)
+# ---------------------------------------------------------------------------
+# SECRETS — never commit. rfq-secrets.php holds the reCAPTCHA v3 SECRET key.
+# It must NEVER reach the public GitHub repo or webroot.
+# On the server, provide the secret via the GPW_RECAPTCHA_SECRET environment
+# variable in cPanel (process-rfq.php reads getenv('GPW_RECAPTCHA_SECRET') first),
+# OR upload rfq-secrets.php manually to public_html outside of git.
+# The committed template is rfq-secrets.example.php (placeholder values only).
+rfq-secrets.php
+**/rfq-secrets.php
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
