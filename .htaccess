@@ -74,9 +74,12 @@ RewriteRule ^ems/services/?(index\.html)?$ /ems/ [L,R=301]
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
   Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-  # Content-Security-Policy — READY but commented out. ENABLE AFTER DEPLOY and verify
-  # the RFQ reCAPTCHA + Google Fonts still load (and add GA/GTM domains when analytics ships).
-  # Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com; frame-src https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google.com; base-uri 'self'; form-action 'self'"
+  # Content-Security-Policy — ACTIVE since 2026-06-11. Whitelists: self + inline (the site has
+  # many inline scripts/styles), reCAPTCHA v3 (google.com / gstatic.com), Google Fonts
+  # (fonts.googleapis.com / fonts.gstatic.com), and GA4 (googletagmanager.com + *.google-analytics.com
+  # + *.analytics.google.com). img-src allows any https (og/social/remote images). Add a domain here
+  # if a new external script/style/font/frame/beacon is introduced, or the browser console will block it.
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com; connect-src 'self' https://www.google.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; base-uri 'self'; form-action 'self'"
 </IfModule>
 
 # Block directory listing
