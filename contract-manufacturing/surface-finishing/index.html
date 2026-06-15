@@ -369,7 +369,7 @@
       <div class="service-section-intro service-section-intro--center">
         <span class="service-section-intro__eyebrow">Network Capabilities</span>
         <h2>Six finish families, one supplier.</h2>
-        <p>Quick overview of the finish families we coordinate. Detailed specs in each section below.</p>
+        <p>Quick overview of the six finish families we coordinate &mdash; plus marking and compliance. Detailed specs in each section below.</p>
       </div>
 
       <div class="reveal" style="max-width: 980px; margin: 0 auto;">
@@ -397,6 +397,9 @@
           <div class="spec-matrix__row">
             <div class="spec-matrix__label">Mechanical Finishing</div>
             <div class="spec-matrix__value">Bead blast &middot; vibratory &middot; brush &middot; polish (mirror) &middot; electropolish. <span class="spec-matrix__note">Ra down to 1 µin</span></div>
+          </div>
+          <div class="spec-matrix__row spec-matrix__row--subhead">
+            <div class="spec-matrix__subhead">Plus &middot; also coordinated</div>
           </div>
           <div class="spec-matrix__row">
             <div class="spec-matrix__label">Marking</div>
@@ -852,6 +855,8 @@
           <a href="/industries/energy/" class="industry-usage__pill">Energy</a>
           <a href="/industries/electronics/" class="industry-usage__pill">Electronics</a>
           <a href="/industries/telecom/" class="industry-usage__pill">Telecom</a>
+          <a href="/industries/ai-server-rack/" class="industry-usage__pill">AI &amp; Server Rack</a>
+          <a href="/industries/appliances/" class="industry-usage__pill">Appliances &amp; White Goods</a>
         </div>
       </div>
     </div>
@@ -882,7 +887,7 @@
     <div class="service-cta__container">
       <span class="service-cta__eyebrow">// Ready to quote</span>
       <h2>Send us your drawing with the finish callout.</h2>
-      <p>Material, finish spec (MIL or ASTM), masking requirements, color, and thickness class. We respond within 24 business hours with pricing and a free DFM review &mdash; matched to the right finishing partner shop in our network.</p>
+      <p>Material, finish spec (MIL or ASTM), masking requirements, color, and thickness class. We respond within 48–72 hours with pricing and a free DFM review &mdash; matched to the right finishing partner shop in our network.</p>
       <div class="service-cta__ctas">
         <a href="/request-a-quote/" class="btn btn--primary btn--lg">Request a Quote</a>
         <a href="../engineering-support/" class="btn btn--outline btn--lg">Free DFM Review</a>
@@ -955,7 +960,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
               sales@gpw-solutions.com
             </a>
-            <a href="https://www.linkedin.com/company/gpw-solutions" target="_blank" rel="noopener" class="footer__contact-item">
+            <a href="https://www.linkedin.com/company/globalprecisionworks" target="_blank" rel="noopener" class="footer__contact-item">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.14.93-2.06 2.06-2.06 1.14 0 2.06.93 2.06 2.06 0 1.14-.92 2.07-2.06 2.07zm1.78 13.02H3.55V9h3.57v11.45z"/></svg>
               LinkedIn
             </a>
@@ -1040,7 +1045,7 @@
     var heroEl = document.getElementById('hero');
     var activeId = 'hero';
 
-    var darkSelectors = '.svc-hero, .hero, .ind-hero, .hub-hero, .mid-cta, .final-cta, .faq-split, .footer, .service-hero, .cm-hero';
+    var darkSelectors = '.svc-hero, .hero, .ind-hero, .hub-hero, .mid-cta, .final-cta, .faq-split, .footer, .service-hero, .cm-hero, .section--dark, .section--deep';
     var darkSections = document.querySelectorAll(darkSelectors);
 
     function checkDarkBg() {

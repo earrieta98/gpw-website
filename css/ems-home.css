@@ -464,7 +464,7 @@
   display: inline-block;
 }
 .nearshore-map__legend-dot--origin { background: var(--coral); }
-.nearshore-map__legend-dot--dest { background: var(--teal); }
+.nearshore-map__legend-dot--dest { background: var(--lime); }
 
 /* Map loop: 12s total — draw (0-33%), hold (33-60%), fade out (60-70%), pause (70-100%) */
 @keyframes mapDrawLoop {
@@ -522,7 +522,7 @@
 .guide-table tbody tr:hover { background: rgba(35, 85, 90, 0.03); }
 .guide-table .check { color: var(--teal); font-weight: 700; }
 .guide-table .dash { color: var(--light-gray); }
-.guide-note { font-size: var(--text-sm); color: var(--mid-gray); line-height: 1.7; max-width: 700px; }
+.guide-note { font-size: var(--text-sm); color: var(--mid-gray); line-height: 1.7; max-width: none; text-align: center; }
 @media (max-width: 768px) {
   .guide-table th, .guide-table td { padding: var(--space-sm) var(--space-md); font-size: var(--text-xs); }
 }

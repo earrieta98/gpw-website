@@ -12,3 +12,6 @@ rfq-secrets.php
 # Editor / OS noise
 .DS_Store
 Thumbs.db
+
+# Throwaway build/fix scripts — never deploy
+.scratch/

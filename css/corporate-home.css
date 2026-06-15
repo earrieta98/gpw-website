@@ -291,6 +291,7 @@
   margin: 0 auto;
 }
 .gpw-hero__cap {
+  display: block;
   padding: var(--space-lg) var(--space-xl);
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -298,11 +299,15 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   text-align: left;
-  transition: border-color var(--transition-base), background var(--transition-base);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color var(--transition-base), background var(--transition-base), transform var(--transition-base);
 }
 .gpw-hero__cap:hover {
   border-color: rgba(255, 255, 255, 0.22);
   background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
 }
 .gpw-hero__cap-tag {
   display: block;

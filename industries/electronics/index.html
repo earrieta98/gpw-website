@@ -285,8 +285,8 @@
     .cap-accordion__body p { color: var(--dark-gray); line-height: 1.7; margin-bottom: var(--space-md); }
     .cap-accordion__body p:last-child { margin-bottom: 0; }
     .cap-accordion__body ul { list-style: none; margin: var(--space-md) 0; }
-    .cap-accordion__body li { display: flex; align-items: flex-start; gap: var(--space-sm); font-size: var(--text-base); color: var(--dark-gray); padding: var(--space-xs) 0; line-height: 1.6; }
-    .cap-accordion__body li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--coral); flex-shrink: 0; margin-top: 9px; }
+    .cap-accordion__body li { position: relative; font-size: var(--text-base); color: var(--dark-gray); padding: var(--space-xs) 0 var(--space-xs) calc(6px + var(--space-sm)); line-height: 1.6; }
+    .cap-accordion__body li::before { content: ''; position: absolute; left: 0; top: calc(var(--space-xs) + 0.5em); width: 6px; height: 6px; border-radius: 50%; background: var(--coral); }
     .cap-accordion__xref { margin-top: var(--space-lg); padding-top: var(--space-md); border-top: 1px solid var(--light-gray); font-size: var(--text-sm); color: var(--mid-gray); }
     .cap-accordion__xref a { color: var(--teal); font-weight: 600; }
     .cap-accordion__xref a:hover { color: var(--coral); }
@@ -979,7 +979,7 @@
           <div class="mid-cta__stat-label">Dimensionally Inspected</div>
         </div>
       </div>
-      <p>GPW responds to every RFQ within 48 hours with an initial program assessment and a free DFM review.</p>
+      <p>GPW responds to every RFQ within 48–72 hours with an initial program assessment and a free DFM review.</p>
       <a href="../../request-a-quote/" class="btn btn--interactive btn--lg">
         <span class="btn__text">Get a Quote for Your Electronics Machining Program</span>
         <span class="btn__hover">
@@ -1306,7 +1306,7 @@
         <h2>Ready to Machine Your Electronics Parts Closer to Home?</h2>
         <p>Whether you need heat sinks for a power-electronics module, a shielded enclosure for an instrument, or precision connectors at volume &mdash; GPW is ready to quote.</p>
         <p>Through a managed network of Monterrey machine shops, GPW delivers milled, turned, and finished electronics components in aluminum, copper, and brass &mdash; with the DFM, material traceability, and RoHS documentation owned by one accountable partner, two hours from Texas.</p>
-        <p>Send us your drawing, material, and finish requirements. A program manager responds within 48 hours with an initial assessment and a free DFM review.</p>
+        <p>Send us your drawing, material, and finish requirements. A program manager responds within 48–72 hours with an initial assessment and a free DFM review.</p>
 
         <div class="final-cta__buttons">
           <a href="../../request-a-quote/" class="btn btn--interactive btn--lg">
@@ -1351,7 +1351,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
               sales@gpw-solutions.com
             </a>
-            <a href="https://www.linkedin.com/company/gpw-solutions" target="_blank" rel="noopener" class="footer__contact-item">
+            <a href="https://www.linkedin.com/company/globalprecisionworks" target="_blank" rel="noopener" class="footer__contact-item">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.14.93-2.06 2.06-2.06 1.14 0 2.06.93 2.06 2.06 0 1.14-.92 2.07-2.06 2.07zm1.78 13.02H3.55V9h3.57v11.45z"/></svg>
               LinkedIn
             </a>
@@ -1437,7 +1437,7 @@
     var heroEl = document.getElementById('hero');
     var activeId = 'hero';
 
-    var darkSelectors = '.svc-hero, .hero, .ind-hero, .hub-hero, .mid-cta, .final-cta, .faq-split, .footer';
+    var darkSelectors = '.svc-hero, .hero, .ind-hero, .hub-hero, .mid-cta, .final-cta, .faq-split, .footer, .section--dark, .section--deep';
     var darkSections = document.querySelectorAll(darkSelectors);
 
     function checkDarkBg() {

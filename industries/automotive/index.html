@@ -579,23 +579,22 @@
     .cap-accordion__body ul { list-style: none; margin: var(--space-md) 0; }
 
     .cap-accordion__body li {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-sm);
+      position: relative;
       font-size: var(--text-base);
       color: var(--dark-gray);
-      padding: var(--space-xs) 0;
+      padding: var(--space-xs) 0 var(--space-xs) calc(6px + var(--space-sm));
       line-height: 1.6;
     }
 
     .cap-accordion__body li::before {
       content: '';
+      position: absolute;
+      left: 0;
+      top: calc(var(--space-xs) + 0.5em);
       width: 6px;
       height: 6px;
       border-radius: 50%;
       background: var(--coral);
-      flex-shrink: 0;
-      margin-top: 9px;
     }
 
     .cap-accordion__xref {
@@ -1393,7 +1392,36 @@
 
         <!-- Sticky image placeholder -->
         <div class="context-image">
-          <div class="context-image__placeholder" style="position:relative;display:grid;place-items:center;overflow:hidden;border:0;padding:1.25rem;border-radius:var(--radius-md,3px);isolation:isolate;background:linear-gradient(225deg, #F27257 22px, transparent 22px) top right / 60px 60px no-repeat, linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(135deg, #095F5C 0%, #4C8987 50%, #074845 100%)"><svg class="gpw-tech-motif" viewBox="0 0 220 160" role="img" aria-label="Automotive fixture assembly with torque-controlled fastening station" style="width:min(58%,300px);max-width:300px;height:auto;opacity:1;display:block;margin:0;color:#E9F3F0"><g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="96" cy="84" r="34" stroke="#E9F3F0"/><circle cx="96" cy="84" r="13" stroke="#A6D98E"/><g stroke="#E9F3F0"><line x1="96" y1="40" x2="96" y2="50"/><line x1="96" y1="118" x2="96" y2="128"/><line x1="52" y1="84" x2="62" y2="84"/><line x1="130" y1="84" x2="140" y2="84"/><line x1="65" y1="53" x2="72" y2="60"/><line x1="120" y1="108" x2="127" y2="115"/></g><circle cx="150" cy="120" r="16" stroke="#E9F3F0"/><line x1="150" y1="104" x2="150" y2="98" stroke="#F27257"/></g></svg></div>
+          <div class="context-image__placeholder" style="position:relative;display:grid;place-items:center;overflow:hidden;border:0;padding:1.25rem;border-radius:var(--radius-md,3px);isolation:isolate;background:linear-gradient(225deg, #F27257 22px, transparent 22px) top right / 60px 60px no-repeat, linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(135deg, #095F5C 0%, #4C8987 50%, #074845 100%)"><svg class="gpw-tech-motif" viewBox="0 0 440 320" role="img" aria-label="Line illustration of a vehicle's electrical architecture: wire harness backbone, control module, underfloor battery, and front radar sensor" style="width:min(440px,84vw);height:auto;opacity:1;display:block;margin:0;color:#E9F3F0"><g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<!-- dimension line -->
+<g stroke="#E9F3F0" opacity=".45" stroke-width="1.6"><path d="M58 86 V64" stroke-dasharray="3 3"/><path d="M412 86 V64" stroke-dasharray="3 3"/><path d="M58 70 H412"/><path d="M58 70 l9 -4 M58 70 l9 4 M412 70 l-9 -4 M412 70 l-9 4"/></g>
+<!-- ground line -->
+<path d="M30 270 H410" stroke="#E9F3F0" opacity=".35" stroke-width="1.6" stroke-dasharray="2 7"/>
+<!-- body -->
+<path d="M58 228 L58 192 Q58 170 78 164 L120 156 Q128 154 134 148 L148 118 Q152 110 162 108 L256 102 Q268 102 276 108 L312 136 Q316 140 324 142 L368 148 Q396 152 406 162 Q412 168 412 180 L412 210 Q412 224 398 226 L361 230 A38 38 0 0 0 287 230 L165 230 A38 38 0 0 0 91 230 Z" stroke="#E9F3F0" opacity=".95" stroke-width="2.4"/>
+<!-- glazing + door -->
+<g stroke="#E9F3F0" opacity=".5" stroke-width="1.8"><path d="M160 143 L168 115 Q170 111 176 111 L220 108 L222 141 Z"/><path d="M232 107 L234 140 L284 137 L270 109 Q260 107 252 107 Z"/><path d="M288 112 L312 136"/><path d="M232 144 L230 226"/><path d="M212 162 h14"/></g>
+<!-- lamps -->
+<g stroke="#E9F3F0" opacity=".6" stroke-width="1.8"><path d="M396 158 q9 3 11 9"/><path d="M62 170 q-4 3 -4 9"/></g>
+<!-- wheels -->
+<g stroke="#E9F3F0" opacity=".9" stroke-width="2.4"><circle cx="128" cy="240" r="30"/><circle cx="324" cy="240" r="30"/></g>
+<g stroke="#E9F3F0" opacity=".5" stroke-width="1.8"><circle cx="128" cy="240" r="12"/><circle cx="324" cy="240" r="12"/></g>
+<circle cx="128" cy="240" r="2" fill="#E9F3F0" opacity=".7" stroke="none"/><circle cx="324" cy="240" r="2" fill="#E9F3F0" opacity=".7" stroke="none"/>
+<!-- electrical system -->
+<g stroke="#A6D98E" stroke-width="2.2">
+<path d="M74 196 H338 Q350 196 355 186 L360 174 Q362 168 370 168 L384 168"/>
+<rect x="62" y="190" width="10" height="12" rx="1.5"/>
+<path d="M180 196 V186"/><rect x="162" y="158" width="36" height="26" rx="3"/><path d="M170 164 h20 M170 170 h20" opacity=".55" stroke-width="1.6"/><path d="M168 184 v4 M176 184 v4 M184 184 v4 M192 184 v4" stroke-width="1.6"/>
+<path d="M240 196 V172"/><rect x="232" y="158" width="16" height="14" rx="2"/>
+<path d="M300 196 V210"/><rect x="170" y="210" width="130" height="12" rx="4" opacity=".85"/><path d="M205 212 v8 M235 212 v8 M265 212 v8" opacity=".45" stroke-width="1.6"/>
+<rect x="384" y="160" width="14" height="16" rx="2"/>
+</g>
+<g fill="#A6D98E" stroke="none"><circle cx="120" cy="196" r="3"/><circle cx="180" cy="196" r="3"/><circle cx="240" cy="196" r="3"/><circle cx="300" cy="196" r="3"/></g>
+<!-- radar waves -->
+<g stroke="#F27257" stroke-width="2.4"><path d="M410 158 A14 14 0 0 1 410 178"/><path d="M418 150 A26 26 0 0 1 418 186"/><path d="M426 142 A38 38 0 0 1 426 194"/></g>
+<!-- registration mark -->
+<g stroke="#E9F3F0" opacity=".45" stroke-width="1.4"><circle cx="36" cy="288" r="9"/><path d="M36 275 V301 M23 288 H49"/></g>
+</g></svg></div>
         </div>
       </div>
     </div>
@@ -1569,7 +1597,24 @@
   <!-- ============ IMAGE BAND after capabilities ============ -->
   <section class="image-band">
     <div class="container">
-      <div class="image-band__placeholder" style="position:relative;display:grid;place-items:center;overflow:hidden;border:0;padding:1.25rem;border-radius:var(--radius-md,3px);isolation:isolate;background:linear-gradient(225deg, #F27257 22px, transparent 22px) top right / 60px 60px no-repeat, linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(135deg, #095F5C 0%, #4C8987 50%, #074845 100%)"><img class="image-band__photo" src="/img/tech/band-automotive.webp" alt="Automotive sub-assembly torque station" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1"><svg class="gpw-tech-motif" viewBox="0 0 220 160" role="img" aria-label="A technician installing wire harness in automotive sub-assembly fixture" style="width:min(58%,300px);max-width:300px;height:auto;opacity:1;display:block;margin:0;color:#E9F3F0"><g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M30 80 H120" stroke="#E9F3F0"/><path d="M120 80 C150 80 150 40 184 40" stroke="#E9F3F0"/><path d="M120 80 C150 80 150 120 184 120" stroke="#E9F3F0"/><path d="M120 80 H184" stroke="#A6D98E"/><circle cx="30" cy="80" r="10" stroke="#F27257"/><circle cx="188" cy="40" r="8" stroke="#E9F3F0"/><circle cx="188" cy="80" r="8" stroke="#E9F3F0"/><circle cx="188" cy="120" r="8" stroke="#E9F3F0"/><line x1="120" y1="72" x2="120" y2="88" stroke="#E9F3F0"/></g></svg></div>
+      <div class="image-band__placeholder" style="position:relative;display:grid;place-items:center;overflow:hidden;border:0;padding:1.25rem;border-radius:var(--radius-md,3px);isolation:isolate;background:linear-gradient(225deg, #F27257 22px, transparent 22px) top right / 60px 60px no-repeat, linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(135deg, #095F5C 0%, #4C8987 50%, #074845 100%)"><!-- #17-B pending photo: <img class="image-band__photo" src="/img/tech/band-automotive.webp" alt="Automotive sub-assembly torque station" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1"> --><svg class="gpw-tech-motif" viewBox="0 0 520 200" role="img" aria-label="Line illustration of a wire harness routed on an assembly board with retention clips and multi-pin connectors" style="width:min(760px,86vw);height:auto;opacity:1;display:block;margin:0;color:#E9F3F0"><g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<!-- board -->
+<rect x="36" y="22" width="448" height="156" rx="5" stroke="#E9F3F0" opacity=".9" stroke-width="2.2"/>
+<g stroke="#E9F3F0" opacity=".5" stroke-width="1.6"><path d="M48 34 h14 M48 34 v14"/><path d="M472 34 h-14 M472 34 v14"/><path d="M48 166 h14 M48 166 v-14"/><path d="M472 166 h-14 M472 166 v-14"/></g>
+<!-- board holes -->
+<g fill="#E9F3F0" opacity=".28" stroke="none"><circle cx="72" cy="50" r="1.5"/><circle cx="119" cy="50" r="1.5"/><circle cx="166" cy="50" r="1.5"/><circle cx="213" cy="50" r="1.5"/><circle cx="260" cy="50" r="1.5"/><circle cx="307" cy="50" r="1.5"/><circle cx="354" cy="50" r="1.5"/><circle cx="401" cy="50" r="1.5"/><circle cx="448" cy="50" r="1.5"/><circle cx="72" cy="83" r="1.5"/><circle cx="119" cy="83" r="1.5"/><circle cx="166" cy="83" r="1.5"/><circle cx="213" cy="83" r="1.5"/><circle cx="260" cy="83" r="1.5"/><circle cx="307" cy="83" r="1.5"/><circle cx="354" cy="83" r="1.5"/><circle cx="401" cy="83" r="1.5"/><circle cx="448" cy="83" r="1.5"/><circle cx="72" cy="116" r="1.5"/><circle cx="119" cy="116" r="1.5"/><circle cx="166" cy="116" r="1.5"/><circle cx="213" cy="116" r="1.5"/><circle cx="260" cy="116" r="1.5"/><circle cx="307" cy="116" r="1.5"/><circle cx="354" cy="116" r="1.5"/><circle cx="401" cy="116" r="1.5"/><circle cx="448" cy="116" r="1.5"/><circle cx="72" cy="149" r="1.5"/><circle cx="119" cy="149" r="1.5"/><circle cx="166" cy="149" r="1.5"/><circle cx="213" cy="149" r="1.5"/><circle cx="260" cy="149" r="1.5"/><circle cx="307" cy="149" r="1.5"/><circle cx="354" cy="149" r="1.5"/><circle cx="401" cy="149" r="1.5"/><circle cx="448" cy="149" r="1.5"/></g>
+<!-- harness routing -->
+<path d="M70 100 H180 Q190 100 190 90 V72 Q190 62 200 62 H320 Q330 62 330 72 V128 Q330 138 340 138 H420" stroke="#A6D98E" stroke-width="2.4"/>
+<path d="M240 62 V44" stroke="#A6D98E" stroke-width="2.2"/>
+<path d="M380 138 V158" stroke="#A6D98E" stroke-width="2.2"/>
+<path d="M130 100 V142" stroke="#A6D98E" stroke-width="2.2"/>
+<g fill="#A6D98E" stroke="none"><circle cx="240" cy="62" r="3"/><circle cx="380" cy="138" r="3"/><circle cx="130" cy="100" r="3"/></g>
+<!-- retention clips -->
+<g stroke="#E9F3F0" opacity=".85" stroke-width="2"><path d="M102 93 V107 M114 93 V107"/><path d="M216 55 V69 M228 55 V69"/><path d="M290 55 V69 M302 55 V69"/><path d="M323 94 V108 M337 94 V108"/><path d="M396 131 V145 M408 131 V145"/></g>
+<!-- connectors -->
+<g stroke="#F27257" stroke-width="2.4"><rect x="48" y="88" width="22" height="24" rx="2"/><path d="M48 94 h-6 M48 100 h-6 M48 106 h-6" stroke-width="1.8"/></g>
+<g stroke="#E9F3F0" stroke-width="2.2"><rect x="232" y="30" width="16" height="14" rx="2"/><path d="M237 34 v6 M243 34 v6" opacity=".7" stroke-width="1.5"/><circle cx="380" cy="166" r="8"/><path d="M380 160 v5" opacity=".7" stroke-width="1.5"/><rect x="122" y="142" width="16" height="14" rx="2"/><path d="M127 156 v5 M133 156 v5" stroke-width="1.6"/><rect x="420" y="130" width="20" height="16" rx="2"/><path d="M440 134 h6 M440 138 h6 M440 142 h6" stroke-width="1.6"/></g>
+</g></svg></div>
     </div>
   </section>
 
@@ -1590,7 +1635,7 @@
           <div class="mid-cta__stat-label">Same Hours as You</div>
         </div>
       </div>
-      <p>GPW responds to every RFQ within 48 hours with an initial program assessment.</p>
+      <p>GPW responds to every RFQ within 48–72 hours with an initial program assessment.</p>
       <a href="../../request-a-quote/" class="btn btn--interactive btn--lg">
         <span class="btn__text">Get a Quote for Your Automotive Sub-Assembly Program</span>
         <span class="btn__hover">
@@ -1618,7 +1663,30 @@
       <div class="projects-grid">
         <!-- Project 1 -->
         <div class="project-card reveal">
-          <div class="project-card__image" style="position:relative;display:grid;place-items:center;overflow:hidden;border:0;padding:1.25rem;border-radius:var(--radius-md,3px);isolation:isolate;background:linear-gradient(225deg, #F27257 22px, transparent 22px) top right / 60px 60px no-repeat, linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(135deg, #095F5C 0%, #4C8987 50%, #074845 100%)"><svg class="gpw-tech-motif" viewBox="0 0 220 160" role="img" aria-label="Engine compartment wire harness on dedicated assembly board" style="width:min(58%,300px);max-width:300px;height:auto;opacity:1;display:block;margin:0;color:#E9F3F0"><g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M30 80 H120" stroke="#E9F3F0"/><path d="M120 80 C150 80 150 40 184 40" stroke="#E9F3F0"/><path d="M120 80 C150 80 150 120 184 120" stroke="#E9F3F0"/><path d="M120 80 H184" stroke="#A6D98E"/><circle cx="30" cy="80" r="10" stroke="#F27257"/><circle cx="188" cy="40" r="8" stroke="#E9F3F0"/><circle cx="188" cy="80" r="8" stroke="#E9F3F0"/><circle cx="188" cy="120" r="8" stroke="#E9F3F0"/><line x1="120" y1="72" x2="120" y2="88" stroke="#E9F3F0"/></g></svg></div>
+          <div class="project-card__image" style="position:relative;display:grid;place-items:center;overflow:hidden;border:0;padding:1.25rem;border-radius:var(--radius-md,3px);isolation:isolate;background:linear-gradient(225deg, #F27257 22px, transparent 22px) top right / 60px 60px no-repeat, linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(135deg, #095F5C 0%, #4C8987 50%, #074845 100%)"><svg class="gpw-tech-motif" viewBox="0 0 220 160" role="img" aria-label="Line illustration of an engine compartment wire harness: taped trunk, grommet, breakout, and multi-pin connectors" style="width:min(330px,76vw);height:auto;opacity:1;display:block;margin:0;color:#E9F3F0"><g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<!-- main connector -->
+<g stroke="#F27257" stroke-width="2.2"><rect x="16" y="76" width="22" height="26" rx="2"/><path d="M16 83 h-6 M16 90 h-6 M16 97 h-6" stroke-width="1.8"/></g>
+<!-- trunk -->
+<path d="M38 89 Q70 86 96 82 Q118 79 132 74" stroke="#E9F3F0" opacity=".95" stroke-width="2.6"/>
+<!-- tape wraps -->
+<g stroke="#E9F3F0" opacity=".8" stroke-width="1.5"><path d="M55 82 L57 93 M61 81.5 L63 92.5"/><path d="M111 72.5 L113 83.5 M117 71.5 L119 82.5"/></g>
+<!-- grommet -->
+<ellipse cx="86" cy="84" rx="5" ry="9" stroke="#A6D98E" stroke-width="2" transform="rotate(-8 86 84)"/>
+<!-- breakout node -->
+<circle cx="132" cy="74" r="3.5" fill="#E9F3F0" stroke="none"/>
+<!-- branches -->
+<g stroke="#E9F3F0" stroke-width="2.2">
+<path d="M132 74 Q150 68 160 54 Q166 46 174 42"/>
+<path d="M132 74 Q152 76 166 82 Q174 85 180 90"/>
+<path d="M132 74 Q146 84 152 100 Q156 112 162 121"/>
+<rect x="174" y="34" width="18" height="14" rx="2"/><path d="M192 38 h5 M192 42 h5 M192 46 h5" stroke-width="1.6"/>
+<circle cx="188" cy="94" r="7.5"/>
+<rect x="160" y="121" width="16" height="13" rx="2"/><path d="M165 134 v5 M171 134 v5" stroke-width="1.6"/>
+</g>
+<circle cx="188" cy="94" r="2" fill="#E9F3F0" stroke="none" opacity=".8"/>
+<!-- dimension -->
+<g stroke="#E9F3F0" opacity=".45" stroke-width="1.4"><path d="M38 100 V142 M132 86 V142" stroke-dasharray="3 3"/><path d="M38 142 H132"/><path d="M38 142 l8 -3.5 M38 142 l8 3.5 M132 142 l-8 -3.5 M132 142 l-8 3.5"/></g>
+</g></svg></div>
           <div class="project-card__number">Example 1</div>
           <h3>Engine Compartment Wire Harness</h3>
           <p>A Tier 1 supplier produces an engine compartment wire harness used across 3 vehicle platforms for a major U.S. automaker. Each harness variant contains 40-80 circuits, uses high-temperature rated conductors, and terminates in 12-18 connectors with sealed housings for engine bay environmental protection.</p>
@@ -1631,7 +1699,28 @@
 
         <!-- Project 2 -->
         <div class="project-card reveal">
-          <div class="project-card__image" style="position:relative;display:grid;place-items:center;overflow:hidden;border:0;padding:1.25rem;border-radius:var(--radius-md,3px);isolation:isolate;background:linear-gradient(225deg, #F27257 22px, transparent 22px) top right / 60px 60px no-repeat, linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(135deg, #095F5C 0%, #4C8987 50%, #074845 100%)"><svg class="gpw-tech-motif" viewBox="0 0 220 160" role="img" aria-label="ADAS sensor bracket assembly with precision fixture alignment" style="width:min(58%,300px);max-width:300px;height:auto;opacity:1;display:block;margin:0;color:#E9F3F0"><g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="96" cy="84" r="34" stroke="#E9F3F0"/><circle cx="96" cy="84" r="13" stroke="#A6D98E"/><g stroke="#E9F3F0"><line x1="96" y1="40" x2="96" y2="50"/><line x1="96" y1="118" x2="96" y2="128"/><line x1="52" y1="84" x2="62" y2="84"/><line x1="130" y1="84" x2="140" y2="84"/><line x1="65" y1="53" x2="72" y2="60"/><line x1="120" y1="108" x2="127" y2="115"/></g><circle cx="150" cy="120" r="16" stroke="#E9F3F0"/><line x1="150" y1="104" x2="150" y2="98" stroke="#F27257"/></g></svg></div>
+          <div class="project-card__image" style="position:relative;display:grid;place-items:center;overflow:hidden;border:0;padding:1.25rem;border-radius:var(--radius-md,3px);isolation:isolate;background:linear-gradient(225deg, #F27257 22px, transparent 22px) top right / 60px 60px no-repeat, linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(135deg, #095F5C 0%, #4C8987 50%, #074845 100%)"><svg class="gpw-tech-motif" viewBox="0 0 220 160" role="img" aria-label="Line illustration of an ADAS radar sensor mounted on a stamped bracket with alignment crosshair and emitted radar waves" style="width:min(330px,76vw);height:auto;opacity:1;display:block;margin:0;color:#E9F3F0"><g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<!-- bracket base -->
+<g stroke="#E9F3F0" opacity=".95" stroke-width="2.4"><path d="M30 122 L120 122 L138 104 L48 104 Z"/><path d="M48 104 V56 H100" /></g>
+<g stroke="#E9F3F0" opacity=".8" stroke-width="1.8"><rect x="58" y="110" width="16" height="5" rx="2.5"/><rect x="90" y="110" width="16" height="5" rx="2.5"/><circle cx="58" cy="68" r="3.5"/><circle cx="58" cy="92" r="3.5"/></g>
+<!-- sensor module -->
+<g stroke="#E9F3F0" stroke-width="2.4"><rect x="88" y="62" width="54" height="34" rx="4"/></g>
+<g stroke="#E9F3F0" opacity=".55" stroke-width="1.6"><path d="M95 72 h14 M95 78 h14"/></g>
+<circle cx="130" cy="79" r="9" stroke="#E9F3F0" stroke-width="2.2"/>
+<circle cx="130" cy="79" r="4" stroke="#E9F3F0" opacity=".7" stroke-width="1.6"/>
+<circle cx="95" cy="68" r="2.2" stroke="#E9F3F0" opacity=".7" stroke-width="1.5"/><circle cx="95" cy="90" r="2.2" stroke="#E9F3F0" opacity=".7" stroke-width="1.5"/>
+<!-- radar waves -->
+<g stroke="#F27257" stroke-width="2.4"><path d="M150 67 A17 17 0 0 1 150 91"/><path d="M160 57 A31 31 0 0 1 160 101"/><path d="M170 47 A45 45 0 0 1 170 111"/></g>
+<!-- alignment crosshair -->
+<g stroke="#A6D98E" stroke-width="1.8"><path d="M130 56 V102" stroke-dasharray="4 3"/><path d="M108 79 H152" stroke-dasharray="4 3"/><circle cx="130" cy="79" r="14" stroke-dasharray="3 4"/></g>
+<!-- pigtail -->
+<path d="M88 88 Q70 92 60 104 Q52 114 42 118" stroke="#E9F3F0" opacity=".85" stroke-width="2"/>
+<g stroke="#E9F3F0" opacity=".85" stroke-width="2"><rect x="26" y="114" width="16" height="12" rx="2"/><path d="M26 118 h-5 M26 122 h-5" stroke-width="1.5"/></g>
+<!-- dimension -->
+<g stroke="#E9F3F0" opacity=".45" stroke-width="1.4"><path d="M130 98 V140 M48 126 V140" stroke-dasharray="3 3"/><path d="M48 140 H130"/><path d="M48 140 l8 -3.5 M48 140 l8 3.5 M130 140 l-8 -3.5 M130 140 l-8 3.5"/></g>
+<!-- registration mark -->
+<g stroke="#E9F3F0" opacity=".45" stroke-width="1.3"><circle cx="196" cy="134" r="6"/><path d="M196 125 V143 M187 134 H205"/></g>
+</g></svg></div>
           <div class="project-card__number">Example 2</div>
           <h3>ADAS Sensor Bracket Assembly</h3>
           <p>An OEM produces a bracket-mounted sensor module used in an advanced driver-assistance system. Each assembly integrates a stamped steel bracket, a radar sensor unit, a wiring connector with a short pigtail harness, and mounting hardware. The assembly must meet tight positional tolerances because sensor alignment directly affects ADAS performance.</p>
@@ -1644,7 +1733,25 @@
 
         <!-- Project 3 -->
         <div class="project-card reveal">
-          <div class="project-card__image" style="position:relative;display:grid;place-items:center;overflow:hidden;border:0;padding:1.25rem;border-radius:var(--radius-md,3px);isolation:isolate;background:linear-gradient(225deg, #F27257 22px, transparent 22px) top right / 60px 60px no-repeat, linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(135deg, #095F5C 0%, #4C8987 50%, #074845 100%)"><svg class="gpw-tech-motif" viewBox="0 0 220 160" role="img" aria-label="Instrument panel electrical sub-assembly with relay board and connector panel" style="width:min(58%,300px);max-width:300px;height:auto;opacity:1;display:block;margin:0;color:#E9F3F0"><g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="50" y="28" width="120" height="104" rx="4" stroke="#E9F3F0"/><line x1="50" y1="56" x2="170" y2="56" stroke="#E9F3F0"/><rect x="64" y="70" width="18" height="18" rx="2" stroke="#A6D98E"/><rect x="92" y="70" width="18" height="18" rx="2" stroke="#E9F3F0"/><rect x="120" y="70" width="18" height="18" rx="2" stroke="#F27257"/><circle cx="146" cy="44" r="7" stroke="#E9F3F0"/><line x1="64" y1="108" x2="138" y2="108" stroke="#E9F3F0"/></g></svg></div>
+          <div class="project-card__image" style="position:relative;display:grid;place-items:center;overflow:hidden;border:0;padding:1.25rem;border-radius:var(--radius-md,3px);isolation:isolate;background:linear-gradient(225deg, #F27257 22px, transparent 22px) top right / 60px 60px no-repeat, linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(135deg, #095F5C 0%, #4C8987 50%, #074845 100%)"><svg class="gpw-tech-motif" viewBox="0 0 220 160" role="img" aria-label="Line illustration of an instrument panel electrical sub-assembly: relay row, ground distribution bar, and connector panel" style="width:min(330px,76vw);height:auto;opacity:1;display:block;margin:0;color:#E9F3F0"><g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<!-- backplate -->
+<rect x="28" y="20" width="164" height="120" rx="4" stroke="#E9F3F0" opacity=".95" stroke-width="2.4"/>
+<g stroke="#E9F3F0" opacity=".55" stroke-width="1.6"><circle cx="40" cy="32" r="3"/><circle cx="180" cy="32" r="3"/><circle cx="40" cy="128" r="3"/><circle cx="180" cy="128" r="3"/></g>
+<!-- DIN rail hint -->
+<path d="M48 52 H172" stroke="#E9F3F0" opacity=".35" stroke-width="1.6"/>
+<!-- relays -->
+<g stroke="#E9F3F0" stroke-width="2.2"><rect x="54" y="38" width="24" height="28" rx="2"/><circle cx="66" cy="48" r="5" opacity=".7" stroke-width="1.8"/><path d="M60 66 v6 M66 66 v6 M72 66 v6" stroke-width="1.6"/></g>
+<g stroke="#F27257" stroke-width="2.4"><rect x="92" y="38" width="24" height="28" rx="2"/><circle cx="104" cy="48" r="5" stroke-width="1.8"/><path d="M98 66 v6 M104 66 v6 M110 66 v6" stroke-width="1.6"/></g>
+<g stroke="#E9F3F0" stroke-width="2.2"><rect x="130" y="38" width="24" height="28" rx="2"/><circle cx="142" cy="48" r="5" opacity=".7" stroke-width="1.8"/><path d="M136 66 v6 M142 66 v6 M148 66 v6" stroke-width="1.6"/></g>
+<!-- ground bar -->
+<g stroke="#A6D98E" stroke-width="2.2"><rect x="54" y="86" width="100" height="8" rx="2"/><circle cx="66" cy="90" r="4.5" stroke-width="2"/><circle cx="104" cy="90" r="4.5" stroke-width="2"/><circle cx="142" cy="90" r="4.5" stroke-width="2"/></g>
+<!-- wiring -->
+<g stroke="#A6D98E" stroke-width="1.8"><path d="M66 72 V85"/><path d="M104 72 V85"/><path d="M142 72 V85"/><path d="M66 95 V112"/><path d="M104 95 V112"/><path d="M142 95 V112"/></g>
+<!-- connector panel -->
+<g stroke="#E9F3F0" stroke-width="2.2"><rect x="58" y="112" width="20" height="16" rx="2"/><path d="M64 116 v8 M72 116 v8" opacity=".7" stroke-width="1.5"/><rect x="96" y="112" width="20" height="16" rx="2"/><path d="M102 116 v8 M110 116 v8" opacity=".7" stroke-width="1.5"/><rect x="134" y="112" width="20" height="16" rx="2"/><path d="M140 116 v8 M148 116 v8" opacity=".7" stroke-width="1.5"/></g>
+<!-- registration mark -->
+<g stroke="#E9F3F0" opacity=".45" stroke-width="1.3"><circle cx="206" cy="28" r="6"/><path d="M206 19 V37 M197 28 H215"/></g>
+</g></svg></div>
           <div class="project-card__number">Example 3</div>
           <h3>Instrument Panel Electrical Sub-Assembly</h3>
           <p>A Tier 1 supplier builds instrument panel modules that integrate climate controls, display interfaces, and electrical distribution. The supplier outsources the electrical sub-assembly &mdash; a harness with integrated relay board, connector panel, and ground distribution bar &mdash; that installs into the instrument panel structure at the Tier 1 facility.</p>
@@ -1805,7 +1912,26 @@
   <!-- ============ IMAGE BAND between Quality and FAQ ============ -->
   <section class="image-band image-band--alt">
     <div class="container">
-      <div class="image-band__placeholder" style="position:relative;display:grid;place-items:center;overflow:hidden;border:0;padding:1.25rem;border-radius:var(--radius-md,3px);isolation:isolate;background:linear-gradient(225deg, #F27257 22px, transparent 22px) top right / 60px 60px no-repeat, linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(135deg, #095F5C 0%, #4C8987 50%, #074845 100%)"><svg class="gpw-tech-motif" viewBox="0 0 220 160" role="img" aria-label="Automotive assembly line with quality gates" style="width:min(58%,300px);max-width:300px;height:auto;opacity:1;display:block;margin:0;color:#E9F3F0"><g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="96" cy="84" r="34" stroke="#E9F3F0"/><circle cx="96" cy="84" r="13" stroke="#A6D98E"/><g stroke="#E9F3F0"><line x1="96" y1="40" x2="96" y2="50"/><line x1="96" y1="118" x2="96" y2="128"/><line x1="52" y1="84" x2="62" y2="84"/><line x1="130" y1="84" x2="140" y2="84"/><line x1="65" y1="53" x2="72" y2="60"/><line x1="120" y1="108" x2="127" y2="115"/></g><circle cx="150" cy="120" r="16" stroke="#E9F3F0"/><line x1="150" y1="104" x2="150" y2="98" stroke="#F27257"/></g></svg></div>
+      <div class="image-band__placeholder" style="position:relative;display:grid;place-items:center;overflow:hidden;border:0;padding:1.25rem;border-radius:var(--radius-md,3px);isolation:isolate;background:linear-gradient(225deg, #F27257 22px, transparent 22px) top right / 60px 60px no-repeat, linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) 0 0 / 40px 40px, linear-gradient(135deg, #095F5C 0%, #4C8987 50%, #074845 100%)"><svg class="gpw-tech-motif" viewBox="0 0 520 200" role="img" aria-label="Line illustration of an in-line quality gate: dial indicator inspection station between incoming and approved assemblies" style="width:min(760px,86vw);height:auto;opacity:1;display:block;margin:0;color:#E9F3F0"><g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<!-- flow line -->
+<path d="M40 150 H480" stroke="#E9F3F0" opacity=".5" stroke-width="2" stroke-dasharray="8 6"/>
+<g stroke="#E9F3F0" opacity=".7" stroke-width="2"><path d="M146 144 l10 6 l-10 6"/><path d="M346 144 l10 6 l-10 6"/></g>
+<!-- incoming part (cube) -->
+<g stroke="#E9F3F0" opacity=".9" stroke-width="2.2"><path d="M88 104 L112 116 L88 128 L64 116 Z"/><path d="M64 116 V136 L88 148"/><path d="M112 116 V136 L88 148"/><path d="M88 128 V148"/></g>
+<!-- inspection gate -->
+<path d="M218 150 V58 H302 V150" stroke="#E9F3F0" opacity=".95" stroke-width="2.4"/>
+<path d="M260 58 V74" stroke="#E9F3F0" stroke-width="2.2"/>
+<circle cx="260" cy="92" r="18" stroke="#E9F3F0" stroke-width="2.4"/>
+<g stroke="#E9F3F0" opacity=".7" stroke-width="1.5"><path d="M260 75 V78"/><path d="M272 80 L270 82"/><path d="M277 92 H274"/><path d="M272 104 L270 102"/><path d="M260 109 V106"/><path d="M248 104 L250 102"/><path d="M243 92 H246"/><path d="M248 80 L250 82"/></g>
+<path d="M260 92 L268 80" stroke="#F27257" stroke-width="2.4"/><circle cx="260" cy="92" r="2.5" fill="#F27257" stroke="none"/>
+<path d="M260 110 V128 M257 128 h6" stroke="#E9F3F0" stroke-width="2.2"/>
+<rect x="238" y="132" width="44" height="16" rx="2" stroke="#E9F3F0" stroke-width="2.2"/>
+<!-- metrology scale -->
+<g stroke="#E9F3F0" opacity=".4" stroke-width="1.2"><path d="M218 170 H302"/><path d="M218 170 v-7 M302 170 v-7"/><path d="M226 170 v-4 M234 170 v-4 M242 170 v-4 M250 170 v-4 M258 170 v-4 M266 170 v-4 M274 170 v-4 M282 170 v-4 M290 170 v-4 M298 170 v-4"/></g>
+<!-- approved part (cube + check) -->
+<g stroke="#E9F3F0" opacity=".9" stroke-width="2.2"><path d="M420 104 L444 116 L420 128 L396 116 Z"/><path d="M396 116 V136 L420 148"/><path d="M444 116 V136 L420 148"/><path d="M420 128 V148"/></g>
+<g stroke="#A6D98E" stroke-width="2.3"><circle cx="446" cy="96" r="11"/><path d="M440 96 L444 101 L452 90"/></g>
+</g></svg></div>
     </div>
   </section>
 
@@ -1843,7 +1969,7 @@
               <span class="faq-accord__icon"></span>
             </button>
             <div class="faq-accord__panel">
-              <p>Yes. GPW ships from Monterrey by truck, reaching Texas distribution points in 1-2 days. Production scheduling aligns with your release schedule, and delivery frequency adjusts to match line-side consumption rates -- from weekly consolidated shipments to daily deliveries for high-volume programs.</p>
+              <p>Yes. GPW ships from Monterrey by truck, reaching Texas distribution points in 1-2 days. Production scheduling aligns with your release schedule, and delivery frequency adjusts to match line-side consumption rates &mdash; from weekly consolidated shipments to daily deliveries for high-volume programs.</p>
             </div>
           </div>
           <div class="faq-accord reveal reveal-delay-3" data-faq-index="3">
@@ -1921,7 +2047,7 @@
         <h2>Ready to Nearshore Your Automotive Sub-Assembly to Monterrey?</h2>
         <p>Whether you are launching a new sub-assembly program, scaling an existing harness operation, or looking for a USMCA-compliant alternative to offshore production &mdash; GPW is ready to build.</p>
         <p>Our Monterrey facility handles wire harness fabrication, fixture assembly, sensor integration, control module builds, electrical testing, and packaging &mdash; under one roof, one quality system, and one program manager who works your hours.</p>
-        <p>Send us your requirements. A program manager will respond within 48 hours with an initial assessment.</p>
+        <p>Send us your requirements. A program manager will respond within 48–72 hours with an initial assessment.</p>
 
         <div class="final-cta__buttons">
           <a href="../../request-a-quote/" class="btn btn--interactive btn--lg">
@@ -1974,7 +2100,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
               sales@gpw-solutions.com
             </a>
-            <a href="https://www.linkedin.com/company/gpw-solutions" target="_blank" rel="noopener" class="footer__contact-item">
+            <a href="https://www.linkedin.com/company/globalprecisionworks" target="_blank" rel="noopener" class="footer__contact-item">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.14.93-2.06 2.06-2.06 1.14 0 2.06.93 2.06 2.06 0 1.14-.92 2.07-2.06 2.07zm1.78 13.02H3.55V9h3.57v11.45z"/></svg>
               LinkedIn
             </a>
@@ -2060,7 +2186,7 @@
     var heroEl = document.getElementById('hero');
     var activeId = 'hero';
 
-    var darkSelectors = '.svc-hero, .hero, .ind-hero, .hub-hero, .mid-cta, .final-cta, .faq-split, .footer';
+    var darkSelectors = '.svc-hero, .hero, .ind-hero, .hub-hero, .mid-cta, .final-cta, .faq-split, .footer, .section--dark, .section--deep';
     var darkSections = document.querySelectorAll(darkSelectors);
 
     function checkDarkBg() {

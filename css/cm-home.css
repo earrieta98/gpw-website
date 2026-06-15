@@ -530,6 +530,11 @@
   gap: var(--space-xl);
 }
 
+/* Keep the CTA at its natural width so long labels (e.g. "See Assembly & Integration") never clip */
+.cm-cross-banner .btn {
+  flex-shrink: 0;
+}
+
 .cm-cross-banner__content h2,
 .cm-cross-banner__content h3 {
   font-size: var(--text-xl);

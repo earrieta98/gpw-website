@@ -252,6 +252,23 @@
   border-bottom: none;
 }
 
+/* Full-width sub-header separating the 6 finish families from add-on capabilities */
+.spec-matrix__row--subhead {
+  grid-template-columns: 1fr;
+}
+
+.spec-matrix__subhead {
+  padding: 10px var(--space-lg);
+  background: var(--off-white);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(35, 85, 90, 0.55);
+  border-left: 3px solid rgba(237, 131, 94, 0.45);
+}
+
 @media (max-width: 720px) {
   .spec-matrix__row {
     grid-template-columns: 1fr;

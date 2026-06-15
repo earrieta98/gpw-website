@@ -80,8 +80,15 @@
   var navTriggers = document.querySelectorAll('.nav__trigger');
   navTriggers.forEach(function(trigger) {
     trigger.addEventListener('click', function(e) {
-      // Only accordion behavior on mobile (when hamburger is visible)
-      if (window.innerWidth > 1024) return;
+      // Desktop: the mega-menu is driven by :hover / :focus-within. A mouse click
+      // leaves the button focused, so :focus-within keeps the menu stuck open even
+      // after the pointer leaves (and while hovering other items). Blur on a mouse
+      // click so it closes on mouse-out. Keyboard activation reports e.detail === 0
+      // — leave focus intact there so keyboard users keep the menu open.
+      if (window.innerWidth > 1024) {
+        if (e.detail > 0) this.blur();
+        return;
+      }
 
       e.preventDefault();
       var parentItem = this.closest('.nav__item');
