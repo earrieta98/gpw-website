@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="icon" type="image/png" sizes="192x192" href="../../img/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>DFM for CNC: How Design Decides 70–80% of Part Cost | GPW</title>
+  <meta name="description" content="Design for manufacturability (DFM) locks in 70–80% of a CNC part's cost before machining. A sourced guide to tolerance budgeting and cost-driving geometry.">
+  <link rel="canonical" href="https://gpw-solutions.com/blog/design-for-manufacturability-cnc/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="DFM for CNC: How Design Decides 70–80% of Part Cost">
+  <meta property="og:description" content="Design locks in 70–80% of a CNC part's cost before machining starts. A sourced guide to tolerance budgeting, cost-driving geometry, and the DFM review.">
+  <meta property="og:url" content="https://gpw-solutions.com/blog/design-for-manufacturability-cnc/">
+  <meta property="og:image" content="https://gpw-solutions.com/img/og/design-for-manufacturability-cnc.jpg">
+  <meta property="og:site_name" content="Global Precision Works">
+  <meta property="article:published_time" content="2026-06-22T00:00:00Z">
+  <meta property="article:modified_time" content="2026-06-22T00:00:00Z">
+  <meta property="article:author" content="Global Precision Works">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DFM for CNC: How Design Decides 70–80% of Part Cost">
+  <meta name="twitter:description" content="Design locks in 70–80% of a CNC part's cost before machining starts. A sourced guide to tolerance budgeting and DFM review.">
+  <meta name="twitter:image" content="https://gpw-solutions.com/img/og/design-for-manufacturability-cnc.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Lato:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/styles.css?v=20260614">
+  <link rel="stylesheet" href="../../css/utility-bar.css?v=20260614">
+  <link rel="stylesheet" href="../../css/global-nav.css?v=20260614">
+  <link rel="stylesheet" href="../../css/cm-home.css?v=20260614">
+
+  <!-- Schema: BlogPosting -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "DFM for CNC: How Design Decides 70–80% of Part Cost",
+    "description": "Design for manufacturability (DFM) locks in 70–80% of a CNC part's cost before machining. A sourced guide to tolerance budgeting and cost-driving geometry.",
+    "image": "https://gpw-solutions.com/img/og/design-for-manufacturability-cnc.jpg",
+    "datePublished": "2026-06-22T00:00:00Z",
+    "dateModified": "2026-06-22T00:00:00Z",
+    "author": {
+      "@type": "Organization",
+      "name": "Global Precision Works",
+      "url": "https://gpw-solutions.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Global Precision Works",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://gpw-solutions.com/img/logo-teal.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://gpw-solutions.com/blog/design-for-manufacturability-cnc/"
+    },
+    "wordCount": 3000,
+    "articleSection": "Contract Manufacturing",
+    "keywords": "design for manufacturability cnc, cnc dfm review, machining tolerances cost, tolerance budgeting, what makes a cnc part expensive"
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is design for manufacturability (DFM) in CNC machining?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DFM is designing a part so it can be machined reliably and at the lowest cost without losing the function it has to perform. In practice it means matching geometry, tolerances, material, and finish to how a cutting tool actually removes material — round tools, finite reach, work-holding limits, and cycle time. A DFM review reads a model for the features that quietly drive cost, then proposes changes that keep function intact."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much of a part's cost is determined by its design?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Roughly 70–80% of a part's total manufacturing cost is committed by design decisions, most of it before the part is ever quoted or prototyped. The figure comes from the Design for Manufacture and Assembly (DFMA) work of Boothroyd and Dewhurst and is corroborated by peer-reviewed cost-engineering research. Sourcing and shop-floor efficiency compete over the remaining ~20%."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What design features make a CNC part more expensive?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The biggest drivers are over-tight tolerances, sharp internal corners, deep narrow pockets, thin walls, features spread across many faces (forcing multiple setups), non-standard holes and threads, and hard-to-machine materials. Each forces smaller tools, slower feeds, extra setups, or more inspection — all of which add cycle time and cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the standard CNC machining tolerance, and does tightening it cost more?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The standard default is ±0.005 inch (0.127 mm), roughly ISO 2768-medium, applied at no premium when no tolerance is specified. Tightening costs more on an exponential curve: cutting from ±0.02 mm to ±0.005 mm can raise cost 300–500%, and ultra-tight ±0.0001 inch work can reach roughly 24× standard. Specify tight tolerances only where function requires them."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is tolerance budgeting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tolerance budgeting is assigning each dimension only the tolerance its function requires, rather than applying one tight tolerance across the whole part. Because tight tolerances cost money, you spend your budget on the few features that mate, seal, or locate, and keep everything else at the standard default."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I reduce the cost of a machined part without changing what it does?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Default the whole part to standard tolerance and tighten only functional features; radius internal corners to fit a reasonable tool; reduce the number of setups by grouping features onto fewer faces; use standard hole sizes and thread series; choose the cheapest material that meets the requirement; and call out fine surface finish only where it's needed. A DFM review systematizes all of this before you release the part."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should a DFM review happen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As early as possible — ideally before the design is frozen and certainly before quoting. A change caught in CAD costs minutes; the same change after tooling or first article costs an order of magnitude more. GPW runs a free DFM review before quoting every part for exactly this reason."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "GPW Corporate", "item": "https://gpw-solutions.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://gpw-solutions.com/blog/"},
+      {"@type": "ListItem", "position": 3, "name": "DFM for CNC: How Design Decides 70–80% of Part Cost", "item": "https://gpw-solutions.com/blog/design-for-manufacturability-cnc/"}
+    ]
+  }
+  </script>
+
+  <!-- Blog post styles — Editorial layout -->
+  <style>
+    /* Force header to "scrolled" (light page) state regardless of scroll position */
+    .header { background: var(--white) !important; box-shadow: 0 1px 0 var(--light-gray) !important; backdrop-filter: none !important; }
+    .header .nav__link { color: var(--dark-gray) !important; }
+    .header .nav__link:hover, .header .nav__link--active { color: var(--teal) !important; }
+    .header .header__logo-white { opacity: 0 !important; }
+    .header .header__logo-teal { opacity: 1 !important; }
+    .header .nav__trigger { color: var(--dark-gray) !important; }
+    .header .nav__toggle span { background-color: var(--dark-gray) !important; }
+
+    /* Reading progress bar (top of viewport) */
+    .read-progress {
+      position: fixed;
+      top: 0; left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--coral);
+      z-index: 1000;
+      transition: width 80ms linear;
+    }
+
+    /* Compact hero — no full-bleed dark banner */
+    .blog-hero {
+      background: var(--white);
+      padding: calc(var(--header-height) + 56px) 0 32px;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    .blog-hero__inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .blog-hero .breadcrumb {
+      font-size: 13px;
+      color: var(--mid-gray);
+      margin-bottom: 24px;
+    }
+    .blog-hero .breadcrumb a { color: var(--mid-gray); text-decoration: none; }
+    .blog-hero .breadcrumb a:hover { color: var(--teal); }
+    .blog-hero .breadcrumb__sep { color: var(--mid-gray); }
+    .blog-hero .breadcrumb__current { color: var(--near-black); }
+    /* Bracketed mono eyebrow - shared hero DNA, light-bg variant (teal text, not lime,
+       which fails contrast on white; coral brackets via ::before/::after). */
+    .blog-hero__category {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-on-light); /* teal on white (lime reserved for dark heroes) */
+      margin-bottom: 16px;
+    }
+    .blog-hero__category::before { content: '[ '; color: var(--coral); }
+    .blog-hero__category::after  { content: ' ]'; color: var(--coral); }
+    .blog-hero h1 {
+      color: var(--near-black);
+      font-size: clamp(30px, 1.5rem + 1.9vw, 46px);
+      line-height: 1.15;
+      margin: 0 0 20px;
+      letter-spacing: -0.02em;
+      font-weight: 900;
+    }
+    .blog-hero__lede {
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--mid-gray);
+      margin-bottom: 24px;
+    }
+    .blog-hero__meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--mid-gray);
+      padding-top: 16px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .blog-hero__meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* 3-column layout: TOC sidebar (L) + article (center) + aside (R) on wide screens */
+    .blog-shell {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+      display: grid;
+      grid-template-columns: 200px minmax(0, 680px) 240px;
+      gap: 56px;
+      align-items: start;
+      justify-content: center;
+    }
+    @media (max-width: 1180px) {
+      .blog-shell {
+        grid-template-columns: minmax(0, 720px);
+        max-width: 720px;
+        gap: 0;
+      }
+      .toc-sidebar, .post-aside { display: none; }
+    }
+
+    .blog-content {
+      max-width: 680px;
+      color: var(--near-black);
+      min-width: 0;
+    }
+
+    /* Left sticky TOC (scrollspy) */
+    .toc-sidebar {
+      position: sticky;
+      top: 96px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      font-size: 13px;
+      padding-right: 8px;
+    }
+    .toc-sidebar__title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--mid-gray);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .toc-sidebar ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: item;
+    }
+    .toc-sidebar li {
+      counter-increment: item;
+      padding: 0;
+      line-height: 1.4;
+    }
+    .toc-sidebar a {
+      display: block;
+      padding: 6px 0 6px 12px;
+      color: var(--mid-gray);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      margin-left: -2px;
+      transition: color 0.15s, border-color 0.15s;
+      font-size: 13px;
+    }
+    .toc-sidebar a:hover { color: var(--teal); }
+    .toc-sidebar a.is-active {
+      color: var(--teal);
+      border-left-color: var(--coral);
+      font-weight: 600;
+    }
+
+    /* Right aside — sticky CTA + related */
+    .post-aside {
+      position: sticky;
+      top: 96px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .aside-card {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+    .aside-card--cta {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: var(--white);
+    }
+    .aside-card--cta h3 { color: var(--white); margin: 0 0 8px; font-size: 15px; font-weight: 700; }
+    .aside-card--cta p { color: rgba(255,255,255,0.85); font-size: 13px; line-height: 1.5; margin: 0 0 14px; }
+    .aside-card--cta .aside-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 14px;
+      background: var(--coral);
+      color: var(--on-accent);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+      transition: background 0.15s;
+    }
+    .aside-card--cta .aside-btn:hover { background: #d36a4a; }
+    .aside-card__title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--mid-gray);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+    .aside-card a.aside-link {
+      display: block;
+      padding: 10px 0;
+      color: var(--near-black);
+      text-decoration: none;
+      font-size: 13px;
+      line-height: 1.4;
+      border-bottom: 1px solid var(--light-gray);
+      transition: color 0.15s;
+    }
+    .aside-card a.aside-link:last-of-type { border-bottom: none; }
+    .aside-card a.aside-link:hover { color: var(--teal); }
+    .aside-card a.aside-link__category {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-on-light);
+      font-weight: 700;
+      margin-bottom: 4px;
+      padding: 0;
+      border: none;
+    }
+
+    /* Inline TOC (mobile/tablet only) */
+    @media (min-width: 1181px) {
+      .toc-inline { display: none; }
+    }
+    .toc-inline {
+      background: var(--off-white);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      margin: 0 0 40px;
+    }
+    .toc-inline summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 700;
+      color: var(--near-black);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .toc-inline summary::-webkit-details-marker { display: none; }
+    .toc-inline summary::after {
+      content: '+';
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--mid-gray);
+      transition: transform 0.2s;
+    }
+    .toc-inline[open] summary::after { content: '−'; }
+    .toc-inline ol {
+      margin: 16px 0 0;
+      padding-left: 20px;
+      counter-reset: item;
+      list-style: none;
+    }
+    .toc-inline li {
+      counter-increment: item;
+      padding: 4px 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .toc-inline li::before {
+      content: counter(item) ".";
+      color: var(--mid-gray);
+      margin-right: 8px;
+      font-variant-numeric: tabular-nums;
+    }
+    .toc-inline a { color: var(--mid-gray); text-decoration: none; }
+    .toc-inline a:hover { color: var(--teal); }
+
+    /* Body typography — editorial scale (!important to beat styles.css base) */
+    article.blog-content h2 {
+      font-size: 24px !important;
+      margin: 56px 0 16px !important;
+      color: var(--near-black) !important;
+      letter-spacing: -0.01em !important;
+      line-height: 1.3 !important;
+      font-weight: 800 !important;
+    }
+    article.blog-content h3 {
+      font-size: 18px !important;
+      margin: 32px 0 12px !important;
+      color: var(--near-black) !important;
+      font-weight: 700 !important;
+      line-height: 1.35 !important;
+    }
+    article.blog-content p {
+      font-size: 17px !important;
+      line-height: 1.65 !important;
+      color: #1f2426 !important;
+      margin-bottom: 20px !important;
+    }
+    article.blog-content > section ul, article.blog-content > section ol,
+    article.blog-content > .summary-box ul, article.blog-content > .summary-box ol {
+      font-size: 17px !important;
+      line-height: 1.65 !important;
+      margin: 0 0 20px 24px !important;
+      color: #1f2426 !important;
+    }
+    /* TOC overrides — stay compact */
+    .toc-inline ol { font-size: 14px !important; line-height: 1.5 !important; margin: 16px 0 0 !important; padding-left: 20px !important; color: var(--mid-gray) !important; }
+    .toc-inline li { font-size: 14px !important; line-height: 1.5 !important; margin-bottom: 0 !important; }
+    .blog-content li { margin-bottom: 6px; }
+    .blog-content a {
+      color: var(--teal);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    .blog-content a:hover { color: var(--coral); }
+
+    /* Executive summary box — leaner */
+    .summary-box {
+      background: var(--off-white);
+      border-left: 3px solid var(--coral);
+      padding: 24px 28px;
+      border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+      margin: 32px 0;
+    }
+    .summary-box__label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-on-light);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .summary-box__headline {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--near-black);
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+    .summary-box ul { font-size: 16px; margin-bottom: 12px; }
+    .summary-box p:last-child { margin-bottom: 0; font-size: 15px; }
+
+    /* Answer block (AI Overview optimized) — pull-quote style */
+    .answer-block {
+      background: transparent;
+      border-left: 3px solid var(--teal);
+      padding: 8px 0 8px 24px;
+      margin: 32px 0;
+    }
+    .answer-block__q {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 8px;
+      display: block;
+      letter-spacing: 0.02em;
+    }
+    .answer-block p {
+      margin-bottom: 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--near-black);
+    }
+
+    /* Tables */
+    .blog-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0 32px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .blog-table th, .blog-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--light-gray);
+      vertical-align: top;
+    }
+    .blog-table th {
+      background: var(--off-white);
+      font-weight: 700;
+      color: var(--near-black);
+      border-bottom: 2px solid var(--teal);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .blog-table tbody tr:hover { background: var(--off-white); }
+    .blog-table strong { color: var(--accent-on-light); font-weight: 700; }
+
+    /* FAQs */
+    .faq-item {
+      border-bottom: 1px solid var(--light-gray);
+      padding: 20px 0;
+    }
+    .faq-item h3 {
+      margin: 0 0 8px !important;
+      font-size: 16px !important;
+      color: var(--near-black);
+      font-weight: 700;
+    }
+    .faq-item p { font-size: 15px; margin: 0; line-height: 1.6; }
+
+    /* In-article CTA block */
+    .blog-cta-block {
+      background: var(--teal);
+      color: var(--white);
+      padding: 40px 32px;
+      border-radius: var(--radius-lg);
+      margin: 48px 0;
+      text-align: center;
+    }
+    article.blog-content .blog-cta-block h2 {
+      color: var(--white) !important;
+      margin: 0 0 12px !important;
+      font-size: 22px;
+    }
+    article.blog-content .blog-cta-block p {
+      color: rgba(255,255,255,0.85) !important;
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+    article.blog-content .blog-cta-block .btn--primary {
+      color: var(--on-accent);
+    }
+    .blog-cta-block__buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    /* Sources list */
+    .source-list {
+      font-size: 14px;
+      color: var(--mid-gray);
+      line-height: 1.6;
+    }
+    .source-list ul { font-size: 14px; }
+    .source-list a { word-break: break-word; }
+
+    /* Sticky bottom-right CTA pill */
+    .floating-cta {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--coral);
+      color: var(--white);
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: var(--shadow-lg);
+      z-index: 50;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+    .floating-cta.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .floating-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+    @media (min-width: 1181px) { .floating-cta { display: none !important; } }
+    @media (max-width: 600px) { .floating-cta { display: none; } }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ============ HEADER — Unified Global Nav (Keller two-capability model) ============ -->
+  <header class="header header--scrolled header--fixed-scrolled" id="header">
+    <div class="header__inner">
+      <a href="../../" class="header__logo" aria-label="Global Precision Works home">
+        <img src="../../img/logo-white.png" alt="Global Precision Works" class="header__logo-white" fetchpriority="high" width="300" height="189">
+        <img src="../../img/logo-teal.png" alt="" aria-hidden="true" class="header__logo-teal" width="300" height="196">
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-controls="navMenu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="navMenu" aria-label="Primary">
+        <button class="nav__close" id="navClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+
+        <!-- ===== Capability 1: CNC Machining (link to hub + mega) ===== -->
+        <div class="nav__item nav__item--capability">
+          <a href="../../contract-manufacturing/" class="nav__link nav__link--has-mega">CNC Machining</a>
+          <button class="nav__trigger nav__trigger--caret" aria-label="Open CNC Machining menu" aria-haspopup="true" aria-expanded="false">
+            <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="nav__dropdown nav__dropdown--mega-full">
+            <div class="nav__mega">
+              <div class="nav__mega-header">
+                <div class="nav__mega-promise">
+                  <span class="nav__mega-promise-eyebrow">CNC Machining</span>
+                  <p class="nav__mega-promise-title">Precision components, documented to your spec</p>
+                  <p class="nav__mega-promise-desc">A managed network of vetted Monterrey machine shops — GPW owns the DFM, quality governance, and on-time delivery. One point of accountability, scalable capacity.</p>
+                </div>
+                <div class="nav__mega-ctas">
+                  <a href="../../request-a-quote/" class="nav__mega-cta nav__mega-cta--primary">Get a Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                  <a href="../../contract-manufacturing/engineering-support/" class="nav__mega-cta nav__mega-cta--secondary">Free DFM Review
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+              </div>
+              <div class="nav__mega-section">
+                <span class="nav__mega-section-title">Core Machining</span>
+                <div class="nav__mega-grid">
+                  <a href="../../contract-manufacturing/cnc-milling/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M9 4v16M4 9h16"/></svg></span>
+                    <span><span class="nav__mega-card__title">CNC Milling</span><span class="nav__mega-card__desc">3- / 4- / 5-axis prismatic parts</span></span>
+                  </a>
+                  <a href="../../contract-manufacturing/cnc-turning/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></span>
+                    <span><span class="nav__mega-card__title">CNC Turning</span><span class="nav__mega-card__desc">Lathe-turned cylindrical parts</span></span>
+                  </a>
+                  <a href="../../contract-manufacturing/wire-edm/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 10-13h-7z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Wire EDM</span><span class="nav__mega-card__desc">Fine, burr-free hard-metal cuts</span></span>
+                  </a>
+                  <a href="../../contract-manufacturing/sheet-metal/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 13l9 4 9-4"/></svg></span>
+                    <span><span class="nav__mega-card__title">Sheet Metal</span><span class="nav__mega-card__desc">Laser, bend, fabricate, weld</span></span>
+                  </a>
+                  <a href="../../contract-manufacturing/surface-finishing/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Surface Finishing</span><span class="nav__mega-card__desc">Anodize, plate, coat, passivate</span></span>
+                  </a>
+                </div>
+              </div>
+              <div class="nav__mega-section">
+                <span class="nav__mega-section-title">Adjacent Capabilities</span>
+                <div class="nav__mega-grid nav__mega-grid--3">
+                  <a href="../../contract-manufacturing/engineering-support/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 7v6l4 2"/></svg></span>
+                    <span><span class="nav__mega-card__title">Engineering Support</span><span class="nav__mega-card__desc">Free DFM &amp; material selection</span></span>
+                  </a>
+                  <a href="../../contract-manufacturing/metals/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg></span>
+                    <span><span class="nav__mega-card__title">Metals</span><span class="nav__mega-card__desc">Alloys, tempers, tolerances</span></span>
+                  </a>
+                  <a href="../../contract-manufacturing/plastics/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l-1 5 4 9a3 3 0 0 1-3 4H9a3 3 0 0 1-3-4l4-9z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Plastics</span><span class="nav__mega-card__desc">Engineering polymers machined</span></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Capability 2: Assembly & Integration (link to hub + mega) ===== -->
+        <div class="nav__item nav__item--capability">
+          <a href="../../ems/" class="nav__link nav__link--has-mega">Assembly &amp; Integration</a>
+          <button class="nav__trigger nav__trigger--caret" aria-label="Open Assembly &amp; Integration menu" aria-haspopup="true" aria-expanded="false">
+            <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="nav__dropdown nav__dropdown--mega-full">
+            <div class="nav__mega">
+              <div class="nav__mega-header">
+                <div class="nav__mega-promise">
+                  <span class="nav__mega-promise-eyebrow">Assembly &amp; Integration</span>
+                  <p class="nav__mega-promise-title">From BOM to finished, tested unit on your dock</p>
+                  <p class="nav__mega-promise-desc">In-house electromechanical assembly — box build, harness, system integration and end-of-line test under one roof in Monterrey.</p>
+                </div>
+                <div class="nav__mega-ctas">
+                  <a href="../../request-a-quote/" class="nav__mega-cta nav__mega-cta--primary">Get a Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                  <a href="/ems/" class="nav__mega-cta nav__mega-cta--secondary">About Assembly
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+              </div>
+              <div class="nav__mega-section">
+                <span class="nav__mega-section-title">Core Services</span>
+                <div class="nav__mega-grid">
+                  <a href="../../ems/services/box-build-assembly.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg></span>
+                    <span><span class="nav__mega-card__title">Box Build</span><span class="nav__mega-card__desc">Mechanical + electrical integration</span></span>
+                  </a>
+                  <a href="../../ems/services/cable-harness-assembly.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="17" r="2"/><path d="M6 9v4a4 4 0 0 0 4 4h6"/></svg></span>
+                    <span><span class="nav__mega-card__title">Cable &amp; Wire Harness</span><span class="nav__mega-card__desc">Documented workmanship &amp; inspection</span></span>
+                  </a>
+                  <a href="../../ems/services/system-integration.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17h7"/></svg></span>
+                    <span><span class="nav__mega-card__title">System Integration</span><span class="nav__mega-card__desc">Structure, cabling, firmware</span></span>
+                  </a>
+                  <a href="../../ems/services/testing-inspection.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 5-6"/><circle cx="12" cy="12" r="9"/></svg></span>
+                    <span><span class="nav__mega-card__title">Testing &amp; Inspection</span><span class="nav__mega-card__desc">Functional test, burn-in, QA</span></span>
+                  </a>
+                  <a href="../../ems/services/enclosure-cabinet-assembly.html" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h6M9 11h6M15 15h.01"/></svg></span>
+                    <span><span class="nav__mega-card__title">Enclosure &amp; Cabinet</span><span class="nav__mega-card__desc">Racks, cabinets, sub-assemblies</span></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Industries (dropdown only, 10 verticals) ===== -->
+        <div class="nav__item">
+          <button class="nav__trigger" aria-haspopup="true" aria-expanded="false">Industries
+            <svg class="nav__trigger-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/></svg>
+          </button>
+          <div class="nav__dropdown nav__dropdown--mega-full">
+            <div class="nav__mega">
+              <div class="nav__mega-header">
+                <div class="nav__mega-promise">
+                  <span class="nav__mega-promise-eyebrow">Industries</span>
+                  <p class="nav__mega-promise-title">Ten end markets we build for</p>
+                  <p class="nav__mega-promise-desc">One partner across machining and assembly — organized by your end market, not by component type.</p>
+                </div>
+                <div class="nav__mega-ctas">
+                  <a href="../../request-a-quote/" class="nav__mega-cta nav__mega-cta--primary">Get a Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+              </div>
+              <div class="nav__mega-section">
+                <span class="nav__mega-section-title">Industries We Serve</span>
+                <div class="nav__mega-grid nav__mega-grid--industries">
+                  <a href="../../industries/aerospace-defense/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l20-7-7 20-3-8-10-5z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Aerospace &amp; Defense</span></span>
+                  </a>
+                  <a href="../../industries/automotive/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-5h14l2 5v5h-3v-2H6v2H3z"/><circle cx="7" cy="16" r="1.5"/><circle cx="17" cy="16" r="1.5"/></svg></span>
+                    <span><span class="nav__mega-card__title">Automotive</span></span>
+                  </a>
+                  <a href="../../industries/medical-devices/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+                    <span><span class="nav__mega-card__title">Medical Devices</span></span>
+                  </a>
+                  <a href="../../industries/industrial-equipment/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span>
+                    <span><span class="nav__mega-card__title">Industrial Equipment</span></span>
+                  </a>
+                  <a href="../../industries/energy/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 10-13h-7z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Energy</span></span>
+                  </a>
+                  <a href="../../industries/oil-gas/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg></span>
+                    <span><span class="nav__mega-card__title">Oil &amp; Gas</span></span>
+                  </a>
+                  <a href="../../industries/telecom/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19a14 14 0 0 1 14-14M8 19a8 8 0 0 1 8-8"/><circle cx="6" cy="18" r="1.5"/></svg></span>
+                    <span><span class="nav__mega-card__title">Telecom</span></span>
+                  </a>
+                  <a href="../../industries/electronics/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></span>
+                    <span><span class="nav__mega-card__title">Electronics</span></span>
+                  </a>
+                  <a href="../../industries/ai-server-rack/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="6" rx="1"/><rect x="4" y="11" width="16" height="6" rx="1"/><path d="M8 6h.01M8 14h.01"/></svg></span>
+                    <span><span class="nav__mega-card__title">AI &amp; Server Rack</span><span class="nav__mega-card__badge">High demand</span></span>
+                  </a>
+                  <a href="../../industries/appliances/" class="nav__mega-card">
+                    <span class="nav__mega-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h.01"/></svg></span>
+                    <span><span class="nav__mega-card__title">Appliances &amp; White Goods</span></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ===== Plain top-level links ===== -->
+        <a href="../../blog/" class="nav__link nav__link--row nav__link--active" aria-current="page">Insights</a>
+        <a href="../../about.html" class="nav__link nav__link--row">About</a>
+        <a href="../../contact.html" class="nav__link nav__link--row">Contact</a>
+
+        <!-- ===== Persistent RFQ CTA ===== -->
+        <a href="../../request-a-quote/" class="btn btn--primary nav__cta">Request a Quote</a>
+      </nav>
+    </div>
+    <div class="nav-overlay" id="navOverlay"></div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+  <!-- Reading progress bar -->
+  <div class="read-progress" id="readProgress"></div>
+
+  <!-- ============ BLOG HERO (compact, light) ============ -->
+  <section class="blog-hero">
+    <div class="blog-hero__inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../../" class="breadcrumb__link">GPW Corporate</a>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <a href="../" class="breadcrumb__link">Insights</a>
+        <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="breadcrumb__current" aria-current="page">DFM for CNC</span>
+      </nav>
+      <span class="blog-hero__category">Engineering Guide</span>
+      <h1>DFM for CNC: How Design Decides 70&ndash;80% of Part Cost</h1>
+      <p class="blog-hero__lede">
+        The cheapest lever on a machined part isn't the shop rate &mdash; it's the drawing. By the time you send a STEP file out for quote, 70&ndash;80% of what the part will cost is already locked in. Here's how to read your own print for cost.
+      </p>
+      <div class="blog-hero__meta">
+        <span class="blog-hero__meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          June 22, 2026
+        </span>
+        <span class="blog-hero__meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          12 min read
+        </span>
+        <span class="blog-hero__meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          ~3,000 words
+        </span>
+        <span class="blog-hero__meta-item">Sourced engineering references</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3-COLUMN SHELL: TOC + ARTICLE + ASIDE ============ -->
+  <div class="blog-shell">
+
+    <!-- LEFT: sticky TOC scrollspy (desktop only) -->
+    <aside class="toc-sidebar" aria-label="In this article">
+      <div class="toc-sidebar__title">In this article</div>
+      <ol>
+        <li><a href="#bottom-line" data-toc>The bottom line</a></li>
+        <li><a href="#what-is-dfm" data-toc>What DFM actually means</a></li>
+        <li><a href="#why-design" data-toc>Why design decides the cost</a></li>
+        <li><a href="#cost-stack" data-toc>The CNC cost stack</a></li>
+        <li><a href="#tolerance" data-toc>Tolerance budgeting</a></li>
+        <li><a href="#geometry" data-toc>Geometry that drives cost</a></li>
+        <li><a href="#material" data-toc>Material selection</a></li>
+        <li><a href="#checklist" data-toc>A 10-point DFM checklist</a></li>
+        <li><a href="#how-gpw" data-toc>How GPW approaches DFM</a></li>
+        <li><a href="#faq" data-toc>FAQ</a></li>
+        <li><a href="#sources" data-toc>Sources</a></li>
+      </ol>
+    </aside>
+
+    <!-- CENTER: article body -->
+    <article class="blog-content"><!-- TOC inline (mobile/tablet only, hidden when sidebar visible) -->
+      <details class="toc-inline" open>
+        <summary>In this article</summary>
+        <ol>
+          <li><a href="#bottom-line">The bottom line</a></li>
+          <li><a href="#what-is-dfm">What DFM actually means</a></li>
+          <li><a href="#why-design">Why design decides the cost</a></li>
+          <li><a href="#cost-stack">The CNC cost stack</a></li>
+          <li><a href="#tolerance">Tolerance budgeting</a></li>
+          <li><a href="#geometry">Geometry that drives cost</a></li>
+          <li><a href="#material">Material selection</a></li>
+          <li><a href="#checklist">A 10-point DFM checklist</a></li>
+          <li><a href="#how-gpw">How GPW approaches DFM</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ol>
+      </details>
+
+      <section id="bottom-line">
+        <div class="summary-box">
+          <div class="summary-box__headline">The cheapest lever on a machined part is the drawing, not the shop rate. By the time you send it for quote, 70&ndash;80% of the cost is already locked in by geometry, tolerances, material, and finish.</div>
+          <p style="margin-bottom: 0;">This guide shows which design decisions move the number, by how much, and how to read your own print for cost before you release it. Every figure cites a source.</p>
+        </div>
+
+        <p>The cheapest lever you have on a machined part is not the shop rate. It is the drawing.</p>
+
+        <p>By the time you send a STEP file out for quote, most of what the part will cost is already locked in &mdash; set by the geometry, the tolerances, the material, and the finish you specified. The shop can optimize toolpaths and trim a few points off the cycle. They cannot un-specify a &plusmn;0.0005&Prime; tolerance you didn't need, or un-draw a sharp internal corner that forces a tiny end mill.</p>
+
+        <p>This is the central finding of Design for Manufacturability (DFM): across the cost-engineering literature, <strong>70&ndash;80% of a product's total manufacturing cost is committed during design</strong> &mdash; before a supplier ever quotes it. That figure traces to the founding work of Geoffrey Boothroyd and Peter Dewhurst (creators of DFMA, recipients of the U.S. National Medal of Technology) and is corroborated by peer-reviewed cost research: a literature review titled, literally, <em>"Design determines 70% of cost,"</em> and CIRP Annals work finding that roughly 75% of manufacturing cost is committed by the end of conceptual design.</p>
+
+        <p>For a procurement or engineering lead, that has a blunt implication: the biggest cost lever is the model, not the negotiating table.</p>
+      </section>
+
+      <section id="what-is-dfm">
+        <h2>What "Design for Manufacturability" Actually Means</h2>
+
+        <div class="answer-block">
+          <span class="answer-block__q">What is design for manufacturability (DFM) in CNC machining?</span>
+          <p>Design for manufacturability (DFM) is the practice of designing a part so it can be machined reliably, at the lowest cost, without sacrificing the function it has to perform. In CNC machining, DFM means matching the part's geometry, tolerances, material, and surface finish to how a cutting tool actually removes material &mdash; round tools, finite reach, work-holding limits, and cycle time. A DFM review reads a model or drawing for the features that quietly drive cost or scrap, then proposes changes that keep function intact while making the part faster and cheaper to cut.</p>
+        </div>
+
+        <p>DFM is not "make the part cheaper by making it worse." It is the opposite: it protects the function you need while removing the cost you don't. A wall that has to be 2&nbsp;mm thick for stiffness stays 2&nbsp;mm. A bore that has to be &plusmn;0.0002&Prime; for a bearing fit stays &plusmn;0.0002&Prime;. Everything <em>else</em> &mdash; the features specified tight out of habit, the corners drawn sharp out of CAD convenience, the finish called out fine "to be safe" &mdash; is where the money leaks.</p>
+
+        <p>The reason DFM works is timing. A design decision takes minutes to change in CAD and produces cost consequences that take hours &mdash; and tooling, and scrap &mdash; to change later. The same finding caught at concept costs an order of magnitude less than the one caught at first article. That is the whole game: move the decision earlier.</p>
+      </section>
+
+      <section id="why-design">
+        <h2>Why Design Decides 70&ndash;80% of the Cost</h2>
+
+        <p>There is a well-known curve in cost engineering. Early in a project, very little money has actually been <em>spent</em> &mdash; but most of it has already been <em>committed</em>. By the time the design is frozen, the major levers (material, process, geometry, tolerance) are set, and everything downstream is just executing on choices already made.</p>
+
+        <div class="answer-block">
+          <span class="answer-block__q">How much of a part's cost is determined by its design?</span>
+          <p>Roughly 70&ndash;80% of a part's total manufacturing cost is determined by design decisions, and most of it is committed before the part is ever quoted or prototyped. Sourcing, negotiation, and shop-floor efficiency compete over the remaining ~20%. This is the founding premise of Design for Manufacture and Assembly (DFMA) and is consistent across the cost-engineering literature.</p>
+        </div>
+
+        <p>This is why chasing only the shop rate is a losing game. Move a part from a U.S. shop to a lower-cost region and you act on the labor slice of cost &mdash; real, but bounded. Redesign the part so it needs one setup instead of three, holds a sensible tolerance instead of a heroic one, and starts from less stock &mdash; and you act on the 70&ndash;80% that design controls. The two are not mutually exclusive. The point is that the design lever is bigger, and it is the one most buyers skip.</p>
+
+        <p>A practical way to think about it: <strong>sourcing changes what each machine-hour costs; DFM changes how many machine-hours the part needs.</strong></p>
+      </section>
+
+      <section id="cost-stack">
+        <h2>The CNC Cost Stack: Where the Money Actually Goes</h2>
+
+        <p>Before you can design for cost, you have to know what you're designing against. A typical CNC machined part breaks down roughly like this (GPW 2026 cost model &mdash; directional, varies by part):</p>
+
+        <table class="blog-table">
+          <thead>
+            <tr><th>Cost element</th><th>Share of part cost</th><th>What design controls</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Material</strong></td><td>25&ndash;35%</td><td>Alloy choice, starting stock size, material removed</td></tr>
+            <tr><td><strong>Direct labor / cycle time</strong></td><td>15&ndash;55%</td><td>Setups, tool changes, feeds limited by geometry</td></tr>
+            <tr><td><strong>Machine burden</strong> (tooling, wear, depreciation)</td><td>20&ndash;30%</td><td>Special tools forced by features; tool wear from hard materials</td></tr>
+            <tr><td><strong>Overhead</strong> (QC, setup prep, handling)</td><td>10&ndash;20%</td><td>Inspection forced by tight tolerances; first-article scope</td></tr>
+            <tr><td>Margin</td><td>10&ndash;20%</td><td>&mdash;</td></tr>
+          </tbody>
+        </table>
+
+        <p>The single most important column is the right one. Almost every line in that stack has a design knob behind it. Labor share alone swings from ~15% on a simple, material-heavy bracket to ~55% on a complex 5-axis part &mdash; which is exactly why the same shop quotes wildly different "savings" depending on what part you hand it.</p>
+
+        <p>Two of those elements &mdash; <strong>tolerance</strong> (which drives labor, machine burden, and QC together) and <strong>geometry</strong> (which drives setups and tool selection) &mdash; are where DFM finds the most money. We'll take them in turn.</p>
+      </section>
+
+      <section id="tolerance">
+        <h2>Tolerance Budgeting: The Single Biggest Design Lever</h2>
+
+        <p>Tolerance is the most expensive thing on most drawings, and the most over-specified. Tightening a tolerance does not nudge cost up &mdash; it bends an exponential curve.</p>
+
+        <div class="answer-block">
+          <span class="answer-block__q">What is tolerance budgeting?</span>
+          <p>Tolerance budgeting is the practice of assigning each dimension only the tolerance its function actually requires, instead of applying one tight tolerance across the whole part. Tight tolerances cost money &mdash; through slower cutting, extra finishing passes, more inspection, and higher scrap &mdash; so a tolerance is a budget to be spent deliberately on the few features that need it (bearing fits, sealing faces, mating interfaces) and kept loose everywhere else.</p>
+        </div>
+
+        <p>Start from the default. The standard machining tolerance &mdash; used by the large majority of shops worldwide when no tolerance is called out &mdash; is <strong>&plusmn;0.005&Prime; (0.127&nbsp;mm)</strong>, which maps to roughly ISO 2768-medium. At that level there is no premium; it's just how the machine cuts. The cost only starts climbing when you ask for tighter.</p>
+
+        <p>Here is roughly how the curve behaves (representative figures from machining cost-engineering sources; exact numbers vary by feature and material):</p>
+
+        <table class="blog-table">
+          <thead>
+            <tr><th>Tolerance band</th><th>Relative cost vs. standard</th><th>Typical use</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>&plusmn;0.005&Prime; (0.13&nbsp;mm) &mdash; standard</td><td><strong>1&times;</strong> (baseline, no premium)</td><td>General features, non-critical dimensions</td></tr>
+            <tr><td>&plusmn;0.001&Prime; (0.025&nbsp;mm) &mdash; precision</td><td>~2&ndash;4&times;</td><td>Locating features, light press fits</td></tr>
+            <tr><td>&plusmn;0.0005&Prime; (0.013&nbsp;mm) &mdash; tight</td><td>~5&times; and up</td><td>Bearing seats, sealing faces</td></tr>
+            <tr><td>&plusmn;0.0001&Prime; (0.0025&nbsp;mm) &mdash; ultra</td><td>up to ~24&times;</td><td>Optical, aerospace, gauge work</td></tr>
+          </tbody>
+        </table>
+
+        <p>The mechanism is not mysterious: tighter tolerances mean slower feeds, more finishing passes, more frequent tool changes, controlled-temperature inspection, and a higher scrap rate when a part drifts out of band. One consensus point worth internalizing &mdash; moving from &plusmn;0.05&nbsp;mm to &plusmn;0.02&nbsp;mm might add ~50%, but going from &plusmn;0.02&nbsp;mm to &plusmn;0.005&nbsp;mm can add 300&ndash;500%. The curve is non-linear, and you live on the steep part of it the moment you specify tight tolerances you don't need.</p>
+
+        <p><strong>The DFM move:</strong> default the whole part to the standard tolerance, then deliberately tighten only the handful of features that mate, seal, or locate. On a typical part that is 3&ndash;6 dimensions out of dozens. Everything else rides the default and costs nothing extra.</p>
+      </section>
+
+      <section id="geometry">
+        <h2>The Geometry That Quietly Drives Cost</h2>
+
+        <p>After tolerance, the biggest cost driver is geometry that fights the tool. CNC end mills are round, finite in length, and held in a spindle that can deflect. Features that ignore those facts force smaller tools, slower feeds, extra setups, or special work-holding &mdash; each of which shows up on the quote. None of these require a citation; they are how metal cutting works.</p>
+
+        <table class="blog-table">
+          <thead>
+            <tr><th>Feature as drawn</th><th>Why it drives cost</th><th>Lower-cost design move</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Sharp internal corners</td><td>A round end mill can't cut a sharp inside corner; a tiny tool must, slowly</td><td>Add a corner radius &ge; the tool radius (e.g., R &ge; 1/3 of pocket depth)</td></tr>
+            <tr><td>Deep, narrow pockets</td><td>High depth-to-diameter means tool deflection, chatter, special long tools, slow feeds</td><td>Limit cavity depth to ~3&ndash;4&times; tool diameter; relax depth where possible</td></tr>
+            <tr><td>Thin walls</td><td>Vibration and deflection cause chatter and scrap; needs slow finishing</td><td>Keep walls &ge; ~0.8&nbsp;mm (metal); add ribs for stiffness</td></tr>
+            <tr><td>Features on many faces</td><td>Each new orientation is another setup &mdash; re-fixturing, re-indicating, stack-up risk</td><td>Group features onto fewer faces; design for 1&ndash;2 setups where function allows</td></tr>
+            <tr><td>Tiny holes, deep holes</td><td>Small drills are fragile and slow; deep holes need peck cycles</td><td>Use standard drill sizes; keep depth &le; ~5&times; diameter</td></tr>
+            <tr><td>Custom / non-standard threads</td><td>Special taps or single-point threading add tooling and time</td><td>Specify standard thread series; tap only as deep as the joint needs</td></tr>
+            <tr><td>Engraved text, fine cosmetic detail</td><td>Fine detail is a separate, slow operation</td><td>Keep it minimal, or move it to a secondary process if cosmetic</td></tr>
+          </tbody>
+        </table>
+
+        <p>The recurring theme: <strong>setups and tool size are where labor cost is born.</strong> Every additional setup adds fixturing time, machine idle time, and a tolerance stack-up across datums. Geometry that lets a part be cut in one or two orientations, with standard-size tools, is geometry that quotes well &mdash; whether it runs on a <a href="/contract-manufacturing/cnc-milling/">3-axis mill</a> or a <a href="/contract-manufacturing/cnc-turning/">lathe</a>.</p>
+      </section>
+
+      <section id="material">
+        <h2>Material: The Choice You Make Before the First Chip</h2>
+
+        <p>Material is 25&ndash;35% of part cost on its own &mdash; but its bigger effect is on <em>cycle time</em>, because how fast you can cut depends on what you're cutting. Machinability is a published, relative metric. The faster a material cuts, the lower the labor cost behind the same geometry.</p>
+
+        <table class="blog-table">
+          <thead>
+            <tr><th>Material</th><th>Relative machinability</th><th>DFM note</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Free-cutting brass (C360)</td><td><strong>~100%</strong> (industry baseline)</td><td>Cuts fast and clean; ideal where strength allows</td></tr>
+            <tr><td>Aluminum 6061-T6</td><td>High (~90% of brass; far above steels)</td><td>The default cost-effective choice for most parts</td></tr>
+            <tr><td>Steel 1018 / 4140</td><td>Moderate</td><td>Predictable; cost climbs with hardness and alloying</td></tr>
+            <tr><td>Stainless 304 / 316</td><td>Lower (work-hardens)</td><td>Specify only where corrosion resistance is required</td></tr>
+            <tr><td>Titanium (Ti-6Al-4V)</td><td>Low (slow, hard on tools)</td><td>Cost-effective only where strength-to-weight is non-negotiable</td></tr>
+          </tbody>
+        </table>
+
+        <p style="font-size: 14px !important; color: var(--mid-gray) !important;">(Relative machinability indices vary by reference baseline; figures above are representative of published machinability rating charts.)</p>
+
+        <p>The DFM lesson is not "always use aluminum." It's "don't pay for titanium-grade machining time on a part that 6061 would serve." Material selection is a function call, not a default &mdash; and it's one of the cheapest reviews to run, because changing it on the model costs nothing and changing it after tooling costs everything. GPW's <a href="/contract-manufacturing/engineering-support/">engineering support</a> and our <a href="/contract-manufacturing/metals/">metals and plastics</a> guidance exist for exactly this conversation.</p>
+      </section>
+
+      <section id="checklist">
+        <h2>A 10-Point DFM Checklist You Can Run on Your Own Print</h2>
+
+        <p>Before you release a part for quote, run it against these. Each one is a place we routinely find cost in a DFM review:</p>
+
+        <ol>
+          <li><strong>Default the tolerances.</strong> Is the whole part at &plusmn;0.005&Prime; / ISO 2768-m, with only the functional features called tighter?</li>
+          <li><strong>Count the tight callouts.</strong> Can you justify each sub-&plusmn;0.001&Prime; dimension by a fit, seal, or location? If not, loosen it.</li>
+          <li><strong>Radius the internal corners.</strong> Are inside corners radiused to fit a reasonable tool, not drawn sharp?</li>
+          <li><strong>Check pocket depth.</strong> Is any cavity deeper than ~3&ndash;4&times; the tool diameter that has to reach the bottom?</li>
+          <li><strong>Count the setups.</strong> How many orientations does the part need? Can features move to fewer faces?</li>
+          <li><strong>Check wall thickness and spacing.</strong> Any wall &mdash; or web between a hole and a nearby edge or feature &mdash; thin enough to chatter, deflect, or break out under cutting load?</li>
+          <li><strong>Standardize holes and threads.</strong> Standard drill sizes? Standard thread series? Tapped no deeper than the thread engagement the bolted joint requires?</li>
+          <li><strong>Right-size the material.</strong> Is the alloy the cheapest one that meets the requirement &mdash; and is the starting stock close to the finished envelope?</li>
+          <li><strong>Specify finish only where it matters.</strong> Is a fine surface finish called out only on functional/cosmetic faces, not blanket across the part?</li>
+          <li><strong>Confirm datums and GD&amp;T are defined by function.</strong> Do datums and tolerances reflect how the part mounts and functions &mdash; and reference features the shop can actually fixture and inspect from?</li>
+        </ol>
+
+        <p>If your print clears all ten, it's a well-designed part for machining. If it doesn't, that's not a problem &mdash; it's the 5&ndash;15%.</p>
+
+        <p style="background: var(--off-white); border-left: 3px solid var(--coral); padding: 16px 20px; margin: 24px 0; font-size: 16px; line-height: 1.5;"><strong>Keep it handy:</strong> <a href="gpw-dfm-checklist.pdf" download>Download the 10-point DFM checklist as a one-page PDF</a> &mdash; with a tolerance cheat-sheet &mdash; and run it on your next drawing before it goes out for quote.</p>
+      </section>
+
+      <section id="how-gpw">
+        <h2>How GPW Approaches DFM</h2>
+
+        <p>We don't quote first and find the problems later. <strong>Every part gets a free DFM review before we send a number.</strong></p>
+
+        <p>Before any shop in our coordinated Monterrey machine-shop network cuts the first chip, an engineer reads your model the way the tool will: where the tight tolerances are, how many setups it needs, which corners force a small tool, whether the material is right, what the finish actually requires. This is not automated software feedback &mdash; it's a person who has watched these parts run, telling you where the cost is and what would change it.</p>
+
+        <p>That review feeds three things:</p>
+
+        <ul>
+          <li><strong>A part that quotes better.</strong> Most parts carry an additional 5&ndash;15% in savings that only surface under part-specific DFM &mdash; the kind a generic instant-quote engine can't see (GPW observation across quoted work).</li>
+          <li><strong>A quote you can audit.</strong> We itemize line by line &mdash; material, labor, machine time, finishing, freight, USMCA filing &mdash; so you can compare against your current supplier without back-calculating what's included.</li>
+          <li><strong>One point of contact.</strong> The same engineer from review to shipment. No handoff to an account manager who never saw the part.</li>
+        </ul>
+
+        <p>DFM is also where the <a href="/blog/cnc-cost-mexico-vs-us-2026/">nearshore math</a> compounds. The landed-cost savings of sourcing in Monterrey are real on their own; layered on top of a part that's been designed (or redesigned) for manufacturability, the two stack. Sourcing acts on what the machine-hour costs. DFM acts on how many you need.</p>
+      </section>
+
+      <div class="blog-cta-block">
+        <h2>Send Us Your Print. Get a Free DFM Review Before We Quote.</h2>
+        <p style="font-size: 16px;">Upload a STEP file or PDF drawing. An engineer reviews it for tolerance risk, setup count, material fit, and cost-driving geometry &mdash; then returns a line-item quote you can compare directly against your current supplier.</p>
+        <div class="blog-cta-block__buttons">
+          <a href="/request-a-quote/" class="btn btn--primary">Request a Quote &rarr;</a>
+        </div>
+      </div>
+
+      <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <h3>What is design for manufacturability (DFM) in CNC machining?</h3>
+          <p>DFM is designing a part so it can be machined reliably and at the lowest cost without losing the function it has to perform. In practice it means matching geometry, tolerances, material, and finish to how a cutting tool actually removes material &mdash; round tools, finite reach, work-holding limits, and cycle time. A DFM review reads a model for the features that quietly drive cost, then proposes changes that keep function intact.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How much of a part's cost is determined by its design?</h3>
+          <p>Roughly 70&ndash;80% of a part's total manufacturing cost is committed by design decisions, most of it before the part is ever quoted or prototyped. The figure comes from the Design for Manufacture and Assembly (DFMA) work of Boothroyd and Dewhurst and is corroborated by peer-reviewed cost-engineering research. Sourcing and shop-floor efficiency compete over the remaining ~20%.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What design features make a CNC part more expensive?</h3>
+          <p>The biggest drivers are over-tight tolerances, sharp internal corners, deep narrow pockets, thin walls, features spread across many faces (forcing multiple setups), non-standard holes and threads, and hard-to-machine materials. Each forces smaller tools, slower feeds, extra setups, or more inspection &mdash; all of which add cycle time and cost.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What is the standard CNC machining tolerance, and does tightening it cost more?</h3>
+          <p>The standard default is &plusmn;0.005&Prime; (0.127&nbsp;mm), roughly ISO 2768-medium, applied at no premium when no tolerance is specified. Tightening costs more on an exponential curve: cutting from &plusmn;0.02&nbsp;mm to &plusmn;0.005&nbsp;mm can raise cost 300&ndash;500%, and ultra-tight &plusmn;0.0001&Prime; work can reach roughly 24&times; standard. Specify tight tolerances only where function requires them.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What is tolerance budgeting?</h3>
+          <p>Tolerance budgeting is assigning each dimension only the tolerance its function requires, rather than applying one tight tolerance across the whole part. Because tight tolerances cost money, you spend your budget on the few features that mate, seal, or locate, and keep everything else at the standard default.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How do I reduce the cost of a machined part without changing what it does?</h3>
+          <p>Default the whole part to standard tolerance and tighten only functional features; radius internal corners to fit a reasonable tool; reduce the number of setups by grouping features onto fewer faces; use standard hole sizes and thread series; choose the cheapest material that meets the requirement; and call out fine surface finish only where it's needed. A DFM review systematizes all of this before you release the part.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>When should a DFM review happen?</h3>
+          <p>As early as possible &mdash; ideally before the design is frozen and certainly before quoting. A change caught in CAD costs minutes; the same change after tooling or first article costs an order of magnitude more. GPW runs a free DFM review before quoting every part for exactly this reason.</p>
+        </div>
+      </section>
+
+      <section id="sources">
+        <h2>Sources</h2>
+        <div class="source-list">
+          <p>All figures in this guide trace to one of the sources below. Accessed June 2026.</p>
+          <ul>
+            <li>Boothroyd, G., Dewhurst, P. &amp; Knight, W. &mdash; <em>Product Design for Manufacture and Assembly</em> (DFMA methodology; origin of the "design determines 70&ndash;80% of cost" premise). <a href="https://www.dfma.com/resources/what-is-dfma.asp" target="_blank" rel="noopener">Boothroyd Dewhurst, Inc. / DFMA</a></li>
+            <li>Love, D. et al. &mdash; <em>"Design determines 70% of cost: A review of implications for design evaluation"</em> (academic literature review of the claim). <a href="https://www.researchgate.net/publication/40499717" target="_blank" rel="noopener">ResearchGate</a></li>
+            <li><em>Part cost estimation at early design phase</em> &mdash; CIRP Annals (~75% of manufacturing cost committed by end of conceptual design). <a href="https://www.sciencedirect.com/science/article/abs/pii/S0007850614001103" target="_blank" rel="noopener">ScienceDirect</a></li>
+            <li>ISO 2768 general tolerances &amp; standard machining default (&plusmn;0.005&Prime;/0.127&nbsp;mm). <a href="https://www.fictiv.com/articles/iso-2768-an-international-standard" target="_blank" rel="noopener">Fictiv &mdash; What is ISO 2768</a></li>
+            <li>Tolerance-vs-cost curve (exponential cost of tight tolerances). <a href="https://tormach.com/articles/high-cost-tight-tolerances" target="_blank" rel="noopener">Tormach &mdash; The High Cost of Tight Tolerances</a></li>
+            <li>Machinability rating charts (relative machinability of aluminum, brass, steel, stainless, titanium). <a href="https://www.samaterials.com/content/machinability-rating-charts.html" target="_blank" rel="noopener">SAM &mdash; Machinability Rating Charts</a></li>
+            <li>GPW 2026 cost model (cost-stack shares, labor-share-by-complexity, 5&ndash;15% DFM savings) &mdash; GPW internal model; presented as our own, not third-party data. See the <a href="/blog/cnc-cost-mexico-vs-us-2026/">Mexico vs US CNC Cost Study</a> for the full landed-cost methodology.</li>
+          </ul>
+          <p><em>Published June 22, 2026. The cost-stack and DFM-savings figures are GPW's own model and are labeled as such; the design-cost, tolerance, and machinability figures are sourced to the public engineering references above.</em></p>
+        </div>
+      </section>
+
+  </article>
+
+    <!-- RIGHT: sticky aside (CTA + related posts) -->
+    <aside class="post-aside" aria-label="Related actions">
+      <div class="aside-card aside-card--cta">
+        <h3>Free DFM review</h3>
+        <p>Send a STEP file or PDF &mdash; an engineer reviews it for cost-driving geometry before we quote.</p>
+        <a href="/request-a-quote/" class="aside-btn">
+          Request a Quote
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+
+      <div class="aside-card">
+        <h3 class="aside-card__title">Download</h3>
+        <a href="gpw-dfm-checklist.pdf" download class="aside-link">
+          <span class="aside-link__category">PDF &middot; Checklist</span>
+          The 10-Point CNC DFM Checklist &mdash; one page, with a tolerance cheat-sheet
+        </a>
+      </div>
+
+      <div class="aside-card">
+        <h3 class="aside-card__title">Related</h3>
+        <a href="../../contract-manufacturing/engineering-support/" class="aside-link">
+          <span class="aside-link__category">Service</span>
+          Engineering Support &mdash; free DFM &amp; material selection
+        </a>
+        <a href="../cnc-cost-mexico-vs-us-2026/" class="aside-link">
+          <span class="aside-link__category">Cost Study</span>
+          Mexico vs US CNC Machining Cost &mdash; the landed-cost math
+        </a>
+        <a href="../" class="aside-link">
+          <span class="aside-link__category">Insights</span>
+          More cost studies &amp; sourcing guides
+        </a>
+      </div>
+    </aside>
+
+  </div>
+  <!-- /blog-shell -->
+
+  <!-- Floating CTA pill (appears after scroll, mobile only) -->
+  <a href="/request-a-quote/" class="floating-cta" id="floatingCta">
+    Request a Quote
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+  </a>
+
+  <!-- ============ FOOTER ============ -->
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="/" class="footer__logo">
+            <img loading="lazy" src="/img/logo-white.png" alt="Global Precision Works" width="300" height="189">
+          </a>
+          <p class="footer__desc">Global Precision Works &mdash; precision manufacturing and electromechanical assembly from Monterrey, Mexico. Two divisions, one standard of quality.</p>
+          <div class="footer__contact">
+            <span class="footer__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              Monterrey, Nuevo Le&oacute;n, Mexico
+            </span>
+            <a href="mailto:sales@gpw-solutions.com" class="footer__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              sales@gpw-solutions.com
+            </a>
+            <a href="tel:+14699496321" class="footer__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92z"/></svg>
+              +1 (469) 949-6321
+            </a>
+            <a href="https://www.linkedin.com/company/globalprecisionworks" target="_blank" rel="noopener" class="footer__contact-item">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.14.93-2.06 2.06-2.06 1.14 0 2.06.93 2.06 2.06 0 1.14-.92 2.07-2.06 2.07zm1.78 13.02H3.55V9h3.57v11.45z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">CNC Machining</div>
+          <div class="footer__links">
+            <a href="/contract-manufacturing/cnc-milling/">CNC Milling</a>
+            <a href="/contract-manufacturing/cnc-turning/">CNC Turning</a>
+            <a href="/contract-manufacturing/wire-edm/">Wire EDM</a>
+            <a href="/contract-manufacturing/sheet-metal/">Sheet Metal</a>
+            <a href="/contract-manufacturing/surface-finishing/">Surface Finishing</a>
+            <a href="/contract-manufacturing/engineering-support/">Engineering Support</a>
+            <a href="/contract-manufacturing/metals/">Metals</a>
+            <a href="/contract-manufacturing/plastics/">Plastics</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Assembly &amp; Integration</div>
+          <div class="footer__links">
+            <a href="/ems/services/box-build-assembly.html">Box Build</a>
+            <a href="/ems/services/cable-harness-assembly.html">Cable &amp; Harness</a>
+            <a href="/ems/services/system-integration.html">System Integration</a>
+            <a href="/ems/services/testing-inspection.html">Testing &amp; Inspection</a>
+            <a href="/ems/services/enclosure-cabinet-assembly.html">Enclosure &amp; Cabinet</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Industries</div>
+          <div class="footer__links">
+            <a href="/industries/ai-server-rack/">AI &amp; Server Rack</a>
+            <a href="/industries/industrial-equipment/">Industrial Equipment</a>
+            <a href="/industries/telecom/">Telecom</a>
+            <a href="/industries/medical-devices/">Medical Devices</a>
+            <a href="/industries/automotive/">Automotive</a>
+            <a href="/industries/aerospace-defense/">Aerospace &amp; Defense</a>
+            <a href="/industries/electronics/">Electronics</a>
+            <a href="/industries/oil-gas/">Oil &amp; Gas</a>
+            <a href="/industries/energy/">Energy</a>
+            <a href="/industries/appliances/">Appliances &amp; White Goods</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Company</div>
+          <div class="footer__links">
+            <a href="/about.html">About</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/blog/">Insights</a>
+            <a href="/contract-manufacturing/why-mexico/">Why Mexico</a>
+            <a href="/request-a-quote/">Request a Quote</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Global Precision Works. All rights reserved.</span>
+        <div class="footer__legal">
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js?v=20260614"></script>
+  <script>
+    // ===== TOC scrollspy (highlight current section in sidebar) =====
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-sidebar a[data-toc]');
+      if (!tocLinks.length) return;
+      const sections = Array.from(tocLinks).map(a => {
+        const id = a.getAttribute('href').slice(1);
+        return { link: a, section: document.getElementById(id) };
+      }).filter(x => x.section);
+      function update() {
+        const scrollPos = window.scrollY + 120;
+        let active = sections[0];
+        for (const s of sections) {
+          if (s.section.offsetTop <= scrollPos) active = s;
+          else break;
+        }
+        tocLinks.forEach(l => l.classList.remove('is-active'));
+        if (active) active.link.classList.add('is-active');
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+
+    // ===== Reading progress bar + floating CTA =====
+    (function() {
+      const bar = document.getElementById('readProgress');
+      const cta = document.getElementById('floatingCta');
+      const article = document.querySelector('.blog-content');
+      function update() {
+        if (!article) return;
+        const rect = article.getBoundingClientRect();
+        const total = article.offsetHeight - window.innerHeight;
+        const scrolled = -rect.top;
+        const pct = Math.max(0, Math.min(100, (scrolled / total) * 100));
+        bar.style.width = pct + '%';
+        // Show floating CTA after 25% read, hide near end (>92%)
+        if (pct > 25 && pct < 92) cta.classList.add('is-visible');
+        else cta.classList.remove('is-visible');
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+  </script>
+  <script src="../../js/cookie-consent.js?v=20260614"></script>
+</body>
+</html>
